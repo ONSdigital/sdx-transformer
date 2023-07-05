@@ -1,0 +1,128 @@
+{
+  "title": "Build Spec UKIS",
+  "survey_id": "144",
+  "target": "CORA",
+  "template": {
+    "0001": "$1",
+    "2330": "$2",
+    "1310": "$3",
+    "1410": "$4",
+    "0810": "$5",
+    "2657": "$6",
+    "2121": "$7",
+    "2650": "$8",
+    "2700": "$9",
+    "2801": "$10"
+  },
+  "transforms": {
+    "$1": {
+      "type": "function",
+      "spec": {
+        "name": "SET_TO_VALUE",
+        "args": {
+            "value": "0"
+        }
+      }
+    },
+    "$2": {
+      "type": "function",
+      "spec": {
+        "name": "IF_EXISTS",
+        "args": {
+            "true": "1",
+            "false": ""
+        }
+      }
+    },
+    "$3": {
+      "type": "function",
+      "spec": {
+        "name": "LOOKUP",
+        "args": {
+          "mappings": {
+            "yes": "10",
+            "no": "01"
+          },
+          "match_type": "contains"
+        }
+      }
+    },
+    "$4": {
+      "type": "function",
+      "spec": {
+        "name": "ROUND",
+        "args": {
+          "magnitude": "1"
+        }
+      }
+    },
+    "$5": {
+      "type": "function",
+      "spec": {
+        "name": "PERCENTAGE",
+        "args": {
+
+        }
+      }
+    },
+    "$6": {
+      "type": "function",
+      "spec": {
+        "name": "LOOKUP",
+        "args": {
+          "mappings": {
+            "high importance": "1000",
+            "medium importance": "0100",
+            "low importance": "0010",
+            "not important": "0001"
+          },
+          "match_type": "exact"
+        }
+      }
+    },
+    "$7": {
+      "type": "function",
+      "spec": {
+        "name": "DISTANCE_RADIO",
+        "args": {
+
+        }
+      }
+    },
+    "$8": {
+      "type": "function",
+      "spec": {
+        "name": "LOOKUP",
+        "args": {
+          "mappings": {
+            "over 90%": "0001",
+            "40-90%": "0100",
+            "less than 40%": "0011",
+            "none": "0100"
+          },
+          "match_type": "exact",
+          "default": ""
+        }
+      }
+    },
+    "$9": {
+      "type": "function",
+      "spec": {
+        "name": "IF_EXISTS",
+        "args": {
+          "true": "1",
+          "false": "2"
+        }
+      }
+    },
+    "$10": {
+      "type": "function",
+      "spec": {
+        "name": "ROUND",
+        "args": {
+          "magnitude": "1"
+        }
+      }
+    }
+  }
+}
