@@ -1,4 +1,4 @@
-from typing import Final
+from typing import Final, Any
 
 from app.definitions import Template, Transforms, Transform, ParseTree, Data
 
@@ -48,20 +48,22 @@ def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
     return tree
 
 
+def map_value(field: Any, data: Data) -> Any:
+
+    if isinstance(field, dict):
+        return {k: map_value(v, data) for k, v in field.items()}
+    elif isinstance(field, list):
+        return [map_value(item, data) for item in field]
+    else:
+        if field.startswith(MAPPING_PREFIX):
+            return data[field[1:]]
+        return field
+
+
 def interpolate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
     tree = parse_tree.copy()
     for k, v in tree.items():
-
-
-
-        if type(v) is str:
-            if v.startswith(MAPPING_PREFIX):
-                tree[k] = data[v[1:]]
-        else:
-            t: Transform = v
-            for key, val in t["args"].items():
-                if val.startswith(MAPPING_PREFIX):
-                    tree[k]["args"][key] = data[val[1:]]
+        tree[k] = map_value(v, data)
 
     return tree
 
