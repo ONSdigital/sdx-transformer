@@ -1,6 +1,9 @@
-from app.definitions import Template, Transforms, Transform, ParseTree
+from typing import Final
 
-FUNCTION_PREFIX = "$"
+from app.definitions import Template, Transforms, Transform, ParseTree, Data
+
+FUNCTION_PREFIX: Final = "$"
+MAPPING_PREFIX: Final = "#"
 
 
 def interpolate_functions(template: Template, transforms: Transforms) -> ParseTree:
@@ -29,11 +32,24 @@ def get_root(t: Transform, transforms: Transforms) -> Transform:
 def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
     tree = parse_tree.copy()
     for k, v in tree.items():
-        t: Transform = v
+        if not isinstance(v, dict):
+            continue
 
+        t: Transform = v
         while "value" in t["args"]:
             t = t["args"]["value"]
 
         t["args"]["value"] = f"#{k}"
 
     return tree
+
+
+def interpolate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
+    tree = parse_tree.copy()
+
+    for k, v in tree.items():
+        if v.startswith(MAPPING_PREFIX):
+            tree[k] = data[v[1:]]
+
+    return tree
+

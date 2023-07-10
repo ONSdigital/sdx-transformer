@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Template, Transforms, ParseTree
-from app.interpolate import interpolate_functions, add_implicit_values
+from app.interpolate import interpolate_functions, add_implicit_values, interpolate_mappings
 
 
 class InterpolateTests(unittest.TestCase):
@@ -129,7 +129,8 @@ class ImplicitValueTests(unittest.TestCase):
                 "args": {
                     "precision": "1",
                 }
-            }
+            },
+            "171": "#171"
         }
 
         expected = {
@@ -146,7 +147,8 @@ class ImplicitValueTests(unittest.TestCase):
                     "value": "#161",
                     "precision": "1",
                 }
-            }
+            },
+            "171": "#171"
         }
 
         actual = add_implicit_values(parse_tree)
@@ -198,4 +200,73 @@ class ImplicitValueTests(unittest.TestCase):
         }
 
         actual = add_implicit_values(parse_tree)
+        self.assertEqual(expected, actual)
+
+
+class InterpolateMappingsTests(unittest.TestCase):
+    def test_simple(self):
+        parse_tree = {
+            "100": "#100",
+            "200": "#300"
+        }
+
+        data = {
+            "100": "1",
+            "300": "2"
+        }
+
+        expected = {
+            "100": "1",
+            "200": "2"
+        }
+
+        actual = interpolate_mappings(parse_tree, data)
+
+        self.assertEqual(expected, actual)
+
+
+
+    def test_flat(self):
+
+        parse_tree = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#151",
+                    "precision": "1",
+                }
+            },
+            "161": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#161",
+                    "precision": "1",
+                }
+            }
+        }
+
+        data = {
+            "151": "1",
+            "161": "10"
+        }
+
+        expected = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": "1",
+                    "precision": "1",
+                }
+            },
+            "161": {
+                "name": "ROUND",
+                "args": {
+                    "value": "10",
+                    "precision": "1",
+                }
+            }
+        }
+
+        actual = interpolate_mappings(parse_tree, data)
+
         self.assertEqual(expected, actual)
