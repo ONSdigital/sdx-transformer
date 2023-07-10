@@ -13,3 +13,5 @@ class Transform(TypedDict):
 
 
 Transforms = dict[str, Transform]
+
+ParseTree = dict[str, Transform | str]

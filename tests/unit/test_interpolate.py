@@ -1,7 +1,7 @@
 import unittest
 
-from app.definitions import Template, Transforms
-from app.interpolate import interpolate_functions
+from app.definitions import Template, Transforms, ParseTree
+from app.interpolate import interpolate_functions, add_implicit_values
 
 
 class InterpolateTests(unittest.TestCase):
@@ -112,3 +112,77 @@ class InterpolateTests(unittest.TestCase):
         actual = interpolate_functions(template, transforms)
         self.assertEqual(expected, actual)
 
+
+class ImplicitValueTests(unittest.TestCase):
+
+    def test_single(self):
+
+        parse_tree: ParseTree = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1",
+                }
+            }
+        }
+
+        expected = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#151",
+                    "precision": "1",
+                }
+            }
+        }
+
+        actual = add_implicit_values(parse_tree)
+        self.assertEqual(expected, actual)
+
+    def test_nested(self):
+
+        parse_tree: ParseTree = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            }
+        }
+
+        expected = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "value": "#151",
+                                "args": {
+                                    "by": "2",
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            }
+        }
+
+        actual = add_implicit_values(parse_tree)
+        self.assertEqual(expected, actual)
