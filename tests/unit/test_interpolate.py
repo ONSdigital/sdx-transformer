@@ -202,8 +202,52 @@ class ImplicitValueTests(unittest.TestCase):
         actual = add_implicit_values(parse_tree)
         self.assertEqual(expected, actual)
 
+    def test_blank_value(self):
+
+        parse_tree: ParseTree = {
+            "151": "#151",
+            "152": "#152",
+            "171": {
+                "name": "ADD",
+                "args": {
+                    "value": "",
+                    "values": ["#151", "#152"]
+                }
+            },
+            "172": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#152",
+                    "precision": "1"
+                }
+            }
+        }
+
+        expected = {
+            "151": "#151",
+            "152": "#152",
+            "171": {
+                "name": "ADD",
+                "args": {
+                    "value": "",
+                    "values": ["#151", "#152"]
+                }
+            },
+            "172": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#152",
+                    "precision": "1"
+                }
+            }
+        }
+
+        actual = add_implicit_values(parse_tree)
+        self.assertEqual(expected, actual)
+
 
 class InterpolateMappingsTests(unittest.TestCase):
+
     def test_simple(self):
         parse_tree = {
             "100": "#100",
@@ -223,8 +267,6 @@ class InterpolateMappingsTests(unittest.TestCase):
         actual = interpolate_mappings(parse_tree, data)
 
         self.assertEqual(expected, actual)
-
-
 
     def test_flat(self):
 
@@ -264,6 +306,78 @@ class InterpolateMappingsTests(unittest.TestCase):
                     "value": "10",
                     "precision": "1",
                 }
+            }
+        }
+
+        actual = interpolate_mappings(parse_tree, data)
+
+        self.assertEqual(expected, actual)
+
+    def test_nested(self):
+        parse_tree = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                    "value": "#151"
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            },
+
+            "152": {
+                "name": "ADD",
+                "args": {
+                    "value": "",
+                    "values": ["#153", "#154"]
+                },
+            }
+        }
+
+        data = {
+            "151": "1",
+            "161": "10",
+            "153": "5",
+            "154": "9",
+        }
+
+        expected = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                    "value": "1"
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            },
+
+            "152": {
+                "name": "ADD",
+                "args": {
+                    "value": "",
+                    "values": ["5", "9"]
+                },
             }
         }
 

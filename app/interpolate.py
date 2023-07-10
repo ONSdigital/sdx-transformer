@@ -37,19 +37,31 @@ def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
 
         t: Transform = v
         while "value" in t["args"]:
-            t = t["args"]["value"]
-
-        t["args"]["value"] = f"#{k}"
+            val = t["args"]["value"]
+            if isinstance(val, dict):
+                t = val
+            else:
+                break
+        else:
+            t["args"]["value"] = f"#{k}"
 
     return tree
 
 
 def interpolate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
     tree = parse_tree.copy()
-
     for k, v in tree.items():
-        if v.startswith(MAPPING_PREFIX):
-            tree[k] = data[v[1:]]
+
+
+
+        if type(v) is str:
+            if v.startswith(MAPPING_PREFIX):
+                tree[k] = data[v[1:]]
+        else:
+            t: Transform = v
+            for key, val in t["args"].items():
+                if val.startswith(MAPPING_PREFIX):
+                    tree[k]["args"][key] = data[val[1:]]
 
     return tree
 
