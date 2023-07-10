@@ -9,7 +9,6 @@ def interpolate_functions(template: Template, transforms: Transforms) -> ParseTr
     for k, v in template.items():
         if v.startswith(FUNCTION_PREFIX):
             t: Transform = transforms[v]
-
             root = get_root(t, transforms)
             result[k] = root
         else:
@@ -18,14 +17,23 @@ def interpolate_functions(template: Template, transforms: Transforms) -> ParseTr
 
 
 def get_root(t: Transform, transforms: Transforms) -> Transform:
-    root = t
+    root = t.copy()
     if "post" in t:
         parent = transforms[t["post"]]
-        t.pop("post")
-        parent["args"]["value"] = t
+        root.pop("post")
+        parent["args"]["value"] = root
         root = get_root(parent, transforms)
     return root
 
 
 def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
-    pass
+    tree = parse_tree.copy()
+    for k, v in tree.items():
+        t: Transform = v
+
+        while "value" in t["args"]:
+            t = t["args"]["value"]
+
+        t["args"]["value"] = f"#{k}"
+
+    return tree

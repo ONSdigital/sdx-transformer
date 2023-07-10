@@ -115,10 +115,16 @@ class InterpolateTests(unittest.TestCase):
 
 class ImplicitValueTests(unittest.TestCase):
 
-    def test_single(self):
+    def test_flat(self):
 
         parse_tree: ParseTree = {
             "151": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1",
+                }
+            },
+            "161": {
                 "name": "ROUND",
                 "args": {
                     "precision": "1",
@@ -131,6 +137,13 @@ class ImplicitValueTests(unittest.TestCase):
                 "name": "ROUND",
                 "args": {
                     "value": "#151",
+                    "precision": "1",
+                }
+            },
+            "161": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#161",
                     "precision": "1",
                 }
             }
@@ -171,9 +184,9 @@ class ImplicitValueTests(unittest.TestCase):
                         "args": {
                             "value": {
                                 "name": "DIVIDE",
-                                "value": "#151",
                                 "args": {
                                     "by": "2",
+                                    "value": "#151"
                                 },
                             },
                             "by": "3",
