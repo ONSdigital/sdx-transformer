@@ -8,7 +8,7 @@ Template = dict[str, str]
 
 class Transform(TypedDict):
     name: str
-    args: dict[str, str]
+    args: dict[str, str | dict]
     post: NotRequired[str]
 
 
