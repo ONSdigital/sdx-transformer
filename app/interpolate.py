@@ -43,7 +43,7 @@ def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
             else:
                 break
         else:
-            t["args"]["value"] = f"#{k}"
+            t["args"]["value"] = f"{MAPPING_PREFIX}{k}"
 
     return tree
 
