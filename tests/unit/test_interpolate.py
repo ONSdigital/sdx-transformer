@@ -1,10 +1,117 @@
 import unittest
 
-from app.definitions import Template, Transforms, ParseTree
-from app.interpolate import interpolate_functions, add_implicit_values, interpolate_mappings
+from app.definitions import Template, Transforms, ParseTree, Data
+from app.interpolate import interpolate_functions, add_implicit_values, interpolate_mappings, interpolate
 
 
 class InterpolateTests(unittest.TestCase):
+
+    def test_full_interpolation(self):
+
+        data: Data = {
+            "150": "10",
+            "152": "1.5",
+            "153": "80",
+            "156": "5",
+            "161": "6",
+            "162": "7",
+        }
+
+        template: Template = {
+            "150": "#150",
+            "151": "#149",
+            "152": "$ROUND",
+            "153": "$DIVIDE",
+            "154": "$ADD",
+            "156": "$ADD_MANY"
+        }
+
+        transforms: Transforms = {
+            "$DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "by": "2",
+                },
+                "post": "$MULTIPLY"
+            },
+            "$MULTIPLY": {
+                "name": "MULTIPLY",
+                "args": {
+                    "by": "3",
+                },
+                "post": "$ROUND"
+            },
+            "$ROUND": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1",
+                }
+            },
+            "$ADD": {
+                "name": "ADD",
+                "args": {
+                    "value": "",
+                    "values": ["#161", "#162"]
+                }
+            },
+            "$ADD_MANY": {
+                "name": "ADD_MANY",
+                "args": {
+                    "values": ["#161", "#162", "#163"]
+                }
+            },
+        }
+
+        expected = {
+            "150": "10",
+            "151": None,
+            "152": {
+                "name": "ROUND",
+                "args": {
+                    "value": "1.5",
+                    "precision": "1",
+                }
+            },
+            "153": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                    "value": "80"
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            },
+            "154": {
+                "name": "ADD",
+                "args": {
+                    "value": "",
+                    "values": ["6", "7"]
+                },
+            },
+            "156": {
+                "name": "ADD_MANY",
+                "args": {
+                    "value": "5",
+                    "values": ["6", "7", None]
+                },
+            }
+        }
+
+        actual = interpolate(template, transforms, data)
+        self.assertEqual(expected, actual)
+
+
+class InterpolateFunctionsTests(unittest.TestCase):
 
     def test_interpolate_single(self):
 
@@ -90,6 +197,65 @@ class InterpolateTests(unittest.TestCase):
         }
 
         expected = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            }
+        }
+        actual = interpolate_functions(template, transforms)
+        self.assertEqual(expected, actual)
+
+    def test_interpolate_shared_function(self):
+
+        template: Template = {
+            "150": "$ROUND",
+            "151": "$DIVIDE"
+        }
+
+        transforms: Transforms = {
+            "$DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "by": "2",
+                },
+                "post": "$MULTIPLY"
+            },
+            "$MULTIPLY": {
+                "name": "MULTIPLY",
+                "args": {
+                    "by": "3",
+                },
+                "post": "$ROUND"
+            },
+            "$ROUND": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1",
+                }
+            }
+        }
+
+        expected = {
+            "150": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1"
+                }
+            },
             "151": {
                 "name": "ROUND",
                 "args": {

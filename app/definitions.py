@@ -5,6 +5,8 @@ Data = dict[str, str]
 
 Template = dict[str, str]
 
+Field = dict | list | str | None
+
 
 class Transform(TypedDict):
     name: str

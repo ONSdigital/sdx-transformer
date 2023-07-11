@@ -1,9 +1,19 @@
-from typing import Final, Any
+from copy import deepcopy
+from typing import Final
+from pprint import pprint
 
-from app.definitions import Template, Transforms, Transform, ParseTree, Data
+from app.definitions import Template, Transforms, Transform, ParseTree, Data, Field
 
 FUNCTION_PREFIX: Final = "$"
 MAPPING_PREFIX: Final = "#"
+
+
+def interpolate(template: Template, transforms: Transforms, data: Data) -> ParseTree:
+    parse_tree = interpolate_functions(template, transforms)
+    pprint(parse_tree)
+    full_tree = add_implicit_values(parse_tree)
+    mapped_tree = interpolate_mappings(full_tree, data)
+    return mapped_tree
 
 
 def interpolate_functions(template: Template, transforms: Transforms) -> ParseTree:
@@ -20,9 +30,9 @@ def interpolate_functions(template: Template, transforms: Transforms) -> ParseTr
 
 
 def get_root(t: Transform, transforms: Transforms) -> Transform:
-    root = t.copy()
+    root = deepcopy(t)
     if "post" in t:
-        parent = transforms[t["post"]]
+        parent = deepcopy(transforms[t["post"]])
         root.pop("post")
         parent["args"]["value"] = root
         root = get_root(parent, transforms)
@@ -30,7 +40,7 @@ def get_root(t: Transform, transforms: Transforms) -> Transform:
 
 
 def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
-    tree = parse_tree.copy()
+    tree = deepcopy(parse_tree)
     for k, v in tree.items():
         if not isinstance(v, dict):
             continue
@@ -48,22 +58,20 @@ def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
     return tree
 
 
-def map_value(field: Any, data: Data) -> Any:
+def interpolate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
+    tree = deepcopy(parse_tree)
+    for k, v in tree.items():
+        tree[k] = map_value(v, data)
 
+    return tree
+
+
+def map_value(field: Field, data: Data) -> Field:
     if isinstance(field, dict):
         return {k: map_value(v, data) for k, v in field.items()}
     elif isinstance(field, list):
         return [map_value(item, data) for item in field]
     else:
         if field.startswith(MAPPING_PREFIX):
-            return data[field[1:]]
+            return data.get(field[1:])
         return field
-
-
-def interpolate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
-    tree = parse_tree.copy()
-    for k, v in tree.items():
-        tree[k] = map_value(v, data)
-
-    return tree
-
