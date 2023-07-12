@@ -1,6 +1,5 @@
 from copy import deepcopy
 from typing import Final
-from pprint import pprint
 
 from app.definitions import Template, Transforms, Transform, ParseTree, Data, Field
 
@@ -10,7 +9,6 @@ MAPPING_PREFIX: Final = "#"
 
 def interpolate(template: Template, transforms: Transforms, data: Data) -> ParseTree:
     parse_tree = interpolate_functions(template, transforms)
-    pprint(parse_tree)
     full_tree = add_implicit_values(parse_tree)
     mapped_tree = interpolate_mappings(full_tree, data)
     return mapped_tree

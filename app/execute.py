@@ -1,5 +1,5 @@
 from copy import deepcopy
-from typing import Self
+from typing import Self, ClassVar
 
 from app.definitions import ParseTree, Transform, Value
 
@@ -7,7 +7,9 @@ from app.definitions import ParseTree, Transform, Value
 def execute(parse_tree: ParseTree) -> dict[str, str]:
     result: dict[str, str] = {}
     for k, v in parse_tree.items():
-        if not isinstance(v, str):
+        if v is None or isinstance(v, str):
+            result[k] = v
+        else:
             result[k] = Function.from_transform(v).apply()
 
     return result
@@ -15,7 +17,7 @@ def execute(parse_tree: ParseTree) -> dict[str, str]:
 
 class Function:
 
-    _function_lookup: dict[str, Self.__class__]
+    _function_lookup: ClassVar[dict[str, Self.__class__]] = []
 
     def __init__(self, value: Value, args: dict[str, str]):
         if value is None or isinstance(value, str):
@@ -29,21 +31,23 @@ class Function:
         name = transform["name"]
         args = deepcopy(transform["args"])
         value = args.pop("value")
-        return cls._function_lookup.get(name)(value, args)
+        return cls._function_lookup.get(name, cls)(value, args)
 
     @classmethod
     def set_function_lookup(cls, lookup: dict[str, Self.__class__]):
         cls._function_lookup = lookup
 
+    def _get_value(self) -> str:
+        if not isinstance(self._value, str):
+            return self._value.apply()
+        else:
+            return self._value
+
     def perform(self, value: str, **kwargs) -> str:
-        pass
+        return value
 
     def apply(self) -> str | None:
         if self._value is None:
             return None
-        if not isinstance(self._value, str):
-            v = self._value.apply()
-        else:
-            v = self._value
-
+        v = self._get_value()
         return self.perform(v, **self._args)
