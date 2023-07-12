@@ -1,5 +1,5 @@
 from copy import deepcopy
-from typing import Self, ClassVar
+from typing import Self, ClassVar, Optional
 
 from app.definitions import ParseTree, Transform, Value
 
@@ -37,15 +37,15 @@ class Function:
     def set_function_lookup(cls, lookup: dict[str, Self.__class__]):
         cls._function_lookup = lookup
 
-    def _get_value(self) -> str:
+    def _get_value(self) -> Optional[str]:
         if not isinstance(self._value, str):
             return self._value.apply()
         else:
             return self._value
 
-    def perform(self, value: str | None, **kwargs) -> str:
+    def perform(self, value: Optional[str], **kwargs) -> Optional[str]:
         return value
 
-    def apply(self) -> str | None:
+    def apply(self) -> Optional[str]:
         v = self._get_value()
         return self.perform(v, **self._args)
