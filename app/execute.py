@@ -43,11 +43,9 @@ class Function:
         else:
             return self._value
 
-    def perform(self, value: str, **kwargs) -> str:
+    def perform(self, value: str | None, **kwargs) -> str:
         return value
 
     def apply(self) -> str | None:
-        if self._value is None:
-            return None
         v = self._get_value()
         return self.perform(v, **self._args)

@@ -1,25 +1,39 @@
 import unittest
-from app.functions import Matches
+from app.functions import Contains, Exists
 
 
 class MatchesTests(unittest.TestCase):
-    def test_contains_true(self):
+    def test_true(self):
         value = "sentence for testing purposes"
-        args = {"match_str": "testing", "match_type": "contains", "on_true": "1", "on_false": "2"}
-        match = Matches(value=value, args=args)
-        actual = match.apply()
+        args = {"match_str": "testing", "on_true": "1", "on_false": "2"}
+        contains = Contains(value=value, args=args)
+        actual = contains.perform(value, **args)
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_contains_false(self):
+    def test_false(self):
         value = "sentence for testing purposes"
-        args = {"match_str": "I don't exist", "match_type": "contains", "on_true": "1", "on_false": "2"}
-        match = Matches(value=value, args=args)
-        actual = match.apply()
+        args = {"match_str": "I don't exist", "on_true": "1", "on_false": "2"}
+        contains = Contains(value=value, args=args)
+        actual = contains.perform(value, **args)
         expected = "2"
         self.assertEqual(expected, actual)
 
 
 class ExistsTests(unittest.TestCase):
-    pass
+    def test_true(self):
+        value = "foo"
+        args = {"on_true": "1", "on_false": "2"}
+        exists = Exists(value=value, args=args)
+        actual = exists.perform(value, **args)
+        expected = "1"
+        self.assertEqual(expected, actual)
+
+    def test_false(self):
+        value = None
+        args = {"on_true": "1", "on_false": "2"}
+        exists = Exists(value=value, args=args)
+        actual = exists.perform(value, **args)
+        expected = "2"
+        self.assertEqual(expected, actual)
 

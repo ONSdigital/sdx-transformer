@@ -1,13 +1,8 @@
 from app.execute import Function
 
 
-class Matches(Function):
-    def perform(self,
-                value: str,
-                match_str: str = "",
-                match_type: str = "contains",
-                on_true: str = "1",
-                on_false: str = "2") -> str:
+class Contains(Function):
+    def perform(self, value: str, match_str: str = "", on_true: str = "1", on_false: str = "2") -> str:
         if match_str in value:
             return on_true
         return on_false
@@ -15,5 +10,6 @@ class Matches(Function):
 
 class Exists(Function):
     def perform(self, value: str, on_true: str = "1", on_false: str = "2") -> str:
-        pass
-
+        if value is not None:
+            return on_true
+        return on_false
