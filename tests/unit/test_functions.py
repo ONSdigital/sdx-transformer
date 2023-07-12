@@ -1,5 +1,5 @@
 import unittest
-from app.functions import Contains, Exists, AnyContains
+from app.functions import Contains, Exists, AnyContains, AnyDate
 
 
 class ContainsTests(unittest.TestCase):
@@ -25,24 +25,6 @@ class ContainsTests(unittest.TestCase):
         contains = Contains(value=value, args=args)
         actual = contains.perform(value, **args)
         expected = None
-        self.assertEqual(expected, actual)
-
-
-class ExistsTests(unittest.TestCase):
-    def test_true(self):
-        value = "foo"
-        args = {"on_true": "1", "on_false": "2"}
-        exists = Exists(value=value, args=args)
-        actual = exists.perform(value, **args)
-        expected = "1"
-        self.assertEqual(expected, actual)
-
-    def test_false(self):
-        value = None
-        args = {"on_true": "1", "on_false": "2"}
-        exists = Exists(value=value, args=args)
-        actual = exists.perform(value, **args)
-        expected = "2"
         self.assertEqual(expected, actual)
 
 
@@ -82,3 +64,60 @@ class AnyContainsTests(unittest.TestCase):
         actual = contains.perform(value, **args)
         expected = "2"
         self.assertEqual(expected, actual)
+
+
+class AnyDateTests(unittest.TestCase):
+    def test_true(self):
+        value = "12/07/2023"
+        values = []
+        args = {"values": values, "on_true": "1", "on_false": "2"}
+        contains = AnyDate(value=value, args=args)
+        actual = contains.perform(value, **args)
+        expected = "1"
+        self.assertEqual(expected, actual)
+
+    def test_false(self):
+        value = "12/13/2023"
+        values = []
+        args = {"values": values, "on_true": "1", "on_false": "2"}
+        contains = AnyDate(value=value, args=args)
+        actual = contains.perform(value, **args)
+        expected = "2"
+        self.assertEqual(expected, actual)
+
+    def test_true_list(self):
+        value = ""
+        values = ["12/07/2023", "13/07/2023"]
+        args = {"values": values, "on_true": "1", "on_false": "2"}
+        contains = AnyDate(value=value, args=args)
+        actual = contains.perform(value, **args)
+        expected = "1"
+        self.assertEqual(expected, actual)
+
+    def test_nones(self):
+        value = "12/07/2023"
+        values = [None, None]
+        args = {"values": values, "on_true": "1", "on_false": "2"}
+        contains = AnyDate(value=value, args=args)
+        actual = contains.perform(value, **args)
+        expected = "1"
+        self.assertEqual(expected, actual)
+
+
+class ExistsTests(unittest.TestCase):
+    def test_true(self):
+        value = "foo"
+        args = {"on_true": "1", "on_false": "2"}
+        exists = Exists(value=value, args=args)
+        actual = exists.perform(value, **args)
+        expected = "1"
+        self.assertEqual(expected, actual)
+
+    def test_false(self):
+        value = None
+        args = {"on_true": "1", "on_false": "2"}
+        exists = Exists(value=value, args=args)
+        actual = exists.perform(value, **args)
+        expected = "2"
+        self.assertEqual(expected, actual)
+
