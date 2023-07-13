@@ -98,3 +98,31 @@ class ExecutionTests(unittest.TestCase):
         }
         actual = execute(parse_tree)
         self.assertEqual(expected, actual)
+
+    def test_execute_transform_in_args(self):
+
+        parse_tree: ParseTree = {
+            "152": {
+                "name": "ADD",
+                "args": {
+                    "value": "100",
+                    "values": [
+                        "200",
+                        "300",
+                        {
+                            "name": "REMOVE_CHARS",
+                            "args": {
+                                "n": "1",
+                                "value": "a400"
+                            },
+                        },
+                    ]
+                },
+            }
+        }
+
+        expected = {
+            "152": "1000"
+        }
+        actual = execute(parse_tree)
+        self.assertEqual(expected, actual)
