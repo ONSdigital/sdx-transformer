@@ -1,7 +1,8 @@
 import unittest
 
 from app.definitions import Template, Transforms, ParseTree, Data
-from app.interpolate import interpolate_functions, add_implicit_values, interpolate_mappings, interpolate
+from app.interpolate import add_implicit_values, interpolate_mappings, interpolate, \
+    interpolate_nested_functions, invert_post_functions
 
 
 class InterpolateTests(unittest.TestCase):
@@ -57,7 +58,7 @@ class InterpolateTests(unittest.TestCase):
             "$ADD_MANY": {
                 "name": "ADD_MANY",
                 "args": {
-                    "values": ["#161", "#162", "#163"]
+                    "values": ["#161", "#163", "$MULTIPLY"]
                 }
             },
         }
@@ -102,7 +103,23 @@ class InterpolateTests(unittest.TestCase):
                 "name": "ADD_MANY",
                 "args": {
                     "value": "5",
-                    "values": ["6", "7", None]
+                    "values": [
+                        "6",
+                        None,
+                        {
+                            "name": "ROUND",
+                            "args": {
+                                "value": {
+                                    "name": "MULTIPLY",
+                                    "args": {
+                                        "value": "5",
+                                        "by": "3",
+                                    }
+                                },
+                                "precision": "1",
+                            }
+                        }
+                    ]
                 },
             }
         }
@@ -111,171 +128,150 @@ class InterpolateTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
 
-class InterpolateFunctionsTests(unittest.TestCase):
+class NestedFunctionsTests(unittest.TestCase):
 
-    def test_interpolate_single(self):
-
-        template: Template = {
-            "151": "$ROUND"
-        }
-
-        transforms: Transforms = {
-            "$ROUND": {
-                "name": "ROUND",
-                "args": {
-                    "precision": "1",
-                }
-            }
-        }
-
-        expected = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "precision": "1",
-                }
-            }
-        }
-        actual = interpolate_functions(template, transforms)
-        self.assertEqual(expected, actual)
-
-    def test_interpolate_function_and_literal(self):
-
-        template: Template = {
-            "151": "$ROUND",
-            "152": "4"
-        }
-
-        transforms: Transforms = {
-            "$ROUND": {
-                "name": "ROUND",
-                "args": {
-                    "precision": "1",
-                }
-            }
-        }
-
-        expected = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "precision": "1",
-                }
-            },
-            "152": "4"
-        }
-        actual = interpolate_functions(template, transforms)
-        self.assertEqual(expected, actual)
-
-    def test_interpolate_post_function(self):
-
-        template: Template = {
-            "151": "$DIVIDE"
-        }
+    def test_nested(self):
 
         transforms: Transforms = {
             "$DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
-                    "by": "2",
+                    "value": "$MULTIPLY",
+                    "by": "2"
                 },
-                "post": "$MULTIPLY"
             },
             "$MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "by": "3",
                 },
-                "post": "$ROUND"
-            },
-            "$ROUND": {
-                "name": "ROUND",
-                "args": {
-                    "precision": "1",
-                }
             }
         }
 
-        expected = {
-            "151": {
-                "name": "ROUND",
+        expected: ParseTree = {
+            "$DIVIDE": {
+                "name": "DIVIDE",
                 "args": {
                     "value": {
                         "name": "MULTIPLY",
                         "args": {
-                            "value": {
-                                "name": "DIVIDE",
-                                "args": {
-                                    "by": "2",
-                                },
-                            },
                             "by": "3",
-                        }
+                        },
                     },
-                    "precision": "1",
-                }
-            }
-        }
-        actual = interpolate_functions(template, transforms)
-        self.assertEqual(expected, actual)
-
-    def test_interpolate_shared_function(self):
-
-        template: Template = {
-            "150": "$ROUND",
-            "151": "$DIVIDE"
-        }
-
-        transforms: Transforms = {
-            "$DIVIDE": {
-                "name": "DIVIDE",
-                "args": {
-                    "by": "2",
+                    "by": "2"
                 },
-                "post": "$MULTIPLY"
             },
             "$MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "by": "3",
                 },
-                "post": "$ROUND"
-            },
-            "$ROUND": {
-                "name": "ROUND",
+            }
+        }
+
+        actual = interpolate_nested_functions(transforms)
+        self.assertEqual(expected, actual)
+
+    def test_interpolate_arg_function(self):
+
+        transforms: Transforms = {
+            "$ADD": {
+                "name": "ADD",
                 "args": {
-                    "precision": "1",
+                    "values": ["$MULTIPLY", "$DIVIDE"]
+                },
+            },
+            "$MULTIPLY": {
+                "name": "MULTIPLY",
+                "args": {
+                    "by": "3",
+                },
+            },
+            "$DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "by": "2",
                 }
             }
         }
 
         expected = {
-            "150": {
-                "name": "ROUND",
+            "$ADD": {
+                "name": "ADD",
                 "args": {
-                    "precision": "1"
+                    "values": [
+                        {
+                            "name": "MULTIPLY",
+                            "args": {
+                                "by": "3"
+                            }
+                        },
+                        {
+                            "name": "DIVIDE",
+                            "args": {
+                                "by": "2"
+                            }
+                        }
+                    ]
                 }
             },
-            "151": {
-                "name": "ROUND",
+            "$MULTIPLY": {
+                "name": "MULTIPLY",
                 "args": {
-                    "value": {
-                        "name": "MULTIPLY",
-                        "args": {
-                            "value": {
-                                "name": "DIVIDE",
-                                "args": {
-                                    "by": "2",
-                                },
-                            },
-                            "by": "3",
-                        }
-                    },
-                    "precision": "1",
+                    "by": "3",
+                },
+            },
+            "$DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "by": "2",
                 }
             }
         }
-        actual = interpolate_functions(template, transforms)
+
+        actual = interpolate_nested_functions(transforms)
+        self.assertEqual(expected, actual)
+
+
+class InvertPostFunctionsTest(unittest.TestCase):
+
+    def test_nested(self):
+
+        tree: ParseTree = {
+            '150': {
+                'name': 'DIVIDE',
+                'args': {'by': '2'},
+                'post': {
+                    'name': 'MULTIPLY',
+                    'args': {'by': '3'},
+                    'post': {
+                        'name': 'ROUND',
+                        'args': {'precision': '1'}
+                    }
+                }
+            }
+        }
+
+        expected: ParseTree = {
+            '150': {
+                'name': 'ROUND',
+                'args': {
+                    'precision': '1',
+                    'value': {
+                        'name': 'MULTIPLY',
+                        'args': {
+                            'by': '3',
+                            'value': {
+                                'name': 'DIVIDE',
+                                'args': {'by': '2'}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        actual = invert_post_functions(tree)
         self.assertEqual(expected, actual)
 
 
@@ -404,6 +400,60 @@ class ImplicitValueTests(unittest.TestCase):
                 "args": {
                     "value": "#152",
                     "precision": "1"
+                }
+            }
+        }
+
+        actual = add_implicit_values(parse_tree)
+        self.assertEqual(expected, actual)
+
+    def test_in_list(self):
+
+        parse_tree: ParseTree = {
+            '156': {
+                'name': 'ADD_MANY',
+                'args': {
+                    'value': '',
+                    'values': [
+                        '#161',
+                        '#163',
+                        {
+                            'name': 'ROUND',
+                            'args': {
+                                'precision': '1',
+                                'value': {
+                                    'name': 'MULTIPLY',
+                                    'args': {'by': '3'},
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+
+        expected: ParseTree = {
+            '156': {
+                'name': 'ADD_MANY',
+                'args': {
+                    'value': '',
+                    'values': [
+                        '#161',
+                        '#163',
+                        {
+                            'name': 'ROUND',
+                            'args': {
+                                'precision': '1',
+                                'value': {
+                                    'name': 'MULTIPLY',
+                                    'args': {
+                                        'value': '#156',
+                                        'by': '3'
+                                    },
+                                }
+                            }
+                        }
+                    ]
                 }
             }
         }
