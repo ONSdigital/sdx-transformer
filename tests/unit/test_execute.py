@@ -1,29 +1,26 @@
 import unittest
+from collections.abc import Callable
 
 from app.definitions import ParseTree
-from app.execute import execute, Function
+from app.execute import execute, set_lookups
 
 
-class FakeRemoveChars(Function):
-
-    def perform(self, value: str, n: str = "1") -> str:
-        return value[int(n):]
+def fake_remove_chars(value: str, n: str = "1") -> str:
+    return value[int(n):]
 
 
-class FakeAdd(Function):
-
-    def perform(self, value: str, values: list[str] = []) -> str:
-        return str(sum([int(x) for x in (values + [value])]))
+def fake_add(value: str, values: list[str] = []) -> str:
+    return str(sum([int(x) for x in (values + [value])]))
 
 
 class ExecutionTests(unittest.TestCase):
 
     def setUp(self) -> None:
-        function_lookup: dict[str, Function.__class__] = {
-            "REMOVE_CHARS": FakeRemoveChars,
-            "ADD": FakeAdd
+        fake_function_lookup: dict[str, Callable] = {
+            "REMOVE_CHARS": fake_remove_chars,
+            "ADD": fake_add
         }
-        Function.set_function_lookup(function_lookup)
+        set_lookups(fake_function_lookup)
 
     def test_execute_single(self):
 

@@ -10,12 +10,14 @@ Field = dict | list | str | None
 
 class Transform(TypedDict):
     name: str
-    args: dict[str, str | dict]
+    args: dict[str, Field]
     post: NotRequired[str]
 
 
 Transforms = dict[str, Transform]
 
-Value = Transform | str
+Expression = Transform | str | None
 
-ParseTree = dict[str, Value]
+Value = str | None
+
+ParseTree = dict[str, Field]
