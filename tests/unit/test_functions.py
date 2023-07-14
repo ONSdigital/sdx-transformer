@@ -1,6 +1,6 @@
 import unittest
 
-from app.functions import contains, any_contains, any_date, exists
+from app.functions import contains, any_contains, any_date, exists, round_half_up
 
 
 class ContainsTests(unittest.TestCase):
@@ -105,4 +105,26 @@ class ExistsTests(unittest.TestCase):
         value = None
         actual = exists(value, on_true="1", on_false="2")
         expected = "2"
+        self.assertEqual(expected, actual)
+
+
+class RoundTests(unittest.TestCase):
+
+    def test_none_returns_none(self):
+        value = None
+        actual = round_half_up(value, precision="")
+        expected = None
+        self.assertEqual(expected, actual)
+
+    def test_none_numerical_val_returns_empty_str(self):
+        value = "I'm NaN"
+        actual = round_half_up(value, precision="")
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_rounds_two_point_nine_to_three(self):
+        value = "2.9"
+        precision = "1"
+        actual = round_half_up(value, precision=precision)
+        expected = "3"
         self.assertEqual(expected, actual)

@@ -1,3 +1,4 @@
+from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
 from typing import List
 from datetime import datetime
 
@@ -65,3 +66,16 @@ def exists(
     if value is not None:
         return on_true
     return on_false
+
+
+def round_half_up(value: Value, precision: str) -> Value:
+
+    if value is None:
+        return None
+    try:
+        v = Decimal(value)
+        p = Decimal(precision)
+        return str(v.quantize(p, rounding=ROUND_HALF_UP))
+    except InvalidOperation:
+        return ""
+
