@@ -8,7 +8,7 @@ class TreeWalker:
 
     def __init__(
             self, tree: ParseTree,
-            on_str: Callable[[str, str, Self], Field] = lambda k, v, self: v):
+            on_str: Callable[[str, str, Self], Field] = lambda name, field, self: field):
 
         self._tree = tree
         self._on_str = on_str
@@ -30,7 +30,7 @@ class TreeWalker:
 
     def walk_tree(self) -> ParseTree:
         result: ParseTree = {}
-        for k, v in self._tree.items():
-            result[k] = self.evaluate_field(k, v)
+        for name, field in self._tree.items():
+            result[name] = self.evaluate_field(name, field)
 
         return result

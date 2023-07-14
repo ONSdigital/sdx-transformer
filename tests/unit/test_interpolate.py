@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions import Template, Transforms, ParseTree, Data
 from app.interpolate import add_implicit_values, interpolate_mappings, interpolate, \
-    interpolate_nested_functions, invert_post_functions
+    expand_nested_transforms, invert_post_transforms, map_template
 
 
 class InterpolateTests(unittest.TestCase):
@@ -128,9 +128,9 @@ class InterpolateTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
 
-class NestedFunctionsTests(unittest.TestCase):
+class ExpandNestedTransformsTests(unittest.TestCase):
 
-    def test_nested(self):
+    def test_nested_as_value(self):
 
         transforms: Transforms = {
             "$DIVIDE": {
@@ -169,10 +169,10 @@ class NestedFunctionsTests(unittest.TestCase):
             }
         }
 
-        actual = interpolate_nested_functions(transforms)
+        actual = expand_nested_transforms(transforms)
         self.assertEqual(expected, actual)
 
-    def test_interpolate_arg_function(self):
+    def test_nested_in_list(self):
 
         transforms: Transforms = {
             "$ADD": {
@@ -229,11 +229,68 @@ class NestedFunctionsTests(unittest.TestCase):
             }
         }
 
-        actual = interpolate_nested_functions(transforms)
+        actual = expand_nested_transforms(transforms)
         self.assertEqual(expected, actual)
 
 
-class InvertPostFunctionsTest(unittest.TestCase):
+class MapTemplateTests(unittest.TestCase):
+
+    def test_mapping(self):
+
+        template: Template = {
+            "150": "#150",
+            "151": "$ROUND",
+            "152": "$DIVIDE"
+        }
+
+        transforms: Transforms = {
+            "$DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "by": "3",
+                        },
+                    },
+                    "by": "2"
+                },
+            },
+            "$ROUND": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1",
+                },
+            }
+        }
+
+        expected: ParseTree = {
+            "150": "#150",
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1",
+                }
+            },
+            "152": {
+                "name": "DIVIDE",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "by": "3",
+                        }
+                    },
+                    "by": "2"
+                }
+            }
+        }
+
+        actual = map_template(template, transforms)
+        self.assertEqual(expected, actual)
+
+
+class InvertPostTransformsTest(unittest.TestCase):
 
     def test_nested(self):
 
@@ -271,7 +328,7 @@ class InvertPostFunctionsTest(unittest.TestCase):
             }
         }
 
-        actual = invert_post_functions(tree)
+        actual = invert_post_transforms(tree)
         self.assertEqual(expected, actual)
 
 

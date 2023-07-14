@@ -9,15 +9,15 @@ MAPPING_PREFIX: Final = "#"
 
 
 def interpolate(template: Template, transforms: Transforms, data: Data) -> ParseTree:
-    nested_transforms = interpolate_nested_functions(transforms)
+    nested_transforms = expand_nested_transforms(transforms)
     parse_tree = map_template(template, nested_transforms)
-    inverted_parse_tree = invert_post_functions(parse_tree)
+    inverted_parse_tree = invert_post_transforms(parse_tree)
     full_tree = add_implicit_values(inverted_parse_tree)
     mapped_tree = interpolate_mappings(full_tree, data)
     return mapped_tree
 
 
-def interpolate_nested_functions(transforms: Transforms) -> Transforms:
+def expand_nested_transforms(transforms: Transforms) -> Transforms:
     def on_str(name: str, field: str, walker: TreeWalker) -> Field:
         if field.startswith(FUNCTION_PREFIX):
             return walker.evaluate_field(name, transforms.get(field))
@@ -38,15 +38,15 @@ def map_template(template: Template, transforms: Transforms) -> ParseTree:
     return result
 
 
-def invert_post_functions(tree: ParseTree) -> ParseTree:
+def invert_post_transforms(tree: ParseTree) -> ParseTree:
     class PostTreeWalker(TreeWalker):
 
         def on_dict(self, name: str, field: dict[str, Field]) -> Field:
             if "post" in field:
-                root = deepcopy(field)
+                child = deepcopy(field)
                 parent = deepcopy(field["post"])
-                root.pop("post")
-                parent["args"]["value"] = root
+                child.pop("post")
+                parent["args"]["value"] = child
                 return self.on_dict(name, parent)
 
             return super().on_dict(name, field)
@@ -55,26 +55,31 @@ def invert_post_functions(tree: ParseTree) -> ParseTree:
 
 
 def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
-    tree = deepcopy(parse_tree)
-    for k, v in tree.items():
 
-        class ValueTreeWalker(TreeWalker):
+    class ValueTreeWalker(TreeWalker):
 
-            def on_dict(self, name: str, field: dict[str, Field]) -> Field:
-                if name == "args":
-                    if "value" not in field:
-                        f = deepcopy(field)
-                        f["value"] = f'{MAPPING_PREFIX}{k}'
-                        return super().on_dict(name, f)
+        def __init__(self, tree: ParseTree, qcode: str):
+            super().__init__(tree)
+            self._qcode = qcode
 
-                return super().on_dict(name, field)
+        def on_dict(self, name: str, field: dict[str, Field]) -> Field:
+            if name == "args":
+                if "value" not in field:
+                    f = deepcopy(field)
+                    f["value"] = f'{MAPPING_PREFIX}{self._qcode}'
+                    return super().on_dict(name, f)
 
+            return super().on_dict(name, field)
+
+    result_tree = deepcopy(parse_tree)
+
+    for k, v in result_tree.items():
         if isinstance(v, dict):
-            tree[k] = ValueTreeWalker(tree=v).walk_tree()
+            result_tree[k] = ValueTreeWalker(tree=v, qcode=k).walk_tree()
         else:
-            tree[k] = v
+            result_tree[k] = v
 
-    return tree
+    return result_tree
 
 
 def interpolate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
