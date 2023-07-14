@@ -24,7 +24,9 @@ def any_contains(
             on_true: str = "1",
             on_false: str = "2") -> Value:
 
-    all_values = [value] + values
+    all_values = [v for v in [value] + values if v is not None]
+    if len(all_values) == 0:
+        return None
     for val in all_values:
         if val is not None:
             if match_str in val:
@@ -37,12 +39,22 @@ def any_date(
             values: List[Value] = [],
             on_true: str = "1",
             on_false: str = "2") -> Value:
-    all_values = [value] + values
+    all_values = [v for v in [value] + values if v is not None]
+    if len(all_values) == 0:
+        return None
     for val in all_values:
         if val is not None:
             if _is_date(val):
                 return on_true
     return on_false
+
+
+def _is_date(text: str) -> bool:
+    try:
+        datetime.strptime(text, "%d/%m/%Y").date()
+        return True
+    except ValueError:
+        return False
 
 
 def exists(
@@ -53,11 +65,3 @@ def exists(
     if value is not None:
         return on_true
     return on_false
-
-
-def _is_date(text: str) -> bool:
-    try:
-        datetime.strptime(text, "%d/%m/%Y").date()
-        return True
-    except ValueError:
-        return False

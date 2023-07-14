@@ -1,123 +1,108 @@
 import unittest
-from app.functions import Contains, Exists, AnyContains, AnyDate
+
+from app.functions import contains, any_contains, any_date, exists
 
 
 class ContainsTests(unittest.TestCase):
+
     def test_true(self):
         value = "sentence for testing purposes"
-        args = {"match_str": "testing", "on_true": "1", "on_false": "2"}
-        contains = Contains(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = contains(value, match_str="testing", on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
     def test_false(self):
         value = "sentence for testing purposes"
-        args = {"match_str": "I don't exist", "on_true": "1", "on_false": "2"}
-        contains = Contains(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = contains(value, match_str="I don't exist", on_true="1", on_false="2")
         expected = "2"
         self.assertEqual(expected, actual)
 
-    def test_none(self):
+    def test_none_returns_none(self):
         value = None
-        args = {"match_str": "I don't exist", "on_true": "1", "on_false": "2"}
-        contains = Contains(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = contains(value, match_str="I don't exist", on_true="1", on_false="2")
         expected = None
         self.assertEqual(expected, actual)
 
 
 class AnyContainsTests(unittest.TestCase):
+
     def test_true(self):
         value = "sentence for testing purposes"
         values = []
-        args = {"values": values, "match_str": "testing", "on_true": "1", "on_false": "2"}
-        contains = AnyContains(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = any_contains(value, values=values, match_str="testing", on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
     def test_true_list(self):
         value = "sometimes"
         values = ["yes", "no"]
-        args = {"values": values, "match_str": "y", "on_true": "1", "on_false": "2"}
-        contains = AnyContains(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = any_contains(value, values=values, match_str="y", on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_nones(self):
+    def test_none_doesnt_fail(self):
         value = None
         values = ["yes", "no", None]
-        args = {"values": values, "match_str": "y", "on_true": "1", "on_false": "2"}
-        contains = AnyContains(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = any_contains(value, values=values, match_str="y", on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_all_nones(self):
+    def test_all_nones_returns_none(self):
         value = None
         values = [None, None, None]
-        args = {"values": values, "match_str": "y", "on_true": "1", "on_false": "2"}
-        contains = AnyContains(value=value, args=args)
-        actual = contains.perform(value, **args)
-        expected = "2"
+        actual = any_contains(value, values=values, match_str="y", on_true="1", on_false="2")
+        expected = None
         self.assertEqual(expected, actual)
 
 
 class AnyDateTests(unittest.TestCase):
+
     def test_true(self):
         value = "12/07/2023"
         values = []
-        args = {"values": values, "on_true": "1", "on_false": "2"}
-        contains = AnyDate(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = any_date(value, values=values, on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_false(self):
+    def test_invalid_date_returns_on_false(self):
         value = "12/13/2023"
         values = []
-        args = {"values": values, "on_true": "1", "on_false": "2"}
-        contains = AnyDate(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = any_date(value, values=values, on_true="1", on_false="2")
         expected = "2"
         self.assertEqual(expected, actual)
 
-    def test_true_list(self):
+    def test_true_for_date_in_list(self):
         value = ""
         values = ["12/07/2023", "13/07/2023"]
-        args = {"values": values, "on_true": "1", "on_false": "2"}
-        contains = AnyDate(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = any_date(value, values=values, on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_nones(self):
+    def test_some_nones_dont_fail(self):
         value = "12/07/2023"
         values = [None, None]
-        args = {"values": values, "on_true": "1", "on_false": "2"}
-        contains = AnyDate(value=value, args=args)
-        actual = contains.perform(value, **args)
+        actual = any_date(value, values=values, on_true="1", on_false="2")
         expected = "1"
+        self.assertEqual(expected, actual)
+
+    def test_all_nones_returns_none(self):
+        value = None
+        values = [None, None, None]
+        actual = any_date(value, values=values, on_true="1", on_false="2")
+        expected = None
         self.assertEqual(expected, actual)
 
 
 class ExistsTests(unittest.TestCase):
+
     def test_true(self):
         value = "foo"
-        args = {"on_true": "1", "on_false": "2"}
-        exists = Exists(value=value, args=args)
-        actual = exists.perform(value, **args)
+        actual = exists(value, on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
     def test_false(self):
         value = None
-        args = {"on_true": "1", "on_false": "2"}
-        exists = Exists(value=value, args=args)
-        actual = exists.perform(value, **args)
+        actual = exists(value, on_true="1", on_false="2")
         expected = "2"
         self.assertEqual(expected, actual)
-
