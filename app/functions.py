@@ -44,9 +44,8 @@ def any_date(
     if len(all_values) == 0:
         return None
     for val in all_values:
-        if val is not None:
-            if _is_date(val):
-                return on_true
+        if _is_date(val):
+            return on_true
     return on_false
 
 
@@ -64,6 +63,12 @@ def exists(value: Value, on_true: str = "1", on_false: str = "2") -> Value:
     return on_false
 
 
+def any_exist(value: Value, values: list[Value], on_true: str = "1", on_false: str = "2") -> Value:
+    if _all_nones(value, values):
+        return on_false
+    return on_true
+
+
 def round_half_up(value: Value, nearest: str = "1") -> Value:
     v = _to_decimal(value, None)
     if v is None:
@@ -77,7 +82,8 @@ def aggregate(value: Value, values: list[Value], weight: str) -> Value:
     if _all_nones(value, values):
         return None
 
-    return str(_to_decimal(value) + sum(_to_decimal(val) * _to_decimal(weight) for val in values))
+    w = _to_decimal(weight, Decimal(0))
+    return str(_to_decimal(value) + sum(_to_decimal(val) * w for val in values))
 
 
 def mean(value: Value, values: list[Value]) -> Value:

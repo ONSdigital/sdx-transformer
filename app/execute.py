@@ -1,9 +1,21 @@
 from collections.abc import Callable
 
 from app.definitions import ParseTree, Transform, Field, Value
+from app.functions import contains, any_contains, any_date, _is_date, exists, round_half_up, aggregate, mean, concat, \
+    any_exist
 
-
-_function_lookup: dict[str, Callable] = {}
+_function_lookup: dict[str, Callable] = {
+    "CONTAINS": contains,
+    "ANY_CONTAINS": any_contains,
+    "ANY_DATE": any_date,
+    "_IS_DATE": _is_date,
+    "EXISTS": exists,
+    "ANY_EXIST": any_exist,
+    "ROUND": round_half_up,
+    "AGGREGATE": aggregate,
+    "MEAN": mean,
+    "CONCAT": concat,
+}
 
 
 def execute(parse_tree: ParseTree) -> dict[str, Value]:

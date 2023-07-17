@@ -21,3 +21,24 @@ Expression = Transform | str | None
 Value = str | None
 
 ParseTree = dict[str, Field]
+
+
+class BuildSpec(TypedDict):
+    title: str
+    survey_id: str
+    target: str
+    template: Template
+    transforms: Transforms
+
+
+class SurveyMetadata(TypedDict):
+    survey_id: str
+    period_id: str
+    ru_ref: str
+    form_type: str
+
+
+class Submission(TypedDict):
+    tx_id: str
+    metadata: SurveyMetadata
+    data: Data

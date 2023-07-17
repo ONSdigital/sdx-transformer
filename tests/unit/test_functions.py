@@ -1,6 +1,6 @@
 import unittest
 
-from app.functions import contains, any_contains, any_date, exists, round_half_up, aggregate, mean, concat
+from app.functions import contains, any_contains, any_date, exists, round_half_up, aggregate, mean, concat, any_exist
 
 
 class ContainsTests(unittest.TestCase):
@@ -104,6 +104,23 @@ class ExistsTests(unittest.TestCase):
     def test_false(self):
         value = None
         actual = exists(value, on_true="1", on_false="2")
+        expected = "2"
+        self.assertEqual(expected, actual)
+
+
+class AnyExistTests(unittest.TestCase):
+
+    def test_true(self):
+        value = "foo"
+        values = [None, None]
+        actual = any_exist(value, values=values, on_true="1", on_false="2")
+        expected = "1"
+        self.assertEqual(expected, actual)
+
+    def test_false(self):
+        value = None
+        values = [None, None]
+        actual = any_exist(value, values=values, on_true="1", on_false="2")
         expected = "2"
         self.assertEqual(expected, actual)
 
