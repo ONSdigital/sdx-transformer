@@ -3,18 +3,18 @@
   "survey_id": "134",
   "target": "COMMON SOFTWARE",
   "template": {
-    "040": "$AGG_40",
-    "050": "$AGG_50",
-    "060": "$AGG_60",
-    "070": "$AGG_70",
-    "080": "$AGG_80",
-    "090": "$MATCH_NO_90",
+    "40": "$AGG_40",
+    "50": "$AGG_50",
+    "60": "$AGG_60",
+    "70": "$AGG_70",
+    "80": "$AGG_80",
+    "90": "$MATCH_YES_90",
     "100": "$MEAN_100",
-    "110": "$DATE_110",
+    "110": "$TO_DATE_110",
     "120": "$MEAN_120",
-    "130": "#130",
-    "131": "#131",
-    "132": "#132",
+    "130": "$EXISTS_130",
+    "131": "$EXISTS_131",
+    "132": "$EXISTS_132",
     "140": "$AGG_140",
     "151": "$ROUND",
     "152": "$ROUND",
@@ -25,18 +25,17 @@
     "181": "$ROUND",
     "182": "$ROUND",
     "183": "$ROUND",
-    "190": "$MATCH_NO_190",
-    "200": "$EXISTS_200",
+    "190": "$MATCH_YES_190",
+    "200": "$ANY_EXISTS_200",
     "210": "$DATE_210",
     "220": "$MEAN_220",
-    "300": "$CONCAT_300"
+    "300": "$ANY_EXISTS_300"
   },
   "transforms": {
     "$ROUND": {
       "name": "ROUND",
       "args": {
-        "precision": "1",
-        "direction": "ROUND_HALF_UP"
+        "nearest": "1"
       }
     },
     "$AGG_40": {
@@ -89,17 +88,24 @@
       },
       "post": "$ROUND"
     },
-    "$MATCH_NO_90": {
-      "name": "ANY_MATCHES",
+    "$MATCH_YES_90": {
+      "name": "ANY_CONTAINS",
       "args": {
         "values": [
           "#90w",
           "#90f"
         ],
-        "match": "No",
-        "match_type": "contains",
+        "match_str": "Yes",
         "on_true": "1",
         "on_false": "2"
+      }
+    },
+    "$EQUALS_0": {
+      "name": "NUMBER_EQUALS",
+      "args": {
+        "comparand": "0",
+        "on_true": "2",
+        "on_false": "1"
       }
     },
     "$MEAN_100": {
@@ -108,25 +114,23 @@
         "values": [
           "#100f"
         ]
-      }
+      },
+      "post": "$EQUALS_0"
     },
-    "$DATE_110": {
-      "name": "ANY_DATE",
+    "$TO_DATE_110": {
+      "name": "TO_DATE",
       "args": {
-        "values": [
-          "#110f"
-        ],
-        "on_true": "1",
-        "on_false": "2"
+        "value": "#110f"
       }
     },
     "$MEAN_120": {
       "name": "MEAN",
       "args": {
         "values": [
-          "120f"
+          "#120f"
         ]
-      }
+      },
+      "post": "$EQUALS_0"
     },
     "$AGG_140": {
       "name": "AGGREGATE",
@@ -140,25 +144,49 @@
       },
       "post": "$ROUND"
     },
-    "$MATCH_NO_190": {
-      "name": "ANY_MATCHES",
+    "$MATCH_YES_190": {
+      "name": "ANY_CONTAINS",
       "args": {
         "values": [
           "#190w4",
           "#190m",
           "#190w5"
         ],
-        "match": "No",
-        "match_type": "contains",
+        "match_str": "Yes",
         "on_true": "1",
         "on_false": "2"
       }
     },
-    "$EXISTS_200": {
+    "$EXISTS_130": {
       "name": "EXISTS",
       "args": {
         "on_true": "1",
         "on_false": "2"
+      }
+    },
+    "$EXISTS_131": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "1",
+        "on_false": "2"
+      }
+    },
+    "$EXISTS_132": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "1",
+        "on_false": "2"
+      }
+    },
+    "$ANY_EXISTS_200": {
+      "name": "ANY_EXISTS",
+      "args": {
+        "values": [
+          "#200w4",
+          "#200w5"
+        ],
+        "on_true": "1",
+        "on_false": null
       }
     },
     "$DATE_210": {
@@ -179,10 +207,11 @@
           "#220w4",
           "#220w5"
         ]
-      }
+      },
+      "post": "$EQUALS_0"
     },
-    "$CONCAT_300": {
-      "name": "CONCAT",
+    "$ANY_EXISTS_300": {
+      "name": "ANY_EXISTS",
       "args": {
         "values": [
           "#300w",
@@ -190,8 +219,7 @@
           "#300m",
           "#300w4",
           "#300w5"
-        ],
-        "seperator": "\n"
+        ]
       }
     }
   }
