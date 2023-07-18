@@ -18,7 +18,9 @@ Transforms = dict[str, Transform]
 
 Expression = Transform | str | None
 
-Value = str | None
+Empty = None
+
+Value = str | Empty
 
 ParseTree = dict[str, Field]
 
@@ -42,3 +44,6 @@ class Submission(TypedDict):
     tx_id: str
     metadata: SurveyMetadata
     data: Data
+
+
+SubmissionJson = dict[str, dict[str, str] | str]

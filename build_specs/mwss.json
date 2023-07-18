@@ -10,7 +10,7 @@
     "80": "$AGG_80",
     "90": "$MATCH_YES_90",
     "100": "$MEAN_100",
-    "110": "$DATE_110",
+    "110": "$TO_DATE_110",
     "120": "$MEAN_120",
     "130": "$EXISTS_130",
     "131": "$EXISTS_131",
@@ -25,11 +25,11 @@
     "181": "$ROUND",
     "182": "$ROUND",
     "183": "$ROUND",
-    "190": "$MATCH_NO_190",
-    "200": "$EXISTS_200",
+    "190": "$MATCH_YES_190",
+    "200": "$ANY_EXISTS_200",
     "210": "$DATE_210",
     "220": "$MEAN_220",
-    "300": "$ANY_EXIST_300"
+    "300": "$ANY_EXISTS_300"
   },
   "transforms": {
     "$ROUND": {
@@ -100,22 +100,27 @@
         "on_false": "2"
       }
     },
+    "$EQUALS_0": {
+      "name": "NUMBER_EQUALS",
+      "args": {
+        "comparand": "0",
+        "on_true": "2",
+        "on_false": "1"
+      }
+    },
     "$MEAN_100": {
       "name": "MEAN",
       "args": {
         "values": [
           "#100f"
         ]
-      }
+      },
+      "post": "$EQUALS_0"
     },
-    "$DATE_110": {
-      "name": "ANY_DATE",
+    "$TO_DATE_110": {
+      "name": "TO_DATE",
       "args": {
-        "values": [
-          "#110f"
-        ],
-        "on_true": "1",
-        "on_false": "2"
+        "value": "#110f"
       }
     },
     "$MEAN_120": {
@@ -124,7 +129,8 @@
         "values": [
           "#120f"
         ]
-      }
+      },
+      "post": "$EQUALS_0"
     },
     "$AGG_140": {
       "name": "AGGREGATE",
@@ -138,7 +144,7 @@
       },
       "post": "$ROUND"
     },
-    "$MATCH_NO_190": {
+    "$MATCH_YES_190": {
       "name": "ANY_CONTAINS",
       "args": {
         "values": [
@@ -146,7 +152,7 @@
           "#190m",
           "#190w5"
         ],
-        "match_str": "No",
+        "match_str": "Yes",
         "on_true": "1",
         "on_false": "2"
       }
@@ -172,9 +178,13 @@
         "on_false": "2"
       }
     },
-    "$EXISTS_200": {
-      "name": "EXISTS",
+    "$ANY_EXISTS_200": {
+      "name": "ANY_EXISTS",
       "args": {
+        "values": [
+          "#200w4",
+          "#200w5"
+        ],
         "on_true": "1",
         "on_false": null
       }
@@ -197,10 +207,11 @@
           "#220w4",
           "#220w5"
         ]
-      }
+      },
+      "post": "$EQUALS_0"
     },
-    "$ANY_EXIST_300": {
-      "name": "ANY_EXIST",
+    "$ANY_EXISTS_300": {
+      "name": "ANY_EXISTS",
       "args": {
         "values": [
           "#300w",
