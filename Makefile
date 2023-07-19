@@ -3,7 +3,7 @@ SHELL := bash
 
 
 .PHONY: test
-test: ## Install pipfile dependencies
+test:
 	. venv/bin/activate \
 	&& python3 --version \
 	&& python3 -m pip install --upgrade pip \
