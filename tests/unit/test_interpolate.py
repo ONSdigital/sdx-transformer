@@ -1,22 +1,12 @@
 import unittest
 
-from app.definitions import Template, Transforms, ParseTree, Data
-from app.interpolate import add_implicit_values, interpolate_mappings, interpolate, \
-    expand_nested_transforms, invert_post_transforms, map_template
+from app.definitions import Template, Transforms, ParseTree
+from app.interpolate import interpolate, expand_nested_transforms, invert_post_transforms, map_template
 
 
 class InterpolateTests(unittest.TestCase):
 
     def test_full_interpolation(self):
-
-        data: Data = {
-            "150": "10",
-            "152": "1.5",
-            "153": "80",
-            "156": "5",
-            "161": "6",
-            "162": "7",
-        }
 
         template: Template = {
             "150": "#150",
@@ -64,12 +54,11 @@ class InterpolateTests(unittest.TestCase):
         }
 
         expected = {
-            "150": "10",
-            "151": None,
+            "150": "#150",
+            "151": "#149",
             "152": {
                 "name": "ROUND",
                 "args": {
-                    "value": "1.5",
                     "precision": "1",
                 }
             },
@@ -82,8 +71,7 @@ class InterpolateTests(unittest.TestCase):
                             "value": {
                                 "name": "DIVIDE",
                                 "args": {
-                                    "by": "2",
-                                    "value": "80"
+                                    "by": "2"
                                 },
                             },
                             "by": "3",
@@ -96,23 +84,21 @@ class InterpolateTests(unittest.TestCase):
                 "name": "ADD",
                 "args": {
                     "value": "",
-                    "values": ["6", "7"]
+                    "values": ["#161", "#162"]
                 },
             },
             "156": {
                 "name": "ADD_MANY",
                 "args": {
-                    "value": "5",
                     "values": [
-                        "6",
-                        None,
+                        "#161",
+                        "#163",
                         {
                             "name": "ROUND",
                             "args": {
                                 "value": {
                                     "name": "MULTIPLY",
                                     "args": {
-                                        "value": "5",
                                         "by": "3",
                                     }
                                 },
@@ -124,7 +110,7 @@ class InterpolateTests(unittest.TestCase):
             }
         }
 
-        actual = interpolate(template, transforms, data)
+        actual = interpolate(template, transforms)
         self.assertEqual(expected, actual)
 
 
@@ -289,6 +275,88 @@ class MapTemplateTests(unittest.TestCase):
         actual = map_template(template, transforms)
         self.assertEqual(expected, actual)
 
+    def test_mapping_for_prepop_template(self):
+
+        template: Template = {
+            "schema_version": "v1",
+            "identifier": "#ruref",
+            "items": {
+                "local_units": [
+                    {
+                        "identifier": "#luref",
+                        "lu_name": "$1",
+                        "lu_address": [
+                            "$2", "$3"
+                        ]
+                    }
+                ]
+            }
+        }
+
+        transforms: Transforms = {
+            "$1": {
+                "name": "CONCAT",
+                "args": {
+                    "value": "#name1",
+                    "values": ["#name2", "#name3"],
+                    "seperator": " "
+                },
+            },
+            "$2": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#age",
+                    "precision": "1",
+                },
+            },
+            "$3": {
+                "name": "ROUND",
+                "args": {
+                    "value": "#profit",
+                    "precision": "10",
+                },
+            }
+        }
+
+        expected: ParseTree = {
+            "schema_version": "v1",
+            "identifier": "#ruref",
+            "items": {
+                "local_units": [
+                    {
+                        "identifier": "#luref",
+                        "lu_name": {
+                            "name": "CONCAT",
+                            "args": {
+                                "value": "#name1",
+                                "values": ["#name2", "#name3"],
+                                "seperator": " "
+                            },
+                        },
+                        "lu_address": [
+                            {
+                                "name": "ROUND",
+                                "args": {
+                                    "value": "#age",
+                                    "precision": "1",
+                                },
+                            },
+                            {
+                                "name": "ROUND",
+                                "args": {
+                                    "value": "#profit",
+                                    "precision": "10",
+                                },
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+
+        actual = map_template(template, transforms)
+        self.assertEqual(expected, actual)
+
 
 class InvertPostTransformsTest(unittest.TestCase):
 
@@ -329,331 +397,4 @@ class InvertPostTransformsTest(unittest.TestCase):
         }
 
         actual = invert_post_transforms(tree)
-        self.assertEqual(expected, actual)
-
-
-class ImplicitValueTests(unittest.TestCase):
-
-    def test_flat(self):
-
-        parse_tree: ParseTree = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "precision": "1",
-                }
-            },
-            "161": {
-                "name": "ROUND",
-                "args": {
-                    "precision": "1",
-                }
-            },
-            "171": "#171"
-        }
-
-        expected = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "value": "#151",
-                    "precision": "1",
-                }
-            },
-            "161": {
-                "name": "ROUND",
-                "args": {
-                    "value": "#161",
-                    "precision": "1",
-                }
-            },
-            "171": "#171"
-        }
-
-        actual = add_implicit_values(parse_tree)
-        self.assertEqual(expected, actual)
-
-    def test_nested(self):
-
-        parse_tree: ParseTree = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "value": {
-                        "name": "MULTIPLY",
-                        "args": {
-                            "value": {
-                                "name": "DIVIDE",
-                                "args": {
-                                    "by": "2",
-                                },
-                            },
-                            "by": "3",
-                        }
-                    },
-                    "precision": "1",
-                }
-            }
-        }
-
-        expected = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "value": {
-                        "name": "MULTIPLY",
-                        "args": {
-                            "value": {
-                                "name": "DIVIDE",
-                                "args": {
-                                    "by": "2",
-                                    "value": "#151"
-                                },
-                            },
-                            "by": "3",
-                        }
-                    },
-                    "precision": "1",
-                }
-            }
-        }
-
-        actual = add_implicit_values(parse_tree)
-        self.assertEqual(expected, actual)
-
-    def test_blank_value(self):
-
-        parse_tree: ParseTree = {
-            "151": "#151",
-            "152": "#152",
-            "171": {
-                "name": "ADD",
-                "args": {
-                    "value": "",
-                    "values": ["#151", "#152"]
-                }
-            },
-            "172": {
-                "name": "ROUND",
-                "args": {
-                    "value": "#152",
-                    "precision": "1"
-                }
-            }
-        }
-
-        expected = {
-            "151": "#151",
-            "152": "#152",
-            "171": {
-                "name": "ADD",
-                "args": {
-                    "value": "",
-                    "values": ["#151", "#152"]
-                }
-            },
-            "172": {
-                "name": "ROUND",
-                "args": {
-                    "value": "#152",
-                    "precision": "1"
-                }
-            }
-        }
-
-        actual = add_implicit_values(parse_tree)
-        self.assertEqual(expected, actual)
-
-    def test_in_list(self):
-
-        parse_tree: ParseTree = {
-            '156': {
-                'name': 'ADD_MANY',
-                'args': {
-                    'value': '',
-                    'values': [
-                        '#161',
-                        '#163',
-                        {
-                            'name': 'ROUND',
-                            'args': {
-                                'precision': '1',
-                                'value': {
-                                    'name': 'MULTIPLY',
-                                    'args': {'by': '3'},
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-
-        expected: ParseTree = {
-            '156': {
-                'name': 'ADD_MANY',
-                'args': {
-                    'value': '',
-                    'values': [
-                        '#161',
-                        '#163',
-                        {
-                            'name': 'ROUND',
-                            'args': {
-                                'precision': '1',
-                                'value': {
-                                    'name': 'MULTIPLY',
-                                    'args': {
-                                        'value': '#156',
-                                        'by': '3'
-                                    },
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-
-        actual = add_implicit_values(parse_tree)
-        self.assertEqual(expected, actual)
-
-
-class InterpolateMappingsTests(unittest.TestCase):
-
-    def test_simple(self):
-        parse_tree = {
-            "100": "#100",
-            "200": "#300"
-        }
-
-        data = {
-            "100": "1",
-            "300": "2"
-        }
-
-        expected = {
-            "100": "1",
-            "200": "2"
-        }
-
-        actual = interpolate_mappings(parse_tree, data)
-
-        self.assertEqual(expected, actual)
-
-    def test_flat(self):
-
-        parse_tree = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "value": "#151",
-                    "precision": "1",
-                }
-            },
-            "161": {
-                "name": "ROUND",
-                "args": {
-                    "value": "#161",
-                    "precision": "1",
-                }
-            }
-        }
-
-        data = {
-            "151": "1",
-            "161": "10"
-        }
-
-        expected = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "value": "1",
-                    "precision": "1",
-                }
-            },
-            "161": {
-                "name": "ROUND",
-                "args": {
-                    "value": "10",
-                    "precision": "1",
-                }
-            }
-        }
-
-        actual = interpolate_mappings(parse_tree, data)
-
-        self.assertEqual(expected, actual)
-
-    def test_nested(self):
-        parse_tree = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "value": {
-                        "name": "MULTIPLY",
-                        "args": {
-                            "value": {
-                                "name": "DIVIDE",
-                                "args": {
-                                    "by": "2",
-                                    "value": "#151"
-                                },
-                            },
-                            "by": "3",
-                        }
-                    },
-                    "precision": "1",
-                }
-            },
-
-            "152": {
-                "name": "ADD",
-                "args": {
-                    "value": "",
-                    "values": ["#153", "#154"]
-                },
-            }
-        }
-
-        data = {
-            "151": "1",
-            "161": "10",
-            "153": "5",
-            "154": "9",
-        }
-
-        expected = {
-            "151": {
-                "name": "ROUND",
-                "args": {
-                    "value": {
-                        "name": "MULTIPLY",
-                        "args": {
-                            "value": {
-                                "name": "DIVIDE",
-                                "args": {
-                                    "by": "2",
-                                    "value": "1"
-                                },
-                            },
-                            "by": "3",
-                        }
-                    },
-                    "precision": "1",
-                }
-            },
-
-            "152": {
-                "name": "ADD",
-                "args": {
-                    "value": "",
-                    "values": ["5", "9"]
-                },
-            }
-        }
-
-        actual = interpolate_mappings(parse_tree, data)
-
         self.assertEqual(expected, actual)

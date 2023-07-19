@@ -1,10 +1,10 @@
 import json
 import unittest
 
-import app.manager
+import app.pck
 from app.definitions import SubmissionJson
 from app.formatters.formatter import Formatter
-from app.manager import get_pck
+from app.pck import get_pck
 
 
 class TestFormatter(Formatter):
@@ -13,14 +13,14 @@ class TestFormatter(Formatter):
         return json.dumps({str(int(k)): v for k, v in self._data.items() if v is not None})
 
 
-class PckTests(unittest.TestCase):
+class MWSSTests(unittest.TestCase):
 
     def test_mwss_minimal(self):
-        app.manager.formatter_mapping = {
+        app.pck.formatter_mapping = {
             "COMMON SOFTWARE": TestFormatter
         }
 
-        filepath = "tests/data/mwss_minimal.json"
+        filepath = "tests/data/mwss/mwss_minimal.json"
         with open(filepath) as f:
             submission_json: SubmissionJson = json.load(f)
 
@@ -32,11 +32,11 @@ class PckTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_mwss_full(self):
-        app.manager.formatter_mapping = {
+        app.pck.formatter_mapping = {
             "COMMON SOFTWARE": TestFormatter
         }
 
-        filepath = "tests/data/mwss_full.json"
+        filepath = "tests/data/mwss/mwss_full.json"
         with open(filepath) as f:
             submission_json: SubmissionJson = json.load(f)
 

@@ -82,4 +82,4 @@ def concat(value: Value, values: list[Value], seperator: str = " ") -> Value:
     if _all_empty(value, values):
         return Empty
 
-    return seperator.join([v for v in [value] + values if v is not Empty])
+    return seperator.join([v for v in [value] + values if v is not Empty and v != ""])
