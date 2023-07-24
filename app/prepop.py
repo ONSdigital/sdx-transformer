@@ -9,6 +9,7 @@ from app.execute import execute
 from app.interpolate import interpolate
 from app.populate import populate_mappings
 
+
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
@@ -17,6 +18,9 @@ survey_mapping: dict[str, str] = {
 
 
 def get_prepop(survey_id: str, prepop_data: PrepopData) -> dict[Identifier: Template]:
+    """
+    Performs the steps required to transform prepopulated data.
+    """
     build_spec: BuildSpec = get_build_spec(survey_id)
     parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
     result: dict[Identifier: Template] = {}
@@ -34,6 +38,9 @@ def get_prepop(survey_id: str, prepop_data: PrepopData) -> dict[Identifier: Temp
 
 
 def get_build_spec(survey_id: str) -> BuildSpec:
+    """
+    Looks up the relevant build spec based on the provided survey id
+    """
     survey_name = survey_mapping.get(survey_id)
     if survey_name is None:
         raise DataError(f"Could not lookup survey id {survey_id}")
@@ -46,6 +53,11 @@ def get_build_spec(survey_id: str) -> BuildSpec:
 
 
 def merge_items(items: list[Template], item_list_path: str) -> Template:
+    """
+    Multiple items can exist for one identifier.
+    These are merged into one template so that each identifier
+    is represented by one (and only one) template.
+    """
     first_item = deepcopy(items[0])
     item_list = get_item_list(first_item, item_list_path)
     for i in range(1, len(items)):
@@ -55,6 +67,9 @@ def merge_items(items: list[Template], item_list_path: str) -> Template:
 
 
 def get_item_list(template: Template, item_list_path: str) -> list[Field]:
+    """
+    Find the location within the template of the item sub list.
+    """
     path: list[str] = item_list_path.split(".")
     t = template
     for p in path:

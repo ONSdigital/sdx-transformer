@@ -4,6 +4,12 @@ from datetime import datetime
 from app.definitions import Value, Empty
 from app.functions.common import _all_empty
 
+"""
+This file contains the functions that represent
+the transformations that can be performed on string
+arguments within a build spec.
+"""
+
 
 def contains(
             value: Value,

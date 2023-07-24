@@ -5,7 +5,16 @@ from app.definitions import ParseTree, Field
 
 
 class TreeWalker:
+    """
+    Creates a new ParseTree by walking the provided ParseTree and
+    performing the given function whenever a leaf node is reached.
+    A function simply returning the leaf node is provided by default.
 
+    Subclasses can override the existing functions for encountering
+    each type of node. These each have access to the encountered
+    fields' name and value, and also the tree walker itself
+    - allowing for full customization of the resulting tree.
+    """
     def __init__(
             self, tree: ParseTree,
             on_str: Callable[[str, str, Self], Field] = lambda name, field, walker: field):

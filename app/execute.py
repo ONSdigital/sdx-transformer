@@ -5,6 +5,7 @@ from app.functions.string import contains, any_contains, any_date, exists, conca
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals
 from app.tree_walker import TreeWalker
 
+
 _function_lookup: dict[str, Callable] = {
     "CONTAINS": contains,
     "ANY_CONTAINS": any_contains,
@@ -21,6 +22,13 @@ _function_lookup: dict[str, Callable] = {
 
 
 def execute(tree: ParseTree) -> dict[str, Value]:
+    """
+    Convert a ParseTree into a dict of values by
+    performing each transform as a function.
+    The functions are looked up by name and then executed
+    in reverse order (from leaf to root in the tree), so that each invocation
+    either provides a value for its parent, or is the resulting value to be returned.
+    """
     class ExecuteTreeWalker(TreeWalker):
 
         def on_dict(self, name: str, field: dict[str, Field], walker: TreeWalker) -> Field:

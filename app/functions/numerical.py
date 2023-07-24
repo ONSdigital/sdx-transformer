@@ -3,6 +3,13 @@ from decimal import Decimal, ROUND_HALF_UP
 from app.definitions import Value, Empty
 from app.functions.common import _all_empty
 
+"""
+This file contains the functions that represent
+the transformations that can be performed on string
+arguments that represent numerical values
+within a build spec.
+"""
+
 
 def round_half_up(value: Value, nearest: str = "1") -> Value:
     v = _to_decimal(value, Empty)

@@ -50,3 +50,5 @@ SubmissionJson = dict[str, dict[str, str] | str]
 Identifier = str
 
 PrepopData = dict[Identifier, list[Data]]
+
+PCK = str

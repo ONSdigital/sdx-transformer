@@ -118,9 +118,9 @@
       "post": "$EQUALS_0"
     },
     "$TO_DATE_110": {
-      "name": "TO_DATE",
+      "name": "ANY_DATE",
       "args": {
-        "value": "#110f"
+        "values": ["#110f"]
       }
     },
     "$MEAN_120": {

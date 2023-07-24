@@ -3,7 +3,7 @@ import json
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import Submission, BuildSpec, ParseTree, Value, SubmissionJson
+from app.definitions import Submission, BuildSpec, ParseTree, Value, SubmissionJson, PCK
 from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter
 from app.formatters.cs_formatter import CSFormatter
@@ -25,7 +25,10 @@ formatter_mapping: dict[str, Formatter.__class__] = {
 }
 
 
-def get_pck(submission_json: SubmissionJson) -> str:
+def get_pck(submission_json: SubmissionJson) -> PCK:
+    """
+    Performs the steps required to generate a pck file from the submission.
+    """
     submission: Submission = to_submission(submission_json)
     build_spec: BuildSpec = get_build_spec(submission)
     parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
@@ -33,11 +36,14 @@ def get_pck(submission_json: SubmissionJson) -> str:
     populated_tree: ParseTree = populate_mappings(full_tree, submission["data"])
     result_data: dict[str, Value] = execute(populated_tree)
     formatter: Formatter = formatter_mapping.get(build_spec["target"])(result_data, submission["metadata"])
-    pck = formatter.get_pck()
+    pck = formatter.generate_pck()
     return pck
 
 
 def to_submission(submission_json: dict[str, dict[str, str] | str]) -> Submission:
+    """
+    Extracts the 'useful' parts of the submission json to create a Submission instance.
+    """
     submission: Submission = {
         "tx_id": str(submission_json["tx_id"]),
         "metadata": {
@@ -52,6 +58,9 @@ def to_submission(submission_json: dict[str, dict[str, str] | str]) -> Submissio
 
 
 def get_build_spec(submission: Submission) -> BuildSpec:
+    """
+    Looks up the relevant build spec for the submission provided.
+    """
     survey_id = submission["metadata"]["survey_id"]
     survey_name = survey_mapping.get(survey_id)
     if survey_name is None:
