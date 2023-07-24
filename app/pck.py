@@ -10,7 +10,7 @@ from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.interpolate import interpolate
-
+from app.populate import populate_mappings, add_implicit_values
 
 logger = get_logger()
 
@@ -28,8 +28,10 @@ formatter_mapping: dict[str, Formatter.__class__] = {
 def get_pck(submission_json: SubmissionJson) -> str:
     submission: Submission = to_submission(submission_json)
     build_spec: BuildSpec = get_build_spec(submission)
-    parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"], submission["data"])
-    result_data: dict[str, Value] = execute(parse_tree)
+    parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    full_tree: ParseTree = add_implicit_values(parse_tree)
+    populated_tree: ParseTree = populate_mappings(full_tree, submission["data"])
+    result_data: dict[str, Value] = execute(populated_tree)
     formatter: Formatter = formatter_mapping.get(build_spec["target"])(result_data, submission["metadata"])
     pck = formatter.get_pck()
     return pck
@@ -54,7 +56,7 @@ def get_build_spec(submission: Submission) -> BuildSpec:
     survey_name = survey_mapping.get(survey_id)
     if survey_name is None:
         raise DataError(f"Could not lookup survey id {survey_id}")
-    filepath = f"build_specs/{survey_name}.json"
+    filepath = f"build_specs/pck/{survey_name}.json"
     logger.info(f"Getting build spec from {filepath}")
     with open(filepath) as f:
         build_spec: BuildSpec = json.load(f)

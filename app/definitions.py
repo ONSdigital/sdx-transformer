@@ -3,9 +3,9 @@ from typing import TypedDict, NotRequired
 
 Data = dict[str, str]
 
-Template = dict[str, str]
-
 Field = dict | list | str | None
+
+Template = dict[str, Field]
 
 
 class Transform(TypedDict):
@@ -15,8 +15,6 @@ class Transform(TypedDict):
 
 
 Transforms = dict[str, Transform]
-
-Expression = Transform | str | None
 
 Empty = None
 
@@ -29,6 +27,7 @@ class BuildSpec(TypedDict):
     title: str
     survey_id: str
     target: str
+    item_list_path: NotRequired[str]
     template: Template
     transforms: Transforms
 
@@ -47,3 +46,7 @@ class Submission(TypedDict):
 
 
 SubmissionJson = dict[str, dict[str, str] | str]
+
+Identifier = str
+
+PrepopData = dict[Identifier, list[Data]]

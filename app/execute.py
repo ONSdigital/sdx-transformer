@@ -3,6 +3,7 @@ from collections.abc import Callable
 from app.definitions import ParseTree, Transform, Field, Value, Empty
 from app.functions.string import contains, any_contains, any_date, exists, concat, any_exists, to_date
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals
+from app.tree_walker import TreeWalker
 
 _function_lookup: dict[str, Callable] = {
     "CONTAINS": contains,
@@ -19,45 +20,27 @@ _function_lookup: dict[str, Callable] = {
 }
 
 
-def execute(parse_tree: ParseTree) -> dict[str, Value]:
-    result: dict[str, Value] = {}
-    for k, v in parse_tree.items():
-        if v is None or isinstance(v, str):
-            result[k] = v
-        else:
-            result[k] = execute_transform(v)
+def execute(tree: ParseTree) -> dict[str, Value]:
+    class ExecuteTreeWalker(TreeWalker):
 
-    return result
+        def on_dict(self, name: str, field: dict[str, Field], walker: TreeWalker) -> Field:
+            if 'name' in field.keys():
+                return execute_transform(field, self)
+
+            return super().on_dict(name, field, self)
+
+    return ExecuteTreeWalker(tree=tree).walk_tree()
 
 
-def execute_transform(transform: Transform) -> Value:
+def execute_transform(transform: Transform, walker: TreeWalker) -> Value:
     name = transform["name"]
     f = _function_lookup.get(name)
     if f is None:
-        print(name)
         return Empty
 
     args = transform["args"]
     expanded_args: dict[str, Value] = {}
     for arg_name, arg_val in args.items():
-        expanded_args[arg_name] = expand_field(arg_val)
+        expanded_args[arg_name] = walker.evaluate_field(arg_name, arg_val)
 
     return f(**expanded_args)
-
-
-def expand_field(field: Field) -> Value:
-    if isinstance(field, dict):
-        if 'name' in field.keys():
-            return execute_transform(field)
-        else:
-            return {k: expand_field(v) for k, v in field.items()}
-    elif isinstance(field, list):
-        return [expand_field(v) for v in field]
-    else:
-        return field
-
-
-def set_lookups(new_lookups: dict[str, Callable]):
-    _function_lookup.clear()
-    for k, v in new_lookups.items():
-        _function_lookup[k] = v

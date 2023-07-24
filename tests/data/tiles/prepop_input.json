@@ -1,0 +1,62 @@
+{
+  "10000000000": [
+    {
+      "ruref": "10000000000",
+      "luref": "1000000",
+      "luname1": "STUBBS BUILDING PRODUCTS LTD",
+      "luname2": "",
+      "luname3": "",
+      "luaddr1": "WELLINGTON ROAD",
+      "luaddr2": "LOCHMABEN",
+      "luaddr3": "SWINDON",
+      "luaddr4": "BEDS",
+      "luaddr5": "GLOS",
+      "lupostcode": "DE41 2WA",
+      "formtype": "01"
+    }
+  ],
+  "20000000000": [
+    {
+      "ruref": "20000000000",
+      "luref": "2000000",
+      "luname1": "TUBBS",
+      "luname2": "BATHROOM",
+      "luname3": "PRODUCTS",
+      "luaddr1": "IVORY ROAD",
+      "luaddr2": "SNOWDONIA",
+      "luaddr3": "WINDON",
+      "luaddr4": "BEDS",
+      "luaddr5": "HAMP",
+      "lupostcode": "HA41 2WA",
+      "formtype": "02"
+    },
+    {
+      "ruref": "20000000000",
+      "luref": "2000001",
+      "luname1": "TUBBS BATHROOM PRODUCTS",
+      "luname2": "LTD",
+      "luname3": "",
+      "luaddr1": "HAPPY STREET",
+      "luaddr2": "CORNWALL",
+      "luaddr3": "RUNDON",
+      "luaddr4": "BEDS",
+      "luaddr5": "GLOS",
+      "lupostcode": "GL2X 5EF",
+      "formtype": "02"
+    },
+    {
+      "ruref": "20000000000",
+      "luref": "2000002",
+      "luname1": "TUBBS BATHROOM PRODUCTS",
+      "luname2": "AND CO",
+      "luname3": "",
+      "luaddr1": "GRACE ROAD",
+      "luaddr2": "DEVON",
+      "luaddr3": "HAPPY",
+      "luaddr4": "BEDS",
+      "luaddr5": "GLOS",
+      "lupostcode": "DE41 2XJ",
+      "formtype": "02"
+    }
+  ]
+}
