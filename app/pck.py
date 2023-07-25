@@ -33,6 +33,7 @@ def get_pck(submission_data: Data, survey_metadata: SurveyMetadata) -> PCK:
     transformed_data: dict[str, Value] = transform(submission_data, build_spec)
     formatter: Formatter = formatter_mapping.get(build_spec["target"])(transformed_data, survey_metadata)
     pck = formatter.generate_pck()
+    logger.info("Generated pck file")
     return pck
 
 
@@ -56,4 +57,5 @@ def transform(submission_data: Data, build_spec: BuildSpec) -> dict[str, Value]:
     full_tree: ParseTree = add_implicit_values(parse_tree)
     populated_tree: ParseTree = populate_mappings(full_tree, submission_data)
     result_data: dict[str, Value] = execute(populated_tree)
+    logger.info("Completed data transformation")
     return result_data

@@ -34,6 +34,7 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
         item = merge_items(items, build_spec["item_list_path"])
         result[ru_ref] = item
 
+    logger.info("Completed prepop data transformation")
     return result
 
 

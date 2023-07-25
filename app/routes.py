@@ -1,4 +1,5 @@
 from sdx_gcp import Request, Flask, TX_ID
+from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.definitions import PrepopData, Identifier, Template, PCK, Data, SurveyMetadata
@@ -6,7 +7,11 @@ from app.pck import get_pck
 from app.prepop import get_prepop
 
 
+logger = get_logger()
+
+
 def process_pck(req: Request, _tx_id: TX_ID):
+    logger.info("Received pck request")
     submission_data: Data = req.get_json(force=True, silent=True)
     if submission_data is None:
         raise DataError("Submission data is not in json format")
@@ -28,7 +33,8 @@ def process_pck(req: Request, _tx_id: TX_ID):
     return response
 
 
-def process_prepop(req: Request, tx_id: TX_ID):
+def process_prepop(req: Request, _tx_id: TX_ID):
+    logger.info("Received prepop request")
     prepop_data: PrepopData = req.get_json(force=True, silent=True)
     survey_id: str = req.args.get("survey_id")
 
