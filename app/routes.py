@@ -1,7 +1,7 @@
 from sdx_gcp import Request, Flask, TX_ID
 from sdx_gcp.errors import DataError
 
-from app.definitions import SubmissionJson, PrepopData, Identifier, Template
+from app.definitions import SubmissionJson, PrepopData, Identifier, Template, PCK
 from app.pck import get_pck
 from app.prepop import get_prepop
 
@@ -11,7 +11,7 @@ def process_pck(req: Request, tx_id: TX_ID):
     if submission_json is None:
         raise DataError("Submission is not in json format")
 
-    pck: str = get_pck(submission_json)
+    pck: PCK = get_pck(submission_json)
     response: Flask.Response = Flask.make_response(pck, 200)
     response.mimetype = "text/plain"
     return response

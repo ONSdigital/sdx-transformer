@@ -70,7 +70,7 @@ class TreeWalkerTests(unittest.TestCase):
             }
         }
 
-        def base_str(name: str, field: str, walker: TreeWalker) -> Field:
+        def base_str(_name: str, field: str, _walker: TreeWalker) -> Field:
             if field.startswith("#"):
                 return field[1:]
             return field
