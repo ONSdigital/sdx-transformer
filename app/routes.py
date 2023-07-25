@@ -1,17 +1,28 @@
 from sdx_gcp import Request, Flask, TX_ID
 from sdx_gcp.errors import DataError
 
-from app.definitions import SubmissionJson, PrepopData, Identifier, Template, PCK
+from app.definitions import PrepopData, Identifier, Template, PCK, Data, SurveyMetadata
 from app.pck import get_pck
 from app.prepop import get_prepop
 
 
-def process_pck(req: Request, tx_id: TX_ID):
-    submission_json: SubmissionJson = req.get_json(force=True, silent=True)
-    if submission_json is None:
-        raise DataError("Submission is not in json format")
+def process_pck(req: Request, _tx_id: TX_ID):
+    submission_data: Data = req.get_json(force=True, silent=True)
+    if submission_data is None:
+        raise DataError("Submission data is not in json format")
 
-    pck: PCK = get_pck(submission_json)
+    survey_metadata: SurveyMetadata = {
+        "survey_id": req.args.get("survey_id", ""),
+        "period_id": req.args.get("period_id", ""),
+        "ru_ref": req.args.get("ru_ref", ""),
+        "form_type": req.args.get("form_type", ""),
+    }
+
+    for k, v in survey_metadata.items():
+        if v == "":
+            raise DataError(f"Missing required parameter {k} from request")
+
+    pck: PCK = get_pck(submission_data, survey_metadata)
     response: Flask.Response = Flask.make_response(pck, 200)
     response.mimetype = "text/plain"
     return response
@@ -27,5 +38,5 @@ def process_prepop(req: Request, tx_id: TX_ID):
     if survey_id is None:
         raise DataError("Missing survey id from request")
 
-    result: dict[Identifier: Template] = get_prepop(survey_id, prepop_data)
+    result: dict[Identifier: Template] = get_prepop(prepop_data, survey_id)
     return Flask.jsonify(result)

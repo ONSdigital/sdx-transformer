@@ -17,7 +17,7 @@ survey_mapping: dict[str, str] = {
 }
 
 
-def get_prepop(survey_id: str, prepop_data: PrepopData) -> dict[Identifier: Template]:
+def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Template]:
     """
     Performs the steps required to transform prepopulated data.
     """

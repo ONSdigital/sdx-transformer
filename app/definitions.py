@@ -39,14 +39,6 @@ class SurveyMetadata(TypedDict):
     form_type: str
 
 
-class Submission(TypedDict):
-    tx_id: str
-    metadata: SurveyMetadata
-    data: Data
-
-
-SubmissionJson = dict[str, dict[str, str] | str]
-
 Identifier = str
 
 PrepopData = dict[Identifier, list[Data]]
