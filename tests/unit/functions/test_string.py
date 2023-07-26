@@ -1,6 +1,28 @@
 import unittest
 
-from app.functions.string import contains, any_contains, any_date, exists, concat, any_exists
+from app.definitions import Empty
+from app.functions.string import contains, any_contains, any_date, exists, concat, any_exists, starts_with
+
+
+class StartsWithTests(unittest.TestCase):
+
+    def test_empty(self):
+        value = Empty
+        actual = starts_with(value, match_str="sent", on_true="1", on_false="2")
+        expected = Empty
+        self.assertEqual(expected, actual)
+
+    def test_true(self):
+        value = "sentence for testing purposes"
+        actual = starts_with(value, match_str="sent", on_true="1", on_false="2")
+        expected = "1"
+        self.assertEqual(expected, actual)
+
+    def test_false(self):
+        value = "sentence for testing purposes"
+        actual = starts_with(value, match_str=" sent", on_true="1", on_false="2")
+        expected = "2"
+        self.assertEqual(expected, actual)
 
 
 class ContainsTests(unittest.TestCase):
@@ -17,10 +39,10 @@ class ContainsTests(unittest.TestCase):
         expected = "2"
         self.assertEqual(expected, actual)
 
-    def test_none_returns_none(self):
-        value = None
+    def test_empty_returns_empty(self):
+        value = Empty
         actual = contains(value, match_str="I don't exist", on_true="1", on_false="2")
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
 
@@ -40,18 +62,18 @@ class AnyContainsTests(unittest.TestCase):
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_none_doesnt_fail(self):
-        value = None
-        values = ["yes", "no", None]
+    def test_empty_doesnt_fail(self):
+        value = Empty
+        values = ["yes", "no", Empty]
         actual = any_contains(value, values=values, match_str="y", on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_all_nones_returns_none(self):
-        value = None
-        values = [None, None, None]
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty, Empty]
         actual = any_contains(value, values=values, match_str="y", on_true="1", on_false="2")
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
 
@@ -78,18 +100,18 @@ class AnyDateTests(unittest.TestCase):
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_some_nones_dont_fail(self):
+    def test_some_empty_dont_fail(self):
         value = "12/07/2023"
-        values = [None, None]
+        values = [Empty, Empty]
         actual = any_date(value, values=values, on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
-    def test_all_nones_returns_none(self):
-        value = None
-        values = [None, None, None]
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty, Empty]
         actual = any_date(value, values=values, on_true="1", on_false="2")
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
 
@@ -112,14 +134,14 @@ class AnyExistTests(unittest.TestCase):
 
     def test_true(self):
         value = "foo"
-        values = [None, None]
+        values = [Empty, Empty]
         actual = any_exists(value, values=values, on_true="1", on_false="2")
         expected = "1"
         self.assertEqual(expected, actual)
 
     def test_false(self):
-        value = None
-        values = [None, None]
+        value = Empty
+        values = [Empty, Empty]
         actual = any_exists(value, values=values, on_true="1", on_false="2")
         expected = "2"
         self.assertEqual(expected, actual)
@@ -127,11 +149,11 @@ class AnyExistTests(unittest.TestCase):
 
 class ConcatTests(unittest.TestCase):
 
-    def test_all_nones_returns_none(self):
-        value = None
-        values = [None, None]
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty]
         actual = concat(value, values=values)
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
     def test_simple(self):
@@ -141,9 +163,9 @@ class ConcatTests(unittest.TestCase):
         expected = "a-b-c"
         self.assertEqual(expected, actual)
 
-    def test_no_fail_on_none(self):
+    def test_no_fail_on_empty(self):
         value = "a"
-        values = [None, "c"]
+        values = [Empty, "c"]
         actual = concat(value, values=values, seperator="_")
         expected = "a_c"
         self.assertEqual(expected, actual)

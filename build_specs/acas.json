@@ -3,9 +3,9 @@
   "survey_id": "171",
   "target": "COMMON SOFTWARE",
   "template": {
-    "011": "$1",
-    "012": "$1",
-    "150": "$2",
+    "11": "$TO_DATE",
+    "12": "$TO_DATE",
+    "150": "$ROUND",
     "225": "$3",
     "904": "$4",
     "158": "$5",
@@ -13,23 +13,18 @@
     "903": "$8"
   },
   "transforms": {
-    "$1": {
-      "type": "function",
-      "spec": {
-        "name": "DATE",
-        "args": {
-            "format": "%d%m%Y"
-        }
+    "$TO_DATE": {
+      "name": "TO_DATE",
+      "args": {
+          "display_as": "%d%m%Y"
       }
     },
-    "$2": {
-      "type": "function",
-      "spec": {
-        "name": "ROUND",
-        "args": {
-            "magnitude": "1000"
-        }
-      }
+    "$ROUND": {
+      "name": "ROUND",
+      "args": {
+          "nearest": "1000"
+      },
+      "post":
     },
     "$3": {
       "type": "function",

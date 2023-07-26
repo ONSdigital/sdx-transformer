@@ -6,16 +6,16 @@ from app.functions.numerical import round_half_up, aggregate, mean, number_equal
 
 class RoundTests(unittest.TestCase):
 
-    def test_none_returns_none(self):
-        value = None
+    def test_empty_returns_empty(self):
+        value = Empty
         actual = round_half_up(value, nearest="")
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
     def test_none_numerical_val_returns_none(self):
         value = "I'm NaN"
         actual = round_half_up(value, nearest="")
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
     def test_rounding_to_nearest_1000(self):
