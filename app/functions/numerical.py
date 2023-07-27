@@ -60,6 +60,14 @@ def total(value: Decimal, values: list[Decimal]) -> Decimal:
 
 
 @all_decimals
+def divide(value: Decimal, by: str = "1") -> Decimal:
+    d = _to_decimal(by)
+    if d is Empty or d == 0:
+        return Empty
+    return value / d
+
+
+@all_decimals
 def aggregate(value: Decimal, values: list[Decimal], weight: str) -> Decimal:
     w = _to_decimal(weight, Decimal("0"))
     return value + sum(val * w for val in values)

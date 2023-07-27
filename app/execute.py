@@ -3,7 +3,7 @@ from collections.abc import Callable
 from app.definitions import ParseTree, Transform, Field, Value, Empty
 from app.functions.string import contains, any_contains, any_date, exists, concat, any_exists, to_date, no_transform, \
     starts_with
-from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total
+from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.tree_walker import TreeWalker
 
 
@@ -19,6 +19,7 @@ _function_lookup: dict[str, Callable] = {
     "CONCAT": concat,
     "ROUND": round_half_up,
     "TOTAL": total,
+    "DIVIDE": divide,
     "AGGREGATE": aggregate,
     "MEAN": mean,
     "NUMBER_EQUALS": number_equals,

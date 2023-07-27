@@ -3,7 +3,7 @@ import json
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
+from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata, Template, Transforms
 from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter
 from app.formatters.cs_formatter import CSFormatter
@@ -15,7 +15,8 @@ from app.populate import populate_mappings, add_implicit_values
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
-    "134": "mwss"
+    "134": "mwss",
+    "171": "acas",
 }
 
 formatter_mapping: dict[str, Formatter.__class__] = {
@@ -53,9 +54,18 @@ def get_build_spec(survey_id: str) -> BuildSpec:
 
 
 def transform(submission_data: Data, build_spec: BuildSpec) -> dict[str, Value]:
-    parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    data: Data = submission_data
+    transforms: Transforms = build_spec["transforms"]
+    if "preprocess" in build_spec:
+        data = _process(data, build_spec["preprocess"], transforms)
+
+    return _process(data, build_spec["template"], transforms)
+
+
+def _process(data: Data, template: Template, transforms: Transforms) -> dict[str, Value]:
+    parse_tree: ParseTree = interpolate(template, transforms)
     full_tree: ParseTree = add_implicit_values(parse_tree)
-    populated_tree: ParseTree = populate_mappings(full_tree, submission_data)
+    populated_tree: ParseTree = populate_mappings(full_tree, data)
     result_data: dict[str, Value] = execute(populated_tree)
     logger.info("Completed data transformation")
     return result_data
