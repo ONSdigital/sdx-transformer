@@ -218,6 +218,73 @@ class ExpandNestedTransformsTests(unittest.TestCase):
         actual = expand_nested_transforms(transforms)
         self.assertEqual(expected, actual)
 
+    def test_double_nested(self):
+
+        transforms: Transforms = {
+            "$DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "value": "$MULTIPLY",
+                    "by": "2"
+                },
+            },
+            "$MULTIPLY": {
+                "name": "MULTIPLY",
+                "args": {
+                    "value": "$ROUND",
+                    "by": "3",
+                },
+            },
+            "$ROUND": {
+                "name": "ROUND",
+                "args": {
+                    "nearest": "1",
+                },
+            }
+        }
+
+        expected: ParseTree = {
+            "$DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "ROUND",
+                                "args": {
+                                    "nearest": "1",
+                                },
+                            },
+                            "by": "3",
+                        },
+                    },
+                    "by": "2"
+                },
+            },
+            "$MULTIPLY": {
+                "name": "MULTIPLY",
+                "args": {
+                    "value": {
+                        "name": "ROUND",
+                        "args": {
+                            "nearest": "1",
+                        },
+                    },
+                    "by": "3",
+                },
+            },
+            "$ROUND": {
+                "name": "ROUND",
+                "args": {
+                    "nearest": "1",
+                },
+            }
+        }
+
+        actual = expand_nested_transforms(transforms)
+        self.assertEqual(expected, actual)
+
 
 class MapTemplateTests(unittest.TestCase):
 
@@ -226,7 +293,8 @@ class MapTemplateTests(unittest.TestCase):
         template: Template = {
             "150": "#150",
             "151": "$ROUND",
-            "152": "$DIVIDE"
+            "152": "$DIVIDE",
+            "153": "$ROUND",
         }
 
         transforms: Transforms = {
@@ -268,6 +336,12 @@ class MapTemplateTests(unittest.TestCase):
                         }
                     },
                     "by": "2"
+                }
+            },
+            "153": {
+                "name": "ROUND",
+                "args": {
+                    "precision": "1",
                 }
             }
         }

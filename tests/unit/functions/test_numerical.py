@@ -55,38 +55,38 @@ class AggregateTests(unittest.TestCase):
         expected = "6.5"
         self.assertEqual(expected, actual)
 
-    def test_none_value_doest_fail(self):
-        value = None
+    def test_empty_value_doest_fail(self):
+        value = Empty
         values = ["1", "2"]
         weight = "0.5"
         actual = aggregate(value, values=values, weight=weight)
         expected = "1.5"
         self.assertEqual(expected, actual)
 
-    def test_none_values_doest_fail(self):
-        value = None
-        values = [None, "2"]
+    def test_Empty_values_doest_fail(self):
+        value = Empty
+        values = [Empty, "2"]
         weight = "1"
         actual = aggregate(value, values=values, weight=weight)
         expected = "2"
         self.assertEqual(expected, actual)
 
-    def test_all_nones_returns_none(self):
-        value = None
-        values = [None, None]
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty]
         weight = "0.5"
         actual = aggregate(value, values=values, weight=weight)
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
 
 class MeanTests(unittest.TestCase):
 
-    def test_all_nones_returns_none(self):
-        value = None
-        values = [None, None]
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty]
         actual = mean(value, values=values)
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
     def test_simple(self):
@@ -94,6 +94,13 @@ class MeanTests(unittest.TestCase):
         values = ["4", "5"]
         actual = mean(value, values=values)
         expected = "4"
+        self.assertEqual(expected, actual)
+
+    def test_zero(self):
+        value = Empty
+        values = ["0", Empty]
+        actual = mean(value, values=values)
+        expected = "0"
         self.assertEqual(expected, actual)
 
 
