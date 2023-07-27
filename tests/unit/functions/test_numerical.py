@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.numerical import round_half_up, aggregate, mean, number_equals
+from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total
 
 
 class RoundTests(unittest.TestCase):
@@ -43,6 +43,23 @@ class RoundTests(unittest.TestCase):
         for value, expected in tests.items():
             actual = round_half_up(value, nearest="0.01")
             self.assertEqual(expected, actual, f"{value} should have rounded to {expected}")
+
+
+class TotalTests(unittest.TestCase):
+
+    def test_simple(self):
+        value = "5"
+        values = ["1", "2"]
+        actual = total(value, values=values)
+        expected = "8"
+        self.assertEqual(expected, actual)
+
+    def test_with_empty_value(self):
+        value = Empty
+        values = ["1", "2", Empty]
+        actual = total(value, values=values)
+        expected = "3"
+        self.assertEqual(expected, actual)
 
 
 class AggregateTests(unittest.TestCase):

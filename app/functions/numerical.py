@@ -55,6 +55,11 @@ def round_half_up(value: Decimal, nearest: str = "1") -> Decimal:
 
 
 @all_decimals
+def total(value: Decimal, values: list[Decimal]) -> Decimal:
+    return sum([value] + values)
+
+
+@all_decimals
 def aggregate(value: Decimal, values: list[Decimal], weight: str) -> Decimal:
     w = _to_decimal(weight, Decimal("0"))
     return value + sum(val * w for val in values)

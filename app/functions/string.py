@@ -110,16 +110,16 @@ def _is_date(text: str) -> bool:
 
 
 def exists(value: Value, on_true: str = "1", on_false: str = "2") -> Value:
-    if value is not Empty:
+    if value is not Empty and value != "":
         return on_true
     return on_false
 
 
 def any_exists(value: Value, values: list[Value], on_true: str = "1", on_false: str = "2") -> Value:
-    if value is not Empty:
+    if value is not Empty and value != "":
         return on_true
     for v in values:
-        if v is not Empty:
+        if v is not Empty and value != "":
             return on_true
     return on_false
 
