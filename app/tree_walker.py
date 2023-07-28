@@ -20,6 +20,7 @@ class TreeWalker:
             on_str: Callable[[str, str, Self], Field] = lambda name, field, walker: field):
 
         self._tree = tree
+        self._current = tree
         self._on_str = on_str
 
     def on_list(self, name: str, field: list[Field], walker: Self) -> Field:
@@ -39,7 +40,11 @@ class TreeWalker:
 
     def walk_tree(self) -> ParseTree:
         result: ParseTree = {}
+        self._current = result
         for name, field in self._tree.items():
             result[name] = self.evaluate_field(name, field)
 
         return result
+
+    def read_from_current(self, name: str) -> str:
+        return self._current.get(name)

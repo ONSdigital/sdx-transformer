@@ -53,17 +53,8 @@ def get_build_spec(survey_id: str) -> BuildSpec:
     return build_spec
 
 
-def transform(submission_data: Data, build_spec: BuildSpec) -> dict[str, Value]:
-    data: Data = submission_data
-    transforms: Transforms = build_spec["transforms"]
-    if "preprocess" in build_spec:
-        data = _process(data, build_spec["preprocess"], transforms)
-
-    return _process(data, build_spec["template"], transforms)
-
-
-def _process(data: Data, template: Template, transforms: Transforms) -> dict[str, Value]:
-    parse_tree: ParseTree = interpolate(template, transforms)
+def transform(data: Data, build_spec: BuildSpec) -> dict[str, Value]:
+    parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
     full_tree: ParseTree = add_implicit_values(parse_tree)
     populated_tree: ParseTree = populate_mappings(full_tree, data)
     result_data: dict[str, Value] = execute(populated_tree)

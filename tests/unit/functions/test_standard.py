@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.string import contains, any_contains, any_date, exists, concat, any_exists, starts_with
+from app.functions.standard import contains, any_contains, any_date, exists, concat, any_exists, starts_with
 
 
 class StartsWithTests(unittest.TestCase):

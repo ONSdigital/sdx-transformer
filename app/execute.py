@@ -1,10 +1,15 @@
 from collections.abc import Callable
+from typing import Final
 
 from app.definitions import ParseTree, Transform, Field, Value, Empty
-from app.functions.string import contains, any_contains, any_date, exists, concat, any_exists, to_date, no_transform, \
-    starts_with
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
+from app.functions.standard import contains, any_contains, any_date, exists, concat, any_exists, to_date, \
+    no_transform, starts_with
 from app.tree_walker import TreeWalker
+
+
+DERIVED_PREFIX: Final = "&"
+CURRENT_VALUE: Final = DERIVED_PREFIX + "value"
 
 
 _function_lookup: dict[str, Callable] = {
@@ -34,6 +39,7 @@ def execute(tree: ParseTree) -> dict[str, Value]:
     in reverse order (from leaf to root in the tree), so that each invocation
     either provides a value for its parent, or is the resulting value to be returned.
     """
+
     class ExecuteTreeWalker(TreeWalker):
 
         def on_dict(self, name: str, field: dict[str, Field], walker: TreeWalker) -> Field:
@@ -42,7 +48,12 @@ def execute(tree: ParseTree) -> dict[str, Value]:
 
             return super().on_dict(name, field, self)
 
-    return ExecuteTreeWalker(tree=tree).walk_tree()
+    def on_leaf(_name: str, field: str, walker: ExecuteTreeWalker) -> Field:
+        if field.startswith(DERIVED_PREFIX) and field != CURRENT_VALUE:
+            return walker.read_from_current(field[1:])
+        return field
+
+    return ExecuteTreeWalker(tree=tree, on_str=on_leaf).walk_tree()
 
 
 def execute_transform(transform: Transform, walker: TreeWalker) -> Value:
@@ -56,4 +67,12 @@ def execute_transform(transform: Transform, walker: TreeWalker) -> Value:
     for arg_name, arg_val in args.items():
         expanded_args[arg_name] = walker.evaluate_field(arg_name, arg_val)
 
-    return f(**expanded_args)
+    derived_args: dict[str, Value] = {}
+    value: Value = expanded_args["value"]
+    for expanded_name, expanded_val in expanded_args.items():
+        if expanded_val == CURRENT_VALUE:
+            derived_args[expanded_name] = value
+        elif expanded_name != "value":
+            derived_args[expanded_name] = expanded_val
+
+    return f(value, **derived_args)

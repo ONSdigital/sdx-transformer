@@ -68,6 +68,13 @@ class TotalTests(unittest.TestCase):
         expected = "6"
         self.assertEqual(expected, actual)
 
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty, Empty]
+        actual = total(value, values=values)
+        expected = Empty
+        self.assertEqual(expected, actual)
+
 
 class AggregateTests(unittest.TestCase):
 

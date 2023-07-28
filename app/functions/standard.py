@@ -38,31 +38,11 @@ def all_string(func: Callable[..., Value]) -> Callable[..., Value]:
     return inner
 
 
-def conditional(func: Callable[..., Value]) -> Callable[..., Value]:
-    def inner(value: Value, **kwargs: Value):
-        if "on_true" not in kwargs:
-            return Empty
-
-        if "on_false" not in kwargs:
-            return Empty
-
-        if kwargs["on_true"] == CURRENT_VALUE_IDENTIFIER:
-            kwargs["on_true"] = value
-
-        if kwargs["on_false"] == CURRENT_VALUE_IDENTIFIER:
-            kwargs["on_false"] = value
-
-        return func(value, **kwargs)
-
-    return inner
-
-
 def no_transform(value: Value) -> Value:
     return value
 
 
 @all_string
-@conditional
 def starts_with(
             value: str,
             match_str: str = "",
@@ -75,7 +55,6 @@ def starts_with(
 
 
 @all_string
-@conditional
 def contains(
             value: str,
             match_str: str = "",
@@ -88,7 +67,6 @@ def contains(
 
 
 @all_string
-@conditional
 def any_contains(
             value: str,
             values: list[str] = [],
@@ -112,7 +90,6 @@ def to_date(value: str, display_as: str = "%d%m%y") -> Value:
 
 
 @all_string
-@conditional
 def any_date(
             value: str,
             values: list[str] = [],
@@ -134,14 +111,12 @@ def _is_date(text: str) -> bool:
         return False
 
 
-@conditional
 def exists(value: Value, on_true: str = "1", on_false: str = "2") -> Value:
     if value is not Empty and value != "":
         return on_true
     return on_false
 
 
-@conditional
 def any_exists(value: Value, values: list[Value], on_true: str = "1", on_false: str = "2") -> Value:
     if value is not Empty and value != "":
         return on_true

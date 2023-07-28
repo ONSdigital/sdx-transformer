@@ -27,7 +27,6 @@ class BuildSpec(TypedDict):
     title: str
     survey_id: str
     target: str
-    preprocess: NotRequired[Data]
     item_list_path: NotRequired[str]
     template: Template
     transforms: Transforms
