@@ -231,20 +231,11 @@
         "display_as": "%d%m%Y"
       }
     },
-    "$REMOVE_NEGATIVE": {
-      "name": "STARTS_WITH",
-      "args": {
-        "match_str": "-",
-        "on_true": "99999999999",
-        "on_false": "&value"
-      }
-    },
     "$DIVIDE_BY_THOUSAND": {
       "name": "DIVIDE",
       "args": {
         "by": "1000"
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$ROUND_THOUSAND": {
       "name": "ROUND",
@@ -304,8 +295,7 @@
           "&154",
           "&156"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$157": {
       "name": "TOTAL",
@@ -330,8 +320,7 @@
           "&169",
           "&171"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$176": {
       "name": "TOTAL",
@@ -347,8 +336,7 @@
           "&172",
           "&173"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$174": {
       "name": "TOTAL",
@@ -378,8 +366,7 @@
           "&218",
           "&220"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$224": {
       "name": "TOTAL",
@@ -396,8 +383,7 @@
           "&219",
           "&221"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$222": {
       "name": "TOTAL",
@@ -420,8 +406,7 @@
           "&232",
           "&235"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$239": {
       "name": "TOTAL",
@@ -433,8 +418,7 @@
           "&233",
           "&236"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$237": {
       "name": "TOTAL",
@@ -459,8 +443,7 @@
           "&308",
           "&310"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$314": {
       "name": "TOTAL",
@@ -474,8 +457,7 @@
           "&309",
           "&311"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$312": {
       "name": "TOTAL",
@@ -498,8 +480,7 @@
           "&319",
           "&321"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$325": {
       "name": "TOTAL",
@@ -511,8 +492,7 @@
           "&320",
           "&322"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$323": {
       "name": "TOTAL",
@@ -542,8 +522,7 @@
           "&418",
           "&420"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$424": {
       "name": "TOTAL",
@@ -562,8 +541,7 @@
           "&419",
           "&421"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$422": {
       "name": "TOTAL",
@@ -592,8 +570,7 @@
           "&516",
           "&518"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$522": {
       "name": "TOTAL",
@@ -611,8 +588,7 @@
           "&517",
           "&519"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$520": {
       "name": "TOTAL",
@@ -640,8 +616,7 @@
           "&615",
           "&617"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$621": {
       "name": "TOTAL",
@@ -658,8 +633,7 @@
           "&616",
           "&618"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$619": {
       "name": "TOTAL",
@@ -686,8 +660,7 @@
           "&712",
           "&714"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$718": {
       "name": "TOTAL",
@@ -703,8 +676,7 @@
           "&713",
           "&715"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$716": {
       "name": "TOTAL",
@@ -727,8 +699,7 @@
           "&804",
           "&806"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$810": {
       "name": "TOTAL",
@@ -740,8 +711,7 @@
           "&805",
           "&807"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$808": {
       "name": "TOTAL",
@@ -766,8 +736,7 @@
           "&824",
           "&827"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$831": {
       "name": "TOTAL",
@@ -781,8 +750,7 @@
           "&825",
           "&828"
         ]
-      },
-      "post": "$REMOVE_NEGATIVE"
+      }
     },
     "$829": {
       "name": "TOTAL",

@@ -1,12 +1,13 @@
 import unittest
 
-from app.pck import transform, get_build_spec
+from app.definitions import SurveyMetadata, PCK
+from app.pck import transform, get_build_spec, get_pck
 from tests.integration.pck import read_submission_data, remove_empties
 
 
 class ACASTransformTests(unittest.TestCase):
 
-    def test_acas(self):
+    def test_negatives_and_missing_comment(self):
         filepath = "tests/data/acas/acas.json"
         submission_data = read_submission_data(filepath)
 
@@ -15,8 +16,8 @@ class ACASTransformTests(unittest.TestCase):
         actual = remove_empties(transformed_data)
 
         expected = {
-            "146": "1",
-            "150": "123",
+            "146": "2",
+            "150": "-3",
             "151": "24",
             "152": "20",
             "153": "5",
@@ -24,7 +25,7 @@ class ACASTransformTests(unittest.TestCase):
             "155": "28",
             "156": "12",
             "157": "2",
-            "158": "227",
+            "158": "101",
             "159": "21",
             "160": "43",
             "161": "10",
@@ -218,7 +219,48 @@ class ACASTransformTests(unittest.TestCase):
             "902": "1",
             "903": "2",
             "904": "8",
-            "905": "6"
+            "905": "6",
         }
+
+        self.assertEqual(expected, actual)
+
+
+class ACASPckTests(unittest.TestCase):
+
+    def test_0002_to_pck(self):
+        filepath = "tests/data/acas/171.0002.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "171",
+            "period_id": "201605",
+            "ru_ref": "12346789012A",
+            "form_type": "0002",
+        }
+
+        actual: PCK = get_pck(submission_data, survey_metadata)
+
+        pck_filepath = "tests/data/acas/171.0002.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertEqual(expected, actual)
+
+    def test_0003_to_pck(self):
+        filepath = "tests/data/acas/171.0003.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "117",
+            "period_id": "201605",
+            "ru_ref": "12346789012A",
+            "form_type": "0003",
+        }
+
+        actual: PCK = get_pck(submission_data, survey_metadata)
+
+        pck_filepath = "tests/data/acas/171.0003.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
 
         self.assertEqual(expected, actual)

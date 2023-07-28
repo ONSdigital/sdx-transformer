@@ -7,7 +7,7 @@ from app.definitions import Value, Empty
 """
 This file contains the functions that represent
 the transformations that can be performed on string
-arguments within a build spec.
+values within a build spec.
 """
 
 CURRENT_VALUE_IDENTIFIER: Final = "&value"

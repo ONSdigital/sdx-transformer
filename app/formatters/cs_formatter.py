@@ -12,7 +12,7 @@ class CSFormatter(Formatter):
             "FV" + " " * 10,
             self._pck_form_header(),
         ] + [
-            self._pck_item(q, a) for q, a in self._data.items() if a is not None
+            self._pck_item(q, a) for q, a in sorted(self._data.items()) if a is not None
         ]
 
     def _pck_form_header(self) -> str:
@@ -22,6 +22,10 @@ class CSFormatter(Formatter):
     def _pck_item(self, q, a) -> str:
         """Return a PCK line item."""
         try:
-            return "{0:04} {1:011}".format(int(q), int(a))
+            v = int(a)
+            if v < 0:
+                # CS can't handle negative numbers!
+                v = 99999999999
+            return "{0:04} {1:011}".format(int(q), v)
         except ValueError:
             return f"{q} ???????????"
