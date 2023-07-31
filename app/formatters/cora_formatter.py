@@ -6,14 +6,17 @@ class CORAFormatter(Formatter):
     """
     Formatter for CORA systems.
     """
-    def __init__(self, data: dict[str, Value], metadata: SurveyMetadata):
-        super().__init__(data, metadata)
-        self._page_identifier = "1"
-        self._instance = "0"
 
-    def _pck_lines(self) -> list[str]:
+    def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
         """Return a list of lines in a PCK file."""
+        ru: str = metadata["ru_ref"]
+        ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
+        period: str = metadata["period_id"]
+        survey_id = metadata["survey_id"]
+        page_identifier = "1"
+        instance = "0"
+
         return [
-            f"{self._survey_id}:{self._ru_ref}:{self._page_identifier}:{self._period}:{self._instance}:{qcode}:{value}"
-            for qcode, value in sorted(self._data.items())
+            f"{survey_id}:{ru_ref}:{page_identifier}:{period}:{instance}:{qcode}:{value}"
+            for qcode, value in sorted(data.items())
         ]

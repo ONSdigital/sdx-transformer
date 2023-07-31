@@ -26,6 +26,8 @@ ParseTree = dict[str, Field]
 class BuildSpec(TypedDict):
     title: str
     survey_id: str
+    period_format: str
+    pck_period_format: NotRequired[str]
     target: str
     item_list_path: NotRequired[str]
     template: Template
@@ -39,16 +41,12 @@ class SurveyMetadata(TypedDict):
     form_type: str
 
 
-class Submission(TypedDict):
-    tx_id: str
-    metadata: SurveyMetadata
-    data: Data
-
-
-SubmissionJson = dict[str, dict[str, str] | str]
-
 Identifier = str
 
 PrepopData = dict[Identifier, list[Data]]
 
 PCK = str
+
+
+class BuildSpecError(Exception):
+    pass

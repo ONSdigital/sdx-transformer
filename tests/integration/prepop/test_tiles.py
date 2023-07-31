@@ -18,6 +18,6 @@ class TilesTests(unittest.TestCase):
         with open(output_filepath) as f:
             expected: dict[Identifier: Template] = json.load(f)
 
-        actual = get_prepop(survey_id, prepop_data)
+        actual = get_prepop(prepop_data, survey_id)
 
         self.assertEqual(expected, actual)

@@ -1,21 +1,21 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.numerical import round_half_up, aggregate, mean, number_equals
+from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total
 
 
 class RoundTests(unittest.TestCase):
 
-    def test_none_returns_none(self):
-        value = None
+    def test_empty_returns_empty(self):
+        value = Empty
         actual = round_half_up(value, nearest="")
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
     def test_none_numerical_val_returns_none(self):
         value = "I'm NaN"
         actual = round_half_up(value, nearest="")
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
     def test_rounding_to_nearest_1000(self):
@@ -45,6 +45,37 @@ class RoundTests(unittest.TestCase):
             self.assertEqual(expected, actual, f"{value} should have rounded to {expected}")
 
 
+class TotalTests(unittest.TestCase):
+
+    def test_simple(self):
+        value = "5"
+        values = ["1", "2"]
+        actual = total(value, values=values)
+        expected = "8"
+        self.assertEqual(expected, actual)
+
+    def test_with_empty_value(self):
+        value = Empty
+        values = ["1", "2", Empty]
+        actual = total(value, values=values)
+        expected = "3"
+        self.assertEqual(expected, actual)
+
+    def test_with_zero_value(self):
+        value = "0"
+        values = ["1", "2", "3"]
+        actual = total(value, values=values)
+        expected = "6"
+        self.assertEqual(expected, actual)
+
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty, Empty]
+        actual = total(value, values=values)
+        expected = Empty
+        self.assertEqual(expected, actual)
+
+
 class AggregateTests(unittest.TestCase):
 
     def test_simple(self):
@@ -55,38 +86,38 @@ class AggregateTests(unittest.TestCase):
         expected = "6.5"
         self.assertEqual(expected, actual)
 
-    def test_none_value_doest_fail(self):
-        value = None
+    def test_empty_value_doest_fail(self):
+        value = Empty
         values = ["1", "2"]
         weight = "0.5"
         actual = aggregate(value, values=values, weight=weight)
         expected = "1.5"
         self.assertEqual(expected, actual)
 
-    def test_none_values_doest_fail(self):
-        value = None
-        values = [None, "2"]
+    def test_Empty_values_doest_fail(self):
+        value = Empty
+        values = [Empty, "2"]
         weight = "1"
         actual = aggregate(value, values=values, weight=weight)
         expected = "2"
         self.assertEqual(expected, actual)
 
-    def test_all_nones_returns_none(self):
-        value = None
-        values = [None, None]
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty]
         weight = "0.5"
         actual = aggregate(value, values=values, weight=weight)
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
 
 class MeanTests(unittest.TestCase):
 
-    def test_all_nones_returns_none(self):
-        value = None
-        values = [None, None]
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        values = [Empty, Empty]
         actual = mean(value, values=values)
-        expected = None
+        expected = Empty
         self.assertEqual(expected, actual)
 
     def test_simple(self):
@@ -94,6 +125,13 @@ class MeanTests(unittest.TestCase):
         values = ["4", "5"]
         actual = mean(value, values=values)
         expected = "4"
+        self.assertEqual(expected, actual)
+
+    def test_zero(self):
+        value = Empty
+        values = ["0", Empty]
+        actual = mean(value, values=values)
+        expected = "0"
         self.assertEqual(expected, actual)
 
 

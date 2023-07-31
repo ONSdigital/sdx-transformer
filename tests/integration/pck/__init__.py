@@ -1,17 +1,28 @@
 import json
 
-from app.definitions import SubmissionJson
-from app.formatters.formatter import Formatter
+from app.definitions import Data, Empty, PCK
 
 
-class TestFormatter(Formatter):
-
-    def generate_pck(self) -> str:
-        return json.dumps({str(int(k)): v for k, v in self._data.items() if v is not None})
-
-
-def read_submission(filepath: str) -> SubmissionJson:
+def read_submission_data(filepath: str) -> Data:
     with open(filepath) as f:
-        submission_json: SubmissionJson = json.load(f)
+        submission_data: Data = json.load(f)
 
-    return submission_json
+    return submission_data
+
+
+def remove_empties(data: dict[str, str | Empty]) -> Data:
+    return {k: v for k, v in data.items() if v is not Empty}
+
+
+def convert_pck_to_dict(pck: PCK) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for line in pck.split("\n"):
+        x = line.split(" ")
+        k = x[0].strip()
+        if len(x) > 1:
+            v = x[1].strip()
+            result[k] = v
+        elif k != "":
+            result[k] = ""
+
+    return result

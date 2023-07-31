@@ -17,7 +17,7 @@ survey_mapping: dict[str, str] = {
 }
 
 
-def get_prepop(survey_id: str, prepop_data: PrepopData) -> dict[Identifier: Template]:
+def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Template]:
     """
     Performs the steps required to transform prepopulated data.
     """
@@ -34,6 +34,7 @@ def get_prepop(survey_id: str, prepop_data: PrepopData) -> dict[Identifier: Temp
         item = merge_items(items, build_spec["item_list_path"])
         result[ru_ref] = item
 
+    logger.info("Completed prepop data transformation")
     return result
 
 

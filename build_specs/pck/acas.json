@@ -1,0 +1,779 @@
+{
+  "title": "Build Spec ACAS",
+  "survey_id": "171",
+  "period_format": "YYYYMM",
+  "pck_period_format": "YY",
+  "target": "COMMON SOFTWARE",
+  "template": {
+    "11": "$TO_DATE",
+    "12": "$TO_DATE",
+    "150": "$ROUND_THOUSAND",
+    "151": "$ROUND_THOUSAND",
+    "152": "$ROUND_THOUSAND",
+    "153": "$ROUND_THOUSAND",
+    "154": "$ROUND_THOUSAND",
+    "155": "$ROUND_THOUSAND",
+    "156": "$ROUND_THOUSAND",
+    "159": "$ROUND_THOUSAND",
+    "160": "$ROUND_THOUSAND",
+    "161": "$ROUND_THOUSAND",
+    "162": "$ROUND_THOUSAND",
+    "163": "$ROUND_THOUSAND",
+    "164": "$ROUND_THOUSAND",
+    "165": "$ROUND_THOUSAND",
+    "166": "$ROUND_THOUSAND",
+    "167": "$ROUND_THOUSAND",
+    "168": "$ROUND_THOUSAND",
+    "169": "$ROUND_THOUSAND",
+    "170": "$ROUND_THOUSAND",
+    "171": "$ROUND_THOUSAND",
+    "172": "$ROUND_THOUSAND",
+    "173": "$ROUND_THOUSAND",
+    "200": "$ROUND_THOUSAND",
+    "201": "$ROUND_THOUSAND",
+    "202": "$ROUND_THOUSAND",
+    "203": "$ROUND_THOUSAND",
+    "204": "$ROUND_THOUSAND",
+    "205": "$ROUND_THOUSAND",
+    "206": "$ROUND_THOUSAND",
+    "207": "$ROUND_THOUSAND",
+    "208": "$ROUND_THOUSAND",
+    "209": "$ROUND_THOUSAND",
+    "210": "$ROUND_THOUSAND",
+    "211": "$ROUND_THOUSAND",
+    "212": "$ROUND_THOUSAND",
+    "213": "$ROUND_THOUSAND",
+    "214": "$ROUND_THOUSAND",
+    "215": "$ROUND_THOUSAND",
+    "218": "$ROUND_THOUSAND",
+    "219": "$ROUND_THOUSAND",
+    "220": "$ROUND_THOUSAND",
+    "221": "$ROUND_THOUSAND",
+    "225": "$EXISTS",
+    "226": "$ROUND_THOUSAND",
+    "227": "$ROUND_THOUSAND",
+    "228": "$EXISTS",
+    "229": "$ROUND_THOUSAND",
+    "230": "$ROUND_THOUSAND",
+    "231": "$EXISTS",
+    "232": "$ROUND_THOUSAND",
+    "233": "$ROUND_THOUSAND",
+    "234": "$EXISTS",
+    "235": "$ROUND_THOUSAND",
+    "236": "$ROUND_THOUSAND",
+    "300": "$ROUND_THOUSAND",
+    "301": "$ROUND_THOUSAND",
+    "302": "$ROUND_THOUSAND",
+    "303": "$ROUND_THOUSAND",
+    "304": "$ROUND_THOUSAND",
+    "305": "$ROUND_THOUSAND",
+    "306": "$ROUND_THOUSAND",
+    "307": "$ROUND_THOUSAND",
+    "308": "$ROUND_THOUSAND",
+    "309": "$ROUND_THOUSAND",
+    "310": "$ROUND_THOUSAND",
+    "311": "$ROUND_THOUSAND",
+    "315": "$ROUND_THOUSAND",
+    "316": "$ROUND_THOUSAND",
+    "317": "$ROUND_THOUSAND",
+    "318": "$ROUND_THOUSAND",
+    "319": "$ROUND_THOUSAND",
+    "320": "$ROUND_THOUSAND",
+    "321": "$ROUND_THOUSAND",
+    "322": "$ROUND_THOUSAND",
+    "400": "$ROUND_THOUSAND",
+    "401": "$ROUND_THOUSAND",
+    "402": "$ROUND_THOUSAND",
+    "403": "$ROUND_THOUSAND",
+    "404": "$ROUND_THOUSAND",
+    "405": "$ROUND_THOUSAND",
+    "406": "$ROUND_THOUSAND",
+    "407": "$ROUND_THOUSAND",
+    "408": "$ROUND_THOUSAND",
+    "409": "$ROUND_THOUSAND",
+    "410": "$ROUND_THOUSAND",
+    "411": "$ROUND_THOUSAND",
+    "412": "$ROUND_THOUSAND",
+    "413": "$ROUND_THOUSAND",
+    "414": "$ROUND_THOUSAND",
+    "415": "$ROUND_THOUSAND",
+    "416": "$ROUND_THOUSAND",
+    "417": "$ROUND_THOUSAND",
+    "418": "$ROUND_THOUSAND",
+    "419": "$ROUND_THOUSAND",
+    "420": "$ROUND_THOUSAND",
+    "421": "$ROUND_THOUSAND",
+    "500": "$ROUND_THOUSAND",
+    "501": "$ROUND_THOUSAND",
+    "502": "$ROUND_THOUSAND",
+    "503": "$ROUND_THOUSAND",
+    "504": "$ROUND_THOUSAND",
+    "505": "$ROUND_THOUSAND",
+    "506": "$ROUND_THOUSAND",
+    "507": "$ROUND_THOUSAND",
+    "508": "$ROUND_THOUSAND",
+    "509": "$ROUND_THOUSAND",
+    "510": "$ROUND_THOUSAND",
+    "511": "$ROUND_THOUSAND",
+    "512": "$ROUND_THOUSAND",
+    "513": "$ROUND_THOUSAND",
+    "514": "$ROUND_THOUSAND",
+    "515": "$ROUND_THOUSAND",
+    "516": "$ROUND_THOUSAND",
+    "517": "$ROUND_THOUSAND",
+    "518": "$ROUND_THOUSAND",
+    "519": "$ROUND_THOUSAND",
+    "601": "$ROUND_THOUSAND",
+    "602": "$ROUND_THOUSAND",
+    "603": "$ROUND_THOUSAND",
+    "604": "$ROUND_THOUSAND",
+    "605": "$ROUND_THOUSAND",
+    "606": "$ROUND_THOUSAND",
+    "607": "$ROUND_THOUSAND",
+    "608": "$ROUND_THOUSAND",
+    "609": "$ROUND_THOUSAND",
+    "610": "$ROUND_THOUSAND",
+    "611": "$ROUND_THOUSAND",
+    "612": "$ROUND_THOUSAND",
+    "613": "$ROUND_THOUSAND",
+    "614": "$ROUND_THOUSAND",
+    "615": "$ROUND_THOUSAND",
+    "616": "$ROUND_THOUSAND",
+    "617": "$ROUND_THOUSAND",
+    "618": "$ROUND_THOUSAND",
+    "700": "$ROUND_THOUSAND",
+    "701": "$ROUND_THOUSAND",
+    "702": "$ROUND_THOUSAND",
+    "703": "$ROUND_THOUSAND",
+    "704": "$ROUND_THOUSAND",
+    "705": "$ROUND_THOUSAND",
+    "706": "$ROUND_THOUSAND",
+    "707": "$ROUND_THOUSAND",
+    "708": "$ROUND_THOUSAND",
+    "709": "$ROUND_THOUSAND",
+    "710": "$ROUND_THOUSAND",
+    "711": "$ROUND_THOUSAND",
+    "712": "$ROUND_THOUSAND",
+    "713": "$ROUND_THOUSAND",
+    "714": "$ROUND_THOUSAND",
+    "715": "$ROUND_THOUSAND",
+    "800": "$ROUND_THOUSAND",
+    "801": "$ROUND_THOUSAND",
+    "802": "$ROUND_THOUSAND",
+    "803": "$ROUND_THOUSAND",
+    "804": "$ROUND_THOUSAND",
+    "805": "$ROUND_THOUSAND",
+    "806": "$ROUND_THOUSAND",
+    "807": "$ROUND_THOUSAND",
+    "811": "$EXISTS",
+    "812": "$ROUND_THOUSAND",
+    "813": "$ROUND_THOUSAND",
+    "814": "$EXISTS",
+    "815": "$ROUND_THOUSAND",
+    "816": "$ROUND_THOUSAND",
+    "817": "$EXISTS",
+    "818": "$ROUND_THOUSAND",
+    "819": "$ROUND_THOUSAND",
+    "820": "$EXISTS",
+    "821": "$ROUND_THOUSAND",
+    "822": "$ROUND_THOUSAND",
+    "823": "$EXISTS",
+    "824": "$ROUND_THOUSAND",
+    "825": "$ROUND_THOUSAND",
+    "826": "$EXISTS",
+    "827": "$ROUND_THOUSAND",
+    "828": "$ROUND_THOUSAND",
+    "901": "$ROUND_THOUSAND",
+    "904": "#904",
+    "905": "#905",
+    "146": "$EXISTS",
+    "158": "$158",
+    "157": "$157",
+    "175": "$175",
+    "176": "$176",
+    "174": "$174",
+    "223": "$223",
+    "224": "$224",
+    "222": "$222",
+    "238": "$238",
+    "239": "$239",
+    "237": "$237",
+    "313": "$313",
+    "314": "$314",
+    "312": "$312",
+    "324": "$324",
+    "325": "$325",
+    "323": "$323",
+    "423": "$423",
+    "424": "$424",
+    "422": "$422",
+    "521": "$521",
+    "522": "$522",
+    "520": "$520",
+    "620": "$620",
+    "621": "$621",
+    "619": "$619",
+    "717": "$717",
+    "718": "$718",
+    "716": "$716",
+    "809": "$809",
+    "810": "$810",
+    "808": "$808",
+    "830": "$830",
+    "831": "$831",
+    "829": "$829",
+    "900": "$900",
+    "902": "$MATCHES_YES",
+    "903": "$MATCHES_NO"
+  },
+  "transforms": {
+    "$TO_DATE": {
+      "name": "TO_DATE",
+      "args": {
+        "display_as": "%d%m%Y"
+      }
+    },
+    "$DIVIDE_BY_THOUSAND": {
+      "name": "DIVIDE",
+      "args": {
+        "by": "1000"
+      }
+    },
+    "$ROUND_THOUSAND": {
+      "name": "ROUND",
+      "args": {
+        "nearest": "1000"
+      },
+      "post": "$DIVIDE_BY_THOUSAND"
+    },
+    "$EXISTS": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "1",
+        "on_false": "2"
+      }
+    },
+    "$MATCHES_YES": {
+      "name": "CONTAINS",
+      "args": {
+        "value": "#9977",
+        "match_str": "Yes",
+        "on_true": "1",
+        "on_false": "2"
+      }
+    },
+    "$MATCHES_NO": {
+      "name": "CONTAINS",
+      "args": {
+        "value": "#9977",
+        "match_str": "No",
+        "on_true": "1",
+        "on_false": "2"
+      }
+    },
+    "$EQUALS_ZERO": {
+      "name": "NUMBER_EQUALS",
+      "args": {
+        "comparand": "0",
+        "on_true": "1",
+        "on_false": "2"
+      }
+    },
+    "$TOTAL_EXISTS": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "&value",
+        "on_false": "1"
+      },
+      "post": "$EQUALS_ZERO"
+    },
+    "$158": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&150",
+          "&152",
+          "&154",
+          "&156"
+        ]
+      }
+    },
+    "$157": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&158"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$175": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&159",
+          "&161",
+          "&163",
+          "&165",
+          "&167",
+          "&169",
+          "&171"
+        ]
+      }
+    },
+    "$176": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&160",
+          "&162",
+          "&164",
+          "&166",
+          "&168",
+          "&170",
+          "&172",
+          "&173"
+        ]
+      }
+    },
+    "$174": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&175",
+          "&176"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$223": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&200",
+          "&201",
+          "&203",
+          "&204",
+          "&206",
+          "&208",
+          "&210",
+          "&212",
+          "&214",
+          "&218",
+          "&220"
+        ]
+      }
+    },
+    "$224": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&202",
+          "&205",
+          "&207",
+          "&209",
+          "&211",
+          "&213",
+          "&215",
+          "&219",
+          "&221"
+        ]
+      }
+    },
+    "$222": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&223",
+          "&224"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$238": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&226",
+          "&229",
+          "&232",
+          "&235"
+        ]
+      }
+    },
+    "$239": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&227",
+          "&230",
+          "&233",
+          "&236"
+        ]
+      }
+    },
+    "$237": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&238",
+          "&239"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$313": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&300",
+          "&302",
+          "&304",
+          "&306",
+          "&308",
+          "&310"
+        ]
+      }
+    },
+    "$314": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&301",
+          "&303",
+          "&305",
+          "&307",
+          "&309",
+          "&311"
+        ]
+      }
+    },
+    "$312": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&313",
+          "&314"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$324": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&315",
+          "&317",
+          "&319",
+          "&321"
+        ]
+      }
+    },
+    "$325": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&316",
+          "&318",
+          "&320",
+          "&322"
+        ]
+      }
+    },
+    "$323": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&324",
+          "&325"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$423": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&400",
+          "&402",
+          "&404",
+          "&406",
+          "&408",
+          "&410",
+          "&412",
+          "&414",
+          "&416",
+          "&418",
+          "&420"
+        ]
+      }
+    },
+    "$424": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&401",
+          "&403",
+          "&405",
+          "&407",
+          "&409",
+          "&411",
+          "&413",
+          "&415",
+          "&417",
+          "&419",
+          "&421"
+        ]
+      }
+    },
+    "$422": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&423",
+          "&424"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$521": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&500",
+          "&502",
+          "&504",
+          "&506",
+          "&508",
+          "&510",
+          "&512",
+          "&514",
+          "&516",
+          "&518"
+        ]
+      }
+    },
+    "$522": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&501",
+          "&503",
+          "&505",
+          "&507",
+          "&509",
+          "&511",
+          "&513",
+          "&515",
+          "&517",
+          "&519"
+        ]
+      }
+    },
+    "$520": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&521",
+          "&522"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$620": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&601",
+          "&603",
+          "&605",
+          "&607",
+          "&609",
+          "&611",
+          "&613",
+          "&615",
+          "&617"
+        ]
+      }
+    },
+    "$621": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&602",
+          "&604",
+          "&606",
+          "&608",
+          "&610",
+          "&612",
+          "&614",
+          "&616",
+          "&618"
+        ]
+      }
+    },
+    "$619": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&620",
+          "&621"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$717": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&700",
+          "&702",
+          "&704",
+          "&706",
+          "&708",
+          "&710",
+          "&712",
+          "&714"
+        ]
+      }
+    },
+    "$718": {
+      "name": "TOTAL",
+      "args": {
+        "value": "",
+        "values": [
+          "&701",
+          "&703",
+          "&705",
+          "&707",
+          "&709",
+          "&711",
+          "&713",
+          "&715"
+        ]
+      }
+    },
+    "$716": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&717",
+          "&718"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$809": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&800",
+          "&802",
+          "&804",
+          "&806"
+        ]
+      }
+    },
+    "$810": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&801",
+          "&803",
+          "&805",
+          "&807"
+        ]
+      }
+    },
+    "$808": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&809",
+          "&810"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$830": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&812",
+          "&815",
+          "&818",
+          "&821",
+          "&824",
+          "&827"
+        ]
+      }
+    },
+    "$831": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&813",
+          "&816",
+          "&819",
+          "&822",
+          "&825",
+          "&828"
+        ]
+      }
+    },
+    "$829": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&830",
+          "&831"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    },
+    "$900": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&901"
+        ]
+      },
+      "post": "$TOTAL_EXISTS"
+    }
+  }
+}
