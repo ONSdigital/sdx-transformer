@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions import SurveyMetadata, PCK
 from app.pck import transform, get_build_spec, get_pck
-from tests.integration.pck import read_submission_data, remove_empties
+from tests.integration.pck import read_submission_data, remove_empties, convert_pck_to_dict
 
 
 class ACASTransformTests(unittest.TestCase):
@@ -238,11 +238,14 @@ class ACASPckTests(unittest.TestCase):
             "form_type": "0002",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        pck: PCK = get_pck(submission_data, survey_metadata)
+        actual = convert_pck_to_dict(pck)
 
         pck_filepath = "tests/data/acas/171.0002.pck"
         with open(pck_filepath) as f:
-            expected: PCK = f.read()
+            text: PCK = f.read()
+
+        expected = convert_pck_to_dict(text)
 
         self.assertEqual(expected, actual)
 
@@ -251,16 +254,19 @@ class ACASPckTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "117",
+            "survey_id": "171",
             "period_id": "201605",
             "ru_ref": "12346789012A",
             "form_type": "0003",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        pck: PCK = get_pck(submission_data, survey_metadata)
+        actual = convert_pck_to_dict(pck)
 
         pck_filepath = "tests/data/acas/171.0003.pck"
         with open(pck_filepath) as f:
-            expected: PCK = f.read()
+            text: PCK = f.read()
+
+        expected = convert_pck_to_dict(text)
 
         self.assertEqual(expected, actual)

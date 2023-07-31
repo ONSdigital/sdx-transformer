@@ -1,22 +1,44 @@
-from app.definitions import Value, SurveyMetadata, PCK
+from app.definitions import Value, SurveyMetadata, PCK, BuildSpecError
 
 
 class Formatter:
 
-    def __init__(self, data: dict[str, Value], metadata: SurveyMetadata):
-        self._data = data
-        ru: str = metadata["ru_ref"]
-        self._ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
-        self._ru_check: str = ru[-1] if ru and ru[-1].isalpha() else ""
-        self._period: str = metadata["period_id"]
-        self._form_type: str = metadata["form_type"]
-        self._survey_id = metadata["survey_id"]
+    def __init__(self, period_format: str, pck_period_format: str):
+        self._period_format = period_format
+        self._pck_period_format = pck_period_format
 
-    def generate_pck(self) -> PCK:
+    def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
         """Write a PCK file."""
-        pck_lines = self._pck_lines()
+        pck_lines = self._pck_lines(data, metadata)
         output = "\n".join(pck_lines)
         return output + "\n"
 
-    def _pck_lines(self) -> list[str]:
+    def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
         pass
+
+    def convert_period(self, period: str) -> str:
+        symbols: dict[str, list[str]] = {
+            "D": [],
+            "M": [],
+            "Y": []
+        }
+        for i in range(0, len(period)):
+            k = self._period_format[i]
+            if k not in symbols:
+                raise BuildSpecError(f"Build spec period in wrong format {self._period_format}")
+            symbols[k].append(period[i])
+
+        if self._pck_period_format.count("Y") == 4:
+            if len(symbols["Y"]) == 2:
+                symbols["Y"].insert(0, "0")
+                symbols["Y"].insert(0, "2")
+        elif self._pck_period_format.count("Y") == 2:
+            if len(symbols["Y"]) == 4:
+                symbols["Y"].pop(0)
+                symbols["Y"].pop(0)
+
+        result = ""
+        for f in self._pck_period_format:
+            result += symbols[f].pop(0)
+
+        return result

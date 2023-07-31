@@ -3,7 +3,7 @@ import json
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata, Template, Transforms
+from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
 from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter
 from app.formatters.cs_formatter import CSFormatter
@@ -32,8 +32,9 @@ def get_pck(submission_data: Data, survey_metadata: SurveyMetadata) -> PCK:
     """
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"])
     transformed_data: dict[str, Value] = transform(submission_data, build_spec)
-    formatter: Formatter = formatter_mapping.get(build_spec["target"])(transformed_data, survey_metadata)
-    pck = formatter.generate_pck()
+    f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
+    formatter: Formatter = f(build_spec["period_format"], build_spec["pck_period_format"])
+    pck = formatter.generate_pck(transformed_data, survey_metadata)
     logger.info("Generated pck file")
     return pck
 
