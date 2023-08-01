@@ -1,0 +1,90 @@
+{
+  "title": "Build Spec for Monthly Credit Grantors",
+  "survey_id": "127",
+  "target": "OpenROAD",
+  "period_format": "YYYYMM",
+  "pck_period_format": "YYYYMM",
+  "template": {
+    "0001": "$DATE_0001",
+    "0002": "$DATE_0002",
+    "9001": "$ROUND_THOUSAND",
+    "9003": "$ROUND_THOUSAND",
+    "9005": "$ROUND_THOUSAND",
+    "9007": "$ROUND_THOUSAND",
+    "9008": "$ROUND_THOUSAND",
+    "9010": "$ROUND_THOUSAND",
+    "9012": "$ROUND_THOUSAND",
+    "9014": "$ROUND_THOUSAND",
+    "9002": "$ROUND_THOUSAND",
+    "9004": "$ROUND_THOUSAND",
+    "9006": "$ROUND_THOUSAND",
+    "9009": "$ROUND_THOUSAND",
+    "9016": "$ROUND_THOUSAND",
+    "9011": "$ROUND_THOUSAND",
+    "9013": "$ROUND_THOUSAND",
+    "9015": "$ROUND_THOUSAND"
+  },
+  "transforms": {
+    "$START_OF_MONTH": {
+      "name": "START_OF_MONTH",
+      "args": {
+        "value": "#period_id",
+        "input_format": "YYYYMM",
+        "display_as": "DDMMYYYY"
+      }
+    },
+    "$END_OF_MONTH": {
+      "name": "END_OF_MONTH",
+      "args": {
+        "value": "#period_id",
+        "input_format": "YYYYMM",
+        "display_as": "DDMMYYYY"
+      }
+    },
+    "$TO_DATE_9998": {
+      "name": "TO_DATE",
+      "args": {
+        "value": "#9998",
+        "display_as": "DDMMYYYY"
+      }
+    },
+    "$TO_DATE_9997": {
+      "name": "TO_DATE",
+      "args": {
+        "value": "#9997",
+        "display_as": "DDMMYYYY"
+      }
+    },
+    "$DATE_0001": {
+      "name": "CONTAINS",
+      "args": {
+        "value": "#9999",
+        "match_str": "Yes",
+        "on_true": "$START_OF_MONTH",
+        "on_false": "$TO_DATE_9998"
+      }
+    },
+    "$DATE_0002": {
+      "name": "CONTAINS",
+      "args": {
+        "value": "#9999",
+        "match_str": "Yes",
+        "on_true": "$END_OF_MONTH",
+        "on_false": "$TO_DATE_9997"
+      }
+    },
+    "$DIVIDE_BY_THOUSAND": {
+      "name": "DIVIDE",
+      "args": {
+        "by": "1000"
+      }
+    },
+    "$ROUND_THOUSAND": {
+      "name": "ROUND",
+      "args": {
+        "nearest": "1000"
+      },
+      "post": "$DIVIDE_BY_THOUSAND"
+    }
+  }
+}
