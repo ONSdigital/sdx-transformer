@@ -2,9 +2,11 @@ from collections.abc import Callable
 from typing import Final
 
 from app.definitions import ParseTree, Transform, Field, Value, Empty
+from app.functions.compound import currency_thousands
+from app.functions.general import no_transform, exists, any_exists
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
-from app.functions.standard import contains, any_contains, any_date, exists, concat, any_exists, to_date, \
-    no_transform, starts_with
+from app.functions.string import starts_with, contains, any_contains, concat
+from app.functions.time import to_date, any_date, start_of_month, end_of_month
 from app.tree_walker import TreeWalker
 
 
@@ -14,20 +16,23 @@ CURRENT_VALUE: Final = DERIVED_PREFIX + "value"
 
 _function_lookup: dict[str, Callable] = {
     "VALUE": no_transform,
+    "EXISTS": exists,
+    "ANY_EXISTS": any_exists,
     "STARTS_WITH": starts_with,
     "CONTAINS": contains,
     "ANY_CONTAINS": any_contains,
+    "CONCAT": concat,
     "TO_DATE": to_date,
     "ANY_DATE": any_date,
-    "EXISTS": exists,
-    "ANY_EXISTS": any_exists,
-    "CONCAT": concat,
+    "START_OF_MONTH": start_of_month,
+    "END_OF_MONTH": end_of_month,
     "ROUND": round_half_up,
     "TOTAL": total,
     "DIVIDE": divide,
     "AGGREGATE": aggregate,
     "MEAN": mean,
     "NUMBER_EQUALS": number_equals,
+    "CURRENCY_THOUSANDS": currency_thousands,
 }
 
 

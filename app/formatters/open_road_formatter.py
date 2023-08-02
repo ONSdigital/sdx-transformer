@@ -1,6 +1,6 @@
 from sdx_gcp.app import get_logger
 
-from app.definitions import Value, SurveyMetadata
+from app.definitions import Value, SurveyMetadata, Empty
 from app.formatters.formatter import Formatter
 
 logger = get_logger()
@@ -19,6 +19,6 @@ class OpenRoadFormatter(Formatter):
         survey_id = metadata["survey_id"]
 
         return [
-            f"{ru_ref}:{survey_id}:{period}:{qcode}:{value}"
+            f"{ru_ref}:{survey_id}:{period}:{qcode}:{value if value is not Empty else ''}"
             for qcode, value in sorted(data.items())
         ]

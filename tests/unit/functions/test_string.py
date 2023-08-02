@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.standard import contains, any_contains, any_date, exists, concat, any_exists, starts_with
+from app.functions.string import contains, any_contains, concat, starts_with
 
 
 class StartsWithTests(unittest.TestCase):
@@ -74,76 +74,6 @@ class AnyContainsTests(unittest.TestCase):
         values = [Empty, Empty, Empty]
         actual = any_contains(value, values=values, match_str="y", on_true="1", on_false="2")
         expected = Empty
-        self.assertEqual(expected, actual)
-
-
-class AnyDateTests(unittest.TestCase):
-
-    def test_true(self):
-        value = "12/07/2023"
-        values = []
-        actual = any_date(value, values=values, on_true="1", on_false="2")
-        expected = "1"
-        self.assertEqual(expected, actual)
-
-    def test_invalid_date_returns_on_false(self):
-        value = "12/13/2023"
-        values = []
-        actual = any_date(value, values=values, on_true="1", on_false="2")
-        expected = "2"
-        self.assertEqual(expected, actual)
-
-    def test_true_for_date_in_list(self):
-        value = ""
-        values = ["12/07/2023", "13/07/2023"]
-        actual = any_date(value, values=values, on_true="1", on_false="2")
-        expected = "1"
-        self.assertEqual(expected, actual)
-
-    def test_some_empty_dont_fail(self):
-        value = "12/07/2023"
-        values = [Empty, Empty]
-        actual = any_date(value, values=values, on_true="1", on_false="2")
-        expected = "1"
-        self.assertEqual(expected, actual)
-
-    def test_all_empty_returns_empty(self):
-        value = Empty
-        values = [Empty, Empty, Empty]
-        actual = any_date(value, values=values, on_true="1", on_false="2")
-        expected = Empty
-        self.assertEqual(expected, actual)
-
-
-class ExistsTests(unittest.TestCase):
-
-    def test_true(self):
-        value = "foo"
-        actual = exists(value, on_true="1", on_false="2")
-        expected = "1"
-        self.assertEqual(expected, actual)
-
-    def test_false(self):
-        value = None
-        actual = exists(value, on_true="1", on_false="2")
-        expected = "2"
-        self.assertEqual(expected, actual)
-
-
-class AnyExistTests(unittest.TestCase):
-
-    def test_true(self):
-        value = "foo"
-        values = [Empty, Empty]
-        actual = any_exists(value, values=values, on_true="1", on_false="2")
-        expected = "1"
-        self.assertEqual(expected, actual)
-
-    def test_false(self):
-        value = Empty
-        values = [Empty, Empty]
-        actual = any_exists(value, values=values, on_true="1", on_false="2")
-        expected = "2"
         self.assertEqual(expected, actual)
 
 

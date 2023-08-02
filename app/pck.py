@@ -15,6 +15,7 @@ from app.populate import populate_mappings, add_implicit_values
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
+    "127": "mcg",
     "134": "mwss",
     "171": "acas",
 }
@@ -22,7 +23,7 @@ survey_mapping: dict[str, str] = {
 formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA": CORAFormatter,
     "COMMON SOFTWARE": CSFormatter,
-    "OPEN ROAD": OpenRoadFormatter
+    "OpenROAD": OpenRoadFormatter
 }
 
 
@@ -31,6 +32,7 @@ def get_pck(submission_data: Data, survey_metadata: SurveyMetadata) -> PCK:
     Performs the steps required to generate a pck file from the submission data.
     """
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"])
+    add_metadata_to_input_data(submission_data, survey_metadata)
     transformed_data: dict[str, Value] = transform(submission_data, build_spec)
     f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
     formatter: Formatter = f(build_spec["period_format"], build_spec["pck_period_format"])
@@ -52,6 +54,11 @@ def get_build_spec(survey_id: str) -> BuildSpec:
         build_spec: BuildSpec = json.load(f)
 
     return build_spec
+
+
+def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMetadata):
+    for k, v in survey_metadata.items():
+        submission_data[k] = v
 
 
 def transform(data: Data, build_spec: BuildSpec) -> dict[str, Value]:
