@@ -1,8 +1,8 @@
 {
   "title": "Build Spec for MWSS",
   "survey_id": "134",
-  "period_format": "DDMMYY",
-  "pck_period_format": "DDMMYY",
+  "period_format": "YYYYMM",
+  "pck_period_format": "YYYYMM",
   "target": "COMMON SOFTWARE",
   "template": {
     "40": "$AGG_40",
