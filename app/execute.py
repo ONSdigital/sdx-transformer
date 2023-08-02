@@ -2,6 +2,7 @@ from collections.abc import Callable
 from typing import Final
 
 from app.definitions import ParseTree, Transform, Field, Value, Empty
+from app.functions.compound import currency_thousands
 from app.functions.general import no_transform, exists, any_exists
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.functions.string import starts_with, contains, any_contains, concat
@@ -31,6 +32,7 @@ _function_lookup: dict[str, Callable] = {
     "AGGREGATE": aggregate,
     "MEAN": mean,
     "NUMBER_EQUALS": number_equals,
+    "CURRENCY_THOUSANDS": currency_thousands,
 }
 
 

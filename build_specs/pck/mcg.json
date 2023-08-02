@@ -7,22 +7,22 @@
   "template": {
     "0001": "$DATE_0001",
     "0002": "$DATE_0002",
-    "9001": "$ROUND_THOUSAND",
-    "9003": "$ROUND_THOUSAND",
-    "9005": "$ROUND_THOUSAND",
-    "9007": "$ROUND_THOUSAND",
-    "9008": "$ROUND_THOUSAND",
-    "9010": "$ROUND_THOUSAND",
-    "9012": "$ROUND_THOUSAND",
-    "9014": "$ROUND_THOUSAND",
-    "9002": "$ROUND_THOUSAND",
-    "9004": "$ROUND_THOUSAND",
-    "9006": "$ROUND_THOUSAND",
-    "9009": "$ROUND_THOUSAND",
-    "9016": "$ROUND_THOUSAND",
-    "9011": "$ROUND_THOUSAND",
-    "9013": "$ROUND_THOUSAND",
-    "9015": "$ROUND_THOUSAND"
+    "9001": "$CURRENCY_THOUSANDS",
+    "9003": "$CURRENCY_THOUSANDS",
+    "9005": "$CURRENCY_THOUSANDS",
+    "9007": "$CURRENCY_THOUSANDS",
+    "9008": "$CURRENCY_THOUSANDS",
+    "9010": "$CURRENCY_THOUSANDS",
+    "9012": "$CURRENCY_THOUSANDS",
+    "9014": "$CURRENCY_THOUSANDS",
+    "9002": "$CURRENCY_THOUSANDS",
+    "9004": "$CURRENCY_THOUSANDS",
+    "9006": "$CURRENCY_THOUSANDS",
+    "9009": "$CURRENCY_THOUSANDS",
+    "9016": "$CURRENCY_THOUSANDS",
+    "9011": "$CURRENCY_THOUSANDS",
+    "9013": "$CURRENCY_THOUSANDS",
+    "9015": "$CURRENCY_THOUSANDS"
   },
   "transforms": {
     "$START_OF_MONTH": {
@@ -73,18 +73,9 @@
         "on_false": "$TO_DATE_9997"
       }
     },
-    "$DIVIDE_BY_THOUSAND": {
-      "name": "DIVIDE",
-      "args": {
-        "by": "1000"
-      }
-    },
-    "$ROUND_THOUSAND": {
-      "name": "ROUND",
-      "args": {
-        "nearest": "1000"
-      },
-      "post": "$DIVIDE_BY_THOUSAND"
+    "$CURRENCY_THOUSANDS": {
+      "name": "CURRENCY_THOUSANDS",
+      "args": {}
     }
   }
 }
