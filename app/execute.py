@@ -3,10 +3,10 @@ from typing import Final
 
 from app.definitions import ParseTree, Transform, Field, Value, Empty
 from app.functions.compound import currency_thousands
-from app.functions.general import no_transform, exists, any_exists
+from app.functions.general import no_transform, exists, any_exists, lookup
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.functions.string import starts_with, contains, any_contains, concat
-from app.functions.time import to_date, any_date, start_of_month, end_of_month
+from app.functions.time import to_date, any_date, start_of_month, end_of_month, start_of_year, end_of_year
 from app.tree_walker import TreeWalker
 
 
@@ -18,6 +18,7 @@ _function_lookup: dict[str, Callable] = {
     "VALUE": no_transform,
     "EXISTS": exists,
     "ANY_EXISTS": any_exists,
+    "LOOKUP": lookup,
     "STARTS_WITH": starts_with,
     "CONTAINS": contains,
     "ANY_CONTAINS": any_contains,
@@ -26,6 +27,8 @@ _function_lookup: dict[str, Callable] = {
     "ANY_DATE": any_date,
     "START_OF_MONTH": start_of_month,
     "END_OF_MONTH": end_of_month,
+    "START_OF_YEAR": start_of_year,
+    "END_OF_YEAR": end_of_year,
     "ROUND": round_half_up,
     "TOTAL": total,
     "DIVIDE": divide,
