@@ -12,7 +12,7 @@ class TreeWalker:
 
     Subclasses can override the existing functions for encountering
     each type of node. These each have access to the encountered
-    fields' name and value, and also the tree walker itself
+    fields' name and value, and the tree walker through the self parameter
     - allowing for full customization of the resulting tree.
     """
     def __init__(
@@ -23,17 +23,17 @@ class TreeWalker:
         self._current = tree
         self._on_str = on_str
 
-    def on_list(self, name: str, field: list[Field], walker: Self) -> Field:
+    def on_list(self, name: str, field: list[Field]) -> Field:
         return [self.evaluate_field(name, item) for item in field]
 
-    def on_dict(self, name: str, field: dict[str, Field], walker: Self) -> Field:
+    def on_dict(self, name: str, field: dict[str, Field]) -> Field:
         return {k: self.evaluate_field(k, v) for k, v in field.items()}
 
     def evaluate_field(self, name: str, field: Field) -> Field:
         if isinstance(field, dict):
-            return self.on_dict(name, field, self)
+            return self.on_dict(name, field)
         elif isinstance(field, list):
-            return self.on_list(name, field, self)
+            return self.on_list(name, field)
         elif isinstance(field, str):
             return self._on_str(name, field, self)
         return field

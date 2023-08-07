@@ -15,8 +15,12 @@
     "146": "$COMMENT",
     "163": "$CURRENCY_THOUSANDS",
     "164": "$CURRENCY_THOUSANDS",
+    "300": "$CURRENCY_THOUSANDS",
     "311": "$CURRENCY_THOUSANDS",
+    "318": "$CURRENCY_THOUSANDS",
     "327": "$CURRENCY_THOUSANDS",
+    "337": "$CURRENCY_THOUSANDS",
+    "339": "$CURRENCY_THOUSANDS",
     "346": "$CURRENCY_THOUSANDS",
     "399": "$CURRENCY_THOUSANDS",
     "400": "$CURRENCY_THOUSANDS",
@@ -25,8 +29,11 @@
     "414": "$CURRENCY_THOUSANDS",
     "415": "$CURRENCY_THOUSANDS",
     "416": "$CURRENCY_THOUSANDS",
+    "419": "$CURRENCY_THOUSANDS",
     "420": "$CURRENCY_THOUSANDS",
+    "431": "$CURRENCY_THOUSANDS",
     "450": "$CURRENCY_THOUSANDS",
+    "455": "$CURRENCY_THOUSANDS",
     "475": "$CURRENCY_THOUSANDS",
     "476": "$CURRENCY_THOUSANDS",
     "499": "$499",
@@ -97,12 +104,32 @@
       "name": "CURRENCY_THOUSANDS",
       "args": {}
     },
+    "$NO_COMMENT_1808": {
+      "name": "ANY_CONTAINS",
+      "args": {
+        "values": ["#form_type"],
+        "match_str": "1808",
+        "on_true": null,
+        "on_false": "&value"
+      }
+    },
+    "$NO_COMMENT_1820": {
+      "name": "ANY_CONTAINS",
+      "args": {
+        "values": ["#form_type"],
+        "match_str": "1820",
+        "on_true": null,
+        "on_false": "&value"
+      },
+      "post": "$NO_COMMENT_1808"
+    },
     "$COMMENT": {
       "name": "EXISTS",
       "args": {
         "on_true": "1",
         "on_false": "2"
-      }
+      },
+      "post": "$NO_COMMENT_1820"
     },
     "$499": {
       "name": "EXISTS",

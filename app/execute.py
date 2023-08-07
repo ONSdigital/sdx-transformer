@@ -10,8 +10,8 @@ from app.functions.time import to_date, any_date, start_of_month, end_of_month, 
 from app.tree_walker import TreeWalker
 
 
-DERIVED_PREFIX: Final = "&"
-CURRENT_VALUE: Final = DERIVED_PREFIX + "value"
+DERIVED_PREFIX: Final[str] = "&"
+CURRENT_VALUE: Final[str] = DERIVED_PREFIX + "value"
 
 
 _function_lookup: dict[str, Callable] = {
@@ -50,11 +50,11 @@ def execute(tree: ParseTree) -> dict[str, Value]:
 
     class ExecuteTreeWalker(TreeWalker):
 
-        def on_dict(self, name: str, field: dict[str, Field], walker: TreeWalker) -> Field:
+        def on_dict(self, name: str, field: dict[str, Field]) -> Field:
             if 'name' in field.keys():
                 return execute_transform(field, self)
 
-            return super().on_dict(name, field, self)
+            return super().on_dict(name, field)
 
     def on_leaf(_name: str, field: str, walker: ExecuteTreeWalker) -> Field:
         if field.startswith(DERIVED_PREFIX) and field != CURRENT_VALUE:

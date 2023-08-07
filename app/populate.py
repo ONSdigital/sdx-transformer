@@ -43,14 +43,14 @@ def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
             super().__init__(tree)
             self._qcode = qcode
 
-        def on_dict(self, name: str, field: dict[str, Field], walker: TreeWalker) -> Field:
+        def on_dict(self, name: str, field: dict[str, Field]) -> Field:
             if name == "args":
                 if "value" not in field:
                     f = deepcopy(field)
                     f["value"] = f'{MAPPING_PREFIX}{self._qcode}'
-                    return super().on_dict(name, f, self)
+                    return super().on_dict(name, f)
 
-            return super().on_dict(name, field, self)
+            return super().on_dict(name, field)
 
     result_tree = deepcopy(parse_tree)
 

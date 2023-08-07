@@ -19,6 +19,7 @@ class ABSPckTests(unittest.TestCase):
     def test_abs_to_pck(self):
         root_dir = "tests/data/abs/"
         json_file_names = [f for f in os.listdir(root_dir) if f.endswith(".json")]
+        print("------------")
         for filename in json_file_names:
 
             print("testing " + filename)
