@@ -71,3 +71,21 @@ def end_of_month(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as:
         input_format=input_format,
         display_as=display_as,
         process=lambda d: d.replace(day=calendar.monthrange(d.year, d.month)[1]))
+
+
+@handle_empties
+def start_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = "DDMMYY") -> Value:
+    return _to_date(
+        value,
+        input_format=input_format,
+        display_as=display_as,
+        process=lambda d: d.replace(day=1, month=1))
+
+
+@handle_empties
+def end_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = "DDMMYY") -> Value:
+    return _to_date(
+        value,
+        input_format=input_format,
+        display_as=display_as,
+        process=lambda d: d.replace(day=31, month=12))

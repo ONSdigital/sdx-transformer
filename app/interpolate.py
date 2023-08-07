@@ -5,7 +5,7 @@ from app.definitions import Template, Transforms, ParseTree, Field
 from app.tree_walker import TreeWalker
 
 
-FUNCTION_PREFIX: Final = "$"
+FUNCTION_PREFIX: Final[str] = "$"
 
 
 def interpolate(template: Template, transforms: Transforms) -> ParseTree:
@@ -67,14 +67,14 @@ def invert_post_transforms(tree: ParseTree) -> ParseTree:
     """
     class PostTreeWalker(TreeWalker):
 
-        def on_dict(self, name: str, field: dict[str, Field], walker: TreeWalker) -> Field:
+        def on_dict(self, name: str, field: dict[str, Field]) -> Field:
             if "post" in field:
                 child = deepcopy(field)
                 parent = deepcopy(field["post"])
                 child.pop("post")
                 parent["args"]["value"] = child
-                return self.on_dict(name, parent, self)
+                return self.on_dict(name, parent)
 
-            return super().on_dict(name, field, self)
+            return super().on_dict(name, field)
 
     return PostTreeWalker(tree=tree).walk_tree()

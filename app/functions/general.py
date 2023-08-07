@@ -27,6 +27,12 @@ def any_exists(value: Value, values: list[Value], on_true: str = "1", on_false: 
     return on_false
 
 
+def lookup(value: Value, on_no_match: str = Empty, **kwargs: str) -> Value:
+    if value in kwargs:
+        return kwargs[value]
+    return on_no_match
+
+
 def handle_empties(func: Callable[..., Value]) -> Callable[..., Value]:
     def inner(value: Value, **kwargs: Value):
         found_str = False

@@ -3,21 +3,22 @@ from typing import Final
 
 from app.definitions import ParseTree, Transform, Field, Value, Empty
 from app.functions.compound import currency_thousands
-from app.functions.general import no_transform, exists, any_exists
+from app.functions.general import no_transform, exists, any_exists, lookup
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.functions.string import starts_with, contains, any_contains, concat
-from app.functions.time import to_date, any_date, start_of_month, end_of_month
+from app.functions.time import to_date, any_date, start_of_month, end_of_month, start_of_year, end_of_year
 from app.tree_walker import TreeWalker
 
 
-DERIVED_PREFIX: Final = "&"
-CURRENT_VALUE: Final = DERIVED_PREFIX + "value"
+DERIVED_PREFIX: Final[str] = "&"
+CURRENT_VALUE: Final[str] = DERIVED_PREFIX + "value"
 
 
 _function_lookup: dict[str, Callable] = {
     "VALUE": no_transform,
     "EXISTS": exists,
     "ANY_EXISTS": any_exists,
+    "LOOKUP": lookup,
     "STARTS_WITH": starts_with,
     "CONTAINS": contains,
     "ANY_CONTAINS": any_contains,
@@ -26,6 +27,8 @@ _function_lookup: dict[str, Callable] = {
     "ANY_DATE": any_date,
     "START_OF_MONTH": start_of_month,
     "END_OF_MONTH": end_of_month,
+    "START_OF_YEAR": start_of_year,
+    "END_OF_YEAR": end_of_year,
     "ROUND": round_half_up,
     "TOTAL": total,
     "DIVIDE": divide,
@@ -47,11 +50,11 @@ def execute(tree: ParseTree) -> dict[str, Value]:
 
     class ExecuteTreeWalker(TreeWalker):
 
-        def on_dict(self, name: str, field: dict[str, Field], walker: TreeWalker) -> Field:
+        def on_dict(self, name: str, field: dict[str, Field]) -> Field:
             if 'name' in field.keys():
                 return execute_transform(field, self)
 
-            return super().on_dict(name, field, self)
+            return super().on_dict(name, field)
 
     def on_leaf(_name: str, field: str, walker: ExecuteTreeWalker) -> Field:
         if field.startswith(DERIVED_PREFIX) and field != CURRENT_VALUE:
