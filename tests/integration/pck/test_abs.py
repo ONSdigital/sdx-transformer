@@ -1,17 +1,9 @@
-import json
 import os
 import unittest
 
 from app.definitions import SurveyMetadata, PCK, Data
 from app.pck import get_pck
-from tests.integration.pck import convert_pck_to_dict
-
-
-def read_abs_data(filepath: str) -> Data:
-    with open(filepath) as f:
-        submission_data = json.load(f)
-
-    return submission_data["data"]
+from tests.integration.pck import convert_pck_to_dict, read_submission_data
 
 
 class ABSPckTests(unittest.TestCase):
@@ -25,7 +17,7 @@ class ABSPckTests(unittest.TestCase):
             print("testing " + filename)
             filepath = root_dir + filename
             form_type = filename.split(".")[1]
-            submission_data = read_abs_data(filepath)
+            submission_data: Data = read_submission_data(filepath)
 
             survey_metadata: SurveyMetadata = {
                 "survey_id": "202",
