@@ -1,0 +1,132 @@
+{
+  "title": "Build Spec for ABS short forms",
+  "survey_id": "202",
+  "target": "COMMON SOFTWARE",
+  "period_format": "YYYYMM",
+  "pck_period_format": "YY",
+  "template": {
+    "01": "$PREPEND",
+    "02": "$PREPEND",
+    "03": "$PREPEND",
+    "04": "$PREPEND",
+    "11": "$PREPEND",
+    "12": "$PREPEND",
+    "13": "$PREPEND",
+    "14": "$PREPEND",
+    "21": "$PREPEND",
+    "22": "$PREPEND",
+    "23": "$PREPEND",
+    "24": "$PREPEND",
+    "145": "Transform.TEXT",
+    "146": "Transform.TEXT",
+    "501": "Transform.ADDITION",
+    "502": "Transform.ADDITION",
+    "503": "Transform.ADDITION",
+    "504": "Transform.ADDITION"
+  },
+  "transforms": {
+    "$PREPEND": {
+      "name": "START_OF_YEAR",
+      "args": {
+        "value": "#period_id",
+        "input_format": "YYYYMM",
+        "display_as": "DDMMYY"
+      }
+    },
+    "$END_OF_PERIOD": {
+      "name": "END_OF_YEAR",
+      "args": {
+        "value": "#period_id",
+        "input_format": "YYYYMM",
+        "display_as": "DDMMYY"
+      }
+    },
+    "$TO_DATE": {
+      "name": "TO_DATE",
+      "args": {
+        "display_as": "DDMMYY"
+      }
+    },
+    "$START_DATE": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "$TO_DATE",
+        "on_false": "$START_OF_PERIOD"
+      }
+    },
+    "$END_DATE": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "$TO_DATE",
+        "on_false": "$END_OF_PERIOD"
+      }
+    },
+    "$PERCENTAGE_RADIO": {
+      "name": "LOOKUP",
+      "args": {
+        "0-9%": "10000",
+        "10-24%": "1000",
+        "25-49%": "100",
+        "50-74%": "10",
+        "75-100%": "1",
+        "on_no_match": "0"
+      }
+    },
+    "$YES_NO_RADIO": {
+      "name": "LOOKUP",
+      "args": {
+        "Yes": "10",
+        "No": "1",
+        "on_no_match": "0"
+      }
+    },
+    "$CURRENCY_THOUSANDS": {
+      "name": "CURRENCY_THOUSANDS",
+      "args": {}
+    },
+    "$NO_COMMENT_1808": {
+      "name": "ANY_CONTAINS",
+      "args": {
+        "values": ["#form_type"],
+        "match_str": "1808",
+        "on_true": null,
+        "on_false": "&value"
+      }
+    },
+    "$NO_COMMENT_1820": {
+      "name": "ANY_CONTAINS",
+      "args": {
+        "values": ["#form_type"],
+        "match_str": "1820",
+        "on_true": null,
+        "on_false": "&value"
+      },
+      "post": "$NO_COMMENT_1808"
+    },
+    "$COMMENT": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "1",
+        "on_false": "2"
+      },
+      "post": "$NO_COMMENT_1820"
+    },
+    "$499": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "$CURRENCY_THOUSANDS",
+        "on_false": "$TOTAL"
+      }
+    },
+    "$TOTAL": {
+      "name": "TOTAL",
+      "args": {
+        "value": "0",
+        "values": [
+          "&403",
+          "&420"
+        ]
+      }
+    }
+  }
+}
