@@ -259,10 +259,10 @@
     "$PERCENT_RADIO": {
       "name": "LOOKUP",
       "args": {
-        "over 90%": "0001",
+        "Over 90%": "0001",
         "40-90%": "0010",
-        "less than 40%": "0011",
-        "none": "0100"
+        "Less than 40%": "0011",
+        "None": "0100"
       }
     },
     "$TEXT": {
