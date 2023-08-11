@@ -17,6 +17,7 @@ logger = get_logger()
 survey_mapping: dict[str, str] = {
     "127": "mcg",
     "134": "mwss",
+    "144": "ukis",
     "171": "acas",
     "202": "abs",
 }
@@ -36,7 +37,9 @@ def get_pck(submission_data: Data, survey_metadata: SurveyMetadata) -> PCK:
     add_metadata_to_input_data(submission_data, survey_metadata)
     transformed_data: dict[str, Value] = transform(submission_data, build_spec)
     f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
-    formatter: Formatter = f(build_spec["period_format"], build_spec["pck_period_format"])
+    formatter: Formatter = f(build_spec["period_format"],
+                             build_spec["pck_period_format"]
+                             if "pck_period_format" in build_spec else build_spec["period_format"])
     pck = formatter.generate_pck(transformed_data, survey_metadata)
     logger.info("Generated pck file")
     return pck

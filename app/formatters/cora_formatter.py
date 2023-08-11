@@ -1,4 +1,4 @@
-from app.definitions import Value, SurveyMetadata
+from app.definitions import Value, SurveyMetadata, Empty
 from app.formatters.formatter import Formatter
 
 
@@ -17,6 +17,6 @@ class CORAFormatter(Formatter):
         instance = "0"
 
         return [
-            f"{survey_id}:{ru_ref}:{page_identifier}:{period}:{instance}:{qcode}:{value}"
+            f"{survey_id}:{ru_ref}:{page_identifier}:{period}:{instance}:{qcode}:{value if value is not Empty else ''}"
             for qcode, value in sorted(data.items())
         ]
