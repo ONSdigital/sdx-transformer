@@ -3,7 +3,7 @@ import unittest
 
 from app.definitions import SurveyMetadata, PCK, Data
 from app.pck import get_pck
-from tests.integration.pck import convert_pck_to_dict, read_submission_data
+from tests.integration.pck import read_submission_data, are_equal
 
 
 class ABSPckTests(unittest.TestCase):
@@ -26,13 +26,10 @@ class ABSPckTests(unittest.TestCase):
                 "form_type": form_type,
             }
 
-            pck: PCK = get_pck(submission_data, survey_metadata)
-            actual = convert_pck_to_dict(pck)
+            actual: PCK = get_pck(submission_data, survey_metadata)
 
             pck_filepath = root_dir + filename.replace("json", "pck")
             with open(pck_filepath) as f:
-                text: PCK = f.read()
+                expected: PCK = f.read()
 
-            expected = convert_pck_to_dict(text)
-
-            self.assertEqual(expected, actual)
+            self.assertTrue(are_equal(expected, actual))

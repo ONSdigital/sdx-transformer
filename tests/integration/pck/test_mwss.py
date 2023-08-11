@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions import PCK, SurveyMetadata
 from app.pck import get_pck, transform, get_build_spec
-from tests.integration.pck import read_submission_data, remove_empties
+from tests.integration.pck import read_submission_data, remove_empties, are_equal
 
 
 class MWSSTransformTests(unittest.TestCase):
@@ -53,4 +53,4 @@ class MWSSPckTests(unittest.TestCase):
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
-        self.assertEqual(expected, actual)
+        self.assertTrue(are_equal(expected, actual))
