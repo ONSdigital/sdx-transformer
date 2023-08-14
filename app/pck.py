@@ -7,7 +7,7 @@ from sdx_gcp.errors import DataError
 
 from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
 from app.execute import execute
-from app.formatters.cora_formatter import CORAFormatter
+from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
@@ -17,6 +17,7 @@ from app.populate import populate_mappings, add_implicit_values
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
+    "092": "mes",
     "127": "mcg",
     "134": "mwss",
     "144": "ukis",
@@ -26,6 +27,7 @@ survey_mapping: dict[str, str] = {
 
 formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA": CORAFormatter,
+    "CORA_MES": MESFormatter,
     "COMMON SOFTWARE": CSFormatter,
     "OpenROAD": OpenRoadFormatter
 }

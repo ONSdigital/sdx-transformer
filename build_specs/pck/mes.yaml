@@ -1,8 +1,7 @@
 title: "Build Spec for MES"
 survey_id: "092"
-target: "CORA"
+target: "CORA_MES"
 period_format: "YYYYMM"
-pck_period_format: "YYYYMM"
 template:
     "0001": "0"
     "0002": "0"
@@ -35,6 +34,7 @@ template:
     "1233": "$PERFORMANCE_TARGETS_RADIO"
     "1234": "$PERFORMANCE_TARGETS_RADIO"
     "1235": "$PERFORMANCE_BASIS_RADIO"
+    "1236": "$PERFORMANCE_BASIS_RADIO"
     "1237": "$PERFORMANCE_BASIS_RADIO"
     "1238": "$PERFORMANCE_BASIS_RADIO"
     "1180": "$DAYS_RADIO"
