@@ -1,4 +1,6 @@
 import json
+import yaml
+from os.path import exists
 
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
@@ -52,10 +54,18 @@ def get_build_spec(survey_id: str) -> BuildSpec:
     survey_name = survey_mapping.get(survey_id)
     if survey_name is None:
         raise DataError(f"Could not lookup survey id {survey_id}")
-    filepath = f"build_specs/pck/{survey_name}.json"
-    logger.info(f"Getting build spec from {filepath}")
-    with open(filepath) as f:
-        build_spec: BuildSpec = json.load(f)
+
+    filepath = f"build_specs/pck/{survey_name}.yaml"
+    if exists(filepath):
+        logger.info(f"Getting build spec from {filepath}")
+        with open(filepath) as y:
+            build_spec: BuildSpec = yaml.safe_load(y.read())
+
+    else:
+        filepath = f"build_specs/pck/{survey_name}.json"
+        logger.info(f"Getting build spec from {filepath}")
+        with open(filepath) as j:
+            build_spec: BuildSpec = json.load(j)
 
     return build_spec
 
