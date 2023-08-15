@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.compound import currency_thousands
+from app.functions.compound import currency_thousands, prepend_key
 
 
 class CurrencyTests(unittest.TestCase):
@@ -42,3 +42,22 @@ class CurrencyTests(unittest.TestCase):
         actual = currency_thousands(Empty)
         expected = Empty
         self.assertEqual(expected, actual)
+
+
+class PrependTests(unittest.TestCase):
+    def test_prepend_key(self):
+        PREPEND_DICT = {
+            "Clay": "2",
+            "Concrete": "3",
+            "Sandlime": "4"
+        }
+
+        tests = {
+            "01": "90",
+        }
+
+        expected = "201"
+
+        for k in tests:
+            actual = prepend_key(k, PREPEND_DICT["Clay"])
+            self.assertEqual(expected, actual)

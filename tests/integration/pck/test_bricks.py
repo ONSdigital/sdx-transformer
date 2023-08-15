@@ -8,6 +8,9 @@ from tests.integration.pck import read_submission_data, convert_pck_to_dict
 
 class BricksPckTests(unittest.TestCase):
 
+    def test_bricks_prepend(self):
+        pass
+
     def test_bricks_to_pck(self):
         root_dir = "tests/data/bricks/"
         json_file_names = [f for f in os.listdir(root_dir) if f.endswith(".json")]
