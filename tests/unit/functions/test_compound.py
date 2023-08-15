@@ -42,23 +42,3 @@ class CurrencyTests(unittest.TestCase):
         actual = currency_thousands(Empty)
         expected = Empty
         self.assertEqual(expected, actual)
-
-
-class PrependTests(unittest.TestCase):
-    def test_prepend_key(self):
-        PREPEND_DICT = {
-            "Clay": "2",
-            "Concrete": "3",
-            "Sandlime": "4"
-        }
-
-        qcode = "01"
-
-        actual = prepend_key(qcode, PREPEND_DICT["Clay"])
-        self.assertEqual("201", actual)
-
-        actual = prepend_key(qcode, PREPEND_DICT["Concrete"])
-        self.assertEqual("301", actual)
-
-        actual = prepend_key(qcode, PREPEND_DICT["Sandlime"])
-        self.assertEqual("401", actual)

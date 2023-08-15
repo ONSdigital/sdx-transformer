@@ -17,6 +17,7 @@ from app.populate import populate_mappings, add_implicit_values
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
+    "074": "bricks",
     "092": "mes",
     "127": "mcg",
     "134": "mwss",
