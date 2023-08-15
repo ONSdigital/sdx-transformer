@@ -1,4 +1,4 @@
-name: Version
+name: AutoVersion
 
 on:
 #  pull_request:
