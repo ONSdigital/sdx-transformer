@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - '*'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -42,10 +43,18 @@ jobs:
 
       - name: Compare versions
         run: |
-          if [ ${{ env.NEW_VERSION }} != ${{ env.MAIN_VERSION }} ]
+          if [[ ${{ env.NEW_VERSION }} -le ${{ env.MAIN_VERSION }} ]];
           then
-            echo Version updated!
-          else
-            echo Version not updated!
+            echo Version invalid, attempting to fix!
+            NEW_VERSION = ${{ env.MAIN_VERSION + 1 }}
+            echo "$NEW_VERSION" > .version
+            git config --local user.email "action@github.com"
+            git config --local user.name "Github action"
+            git add .version
+            git commit -m "Auto incremented version number by 1"
+            git push origin ${GITHUB_REF#refs/heads/}
             exit 1
+            
+          else
+            echo Version updated!
           fi
