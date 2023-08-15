@@ -46,7 +46,7 @@ jobs:
           if [[ ${{ env.NEW_VERSION }} -le ${{ env.MAIN_VERSION }} ]];
           then
             echo Version invalid, attempting to fix!
-            NEW_VERSION = $((${{env.MAIN_VERSION}}+1))
+            NEW_VERSION=$((${{ env.MAIN_VERSION }} + 1))
             echo "$NEW_VERSION" > .version
             git config --local user.email "action@github.com"
             git config --local user.name "Github action"
@@ -54,7 +54,6 @@ jobs:
             git commit -m "Auto incremented version number by 1"
             git push origin ${GITHUB_REF#refs/heads/}
             exit 1
-            
           else
             echo Version updated!
           fi
