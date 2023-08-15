@@ -1,10 +1,11 @@
 name: AutoVersion
 
 on:
+  workflow_dispatch:
 #  pull_request:
 #    branches:
 #      - '*'
-  workflow_dispatch:
+
 
 jobs:
   build:
