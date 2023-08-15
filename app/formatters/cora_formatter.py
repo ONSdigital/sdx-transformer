@@ -6,6 +6,10 @@ class CORAFormatter(Formatter):
     """
     Formatter for CORA systems.
     """
+    def __init__(self, period_format: str, pck_period_format: str):
+        super().__init__(period_format, pck_period_format)
+        self.page: str = "1"
+        self.instance: str = "0"
 
     def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
         """Return a list of lines in a PCK file."""
@@ -13,10 +17,15 @@ class CORAFormatter(Formatter):
         ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
         period: str = metadata["period_id"]
         survey_id = metadata["survey_id"]
-        page_identifier = "1"
-        instance = "0"
 
         return [
-            f"{survey_id}:{ru_ref}:{page_identifier}:{period}:{instance}:{qcode}:{value if value is not Empty else ''}"
+            f"{survey_id}:{ru_ref}:{self.page}:{period}:{self.instance}:{qcode}:{value if value is not Empty else ''}"
             for qcode, value in sorted(data.items())
         ]
+
+
+class MESFormatter(CORAFormatter):
+    def __init__(self, period_format: str, pck_period_format: str):
+        super().__init__(period_format, pck_period_format)
+        self.page: str = "1"
+        self.instance: str = "00000"
