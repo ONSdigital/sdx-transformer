@@ -1,11 +1,13 @@
 import json
+import yaml
+from os.path import exists
 
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
 from app.execute import execute
-from app.formatters.cora_formatter import CORAFormatter
+from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
@@ -15,6 +17,7 @@ from app.populate import populate_mappings, add_implicit_values
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
+    "092": "mes",
     "127": "mcg",
     "134": "mwss",
     "144": "ukis",
@@ -24,6 +27,7 @@ survey_mapping: dict[str, str] = {
 
 formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA": CORAFormatter,
+    "CORA_MES": MESFormatter,
     "COMMON SOFTWARE": CSFormatter,
     "OpenROAD": OpenRoadFormatter
 }
@@ -52,10 +56,18 @@ def get_build_spec(survey_id: str) -> BuildSpec:
     survey_name = survey_mapping.get(survey_id)
     if survey_name is None:
         raise DataError(f"Could not lookup survey id {survey_id}")
-    filepath = f"build_specs/pck/{survey_name}.json"
-    logger.info(f"Getting build spec from {filepath}")
-    with open(filepath) as f:
-        build_spec: BuildSpec = json.load(f)
+
+    filepath = f"build_specs/pck/{survey_name}.yaml"
+    if exists(filepath):
+        logger.info(f"Getting build spec from {filepath}")
+        with open(filepath) as y:
+            build_spec: BuildSpec = yaml.safe_load(y.read())
+
+    else:
+        filepath = f"build_specs/pck/{survey_name}.json"
+        logger.info(f"Getting build spec from {filepath}")
+        with open(filepath) as j:
+            build_spec: BuildSpec = json.load(j)
 
     return build_spec
 
