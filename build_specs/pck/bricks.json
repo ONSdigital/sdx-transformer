@@ -25,12 +25,12 @@
     "504": "Transform.ADDITION"
   },
   "transforms": {
-    "$PREPEND": {
-      "name": "START_OF_YEAR",
+    "PREPEND": {
+      "name": "CONCAT",
       "args": {
-        "value": "#period_id",
-        "input_format": "YYYYMM",
-        "display_as": "DDMMYY"
+          "value": "#luname1",
+          "values": ["#luname2", "#luname3"],
+          "seperator": " "
       }
     },
     "$END_OF_PERIOD": {

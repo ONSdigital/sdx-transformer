@@ -52,12 +52,13 @@ class PrependTests(unittest.TestCase):
             "Sandlime": "4"
         }
 
-        tests = {
-            "01": "90",
-        }
+        qcode = "01"
 
-        expected = "201"
+        actual = prepend_key(qcode, PREPEND_DICT["Clay"])
+        self.assertEqual("201", actual)
 
-        for k in tests:
-            actual = prepend_key(k, PREPEND_DICT["Clay"])
-            self.assertEqual(expected, actual)
+        actual = prepend_key(qcode, PREPEND_DICT["Concrete"])
+        self.assertEqual("301", actual)
+
+        actual = prepend_key(qcode, PREPEND_DICT["Sandlime"])
+        self.assertEqual("401", actual)
