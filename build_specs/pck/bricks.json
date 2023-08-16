@@ -1,20 +1,134 @@
 {
-  "title": "Build Spec for ABS short forms",
+  "title": "Build Spec for Bricks survey",
   "survey_id": "074",
   "target": "COMMON SOFTWARE",
   "period_format": "YYYYMM",
   "pck_period_format": "YY",
   "template": {
-    "201": "$CLAY_VALUE"
+    "201": "$CLAY_01",
+    "301": "$CONCRETE_01",
+    "401": "$SANDLIME_01",
+    "202": "$CLAY_02",
+    "302": "$CONCRETE_02",
+    "402": "$SANDLIME_02",
+    "203": "$CLAY_03",
+    "303": "$CONCRETE_03",
+    "403": "$SANDLIME_03",
+    "204": "$CLAY_04",
+    "304": "$CONCRETE_04",
+    "404": "$SANDLIME_04"
   },
   "transforms": {
-    "$CLAY_VALUE": {
-      "name": "CONTAINS",
+    "$CLAY": {
+      "name": "ANY_CONTAINS",
       "args": {
-          "value": "#9999",
-          "match_str": "clay",
-          "on_true": "#01"
+          "values": ["#9999"],
+          "match_str": "Clay",
+          "on_true": "&value",
+          "on_false": null
       }
+    },
+    "$CONCRETE": {
+      "name": "ANY_CONTAINS",
+      "args": {
+          "values": ["#9999"],
+          "match_str": "Concrete",
+          "on_true": "&value",
+          "on_false": null
+      }
+    },
+    "$SANDLIME": {
+      "name": "ANY_CONTAINS",
+      "args": {
+          "values": ["#9999"],
+          "match_str": "Sandlime",
+          "on_true": "&value",
+          "on_false": null
+      }
+    },
+    "$CLAY_01": {
+      "name": "VALUE",
+      "args": {
+        "value": "#01"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_01": {
+      "name": "VALUE",
+      "args": {
+        "value": "#01"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_01": {
+      "name": "VALUE",
+      "args": {
+        "value": "#01"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_02": {
+      "name": "VALUE",
+      "args": {
+        "value": "#02"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_02": {
+      "name": "VALUE",
+      "args": {
+        "value": "#02"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_02": {
+      "name": "VALUE",
+      "args": {
+        "value": "#02"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_03": {
+      "name": "VALUE",
+      "args": {
+        "value": "#03"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_03": {
+      "name": "VALUE",
+      "args": {
+        "value": "#03"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_03": {
+      "name": "VALUE",
+      "args": {
+        "value": "#03"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_04": {
+      "name": "VALUE",
+      "args": {
+        "value": "#04"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_04": {
+      "name": "VALUE",
+      "args": {
+        "value": "#04"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_04": {
+      "name": "VALUE",
+      "args": {
+        "value": "#04"
+      },
+      "post": "$SANDLIME"
     }
   }
 }
