@@ -1,0 +1,171 @@
+"title": "Build Spec for Bricks survey"
+"survey_id": "074"
+"target": "COMMON SOFTWARE"
+"period_format": "YYYYMM"
+"pck_period_format": "YY"
+"template":
+    "201": "$CLAY_01"
+    "202": "$CLAY_02"
+    "203": "$CLAY_03"
+    "204": "$CLAY_04"
+    "211": "$CLAY_11"
+    "212": "$CLAY_12"
+    "213": "$CLAY_13"
+    "214": "$CLAY_14"
+    "221": "$CLAY_21"
+    "222": "$CLAY_22"
+    "223": "$CLAY_23"
+    "224": "$CLAY_24"
+    "301": "$CONCRETE_01"
+    "302": "$CONCRETE_02"
+    "303": "$CONCRETE_03"
+    "304": "$CONCRETE_04"
+    "311": "$CONCRETE_11"
+    "312": "$CONCRETE_12"
+    "313": "$CONCRETE_13"
+    "314": "$CONCRETE_14"
+    "321": "$CONCRETE_21"
+    "322": "$CONCRETE_22"
+    "323": "$CONCRETE_23"
+    "324": "$CONCRETE_24"
+    "401": "$SANDLIME_01"
+    "402": "$SANDLIME_02"
+    "403": "$SANDLIME_03"
+    "404": "$SANDLIME_04"
+    "411": "$SANDLIME_11"
+    "412": "$SANDLIME_12"
+    "413": "$SANDLIME_13"
+    "414": "$SANDLIME_14"
+    "421": "$SANDLIME_21"
+    "422": "$SANDLIME_22"
+    "423": "$SANDLIME_23"
+    "424": "$SANDLIME_24"
+"transforms":
+    "args": &args
+        "value": "#9999"
+        "match_str": "material"
+        "on_true": "true"
+        "on_false": null
+    "clay": &clay
+        "name": "CONTAINS"
+        <<: *args
+        "match_str": "Clay"
+        "on_true": "qcode"
+    "concrete": &concrete
+        "name": "CONTAINS"
+        <<: *args
+        "match_str": "Concrete"
+        "on_true": "qcode"
+    "sandlime": &sandlime
+        "name": "CONTAINS"
+        <<: *args
+        "match_str": "Sandlime"
+        "on_true": "qcode"
+    "$CLAY_01":
+        <<: *clay
+        "on_true": "#01"
+    "$CLAY_02":
+        <<: *clay
+        "on_true": "#02"
+    "$CLAY_03":
+        <<: *clay
+        "on_true": "#03"
+    "$CLAY_04":
+        <<: *clay
+        "on_true": "#04"
+    "$CLAY_11":
+        <<: *clay
+        "on_true": "#11"
+    "$CLAY_12":
+        <<: *clay
+        "on_true": "#12"
+    "$CLAY_13":
+        <<: *clay
+        "on_true": "#13"
+    "$CLAY_14":
+        <<: *clay
+        "on_true": "#14"
+    "$CLAY_21":
+        <<: *clay
+        "on_true": "#21"
+    "$CLAY_22":
+        <<: *clay
+        "on_true": "#22"
+    "$CLAY_23":
+        <<: *clay
+        "on_true": "#123"
+    "$CLAY_24":
+        <<: *clay
+        "on_true": "#24"
+    "$CONCRETE_01":
+        <<: *concrete
+        "on_true": "#01"
+    "$CONCRETE_02":
+        <<: *concrete
+        "on_true": "#02"
+    "$CONCRETE_03":
+        <<: *concrete
+        "on_true": "#03"
+    "$CONCRETE_04":
+        <<: *concrete
+        "on_true": "#04"
+    "$CONCRETE_11":
+        <<: *concrete
+        "on_true": "#11"
+    "$CONCRETE_12":
+        <<: *concrete
+        "on_true": "#12"
+    "$CONCRETE_13":
+        <<: *concrete
+        "on_true": "#13"
+    "$CONCRETE_14":
+        <<: *concrete
+        "on_true": "#14"
+    "$CONCRETE_21":
+        <<: *concrete
+        "on_true": "#21"
+    "$CONCRETE_22":
+        <<: *concrete
+        "on_true": "#22"
+    "$CONCRETE_23":
+        <<: *concrete
+        "on_true": "#123"
+    "$CONCRETE_24":
+        <<: *concrete
+        "on_true": "#24"
+    "$SANDLIME_01":
+        <<: *sandlime
+        "on_true": "#01"
+    "$SANDLIME_02":
+        <<: *sandlime
+        "on_true": "#02"
+    "$SANDLIME_03":
+        <<: *sandlime
+        "on_true": "#03"
+    "$SANDLIME_04":
+        <<: *sandlime
+        "on_true": "#04"
+    "$SANDLIME_11":
+        <<: *sandlime
+        "on_true": "#11"
+    "$SANDLIME_12":
+        <<: *sandlime
+        "on_true": "#12"
+    "$SANDLIME_13":
+        <<: *sandlime
+        "on_true": "#13"
+    "$SANDLIME_14":
+        <<: *sandlime
+        "on_true": "#14"
+    "$SANDLIME_21":
+        <<: *sandlime
+        "on_true": "#21"
+    "$SANDLIME_22":
+        <<: *sandlime
+        "on_true": "#22"
+    "$SANDLIME_23":
+        <<: *sandlime
+        "on_true": "#123"
+    "$SANDLIME_24":
+        <<: *sandlime
+        "on_true": "#24"
