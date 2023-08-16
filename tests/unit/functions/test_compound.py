@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.compound import currency_thousands, prepend_key
+from app.functions.compound import currency_thousands
 
 
 class CurrencyTests(unittest.TestCase):

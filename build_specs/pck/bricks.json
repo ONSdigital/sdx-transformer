@@ -16,7 +16,31 @@
     "403": "$SANDLIME_03",
     "204": "$CLAY_04",
     "304": "$CONCRETE_04",
-    "404": "$SANDLIME_04"
+    "404": "$SANDLIME_04",
+    "211": "$CLAY_11",
+    "311": "$CONCRETE_11",
+    "411": "$SANDLIME_11",
+    "212": "$CLAY_12",
+    "312": "$CONCRETE_12",
+    "412": "$SANDLIME_12",
+    "213": "$CLAY_13",
+    "313": "$CONCRETE_13",
+    "413": "$SANDLIME_13",
+    "214": "$CLAY_14",
+    "314": "$CONCRETE_14",
+    "414": "$SANDLIME_14",
+    "221": "$CLAY_21",
+    "321": "$CONCRETE_21",
+    "421": "$SANDLIME_21",
+    "222": "$CLAY_22",
+    "322": "$CONCRETE_22",
+    "422": "$SANDLIME_22",
+    "223": "$CLAY_23",
+    "323": "$CONCRETE_23",
+    "423": "$SANDLIME_23",
+    "224": "$CLAY_24",
+    "324": "$CONCRETE_24",
+    "424": "$SANDLIME_24"
   },
   "transforms": {
     "$CLAY": {
@@ -127,6 +151,174 @@
       "name": "VALUE",
       "args": {
         "value": "#04"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_11": {
+      "name": "VALUE",
+      "args": {
+        "value": "#11"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_11": {
+      "name": "VALUE",
+      "args": {
+        "value": "#11"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_11": {
+      "name": "VALUE",
+      "args": {
+        "value": "#11"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_12": {
+      "name": "VALUE",
+      "args": {
+        "value": "#12"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_12": {
+      "name": "VALUE",
+      "args": {
+        "value": "#12"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_12": {
+      "name": "VALUE",
+      "args": {
+        "value": "#12"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_13": {
+      "name": "VALUE",
+      "args": {
+        "value": "#13"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_13": {
+      "name": "VALUE",
+      "args": {
+        "value": "#13"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_13": {
+      "name": "VALUE",
+      "args": {
+        "value": "#13"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_14": {
+      "name": "VALUE",
+      "args": {
+        "value": "#14"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_14": {
+      "name": "VALUE",
+      "args": {
+        "value": "#14"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_14": {
+      "name": "VALUE",
+      "args": {
+        "value": "#14"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_21": {
+      "name": "VALUE",
+      "args": {
+        "value": "#21"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_21": {
+      "name": "VALUE",
+      "args": {
+        "value": "#21"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_21": {
+      "name": "VALUE",
+      "args": {
+        "value": "#21"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_22": {
+      "name": "VALUE",
+      "args": {
+        "value": "#22"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_22": {
+      "name": "VALUE",
+      "args": {
+        "value": "#22"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_22": {
+      "name": "VALUE",
+      "args": {
+        "value": "#22"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_23": {
+      "name": "VALUE",
+      "args": {
+        "value": "#23"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_23": {
+      "name": "VALUE",
+      "args": {
+        "value": "#23"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_23": {
+      "name": "VALUE",
+      "args": {
+        "value": "#23"
+      },
+      "post": "$SANDLIME"
+    },
+    "$CLAY_24": {
+      "name": "VALUE",
+      "args": {
+        "value": "#24"
+      },
+      "post": "$CLAY"
+    },
+    "$CONCRETE_24": {
+      "name": "VALUE",
+      "args": {
+        "value": "#24"
+      },
+      "post": "$CONCRETE"
+    },
+    "$SANDLIME_24": {
+      "name": "VALUE",
+      "args": {
+        "value": "#24"
       },
       "post": "$SANDLIME"
     }
