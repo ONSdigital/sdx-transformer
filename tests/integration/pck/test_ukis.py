@@ -8,7 +8,6 @@ from tests.integration.pck import read_submission_data, are_equal
 class UKISPckTests(unittest.TestCase):
 
     def test_0001_to_pck(self):
-        self.maxDiff = None
         filepath = "tests/data/ukis/144.0001.json"
         submission_data = read_submission_data(filepath)
 
@@ -28,7 +27,6 @@ class UKISPckTests(unittest.TestCase):
         self.assertTrue(are_equal(expected, actual))
 
     def test_0002_to_pck(self):
-        self.maxDiff = None
         filepath = "tests/data/ukis/144.0002.json"
         submission_data = read_submission_data(filepath)
 
