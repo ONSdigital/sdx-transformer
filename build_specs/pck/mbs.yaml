@@ -1,0 +1,77 @@
+title: "Build Spec for Monthly Business Survey"
+survey_id: "009"
+target: "CS_MBS"
+period_format: "YYYYMM"
+pck_period_format: "YYYYMM"
+template:
+    "11": "$START_DATE"
+    "12": "$END_DATE"
+    "40": "$CURRENCY_THOUSANDS"
+    "42": "$CURRENCY_THOUSANDS"
+    "43": "$CURRENCY_THOUSANDS"
+    "46": "$CURRENCY_THOUSANDS"
+    "47": "$CURRENCY_THOUSANDS"
+    "49": "$TURNOVER_TOTALS"
+    "50": "$TO_INT"
+    "51": "$EMPLOYEE_TOTALS"
+    "52": "$EMPLOYEE_TOTALS"
+    "53": "$EMPLOYEE_TOTALS"
+    "54": "$EMPLOYEE_TOTALS"
+    "90": "$CURRENCY_THOUSANDS"
+    "110": "$TO_INT"
+    "146": "$COMMENT"
+transforms:
+    "$START_OF_PERIOD":
+        name: "START_OF_MONTH"
+        args:
+            "value": "#period_id"
+            "input_format": "YYYYMM"
+            "display_as": "DDMMYY"
+    "$END_OF_PERIOD":
+        name: "END_OF_MONTH"
+        args:
+            "value": "#period_id"
+            "input_format": "YYYYMM"
+            "display_as": "DDMMYY"
+    "$TO_DATE":
+        name: "TO_DATE"
+        args:
+            "display_as": "DDMMYY"
+    "$START_DATE":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$TO_DATE"
+            "on_false": "$START_OF_PERIOD"
+    "$END_DATE":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$TO_DATE"
+            "on_false": "$END_OF_PERIOD"
+    "$CURRENCY_THOUSANDS": 
+        name: "CURRENCY_THOUSANDS"
+        args: {}
+    "$TO_INT":
+        name: "ROUND"
+        args:
+            "nearest": "1"
+    "$EMPLOYEE_TOTALS":
+        name: "ANY_CONTAINS"
+        args:
+            values: ["#d50"]
+            match_str: "Yes"
+            on_true: "0"
+            on_false: "&value"
+        post: "$TO_INT"
+    "$TURNOVER_TOTALS":
+        name: "ANY_CONTAINS"
+        args:
+            values: ["#d49"]
+            match_str: "Yes"
+            on_true: "0"
+            on_false: "&value"
+        post: "$CURRENCY_THOUSANDS"
+    "$COMMENT":
+        name: "EXISTS"
+        args:
+            "on_true": "1"
+            "on_false": "2"

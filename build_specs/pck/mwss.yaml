@@ -1,0 +1,135 @@
+title: "Build Spec for MWSS"
+survey_id: "134"
+period_format: "YYYYMM"
+pck_period_format: "YYYYMM"
+target: "CS"
+template:
+    "40": "$AGG_40"
+    "50": "$AGG_50"
+    "60": "$AGG_60"
+    "70": "$AGG_70"
+    "80": "$AGG_80"
+    "90": "$MATCH_YES_90"
+    "100": "$MEAN_100"
+    "110": "$TO_DATE_110"
+    "120": "$MEAN_120"
+    "130": "$EXISTS"
+    "131": "$EXISTS"
+    "132": "$EXISTS"
+    "140": "$AGG_140"
+    "151": "$ROUND"
+    "152": "$ROUND"
+    "153": "$ROUND"
+    "171": "$ROUND"
+    "172": "$ROUND"
+    "173": "$ROUND"
+    "181": "$ROUND"
+    "182": "$ROUND"
+    "183": "$ROUND"
+    "190": "$MATCH_YES_190"
+    "200": "$ANY_EXISTS_200"
+    "210": "$DATE_210"
+    "220": "$MEAN_220"
+    "300": "$ANY_EXISTS_300"
+transforms:
+    "$ROUND":
+        "name": "ROUND"
+        "args":
+            "nearest": "1"
+    "$AGG_40":
+        "name": "AGGREGATE"
+        "args":
+            "values": ["#40f"]
+            "weight": "1"
+        "post": "$ROUND"
+    
+    "$AGG_50":
+        "name": "AGGREGATE"
+        "args":
+            "values": ["#50f"]
+            "weight": "0.5"
+        "post": "$ROUND"
+    "$AGG_60":
+        "name": "AGGREGATE"
+        "args":
+            "values": ["#60f"]
+            "weight": "0.5"
+        "post": "$ROUND"
+    "$AGG_70":
+        "name": "AGGREGATE"
+        "args":
+            "values": ["#70f"]
+            "weight": "0.5"
+        "post": "$ROUND"
+    "$AGG_80":
+        "name": "AGGREGATE"
+        "args":
+            "values": ["#80f"]
+            "weight": "0.5"
+        "post": "$ROUND"
+    "$MATCH_YES_90":
+        "name": "ANY_CONTAINS"
+        "args":
+            "values": ["#90w", "#90f"]
+            "match_str": "Yes"
+            "on_true": "1"
+            "on_false": "2"
+    "$EQUALS_0":
+        "name": "NUMBER_EQUALS"
+        "args":
+            "comparand": "0"
+            "on_true": "2"
+            "on_false": "1"
+    "$MEAN_100":
+        "name": "MEAN"
+        "args":
+            "values": ["#100f"]
+        "post": "$EQUALS_0"
+    "$TO_DATE_110":
+        "name": "ANY_DATE"
+        "args":
+            "values": ["#110f"]
+    "$MEAN_120":
+        "name": "MEAN"
+        "args":
+            "values": ["#120f"]
+        "post": "$EQUALS_0"
+    "$AGG_140":
+        "name": "AGGREGATE"
+        "args":
+            "values": ["#140m", "#140w4", "#140w5"]
+            "weight": "1"
+        "post": "$ROUND"
+    "$MATCH_YES_190":
+        "name": "ANY_CONTAINS"
+        "args":
+            "values": ["#190w4", "#190m", "#190w5"]
+            "match_str": "Yes"
+            "on_true": "1"
+            "on_false": "2"
+    "$EXISTS":
+        "name": "EXISTS"
+        "args":
+            "on_true": "1"
+            "on_false": "2"
+    "$ANY_EXISTS_200":
+        "name": "ANY_EXISTS"
+        "args":
+            "values": ["#200w4", "#200w5"]
+            "on_true": "1"
+            "on_false": null
+    "$DATE_210":
+        "name": "ANY_DATE"
+        "args":
+            "values": ["#210w4", "#210w5"]
+            "on_true": "1"
+            "on_false": "2"
+    "$MEAN_220":
+        "name": "MEAN"
+        "args":
+            "values": ["#220w4", "#220w5"]
+        "post": "$EQUALS_0"
+    "$ANY_EXISTS_300":
+        "name": "ANY_EXISTS"
+        "args":
+            "values": ["#300w", "#300f", "#300m", "#300w4", "#300w5"]

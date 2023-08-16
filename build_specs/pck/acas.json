@@ -1,9 +1,9 @@
 {
   "title": "Build Spec ACAS",
   "survey_id": "171",
+  "target": "CS",
   "period_format": "YYYYMM",
   "pck_period_format": "YY",
-  "target": "COMMON SOFTWARE",
   "template": {
     "11": "$TO_DATE",
     "12": "$TO_DATE",
