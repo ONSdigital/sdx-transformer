@@ -44,6 +44,17 @@ class BricksPckTests(unittest.TestCase):
                         f"{v}24": "21"}
             transformed_data = transform(submission_data, build_spec)
             actual = remove_empties(transformed_data)
-            print(actual)
             self.assertEqual(expected, actual)
+
+    def test_bricks_text_transform(self):
+        submission_data = {"145": "I am a comment that should be replaced with a 1",
+                           "146": ""}
+
+        build_spec = get_build_spec("074")
+
+        expected = {"145": "1",
+                    "146": "2"}
+        transformed_data = transform(submission_data, build_spec)
+        actual = remove_empties(transformed_data)
+        self.assertEqual(expected, actual)
 

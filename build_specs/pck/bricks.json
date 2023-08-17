@@ -40,7 +40,9 @@
     "423": "$SANDLIME_23",
     "224": "$CLAY_24",
     "324": "$CONCRETE_24",
-    "424": "$SANDLIME_24"
+    "424": "$SANDLIME_24",
+    "145": "$EXISTS",
+    "146": "$EXISTS"
   },
   "transforms": {
     "$CLAY": {
@@ -321,6 +323,13 @@
         "value": "#24"
       },
       "post": "$SANDLIME"
+    },
+    "$EXISTS": {
+      "name": "EXISTS",
+      "args": {
+        "on_true": "1",
+        "on_false": "2"
+      }
     }
   }
 }
