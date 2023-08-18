@@ -1,7 +1,7 @@
 {
   "title": "Build Spec for Bricks survey",
   "survey_id": "074",
-  "target": "COMMON SOFTWARE",
+  "target": "CS",
   "period_format": "YYYYMM",
   "pck_period_format": "YYMM",
   "template": {
