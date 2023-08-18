@@ -18,6 +18,7 @@ logger = get_logger()
 
 survey_mapping: dict[str, str] = {
     "009": "mbs",
+    "074": "bricks",
     "092": "mes",
     "127": "mcg",
     "134": "mwss",
