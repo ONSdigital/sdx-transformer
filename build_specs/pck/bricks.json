@@ -3,7 +3,7 @@
   "survey_id": "074",
   "target": "COMMON SOFTWARE",
   "period_format": "YYYYMM",
-  "pck_period_format": "YY",
+  "pck_period_format": "YYMM",
   "template": {
     "201": "$CLAY_01",
     "301": "$CONCRETE_01",

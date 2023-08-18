@@ -1,12 +1,11 @@
 import unittest
 
-from app.definitions import SurveyMetadata
-from app.pck import get_build_spec, transform
-from tests.integration.pck import remove_empties, read_submission_data
+from app.definitions import SurveyMetadata, PCK
+from app.pck import get_build_spec, transform, get_pck
+from tests.integration.pck import remove_empties, read_submission_data, are_equal
 
 
 class BricksTransformsTests(unittest.TestCase):
-
     def test_bricks_prepend(self):
         types = {
             "Clay": "2",
@@ -120,14 +119,19 @@ class BricksTransformsTests(unittest.TestCase):
 
 
 class BricksPckTests(unittest.TestCase):
-    filepath = "tests/data/bricks/074.0001.json"
-    submission_data = read_submission_data(filepath)
+    def test_0002_to_pck(self):
+        filepath = "tests/data/bricks/074.0001.json"
+        submission_data = read_submission_data(filepath)
 
-    survey_metadata: SurveyMetadata = {
+        survey_metadata: SurveyMetadata = {
             "survey_id": "074",
             "period_id": "201605",
-            "ref_period_start_date": "2016-05-01",
-            "ref_period_end_date": "2016-05-31"
+            "ru_ref": "12346789012A",
+            "form_type": "0001",
         }
+        actual: PCK = get_pck(submission_data, survey_metadata)
+        pck_filepath = "tests/data/bricks/074.0001.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
 
-    # TODO finish test
+        self.assertTrue(are_equal(expected, actual))
