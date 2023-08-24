@@ -16,6 +16,8 @@ class MCGPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "12346789012A",
             "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "20216-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
@@ -35,6 +37,8 @@ class MCGPckTests(unittest.TestCase):
             "period_id": "202307",
             "ru_ref": "12346789012A",
             "form_type": "0002",
+            "period_start_date": "2023-07-01",
+            "period_end_date": "20223-07-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)

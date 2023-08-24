@@ -1,0 +1,22 @@
+title: "Build Spec for Stocks (QSS)"
+survey_id: "017"
+target: "CS"
+period_format: "YYMM"
+template:
+    "11": "$START_DATE"
+    "12": "$END_DATE"
+    "15": "$YES_NO_RADIO"
+transforms:
+    "$START_DATE":
+        "name": "PERIOD_START"
+        "args":
+            "period_start_date": "#period_start_date"
+    "$END_DATE":
+        "name": "PERIOD_END"
+        "args":
+            "period_start_date": "#period_end_date"
+    "$YES_NO_RADIO":
+        "name": "LOOKUP"
+        "args":
+            "Yes": "1"
+            "No": "2"

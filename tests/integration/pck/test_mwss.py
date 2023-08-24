@@ -45,6 +45,8 @@ class MWSSPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "12346789012A",
             "form_type": "0005",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "20216-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)

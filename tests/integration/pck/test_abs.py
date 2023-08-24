@@ -24,6 +24,8 @@ class ABSPckTests(unittest.TestCase):
                 "period_id": "202112",
                 "ru_ref": "12346789012A",
                 "form_type": form_type,
+                "period_start_date": "2021-01-01",
+                "period_end_date": "2021-12-31",
             }
 
             actual: PCK = get_pck(submission_data, survey_metadata)

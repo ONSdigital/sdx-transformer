@@ -16,6 +16,8 @@ class UKISPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "75553402515",
             "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "20216-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
@@ -35,6 +37,8 @@ class UKISPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "58153646441",
             "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "20216-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
@@ -54,6 +58,8 @@ class UKISPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "75553402515",
             "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "20216-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
