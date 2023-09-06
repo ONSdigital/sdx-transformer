@@ -67,3 +67,37 @@ class MBSFormatter(CSFormatter):
         m: SurveyMetadata = metadata.copy()
         m["form_type"] = self.idbr_ref.get(metadata["form_type"])
         return super().generate_pck(data, m)
+
+
+class QSSFormatter(CSFormatter):
+
+    idbr_ref: dict[str, str] = {
+        "0001": "STP01",
+        "0002": "STP01",
+        "0003": "STQ03",
+        "0004": "STQ03",
+        "0005": "STE05",
+        "0006": "STE05",
+        "0007": "STE15",
+        "0008": "STE15",
+        "0009": "STE09",
+        "0010": "STE09",
+        "0011": "STE17",
+        "0012": "STE17",
+        "0013": "STE13",
+        "0014": "STE13",
+        "0033": "STC02",
+        "0034": "STC02",
+        "0051": "STW02",
+        "0052": "STW02",
+        "0057": "STM01",
+        "0058": "STM01",
+        "0061": "STW01",
+        "0070": "STS01"
+    }
+
+    def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
+        """Write a PCK file."""
+        m: SurveyMetadata = metadata.copy()
+        m["form_type"] = self.idbr_ref.get(metadata["form_type"])
+        return super().generate_pck(data, m)

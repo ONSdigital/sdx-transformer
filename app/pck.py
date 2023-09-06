@@ -8,7 +8,7 @@ from sdx_gcp.errors import DataError
 from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
 from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
-from app.formatters.cs_formatter import CSFormatter, MBSFormatter
+from app.formatters.cs_formatter import CSFormatter, MBSFormatter, QSSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.interpolate import interpolate
@@ -18,6 +18,7 @@ logger = get_logger()
 
 survey_mapping: dict[str, str] = {
     "009": "mbs",
+    "017": "stocks",
     "074": "bricks",
     "092": "mes",
     "127": "mcg",
@@ -32,6 +33,7 @@ formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA_MES": MESFormatter,
     "CS": CSFormatter,
     "CS_MBS": MBSFormatter,
+    "CS_QSS": QSSFormatter,
     "OpenROAD": OpenRoadFormatter
 }
 
