@@ -3,9 +3,64 @@ survey_id: "017"
 target: "CS"
 period_format: "YYMM"
 template:
+    "9": "$CURRENCY_THOUSANDS",
+    "10": "$CURRENCY_THOUSANDS",
     "11": "$START_DATE"
     "12": "$END_DATE"
     "15": "$YES_NO_RADIO"
+    "119": "$CURRENCY_THOUSANDS",
+    "120": "$CURRENCY_THOUSANDS",
+    "139": "$CURRENCY_THOUSANDS",
+    "140": "$CURRENCY_THOUSANDS",
+    "144": "$CURRENCY_THOUSANDS",
+    "145": "$CURRENCY_THOUSANDS",
+    "146": "#146",
+    "146a": "#146a",
+    "146b": "#146b",
+    "146c": "#146c",
+    "146d": "#146d",
+    "146e": "#146e",
+    "146f": "#146f",
+    "146g": "#146g",
+    "149": "$CURRENCY_THOUSANDS",
+    "150": "$CURRENCY_THOUSANDS",
+    "174": "$CURRENCY_THOUSANDS",
+    "175": "$CURRENCY_THOUSANDS",
+    "179": "$CURRENCY_THOUSANDS",
+    "180": "$CURRENCY_THOUSANDS",
+    "184": "$CURRENCY_THOUSANDS",
+    "185": "$CURRENCY_THOUSANDS",
+    "189": "$CURRENCY_THOUSANDS",
+    "190": "$CURRENCY_THOUSANDS",
+    "191": "$CURRENCY_THOUSANDS",
+    "192": "$CURRENCY_THOUSANDS",
+    "193": "$CURRENCY_THOUSANDS",
+    "194": "$CURRENCY_THOUSANDS",
+    "195": "$CURRENCY_THOUSANDS",
+    "196": "$CURRENCY_THOUSANDS",
+    "204": "$CURRENCY_THOUSANDS",
+    "205": "$CURRENCY_THOUSANDS",
+    "209": "$CURRENCY_THOUSANDS",
+    "210": "$CURRENCY_THOUSANDS",
+    "214": "$CURRENCY_THOUSANDS",
+    "215": "$CURRENCY_THOUSANDS",
+    "219": "$CURRENCY_THOUSANDS",
+    "220": "$CURRENCY_THOUSANDS",
+    "229": "$CURRENCY_THOUSANDS",
+    "230": "$CURRENCY_THOUSANDS",
+    "249": "$CURRENCY_THOUSANDS",
+    "250": "$CURRENCY_THOUSANDS",
+    "259": "$CURRENCY_THOUSANDS",
+    "260": "$CURRENCY_THOUSANDS",
+    "319": "$CURRENCY_THOUSANDS",
+    "320": "$CURRENCY_THOUSANDS",
+    "329": "$CURRENCY_THOUSANDS",
+    "330": "$CURRENCY_THOUSANDS",
+    "498": "$CURRENCY_THOUSANDS",
+    "499": "$CURRENCY_THOUSANDS",
+    "598": "$CURRENCY_THOUSANDS",
+    "599": "$CURRENCY_THOUSANDS",
+    "9999": "#9999",
 transforms:
     "$START_DATE":
         "name": "PERIOD_START"
@@ -20,3 +75,56 @@ transforms:
         "args":
             "Yes": "1"
             "No": "2"
+    "$CURRENCY_THOUSANDS":
+        "name": "CURRENCY_THOUSANDS"
+        "args":
+    "$START_TOTAL_0001":
+        "name": "TOTAL",
+        "args":
+            "value": "",
+            "values": ["#139", "#144", "#149"]
+    "$END_TOTAL_0001":
+        "name": "TOTAL",
+        "args":
+            "value": "",
+            "values": ["#140", "#145", "#150"]
+    "$START_TOTAL_0003":
+        "name": "TOTAL",
+        "args":
+            "value": "",
+            "values": ["#319", "#329"]
+    "$END_TOTAL_0003":
+        "name": "TOTAL",
+        "args":
+            "value": "",
+            "values": ["#320", "#330"]
+    "$START_TOTAL_0005":
+        "name": "TOTAL",
+        "args":
+            "value": "",
+            "values": ['#174', '#179', '#184', '#189', '#191']
+    "$END_TOTAL_0005":
+        "name": "TOTAL",
+        "args":
+            "value": "",
+            "values": ['#175', '#180', '#185', '#190', '#192']
+    "$START_TOTAL":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "00001": "$START_TOTAL_0001"
+            "00002": "$START_TOTAL_0001"
+            "00003": "$START_TOTAL_0003"
+            "00004": "$START_TOTAL_0003"
+            "00005": "$START_TOTAL_0005"
+            "00006": "$START_TOTAL_0005"
+    "$END_TOTAL":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "00001": "$END_TOTAL_0001"
+            "00002": "$END_TOTAL_0001"
+            "00003": "$END_TOTAL_0003"
+            "00004": "$END_TOTAL_0003"
+            "00005": "$END_TOTAL_0005"
+            "00006": "$END_TOTAL_0005"
