@@ -55,7 +55,6 @@ template:
     "499": "$CURRENCY_THOUSANDS"
     "598": "$CURRENCY_THOUSANDS"
     "599": "$CURRENCY_THOUSANDS"
-    "9999": "#9999"
 transforms:
     "$START_DATE":
         "name": "PERIOD_START"
@@ -103,6 +102,56 @@ transforms:
         "args":
             "value": ""
             "values": ['#175', '#180', '#185', '#190', '#192']
+    "$START_TOTAL_0007":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#204', '#209', '#214']
+    "$END_TOTAL_0007":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#205', '#210', '#215']
+    "$START_TOTAL_0009":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#119', '#144', '#174', '#179', '#209']
+    "$END_TOTAL_0009":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#120', '#145', '#175', '#180', '#210']
+    "$START_TOTAL_0011":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#119', '#144']
+    "$END_TOTAL_0011":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#120', '#145']
+    "$START_TOTAL_0013":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#139', '#144', '#149']
+    "$END_TOTAL_0013":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#140', '#145', '#150']
+    "$START_TOTAL_0057":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#9', '#193', '#195']
+    "$END_TOTAL_0057":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['#10', '#194', '#196']
     "$START_TOTAL":
         "name": "LOOKUP"
         "args":
@@ -113,6 +162,16 @@ transforms:
             "0004": "$START_TOTAL_0003"
             "0005": "$START_TOTAL_0005"
             "0006": "$START_TOTAL_0005"
+            "0007": "$START_TOTAL_0007"
+            "0008": "$START_TOTAL_0007"
+            "0009": "$START_TOTAL_0009"
+            "0010": "$START_TOTAL_0009"
+            "0011": "$START_TOTAL_0011"
+            "0012": "$START_TOTAL_0011"
+            "0013": "$START_TOTAL_0013"
+            "0014": "$START_TOTAL_0013"
+            "0057": "$START_TOTAL_0057"
+            "0058": "$START_TOTAL_0057"
         "post": "$CURRENCY_THOUSANDS"
     "$END_TOTAL":
         "name": "LOOKUP"
@@ -124,6 +183,16 @@ transforms:
             "0004": "$END_TOTAL_0003"
             "0005": "$END_TOTAL_0005"
             "0006": "$END_TOTAL_0005"
+            "0007": "$END_TOTAL_0007"
+            "0008": "$END_TOTAL_0007"
+            "0009": "$END_TOTAL_0009"
+            "0010": "$END_TOTAL_0009"
+            "0011": "$END_TOTAL_0011"
+            "0012": "$END_TOTAL_0011"
+            "0013": "$END_TOTAL_0013"
+            "0014": "$END_TOTAL_0013"
+            "0057": "$END_TOTAL_0057"
+            "0058": "$END_TOTAL_0057"
         "post": "$CURRENCY_THOUSANDS"
     "$COMMENT":
         name: "EXISTS"
