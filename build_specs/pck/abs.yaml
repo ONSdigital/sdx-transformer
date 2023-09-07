@@ -86,7 +86,7 @@ transforms:
             "on_no_match": "0"
     "$CURRENCY_THOUSANDS":
         "name": "CURRENCY_THOUSANDS"
-        "args":
+        "args": {}
     "$NO_COMMENT_1808":
         "name": "ANY_CONTAINS"
         "args":
