@@ -21,32 +21,14 @@ template:
     "110": "$TO_INT"
     "146": "$COMMENT"
 transforms:
-    "START_OF_PERIOD":
-        name: "START_OF_MONTH"
-        args:
-            "value": "#period_id"
-            "input_format": "YYYYMM"
-            "display_as": "DDMMYY"
-    "END_OF_PERIOD":
-        name: "END_OF_MONTH"
-        args:
-            "value": "#period_id"
-            "input_format": "YYYYMM"
-            "display_as": "DDMMYY"
-    "TO_DATE":
-        name: "TO_DATE"
-        args:
-            "display_as": "DDMMYY"
     "START_DATE":
-        "name": "EXISTS"
+        "name": "PERIOD_START"
         "args":
-            "on_true": "$TO_DATE"
-            "on_false": "$START_OF_PERIOD"
+            "period_start_date": "#period_start_date"
     "END_DATE":
-        "name": "EXISTS"
+        "name": "PERIOD_END"
         "args":
-            "on_true": "$TO_DATE"
-            "on_false": "$END_OF_PERIOD"
+            "period_end_date": "#period_end_date"
     "CURRENCY_THOUSANDS":
         name: "CURRENCY_THOUSANDS"
         args: {}
