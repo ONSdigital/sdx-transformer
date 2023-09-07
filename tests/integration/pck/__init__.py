@@ -37,7 +37,6 @@ def are_equal(expected: PCK, actual: PCK) -> bool:
     exp: dict[str, str] = convert_pck_to_dict(expected)
     act: dict[str, str] = convert_pck_to_dict(actual)
 
-    print("")
     print("-----------------")
     equal = True
     for k, v in exp.items():
