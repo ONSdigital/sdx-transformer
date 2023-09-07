@@ -35,14 +35,12 @@ transforms:
             value: "#period_id"
             input_format: "YYYYMM"
             display_as: "DDMMYYYY"
-    "TO_DATE_9998":
-    "$TO_DATE_0001":
+    "TO_DATE_0001":
         name: "TO_DATE"
         args: 
             value: "#0001"
             display_as: "DDMMYYYY"
-    "TO_DATE_9997":
-    "$TO_DATE_0002":
+    "TO_DATE_0002":
         name: "TO_DATE"
         args: 
             value: "#0002"
@@ -54,8 +52,6 @@ transforms:
             match_str: "Yes"
             on_true: "$START_OF_MONTH"
             on_false: "$TO_DATE_0001"
-    "$DATE_0002": 
-            on_false: "$TO_DATE_9998"
     "DATE_0002":
         name: "CONTAINS"
         args: 
@@ -63,8 +59,6 @@ transforms:
             match_str: "Yes"
             on_true: "$END_OF_MONTH"
             on_false: "$TO_DATE_0002"
-    "$CURRENCY_THOUSANDS": 
-            on_false: "$TO_DATE_9997"
     "CURRENCY_THOUSANDS":
         name: "CURRENCY_THOUSANDS"
         args: {}
