@@ -20,7 +20,7 @@
     }
   },
   "transforms": {
-    "$CONCAT": {
+    "CONCAT": {
       "name": "CONCAT",
       "args": {
           "value": "#luname1",

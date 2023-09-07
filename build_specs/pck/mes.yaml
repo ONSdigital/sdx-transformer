@@ -125,10 +125,10 @@ template:
     "1150": "#1150"
     "1163": "$COMMENT"
 transforms:
-    "$CURRENCY_THOUSANDS":
+    "CURRENCY_THOUSANDS":
         name: "CURRENCY_THOUSANDS"
         args: { }
-    "$PERCENTAGE_RADIO":
+    "PERCENTAGE_RADIO":
         "name": "LOOKUP"
         "args":
             "None": "0001"
@@ -137,40 +137,40 @@ transforms:
             "50 to 80%": "0100"
             "More than 80%": "0101"
             "All": "0110"
-    "$FOUNDED_RADIO":
+    "FOUNDED_RADIO":
         "name": "LOOKUP"
         "args":
             "The owner founded it": "1000"
             "A relative of the founder owned it": "0100"
             "A family not related to the founder owned it": "0010"
             "Not a family-owned business": "0001"
-    "$YES_NO_RADIO":
+    "YES_NO_RADIO":
         "name": "LOOKUP"
         "args":
             "Yes": "10"
             "No": "01"
-    "$RESOLVED_RADIO":
+    "RESOLVED_RADIO":
         "name": "LOOKUP"
         "args":
             "We resolved the problems but did not take further action": "1000"
             "We resolved the problems and took action to try to ensure they do not happen again": "0100"
             "We resolved the problems and had a continuous improvement process to anticipate similar problems in advance": "0010"
             "No action was taken": "0001"
-    "$RESOLVE_RADIO":
+    "RESOLVE_RADIO":
         "name": "LOOKUP"
         "args":
             "We resolve the problems but do not take further action": "1000"
             "We resolve the problems and take action to try to ensure they do not happen again": "0100"
             "We resolve the problems and have a continuous improvement process to anticipate similar problems in advance": "0010"
             "No action is taken": "0001"
-    "$PERFORMANCE_RADIO":
+    "PERFORMANCE_RADIO":
         "name": "LOOKUP"
         "args":
             "1-2 key performance indicators": "1000"
             "3-9 key performance indicators": "0100"
             "10 or more key performance indicators": "0010"
             "No key performance indicators": "0001"
-    "$PERIODICITY_RADIO":
+    "PERIODICITY_RADIO":
         "name": "LOOKUP"
         "args":
             "Annually": "0001"
@@ -180,21 +180,21 @@ transforms:
             "Daily": "0101"
             "Hourly or more frequently": "0110"
             "Never": "0111"
-    "$TIMEFRAME_WAS_RADIO":
+    "TIMEFRAME_WAS_RADIO":
         "name": "LOOKUP"
         "args":
             "Main timeframe was less than one year": "1000"
             "Main timeframe was one year or more": "0100"
             "Combination of timeframes of less than and more than a year": "0010"
             "There were no targets": "0001"
-    "$TIMEFRAME_IS_RADIO":
+    "TIMEFRAME_IS_RADIO":
         "name": "LOOKUP"
         "args":
             "Main timeframe is less than one year": "1000"
             "Main timeframe is one year or more": "0100"
             "Combination of timeframes of less than and more than a year": "0010"
             "There are no targets": "0001"
-    "$DIFFICULTY_RADIO":
+    "DIFFICULTY_RADIO":
         "name": "LOOKUP"
         "args":
             "Very easy": "10000"
@@ -202,14 +202,14 @@ transforms:
             "Neither easy nor difficult": "00100"
             "Quite difficult": "00010"
             "Very difficult": "00001"
-    "$PROPORTION_RADIO":
+    "PROPORTION_RADIO":
         "name": "LOOKUP"
         "args":
             "All": "1000"
             "Most": "0100"
             "Some": "0010"
             "None": "0001"
-    "$PERFORMANCE_TARGETS_RADIO":
+    "PERFORMANCE_TARGETS_RADIO":
         "name": "LOOKUP"
         "args":
             "Their own performance as measured by targets": "0001"
@@ -218,14 +218,14 @@ transforms:
             "The business's performance as measured by targets": "0100"
             "Performance bonuses were not related to targets": "0101"
             "on_no_match": "0110"
-    "$PERFORMANCE_BASIS_RADIO":
+    "PERFORMANCE_BASIS_RADIO":
         "name": "LOOKUP"
         "args":
             "Based solely on performance or ability": "1000"
             "Based partly on performance or ability, and partly on other factors": "0100"
             "Based mainly on factors other than performance or ability": "0010"
             "on_no_match": "0001"
-    "$DAYS_RADIO":
+    "DAYS_RADIO":
         "name": "LOOKUP"
         "args":
             "Less than a day": "10000"
@@ -233,21 +233,21 @@ transforms:
             "2 to 4 days": "00100"
             "5 to 10 days": "00010"
             "More than 10 days": "00001"
-    "$MONTHS_RADIO":
+    "MONTHS_RADIO":
         "name": "LOOKUP"
         "args":
             "Within 6 months of identifying under-performance": "1000"
             "After 6 months of identifying under-performance": "0100"
             "No action was taken to address under-performance": "0010"
             "There was no under-performance": "0001"
-    "$SITES_RADIO":
+    "SITES_RADIO":
         "name": "LOOKUP"
         "args":
             "Only at individual sites": "1000"
             "Only at headquarters": "0100"
             "Both at individual sites and at headquarters": "0010"
             "Other": "0001"
-    "$POUNDS_RADIO":
+    "POUNDS_RADIO":
         "name": "LOOKUP"
         "args":
             "Under £1,000": "10000"
@@ -255,109 +255,109 @@ transforms:
             "£10,000 to £99,999": "00100"
             "£100,000 to £999,999": "00010"
             "£1 million or more": "00001"
-    "$TURNOVER_HIGHER":
+    "TURNOVER_HIGHER":
         "name": "CONTAINS"
         "args":
             "match_str": "higher than expected"
             "on_true": "1"
             "on_false": ""
-    "$TURNOVER_LOWER":
+    "TURNOVER_LOWER":
         "name": "CONTAINS"
         "args":
             "match_str": "lower than expected"
             "on_true": "1"
             "on_false": ""
-    "$TURNOVER_HIGHER_LOWER":
+    "TURNOVER_HIGHER_LOWER":
         "name": "CONTAINS"
         "args":
             "match_str": "higher than expected while others lower than expected"
             "on_true": "1"
             "on_false": ""
-    "$TURNOVER_NOT_EXPECTED":
+    "TURNOVER_NOT_EXPECTED":
         "name": "CONTAINS"
         "args":
             "match_str": "not expected"
             "on_true": "1"
             "on_false": ""
-    "$TURNOVER_AS_EXPECTED":
+    "TURNOVER_AS_EXPECTED":
         "name": "CONTAINS"
         "args":
             "match_str": "as expected"
             "on_true": "1"
             "on_false": ""
-    "$USED_DOMESTIC":
+    "USED_DOMESTIC":
         "name": "CONTAINS"
         "args":
             "match_str": "used some new domestic suppliers"
             "on_true": "1"
             "on_false": ""
-    "$STOPPED_DOMESTIC":
+    "STOPPED_DOMESTIC":
         "name": "CONTAINS"
         "args":
             "match_str": "stopped using some domestic suppliers"
             "on_true": "1"
             "on_false": ""
-    "$USED_INTERNATIONAL":
+    "USED_INTERNATIONAL":
         "name": "CONTAINS"
         "args":
             "match_str": "used some new international suppliers"
             "on_true": "1"
             "on_false": ""
-    "$STOPPED_INTERNATIONAL":
+    "STOPPED_INTERNATIONAL":
         "name": "CONTAINS"
         "args":
             "match_str": "stopped using some international suppliers"
             "on_true": "1"
             "on_false": ""
-    "$CHANGE_SUPPLIERS":
+    "CHANGE_SUPPLIERS":
         "name": "CONTAINS"
         "args":
             "match_str": "did not change our suppliers"
             "on_true": "1"
             "on_false": ""
-    "$OPERATIONAL_SUPPLIERS":
+    "OPERATIONAL_SUPPLIERS":
         "name": "CONTAINS"
         "args":
             "match_str": "suppliers were operational"
             "on_true": "1"
             "on_false": ""
-    "$LOGISTICAL_PROBLEMS":
+    "LOGISTICAL_PROBLEMS":
         "name": "CONTAINS"
         "args":
             "match_str": "Logistical problems"
             "on_true": "1"
             "on_false": ""
-    "$CLOSED":
+    "CLOSED":
         "name": "CONTAINS"
         "args":
             "match_str": "closed or out of business"
             "on_true": "1"
             "on_false": ""
-    "$PRICE_COMPETITIVE":
+    "PRICE_COMPETITIVE":
         "name": "CONTAINS"
         "args":
             "match_str": "price competitive"
             "on_true": "1"
             "on_false": ""
-    "$SUPERIOR_PRODUCTS":
+    "SUPERIOR_PRODUCTS":
         "name": "CONTAINS"
         "args":
             "match_str": "superior products or service"
             "on_true": "1"
             "on_false": ""
-    "$CHANGED":
+    "CHANGED":
         "name": "CONTAINS"
         "args":
             "match_str": "requirements changed"
             "on_true": "1"
             "on_false": ""
-    "$OTHER":
+    "OTHER":
         "name": "CONTAINS"
         "args":
             "match_str": "Other"
             "on_true": "1"
             "on_false": ""
-    "$IMPACT_RADIO":
+    "IMPACT_RADIO":
         "name": "LOOKUP"
         "args":
             "Large positive impacts": "10000"
@@ -365,48 +365,48 @@ transforms:
             "Minimal or no impacts": "00100"
             "Small negative impacts": "00010"
             "Large negative impacts": "00001"
-    "$HIGHER":
+    "HIGHER":
         "name": "CONTAINS"
         "args":
             "match_str": "higher than expected"
             "on_true": "1"
             "on_false": ""
-    "$LOWER":
+    "LOWER":
         "name": "CONTAINS"
         "args":
             "match_str": "lower than expected"
             "on_true": "1"
             "on_false": ""
-    "$INCREASED_DECREASED":
+    "INCREASED_DECREASED":
         "name": "CONTAINS"
         "args":
             "match_str": "capital increased while others decreased"
             "on_true": "1"
             "on_false": ""
-    "$CANCELLED":
+    "CANCELLED":
         "name": "CONTAINS"
         "args":
             "match_str": "cancelled"
             "on_true": "1"
             "on_false": ""
-    "$TYPES_ACTIVITIES":
+    "TYPES_ACTIVITIES":
         "name": "CONTAINS"
         "args":
             "match_str": "in types and activities"
             "on_true": "1"
             "on_false": ""
-    "$INO_CHANGE":
+    "INO_CHANGE":
         "name": "CONTAINS"
         "args":
             "match_str": "did not change"
             "on_true": "1"
             "on_false": ""
-    "$FEEDBACK_RADIO":
+    "FEEDBACK_RADIO":
         "name": "LOOKUP"
         "args":
             "Yes, I would like to receive feedback": "10"
             "No, I would prefer not to receive feedback": "01"
-    "$COMMENT":
+    "COMMENT":
         "name": "EXISTS"
         "args":
             "on_true": "1"

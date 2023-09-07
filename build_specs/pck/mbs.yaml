@@ -21,40 +21,40 @@ template:
     "110": "$TO_INT"
     "146": "$COMMENT"
 transforms:
-    "$START_OF_PERIOD":
+    "START_OF_PERIOD":
         name: "START_OF_MONTH"
         args:
             "value": "#period_id"
             "input_format": "YYYYMM"
             "display_as": "DDMMYY"
-    "$END_OF_PERIOD":
+    "END_OF_PERIOD":
         name: "END_OF_MONTH"
         args:
             "value": "#period_id"
             "input_format": "YYYYMM"
             "display_as": "DDMMYY"
-    "$TO_DATE":
+    "TO_DATE":
         name: "TO_DATE"
         args:
             "display_as": "DDMMYY"
-    "$START_DATE":
+    "START_DATE":
         "name": "EXISTS"
         "args":
             "on_true": "$TO_DATE"
             "on_false": "$START_OF_PERIOD"
-    "$END_DATE":
+    "END_DATE":
         "name": "EXISTS"
         "args":
             "on_true": "$TO_DATE"
             "on_false": "$END_OF_PERIOD"
-    "$CURRENCY_THOUSANDS": 
+    "CURRENCY_THOUSANDS":
         name: "CURRENCY_THOUSANDS"
         args: {}
-    "$TO_INT":
+    "TO_INT":
         name: "ROUND"
         args:
             "nearest": "1"
-    "$EMPLOYEE_TOTALS":
+    "EMPLOYEE_TOTALS":
         name: "ANY_CONTAINS"
         args:
             values: ["#d50"]
@@ -62,7 +62,7 @@ transforms:
             on_true: "0"
             on_false: "&value"
         post: "$TO_INT"
-    "$TURNOVER_TOTALS":
+    "TURNOVER_TOTALS":
         name: "ANY_CONTAINS"
         args:
             values: ["#d49"]
@@ -70,7 +70,7 @@ transforms:
             on_true: "0"
             on_false: "&value"
         post: "$CURRENCY_THOUSANDS"
-    "$COMMENT":
+    "COMMENT":
         name: "EXISTS"
         args:
             "on_true": "1"

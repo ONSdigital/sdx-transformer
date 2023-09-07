@@ -61,108 +61,108 @@ template:
     "399": "$DWELLING_END_TOTAL_LOOKUP"
     
 transforms:
-    "$START_DATE":
+    "START_DATE":
         "name": "PERIOD_START"
         "args":
             "period_start_date": "#period_start_date"
-    "$END_DATE":
+    "END_DATE":
         "name": "PERIOD_END"
         "args":
             "period_end_date": "#period_end_date"
-    "$YES_NO_RADIO":
+    "YES_NO_RADIO":
         "name": "LOOKUP"
         "args":
             "Yes": "1"
             "No": "2"
-    "$CURRENCY_THOUSANDS":
+    "CURRENCY_THOUSANDS":
         "name": "CURRENCY_THOUSANDS"
         "args": {}
-    "$COMMENT":
+    "COMMENT":
         name: "EXISTS"
         args:
             "on_true": "1"
             "on_false": "2"
-    "$START_TOTAL_0001":
+    "START_TOTAL_0001":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ["&139", "&144", "&149"]
-    "$END_TOTAL_0001":
+    "END_TOTAL_0001":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ["&140", "&145", "&150"]
-    "$START_TOTAL_0003":
+    "START_TOTAL_0003":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ["&319", "&329"]
-    "$END_TOTAL_0003":
+    "END_TOTAL_0003":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ["&320", "&330"]
-    "$START_TOTAL_0005":
+    "START_TOTAL_0005":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&174', '&179', '&184', '&189', '&191']
-    "$END_TOTAL_0005":
+    "END_TOTAL_0005":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&175', '&180', '&185', '&190', '&192']
-    "$START_TOTAL_0007":
+    "START_TOTAL_0007":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&204', '&209', '&214']
-    "$END_TOTAL_0007":
+    "END_TOTAL_0007":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&205', '&210', '&215']
-    "$START_TOTAL_0009":
+    "START_TOTAL_0009":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&119', '&144', '&174', '&179', '&209']
-    "$END_TOTAL_0009":
+    "END_TOTAL_0009":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&120', '&145', '&175', '&180', '&210']
-    "$START_TOTAL_0011":
+    "START_TOTAL_0011":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&119', '&144']
-    "$END_TOTAL_0011":
+    "END_TOTAL_0011":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&120', '&145']
-    "$START_TOTAL_0013":
+    "START_TOTAL_0013":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&139', '&144', '&149']
-    "$END_TOTAL_0013":
+    "END_TOTAL_0013":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&140', '&145', '&150']
-    "$START_TOTAL_0057":
+    "START_TOTAL_0057":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&9', '&193', '&195']
-    "$END_TOTAL_0057":
+    "END_TOTAL_0057":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&10', '&194', '&196']
-    "$START_TOTAL_LOOKUP":
+    "START_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":
             "value": "#form_type"
@@ -182,7 +182,7 @@ transforms:
             "0014": "$START_TOTAL_0013"
             "0057": "$START_TOTAL_0057"
             "0058": "$START_TOTAL_0057"
-    "$END_TOTAL_LOOKUP":
+    "END_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":
             "value": "#form_type"
@@ -202,45 +202,45 @@ transforms:
             "0014": "$END_TOTAL_0013"
             "0057": "$END_TOTAL_0057"
             "0058": "$END_TOTAL_0057"
-    "$NON_DWELLING_START_TOTAL":
+    "NON_DWELLING_START_TOTAL":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&219', '&229']
-    "$NON_DWELLING_END_TOTAL":
+    "NON_DWELLING_END_TOTAL":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&220', '&230']
-    "$DWELLING_START_TOTAL":
+    "DWELLING_START_TOTAL":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&249', '&259']
-    "$DWELLING_END_TOTAL":
+    "DWELLING_END_TOTAL":
         "name": "TOTAL"
         "args":
             "value": ""
             "values": ['&250', '&260']
-    "$NON_DWELLING_START_TOTAL_LOOKUP":
+    "NON_DWELLING_START_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":
             "value": "#form_type"
             "0033": "$NON_DWELLING_START_TOTAL"
             "0034": "$NON_DWELLING_START_TOTAL"
-    "$NON_DWELLING_END_TOTAL_LOOKUP":
+    "NON_DWELLING_END_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":
             "value": "#form_type"
             "0033": "$NON_DWELLING_END_TOTAL"
             "0034": "$NON_DWELLING_END_TOTAL"
-    "$DWELLING_START_TOTAL_LOOKUP":
+    "DWELLING_START_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":
             "value": "#form_type"
             "0033": "$DWELLING_START_TOTAL"
             "0034": "$DWELLING_START_TOTAL"
-    "$DWELLING_END_TOTAL_LOOKUP":
+    "DWELLING_END_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":
             "value": "#form_type"

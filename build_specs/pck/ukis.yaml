@@ -226,93 +226,93 @@ template:
     "2800": "#2800"
     "2900": "$YES_NO"
 transforms:
-    "$YES_NO":
+    "YES_NO":
         "name": "STARTS_WITH"
         "args":
             "match_str": "Yes"
             "on_true": "10"
             "on_false": "01"
-    "$CURRENCY_THOUSANDS":
+    "CURRENCY_THOUSANDS":
         "name": "CURRENCY_THOUSANDS"
         "args": {}
-    "$IMPORTANCE_RADIO":
+    "IMPORTANCE_RADIO":
         "name": "LOOKUP"
         "args":
             "High importance": "1000"
             "Medium importance": "0100"
             "Low importance": "0010"
             "Not important": "0001"
-    "$CHECKBOX":
+    "CHECKBOX":
         "name": "EXISTS"
         "args":
             "on_true": "1"
             "on_false": null
-    "$PERCENT_RADIO":
+    "PERCENT_RADIO":
         "name": "LOOKUP"
         "args":
             "Over 90%": "0001"
             "40-90%": "0010"
             "Less than 40%": "0011"
             "None": "0100"
-    "$TEXT":
+    "TEXT":
         "name": "EXISTS"
         "args":
             "on_true": "1"
             "on_false": "2"
-    "$PERCENTAGE":
+    "PERCENTAGE":
         "name": "ROUND"
         "args":
             "nearest": "1"
-    "$DISTANCE_WITHIN_2121":
+    "DISTANCE_WITHIN_2121":
         "name": "STARTS_WITH"
         "args":
             "value": "#2121"
             "match_str": "Within"
             "on_true": "1"
             "on_false": "0"
-    "$DISTANCE_FURTHER_2121":
+    "DISTANCE_FURTHER_2121":
         "name": "STARTS_WITH"
         "args":
             "value": "#2121"
             "match_str": "Further"
             "on_true": "1"
             "on_false": "0"
-    "$DISTANCE_OUTSIDE_2121":
+    "DISTANCE_OUTSIDE_2121":
         "name": "STARTS_WITH"
         "args":
             "value": "#2121"
             "match_str": "Outside"
             "on_true": "1"
             "on_false": "0"
-    "$DISTANCE_BUSINESS_2121":
+    "DISTANCE_BUSINESS_2121":
         "name": "STARTS_WITH"
         "args":
             "value": "#2121"
             "match_str": "Your business"
             "on_true": "1"
             "on_false": "0"
-    "$DISTANCE_WITHIN_2131":
+    "DISTANCE_WITHIN_2131":
         "name": "STARTS_WITH"
         "args":
             "value": "#2131"
             "match_str": "Within"
             "on_true": "1"
             "on_false": "0"
-    "$DISTANCE_FURTHER_2131":
+    "DISTANCE_FURTHER_2131":
         "name": "STARTS_WITH"
         "args":
             "value": "#2131"
             "match_str": "Further"
             "on_true": "1"
             "on_false": "0"
-    "$DISTANCE_OUTSIDE_2131":
+    "DISTANCE_OUTSIDE_2131":
         "name": "STARTS_WITH"
         "args":
             "value": "#2131"
             "match_str": "Outside"
             "on_true": "1"
             "on_false": "0"
-    "$DISTANCE_BUSINESS_2131":
+    "DISTANCE_BUSINESS_2131":
         "name": "STARTS_WITH"
         "args":
             "value": "#2131"

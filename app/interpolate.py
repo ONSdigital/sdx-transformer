@@ -16,7 +16,7 @@ def interpolate(template: Template, transforms: Transforms) -> ParseTree:
     This includes expanding all nested transforms that exist
     within the args, and inverting all 'post' transforms e.g:
 
-        "$DIVIDE": {
+        "DIVIDE": {
             "name": "DIVIDE",
             "args": {
                 "value": "$MULTIPLY",
@@ -41,7 +41,7 @@ def expand_nested_transforms(transforms: Transforms) -> Transforms:
     """
     def on_str(name: str, field: str, walker: TreeWalker) -> Field:
         if field.startswith(FUNCTION_PREFIX):
-            return walker.evaluate_field(name, transforms.get(field))
+            return walker.evaluate_field(name, transforms.get(field[1:]))
         return field
 
     return TreeWalker(tree=transforms, on_str=on_str).walk_tree()
@@ -53,7 +53,7 @@ def map_template(template: Template, transforms: Transforms) -> ParseTree:
     """
     def on_str(name: str, field: str, walker: TreeWalker) -> Field:
         if field.startswith(FUNCTION_PREFIX):
-            return walker.evaluate_field(name, transforms.get(field))
+            return walker.evaluate_field(name, transforms.get(field[1:]))
         return field
 
     return TreeWalker(tree=template, on_str=on_str).walk_tree()
