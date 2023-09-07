@@ -48,3 +48,22 @@ class MCGPckTests(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
+
+    def test_fail_to_pck(self):
+        filepath = "tests/data/mcg/fail.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "127",
+            "period_id": "202307",
+            "ru_ref": "11110000020H",
+            "form_type": "0001",
+        }
+
+        actual: PCK = get_pck(submission_data, survey_metadata)
+
+        pck_filepath = "tests/data/mcg/fail.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertTrue(are_equal(expected, actual))
