@@ -28,6 +28,7 @@ class BuildSpec(TypedDict):
     survey_id: str
     period_format: str
     pck_period_format: NotRequired[str]
+    form_mapping: NotRequired[dict[str, str]]
     target: str
     item_list_path: NotRequired[str]
     template: Template

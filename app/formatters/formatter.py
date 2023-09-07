@@ -3,9 +3,16 @@ from app.definitions import Value, SurveyMetadata, PCK, BuildSpecError
 
 class Formatter:
 
-    def __init__(self, period_format: str, pck_period_format: str):
+    def __init__(self, period_format: str, pck_period_format: str, form_mapping: dict[str, str] = {}):
         self._period_format = period_format
         self._pck_period_format = pck_period_format
+        self._form_mapping = form_mapping
+
+    def get_form_type(self, form_type: str) -> str:
+        if form_type in self._form_mapping:
+            return self._form_mapping[form_type]
+        else:
+            return form_type
 
     def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
         """Write a PCK file."""

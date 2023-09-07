@@ -8,7 +8,7 @@ from sdx_gcp.errors import DataError
 from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
 from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
-from app.formatters.cs_formatter import CSFormatter, MBSFormatter, QSSFormatter
+from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.interpolate import interpolate
@@ -32,9 +32,7 @@ formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA": CORAFormatter,
     "CORA_MES": MESFormatter,
     "CS": CSFormatter,
-    "CS_MBS": MBSFormatter,
-    "CS_QSS": QSSFormatter,
-    "OpenROAD": OpenRoadFormatter
+    "OpenROAD": OpenRoadFormatter,
 }
 
 
@@ -48,7 +46,9 @@ def get_pck(submission_data: Data, survey_metadata: SurveyMetadata) -> PCK:
     f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
     formatter: Formatter = f(build_spec["period_format"],
                              build_spec["pck_period_format"]
-                             if "pck_period_format" in build_spec else build_spec["period_format"])
+                             if "pck_period_format" in build_spec else build_spec["period_format"],
+                             build_spec["form_mapping"]
+                             if "form_mapping" in build_spec else {})
     pck = formatter.generate_pck(transformed_data, survey_metadata)
     logger.info("Generated pck file")
     return pck
