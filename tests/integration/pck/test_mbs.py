@@ -16,9 +16,13 @@ class MBSPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "30237487572l",
             "form_type": "0106",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
+
+        print(actual)
 
         pck_filepath = "tests/data/mbs/009.0106.pck"
         with open(pck_filepath) as f:
@@ -35,6 +39,8 @@ class MBSPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "46588678052M",
             "form_type": "0111",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
@@ -54,6 +60,8 @@ class MBSPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "97148856319Y",
             "form_type": "0255",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
@@ -73,6 +81,8 @@ class MBSPckTests(unittest.TestCase):
             "period_id": "201605",
             "ru_ref": "97148856319Y",
             "form_type": "0255",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)

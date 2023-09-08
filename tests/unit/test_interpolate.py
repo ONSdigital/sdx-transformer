@@ -18,34 +18,34 @@ class InterpolateTests(unittest.TestCase):
         }
 
         transforms: Transforms = {
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "by": "2",
                 },
                 "post": "$MULTIPLY"
             },
-            "$MULTIPLY": {
+            "MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "by": "3",
                 },
                 "post": "$ROUND"
             },
-            "$ROUND": {
+            "ROUND": {
                 "name": "ROUND",
                 "args": {
                     "precision": "1",
                 }
             },
-            "$ADD": {
+            "ADD": {
                 "name": "ADD",
                 "args": {
                     "value": "",
                     "values": ["#161", "#162"]
                 }
             },
-            "$ADD_MANY": {
+            "ADD_MANY": {
                 "name": "ADD_MANY",
                 "args": {
                     "values": ["#161", "#163", "$MULTIPLY"]
@@ -119,14 +119,14 @@ class ExpandNestedTransformsTests(unittest.TestCase):
     def test_nested_as_value(self):
 
         transforms: Transforms = {
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "value": "$MULTIPLY",
                     "by": "2"
                 },
             },
-            "$MULTIPLY": {
+            "MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "by": "3",
@@ -135,7 +135,7 @@ class ExpandNestedTransformsTests(unittest.TestCase):
         }
 
         expected: ParseTree = {
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "value": {
@@ -147,7 +147,7 @@ class ExpandNestedTransformsTests(unittest.TestCase):
                     "by": "2"
                 },
             },
-            "$MULTIPLY": {
+            "MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "by": "3",
@@ -161,19 +161,19 @@ class ExpandNestedTransformsTests(unittest.TestCase):
     def test_nested_in_list(self):
 
         transforms: Transforms = {
-            "$ADD": {
+            "ADD": {
                 "name": "ADD",
                 "args": {
                     "values": ["$MULTIPLY", "$DIVIDE"]
                 },
             },
-            "$MULTIPLY": {
+            "MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "by": "3",
                 },
             },
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "by": "2",
@@ -182,7 +182,7 @@ class ExpandNestedTransformsTests(unittest.TestCase):
         }
 
         expected = {
-            "$ADD": {
+            "ADD": {
                 "name": "ADD",
                 "args": {
                     "values": [
@@ -201,13 +201,13 @@ class ExpandNestedTransformsTests(unittest.TestCase):
                     ]
                 }
             },
-            "$MULTIPLY": {
+            "MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "by": "3",
                 },
             },
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "by": "2",
@@ -221,21 +221,21 @@ class ExpandNestedTransformsTests(unittest.TestCase):
     def test_double_nested(self):
 
         transforms: Transforms = {
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "value": "$MULTIPLY",
                     "by": "2"
                 },
             },
-            "$MULTIPLY": {
+            "MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "value": "$ROUND",
                     "by": "3",
                 },
             },
-            "$ROUND": {
+            "ROUND": {
                 "name": "ROUND",
                 "args": {
                     "nearest": "1",
@@ -244,7 +244,7 @@ class ExpandNestedTransformsTests(unittest.TestCase):
         }
 
         expected: ParseTree = {
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "value": {
@@ -262,7 +262,7 @@ class ExpandNestedTransformsTests(unittest.TestCase):
                     "by": "2"
                 },
             },
-            "$MULTIPLY": {
+            "MULTIPLY": {
                 "name": "MULTIPLY",
                 "args": {
                     "value": {
@@ -274,7 +274,7 @@ class ExpandNestedTransformsTests(unittest.TestCase):
                     "by": "3",
                 },
             },
-            "$ROUND": {
+            "ROUND": {
                 "name": "ROUND",
                 "args": {
                     "nearest": "1",
@@ -298,7 +298,7 @@ class MapTemplateTests(unittest.TestCase):
         }
 
         transforms: Transforms = {
-            "$DIVIDE": {
+            "DIVIDE": {
                 "name": "DIVIDE",
                 "args": {
                     "value": {
@@ -310,7 +310,7 @@ class MapTemplateTests(unittest.TestCase):
                     "by": "2"
                 },
             },
-            "$ROUND": {
+            "ROUND": {
                 "name": "ROUND",
                 "args": {
                     "precision": "1",
@@ -368,7 +368,7 @@ class MapTemplateTests(unittest.TestCase):
         }
 
         transforms: Transforms = {
-            "$1": {
+            "1": {
                 "name": "CONCAT",
                 "args": {
                     "value": "#name1",
@@ -376,14 +376,14 @@ class MapTemplateTests(unittest.TestCase):
                     "seperator": " "
                 },
             },
-            "$2": {
+            "2": {
                 "name": "ROUND",
                 "args": {
                     "value": "#age",
                     "precision": "1",
                 },
             },
-            "$3": {
+            "3": {
                 "name": "ROUND",
                 "args": {
                     "value": "#profit",

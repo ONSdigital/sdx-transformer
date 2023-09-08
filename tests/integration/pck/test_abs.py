@@ -10,9 +10,9 @@ class ABSPckTests(unittest.TestCase):
 
     def test_abs_to_pck(self):
         root_dir = "tests/data/abs/"
-        yaml_file_names = [f for f in os.listdir(root_dir) if f.endswith(".yaml")]
+        json_file_names = [f for f in os.listdir(root_dir) if f.endswith(".json")]
         print("------------")
-        for filename in yaml_file_names:
+        for filename in json_file_names:
 
             print("testing " + filename)
             filepath = root_dir + filename
@@ -24,6 +24,8 @@ class ABSPckTests(unittest.TestCase):
                 "period_id": "202112",
                 "ru_ref": "12346789012A",
                 "form_type": form_type,
+                "period_start_date": "2021-01-01",
+                "period_end_date": "2021-12-31",
             }
 
             actual: PCK = get_pck(submission_data, survey_metadata)

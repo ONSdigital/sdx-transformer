@@ -28,10 +28,14 @@ class BuildSpec(TypedDict):
     survey_id: str
     period_format: str
     pck_period_format: NotRequired[str]
+    form_mapping: NotRequired[dict[str, str]]
     target: str
     item_list_path: NotRequired[str]
     template: Template
     transforms: Transforms
+
+
+iso_8601_date = str  # YYYY-MM-DD
 
 
 class SurveyMetadata(TypedDict):
@@ -39,6 +43,8 @@ class SurveyMetadata(TypedDict):
     period_id: str
     ru_ref: str
     form_type: str
+    period_start_date: iso_8601_date
+    period_end_date: iso_8601_date
 
 
 Identifier = str

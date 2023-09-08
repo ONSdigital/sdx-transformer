@@ -8,6 +8,8 @@ from app.functions.general import handle_empties
 
 
 EQ_DATETIME_FORMAT: Final[str] = "DD/MM/YYYY"
+ISO_8601_FORMAT: Final[str] = "YYYY-MM-DD"
+PCK_DATE_FORMAT: Final[str] = "DDMMYY"
 
 
 def _get_date(text: str, format_str: str) -> date | bool:
@@ -31,7 +33,7 @@ def _to_date(value: str, input_format: str, display_as: str, process: Callable[[
 
 
 @handle_empties
-def to_date(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = "DDMMYY") -> Value:
+def to_date(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = PCK_DATE_FORMAT) -> Value:
     return _to_date(
         value,
         input_format=input_format,
@@ -56,7 +58,7 @@ def any_date(
 
 
 @handle_empties
-def start_of_month(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = "DDMMYY") -> Value:
+def start_of_month(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = PCK_DATE_FORMAT) -> Value:
     return _to_date(
         value,
         input_format=input_format,
@@ -65,7 +67,7 @@ def start_of_month(value: str, input_format: str = EQ_DATETIME_FORMAT, display_a
 
 
 @handle_empties
-def end_of_month(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = "DDMMYY") -> Value:
+def end_of_month(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = PCK_DATE_FORMAT) -> Value:
     return _to_date(
         value,
         input_format=input_format,
@@ -74,7 +76,7 @@ def end_of_month(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as:
 
 
 @handle_empties
-def start_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = "DDMMYY") -> Value:
+def start_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = PCK_DATE_FORMAT) -> Value:
     return _to_date(
         value,
         input_format=input_format,
@@ -83,7 +85,7 @@ def start_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as
 
 
 @handle_empties
-def end_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = "DDMMYY") -> Value:
+def end_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: str = PCK_DATE_FORMAT) -> Value:
     return _to_date(
         value,
         input_format=input_format,

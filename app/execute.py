@@ -2,7 +2,7 @@ from collections.abc import Callable
 from typing import Final
 
 from app.definitions import ParseTree, Transform, Field, Value, Empty
-from app.functions.compound import currency_thousands
+from app.functions.compound import currency_thousands, period_start, period_end
 from app.functions.general import no_transform, exists, any_exists, lookup
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.functions.string import starts_with, contains, any_contains, concat
@@ -36,6 +36,8 @@ _function_lookup: dict[str, Callable] = {
     "MEAN": mean,
     "NUMBER_EQUALS": number_equals,
     "CURRENCY_THOUSANDS": currency_thousands,
+    "PERIOD_START": period_start,
+    "PERIOD_END": period_end,
 }
 
 

@@ -1,8 +1,31 @@
 title: "Build Spec for Monthly Business Survey"
 survey_id: "009"
-target: "CS_MBS"
+target: "CS"
 period_format: "YYYYMM"
 pck_period_format: "YYYYMM"
+form_mapping:
+    "0106": "T106G"
+    "0111": "T111G"
+    "0161": "T161G"
+    "0117": "T117G"
+    "0123": "T123G"
+    "0158": "T158G"
+    "0167": "T167G"
+    "0173": "T173G"
+    "0201": "MB01B"
+    "0202": "MB01B"
+    "0203": "MB03B"
+    "0204": "MB03B"
+    "0205": "MB15B"
+    "0216": "MB15B"
+    "0251": "MB51B"
+    "0253": "MB53B"
+    "0255": "MB65B"
+    "0817": "T817G"
+    "0823": "T823G"
+    "0867": "T867G"
+    "0873": "T873G"
+
 template:
     "11": "$START_DATE"
     "12": "$END_DATE"
@@ -21,40 +44,22 @@ template:
     "110": "$TO_INT"
     "146": "$COMMENT"
 transforms:
-    "$START_OF_PERIOD":
-        name: "START_OF_MONTH"
-        args:
-            "value": "#period_id"
-            "input_format": "YYYYMM"
-            "display_as": "DDMMYY"
-    "$END_OF_PERIOD":
-        name: "END_OF_MONTH"
-        args:
-            "value": "#period_id"
-            "input_format": "YYYYMM"
-            "display_as": "DDMMYY"
-    "$TO_DATE":
-        name: "TO_DATE"
-        args:
-            "display_as": "DDMMYY"
-    "$START_DATE":
-        "name": "EXISTS"
+    "START_DATE":
+        "name": "PERIOD_START"
         "args":
-            "on_true": "$TO_DATE"
-            "on_false": "$START_OF_PERIOD"
-    "$END_DATE":
-        "name": "EXISTS"
+            "period_start_date": "#period_start_date"
+    "END_DATE":
+        "name": "PERIOD_END"
         "args":
-            "on_true": "$TO_DATE"
-            "on_false": "$END_OF_PERIOD"
-    "$CURRENCY_THOUSANDS": 
+            "period_end_date": "#period_end_date"
+    "CURRENCY_THOUSANDS":
         name: "CURRENCY_THOUSANDS"
         args: {}
-    "$TO_INT":
+    "TO_INT":
         name: "ROUND"
         args:
             "nearest": "1"
-    "$EMPLOYEE_TOTALS":
+    "EMPLOYEE_TOTALS":
         name: "ANY_CONTAINS"
         args:
             values: ["#d50"]
@@ -62,7 +67,7 @@ transforms:
             on_true: "0"
             on_false: "&value"
         post: "$TO_INT"
-    "$TURNOVER_TOTALS":
+    "TURNOVER_TOTALS":
         name: "ANY_CONTAINS"
         args:
             values: ["#d49"]
@@ -70,7 +75,7 @@ transforms:
             on_true: "0"
             on_false: "&value"
         post: "$CURRENCY_THOUSANDS"
-    "$COMMENT":
+    "COMMENT":
         name: "EXISTS"
         args:
             "on_true": "1"

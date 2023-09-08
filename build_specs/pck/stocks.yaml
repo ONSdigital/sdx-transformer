@@ -1,0 +1,272 @@
+title: "Build Spec for Stocks (QSS)"
+survey_id: "017"
+target: "CS"
+period_format: "YYMM"
+form_mapping:
+    "0001": "STP01"
+    "0002": "STP01"
+    "0003": "STQ03"
+    "0004": "STQ03"
+    "0005": "STE05"
+    "0006": "STE05"
+    "0007": "STE15"
+    "0008": "STE15"
+    "0009": "STE09"
+    "0010": "STE09"
+    "0011": "STE17"
+    "0012": "STE17"
+    "0013": "STE13"
+    "0014": "STE13"
+    "0033": "STC02"
+    "0034": "STC02"
+    "0051": "STW02"
+    "0052": "STW02"
+    "0057": "STM01"
+    "0058": "STM01"
+    "0061": "STW01"
+    "0070": "STS01"
+
+template:
+    "9": "$CURRENCY_THOUSANDS"
+    "10": "$CURRENCY_THOUSANDS"
+    "11": "$START_DATE"
+    "12": "$END_DATE"
+    "15": "$YES_NO_RADIO"
+    "119": "$CURRENCY_THOUSANDS"
+    "120": "$CURRENCY_THOUSANDS"
+    "139": "$CURRENCY_THOUSANDS"
+    "140": "$CURRENCY_THOUSANDS"
+    "144": "$CURRENCY_THOUSANDS"
+    "145": "$CURRENCY_THOUSANDS"
+    "149": "$CURRENCY_THOUSANDS"
+    "150": "$CURRENCY_THOUSANDS"
+    "174": "$CURRENCY_THOUSANDS"
+    "175": "$CURRENCY_THOUSANDS"
+    "179": "$CURRENCY_THOUSANDS"
+    "180": "$CURRENCY_THOUSANDS"
+    "184": "$CURRENCY_THOUSANDS"
+    "185": "$CURRENCY_THOUSANDS"
+    "189": "$CURRENCY_THOUSANDS"
+    "190": "$CURRENCY_THOUSANDS"
+    "191": "$CURRENCY_THOUSANDS"
+    "192": "$CURRENCY_THOUSANDS"
+    "193": "$CURRENCY_THOUSANDS"
+    "194": "$CURRENCY_THOUSANDS"
+    "195": "$CURRENCY_THOUSANDS"
+    "196": "$CURRENCY_THOUSANDS"
+    "204": "$CURRENCY_THOUSANDS"
+    "205": "$CURRENCY_THOUSANDS"
+    "209": "$CURRENCY_THOUSANDS"
+    "210": "$CURRENCY_THOUSANDS"
+    "214": "$CURRENCY_THOUSANDS"
+    "215": "$CURRENCY_THOUSANDS"
+    "219": "$CURRENCY_THOUSANDS"
+    "220": "$CURRENCY_THOUSANDS"
+    "229": "$CURRENCY_THOUSANDS"
+    "230": "$CURRENCY_THOUSANDS"
+    "249": "$CURRENCY_THOUSANDS"
+    "250": "$CURRENCY_THOUSANDS"
+    "259": "$CURRENCY_THOUSANDS"
+    "260": "$CURRENCY_THOUSANDS"
+    "319": "$CURRENCY_THOUSANDS"
+    "320": "$CURRENCY_THOUSANDS"
+    "329": "$CURRENCY_THOUSANDS"
+    "330": "$CURRENCY_THOUSANDS"
+    "498": "$CURRENCY_THOUSANDS"
+    "499": "$CURRENCY_THOUSANDS"
+    "598": "$CURRENCY_THOUSANDS"
+    "599": "$CURRENCY_THOUSANDS"
+    "146": "$COMMENT"
+    "65": "$START_TOTAL_LOOKUP"
+    "66": "$END_TOTAL_LOOKUP"
+    "298": "$NON_DWELLING_START_TOTAL_LOOKUP"
+    "299": "$NON_DWELLING_END_TOTAL_LOOKUP"
+    "398": "$DWELLING_START_TOTAL_LOOKUP"
+    "399": "$DWELLING_END_TOTAL_LOOKUP"
+    
+transforms:
+    "START_DATE":
+        "name": "PERIOD_START"
+        "args":
+            "period_start_date": "#period_start_date"
+    "END_DATE":
+        "name": "PERIOD_END"
+        "args":
+            "period_end_date": "#period_end_date"
+    "YES_NO_RADIO":
+        "name": "LOOKUP"
+        "args":
+            "Yes": "1"
+            "No": "2"
+    "CURRENCY_THOUSANDS":
+        "name": "CURRENCY_THOUSANDS"
+        "args": {}
+    "COMMENT":
+        name: "EXISTS"
+        args:
+            "on_true": "1"
+            "on_false": "2"
+    "START_TOTAL_0001":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&139", "&144", "&149"]
+    "END_TOTAL_0001":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&140", "&145", "&150"]
+    "START_TOTAL_0003":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&319", "&329"]
+    "END_TOTAL_0003":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&320", "&330"]
+    "START_TOTAL_0005":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&174', '&179', '&184', '&189', '&191']
+    "END_TOTAL_0005":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&175', '&180', '&185', '&190', '&192']
+    "START_TOTAL_0007":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&204', '&209', '&214']
+    "END_TOTAL_0007":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&205', '&210', '&215']
+    "START_TOTAL_0009":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&119', '&144', '&174', '&179', '&209']
+    "END_TOTAL_0009":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&120', '&145', '&175', '&180', '&210']
+    "START_TOTAL_0011":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&119', '&144']
+    "END_TOTAL_0011":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&120', '&145']
+    "START_TOTAL_0013":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&139', '&144', '&149']
+    "END_TOTAL_0013":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&140', '&145', '&150']
+    "START_TOTAL_0057":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&9', '&193', '&195']
+    "END_TOTAL_0057":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&10', '&194', '&196']
+    "START_TOTAL_LOOKUP":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "0001": "$START_TOTAL_0001"
+            "0002": "$START_TOTAL_0001"
+            "0003": "$START_TOTAL_0003"
+            "0004": "$START_TOTAL_0003"
+            "0005": "$START_TOTAL_0005"
+            "0006": "$START_TOTAL_0005"
+            "0007": "$START_TOTAL_0007"
+            "0008": "$START_TOTAL_0007"
+            "0009": "$START_TOTAL_0009"
+            "0010": "$START_TOTAL_0009"
+            "0011": "$START_TOTAL_0011"
+            "0012": "$START_TOTAL_0011"
+            "0013": "$START_TOTAL_0013"
+            "0014": "$START_TOTAL_0013"
+            "0057": "$START_TOTAL_0057"
+            "0058": "$START_TOTAL_0057"
+    "END_TOTAL_LOOKUP":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "0001": "$END_TOTAL_0001"
+            "0002": "$END_TOTAL_0001"
+            "0003": "$END_TOTAL_0003"
+            "0004": "$END_TOTAL_0003"
+            "0005": "$END_TOTAL_0005"
+            "0006": "$END_TOTAL_0005"
+            "0007": "$END_TOTAL_0007"
+            "0008": "$END_TOTAL_0007"
+            "0009": "$END_TOTAL_0009"
+            "0010": "$END_TOTAL_0009"
+            "0011": "$END_TOTAL_0011"
+            "0012": "$END_TOTAL_0011"
+            "0013": "$END_TOTAL_0013"
+            "0014": "$END_TOTAL_0013"
+            "0057": "$END_TOTAL_0057"
+            "0058": "$END_TOTAL_0057"
+    "NON_DWELLING_START_TOTAL":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&219', '&229']
+    "NON_DWELLING_END_TOTAL":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&220', '&230']
+    "DWELLING_START_TOTAL":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&249', '&259']
+    "DWELLING_END_TOTAL":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ['&250', '&260']
+    "NON_DWELLING_START_TOTAL_LOOKUP":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "0033": "$NON_DWELLING_START_TOTAL"
+            "0034": "$NON_DWELLING_START_TOTAL"
+    "NON_DWELLING_END_TOTAL_LOOKUP":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "0033": "$NON_DWELLING_END_TOTAL"
+            "0034": "$NON_DWELLING_END_TOTAL"
+    "DWELLING_START_TOTAL_LOOKUP":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "0033": "$DWELLING_START_TOTAL"
+            "0034": "$DWELLING_START_TOTAL"
+    "DWELLING_END_TOTAL_LOOKUP":
+        "name": "LOOKUP"
+        "args":
+            "value": "#form_type"
+            "0033": "$DWELLING_END_TOTAL"
+            "0034": "$DWELLING_END_TOTAL"

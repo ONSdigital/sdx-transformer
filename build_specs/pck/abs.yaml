@@ -43,33 +43,33 @@ template:
     "600": "$CURRENCY_THOUSANDS"
     "699": "$CURRENCY_THOUSANDS"
 transforms:
-    "$START_OF_PERIOD":
+    "START_OF_PERIOD":
         "name": "START_OF_YEAR"
         "args":
             "value": "#period_id"
             "input_format": "YYYYMM"
             "display_as": "DDMMYY"
-    "$END_OF_PERIOD":
+    "END_OF_PERIOD":
         "name": "END_OF_YEAR"
         "args":
             "value": "#period_id"
             "input_format": "YYYYMM"
             "display_as": "DDMMYY"
-    "$TO_DATE":
+    "TO_DATE":
         "name": "TO_DATE"
         "args":
             "display_as": "DDMMYY"
-    "$START_DATE":
+    "START_DATE":
         "name": "EXISTS"
         "args":
             "on_true": "$TO_DATE"
             "on_false": "$START_OF_PERIOD"
-    "$END_DATE":
+    "END_DATE":
         "name": "EXISTS"
         "args":
             "on_true": "$TO_DATE"
             "on_false": "$END_OF_PERIOD"
-    "$PERCENTAGE_RADIO":
+    "PERCENTAGE_RADIO":
         "name": "LOOKUP"
         "args":
             "0-9%": "10000"
@@ -78,23 +78,23 @@ transforms:
             "50-74%": "10"
             "75-100%": "1"
             "on_no_match": "0"
-    "$YES_NO_RADIO":
+    "YES_NO_RADIO":
         "name": "LOOKUP"
         "args":
             "Yes": "10"
             "No": "1"
             "on_no_match": "0"
-    "$CURRENCY_THOUSANDS":
+    "CURRENCY_THOUSANDS":
         "name": "CURRENCY_THOUSANDS"
-        "args":
-    "$NO_COMMENT_1808":
+        "args": {}
+    "NO_COMMENT_1808":
         "name": "ANY_CONTAINS"
         "args":
             "values": [ "#form_type" ]
             "match_str": "1808"
             "on_true": null
             "on_false": "&value"
-    "$NO_COMMENT_1820":
+    "NO_COMMENT_1820":
         "name": "ANY_CONTAINS"
         "args":
             "values": [ "#form_type" ]
@@ -102,18 +102,18 @@ transforms:
             "on_true": null
             "on_false": "&value"
         "post": "$NO_COMMENT_1808"
-    "$COMMENT":
+    "COMMENT":
         "name": "EXISTS"
         "args":
             "on_true": "1"
             "on_false": "2"
         "post": "$NO_COMMENT_1820"
-    "$499":
+    "499":
         "name": "EXISTS"
         "args":
             "on_true": "$CURRENCY_THOUSANDS"
             "on_false": "$TOTAL"
-    "$TOTAL":
+    "TOTAL":
         "name": "TOTAL"
         "args":
             "value": "0"

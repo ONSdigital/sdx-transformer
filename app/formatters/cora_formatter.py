@@ -6,8 +6,8 @@ class CORAFormatter(Formatter):
     """
     Formatter for CORA systems.
     """
-    def __init__(self, period_format: str, pck_period_format: str):
-        super().__init__(period_format, pck_period_format)
+    def __init__(self, period_format: str, pck_period_format: str, form_mapping: dict[str, str] = {}):
+        super().__init__(period_format, pck_period_format, form_mapping)
         self.page: str = "1"
         self.instance: str = "0"
 
@@ -25,7 +25,7 @@ class CORAFormatter(Formatter):
 
 
 class MESFormatter(CORAFormatter):
-    def __init__(self, period_format: str, pck_period_format: str):
-        super().__init__(period_format, pck_period_format)
+    def __init__(self, period_format: str, pck_period_format: str, form_mapping: dict[str, str] = {}):
+        super().__init__(period_format, pck_period_format, form_mapping)
         self.page: str = "1"
         self.instance: str = "00000"

@@ -49,7 +49,7 @@
     "504": "$504"
   },
   "transforms": {
-    "$501": {
+    "501": {
       "name": "TOTAL",
       "args": {
         "value": "0",
@@ -66,7 +66,7 @@
         ]
       }
     },
-    "$502": {
+    "502": {
       "name": "TOTAL",
       "args": {
         "value": "0",
@@ -83,7 +83,7 @@
         ]
       }
     },
-    "$503": {
+    "503": {
       "name": "TOTAL",
       "args": {
         "value": "0",
@@ -100,7 +100,7 @@
         ]
       }
     },
-    "$504": {
+    "504": {
       "name": "TOTAL",
       "args": {
         "value": "0",
@@ -117,7 +117,7 @@
         ]
       }
     },
-    "$CLAY": {
+    "CLAY": {
       "name": "ANY_CONTAINS",
       "args": {
           "values": ["#9999"],
@@ -126,7 +126,7 @@
           "on_false": null
       }
     },
-    "$CONCRETE": {
+    "CONCRETE": {
       "name": "ANY_CONTAINS",
       "args": {
           "values": ["#9999"],
@@ -135,7 +135,7 @@
           "on_false": null
       }
     },
-    "$SANDLIME": {
+    "SANDLIME": {
       "name": "ANY_CONTAINS",
       "args": {
           "values": ["#9999"],
@@ -144,259 +144,259 @@
           "on_false": null
       }
     },
-    "$CLAY_01": {
+    "CLAY_01": {
       "name": "VALUE",
       "args": {
         "value": "#01"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_01": {
+    "CONCRETE_01": {
       "name": "VALUE",
       "args": {
         "value": "#01"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_01": {
+    "SANDLIME_01": {
       "name": "VALUE",
       "args": {
         "value": "#01"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_02": {
+    "CLAY_02": {
       "name": "VALUE",
       "args": {
         "value": "#02"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_02": {
+    "CONCRETE_02": {
       "name": "VALUE",
       "args": {
         "value": "#02"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_02": {
+    "SANDLIME_02": {
       "name": "VALUE",
       "args": {
         "value": "#02"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_03": {
+    "CLAY_03": {
       "name": "VALUE",
       "args": {
         "value": "#03"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_03": {
+    "CONCRETE_03": {
       "name": "VALUE",
       "args": {
         "value": "#03"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_03": {
+    "SANDLIME_03": {
       "name": "VALUE",
       "args": {
         "value": "#03"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_04": {
+    "CLAY_04": {
       "name": "VALUE",
       "args": {
         "value": "#04"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_04": {
+    "CONCRETE_04": {
       "name": "VALUE",
       "args": {
         "value": "#04"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_04": {
+    "SANDLIME_04": {
       "name": "VALUE",
       "args": {
         "value": "#04"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_11": {
+    "CLAY_11": {
       "name": "VALUE",
       "args": {
         "value": "#11"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_11": {
+    "CONCRETE_11": {
       "name": "VALUE",
       "args": {
         "value": "#11"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_11": {
+    "SANDLIME_11": {
       "name": "VALUE",
       "args": {
         "value": "#11"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_12": {
+    "CLAY_12": {
       "name": "VALUE",
       "args": {
         "value": "#12"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_12": {
+    "CONCRETE_12": {
       "name": "VALUE",
       "args": {
         "value": "#12"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_12": {
+    "SANDLIME_12": {
       "name": "VALUE",
       "args": {
         "value": "#12"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_13": {
+    "CLAY_13": {
       "name": "VALUE",
       "args": {
         "value": "#13"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_13": {
+    "CONCRETE_13": {
       "name": "VALUE",
       "args": {
         "value": "#13"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_13": {
+    "SANDLIME_13": {
       "name": "VALUE",
       "args": {
         "value": "#13"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_14": {
+    "CLAY_14": {
       "name": "VALUE",
       "args": {
         "value": "#14"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_14": {
+    "CONCRETE_14": {
       "name": "VALUE",
       "args": {
         "value": "#14"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_14": {
+    "SANDLIME_14": {
       "name": "VALUE",
       "args": {
         "value": "#14"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_21": {
+    "CLAY_21": {
       "name": "VALUE",
       "args": {
         "value": "#21"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_21": {
+    "CONCRETE_21": {
       "name": "VALUE",
       "args": {
         "value": "#21"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_21": {
+    "SANDLIME_21": {
       "name": "VALUE",
       "args": {
         "value": "#21"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_22": {
+    "CLAY_22": {
       "name": "VALUE",
       "args": {
         "value": "#22"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_22": {
+    "CONCRETE_22": {
       "name": "VALUE",
       "args": {
         "value": "#22"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_22": {
+    "SANDLIME_22": {
       "name": "VALUE",
       "args": {
         "value": "#22"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_23": {
+    "CLAY_23": {
       "name": "VALUE",
       "args": {
         "value": "#23"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_23": {
+    "CONCRETE_23": {
       "name": "VALUE",
       "args": {
         "value": "#23"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_23": {
+    "SANDLIME_23": {
       "name": "VALUE",
       "args": {
         "value": "#23"
       },
       "post": "$SANDLIME"
     },
-    "$CLAY_24": {
+    "CLAY_24": {
       "name": "VALUE",
       "args": {
         "value": "#24"
       },
       "post": "$CLAY"
     },
-    "$CONCRETE_24": {
+    "CONCRETE_24": {
       "name": "VALUE",
       "args": {
         "value": "#24"
       },
       "post": "$CONCRETE"
     },
-    "$SANDLIME_24": {
+    "SANDLIME_24": {
       "name": "VALUE",
       "args": {
         "value": "#24"
       },
       "post": "$SANDLIME"
     },
-    "$EXISTS": {
+    "EXISTS": {
       "name": "EXISTS",
       "args": {
         "on_true": "1",
