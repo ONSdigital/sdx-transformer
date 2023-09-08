@@ -43,12 +43,7 @@ def get_pck(submission_data: Data, survey_metadata: SurveyMetadata) -> PCK:
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"])
     add_metadata_to_input_data(submission_data, survey_metadata)
     transformed_data: dict[str, Value] = transform(submission_data, build_spec)
-    f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
-    formatter: Formatter = f(build_spec["period_format"],
-                             build_spec["pck_period_format"]
-                             if "pck_period_format" in build_spec else build_spec["period_format"],
-                             build_spec["form_mapping"]
-                             if "form_mapping" in build_spec else {})
+    formatter = get_formatter(build_spec)
     pck = formatter.generate_pck(transformed_data, survey_metadata)
     logger.info("Generated pck file")
     return pck
@@ -75,6 +70,17 @@ def get_build_spec(survey_id: str) -> BuildSpec:
             build_spec: BuildSpec = json.load(j)
 
     return build_spec
+
+
+def get_formatter(build_spec: BuildSpec) -> Formatter:
+    f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
+
+    period_format = build_spec["period_format"]
+    pck_period_format = build_spec["pck_period_format"] if "pck_period_format" in build_spec else period_format
+    form_mapping = build_spec["form_mapping"] if "form_mapping" in build_spec else {}
+
+    formatter: Formatter = f(build_spec["period_format"], pck_period_format, form_mapping)
+    return formatter
 
 
 def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMetadata):
