@@ -21,6 +21,8 @@ def process_pck(req: Request, _tx_id: TX_ID):
         "period_id": req.args.get("period_id", ""),
         "ru_ref": req.args.get("ru_ref", ""),
         "form_type": req.args.get("form_type", ""),
+        "period_start_date": req.args.get("period_start_date", ""),
+        "period_end_date": req.args.get("period_end_date", ""),
     }
 
     for k, v in survey_metadata.items():
