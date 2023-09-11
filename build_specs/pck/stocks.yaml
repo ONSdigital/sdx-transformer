@@ -130,62 +130,62 @@ transforms:
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&174', '&179', '&184', '&189', '&191']
+            "values": ["&174", "&179", "&184", "&189", "&191"]
     "END_TOTAL_0005":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&175', '&180', '&185', '&190', '&192']
+            "values": ["&175", "&180", "&185", "&190", "&192"]
     "START_TOTAL_0007":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&204', '&209', '&214']
+            "values": ["&204", "&209", "&214"]
     "END_TOTAL_0007":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&205', '&210', '&215']
+            "values": ["&205", "&210", "&215"]
     "START_TOTAL_0009":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&119', '&144', '&174', '&179', '&209']
+            "values": ["&119", "&144", "&174", "&179", "&209"]
     "END_TOTAL_0009":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&120', '&145', '&175', '&180', '&210']
+            "values": ["&120", "&145", "&175", "&180", "&210"]
     "START_TOTAL_0011":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&119', '&144']
+            "values": ["&119", "&144"]
     "END_TOTAL_0011":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&120', '&145']
+            "values": ["&120", "&145"]
     "START_TOTAL_0013":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&139', '&144', '&149']
+            "values": ["&139", "&144", "&149"]
     "END_TOTAL_0013":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&140', '&145', '&150']
+            "values": ["&140", "&145", "&150"]
     "START_TOTAL_0057":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&9', '&193', '&195']
+            "values": ["&9", "&193", "&195"]
     "END_TOTAL_0057":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&10', '&194', '&196']
+            "values": ["&10", "&194", "&196"]
     "START_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":
@@ -230,22 +230,22 @@ transforms:
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&219', '&229']
+            "values": ["&219", "&229"]
     "NON_DWELLING_END_TOTAL":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&220', '&230']
+            "values": ["&220", "&230"]
     "DWELLING_START_TOTAL":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&249', '&259']
+            "values": ["&249", "&259"]
     "DWELLING_END_TOTAL":
         "name": "TOTAL"
         "args":
             "value": ""
-            "values": ['&250', '&260']
+            "values": ["&250", "&260"]
     "NON_DWELLING_START_TOTAL_LOOKUP":
         "name": "LOOKUP"
         "args":

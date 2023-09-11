@@ -1,0 +1,59 @@
+title: "Build Spec for QCAS"
+survey_id: "019"
+target: "CS"
+period_format: "YYMM"
+template:
+    "11": "$START_DATE"
+    "12": "$END_DATE"
+    "681": "$CURRENCY_THOUSANDS"
+    "688": "$CURRENCY_THOUSANDS"
+    "689": "$CURRENCY_THOUSANDS"
+    "695": "$CURRENCY_THOUSANDS"
+    "696": "$CURRENCY_THOUSANDS"
+    "697": "$CURRENCY_THOUSANDS"
+    "703": "$CURRENCY_THOUSANDS"
+    "704": "$CURRENCY_THOUSANDS"
+    "707": "$CURRENCY_THOUSANDS"
+    "708": "$CURRENCY_THOUSANDS"
+    "709": "$CURRENCY_THOUSANDS"
+    "710": "$CURRENCY_THOUSANDS"
+    "711": "$CURRENCY_THOUSANDS"
+    "712": "$CURRENCY_THOUSANDS"
+    "146": "$COMMENT"
+    "692": "$TOTAL_ALL_ACQUISITIONS"
+    "693": "$TOTAL_DISPOSALS"
+    "714": "$TOTAL_MACHINERY"
+    "715": "$TOTAL_DISPOSALS"
+
+transforms:
+    "START_DATE":
+        "name": "PERIOD_START"
+        "args":
+            "period_start_date": "#period_start_date"
+    "END_DATE":
+        "name": "PERIOD_END"
+        "args":
+            "period_end_date": "#period_end_date"
+    "CURRENCY_THOUSANDS":
+        "name": "CURRENCY_THOUSANDS"
+        "args": {}
+    "COMMENT":
+        name: "EXISTS"
+        args:
+            "on_true": "1"
+            "on_false": "2"
+    "TOTAL_MACHINERY":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&688", "&695", "&703", "&707", "&709", "&711"]
+    "TOTAL_DISPOSALS":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&689", "&696", "&704", "&708", "&710", "&712"]
+    "TOTAL_ALL_ACQUISITIONS":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&688", "&695", "&703", "&707", "&709", "&711", "&681", "&697"]

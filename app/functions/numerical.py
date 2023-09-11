@@ -60,12 +60,6 @@ def total(value: Decimal, values: list[Decimal]) -> Decimal:
 
 
 @all_decimals
-def total_2(value: Decimal, values: list[Decimal]) -> Decimal:
-    res = sum([value] + values)
-    return res
-
-
-@all_decimals
 def divide(value: Decimal, by: str = "1") -> Decimal:
     d = _to_decimal(by)
     if d is Empty or d == 0:
