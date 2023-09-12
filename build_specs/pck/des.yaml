@@ -20,7 +20,7 @@ template:
   "604": "$CHECKBOX"
   "605": "$YES_NO_RADIO"
   "607": "$YES_NO_RADIO"
-  "608": "$CURRENCY_THOUSANDS"
+  "608": "$DIVIDE_THOUSANDS"
   "800": "$CHECKBOX"
   "635": "$CHECKBOX"
   "636": "$CHECKBOX"
@@ -28,34 +28,34 @@ template:
   "638": "$CHECKBOX"
   "639": "$CHECKBOX"
   "640": "$CHECKBOX"
-  "801": "$CURRENCY_THOUSANDS"
-  "643": "$CURRENCY_THOUSANDS"
-  "644": "$CURRENCY_THOUSANDS"
-  "645": "$CURRENCY_THOUSANDS"
-  "646": "$CURRENCY_THOUSANDS"
-  "647": "$CURRENCY_THOUSANDS"
-  "648": "$CURRENCY_THOUSANDS"
+  "801": "$DIVIDE_THOUSANDS"
+  "643": "$DIVIDE_THOUSANDS"
+  "644": "$DIVIDE_THOUSANDS"
+  "645": "$DIVIDE_THOUSANDS"
+  "646": "$DIVIDE_THOUSANDS"
+  "647": "$DIVIDE_THOUSANDS"
+  "648": "$DIVIDE_THOUSANDS"
   "649": "$CHECKBOX"
   "650": "$CHECKBOX"
   "651": "$CHECKBOX"
-  "652": "$CURRENCY_THOUSANDS"
-  "653": "$CURRENCY_THOUSANDS"
-  "654": "$CURRENCY_THOUSANDS"
+  "652": "$DIVIDE_THOUSANDS"
+  "653": "$DIVIDE_THOUSANDS"
+  "654": "$DIVIDE_THOUSANDS"
   "655": "$CHECKBOX"
   "802": "$CHECKBOX"
-  "658": "$CURRENCY_THOUSANDS"
-  "803": "$CURRENCY_THOUSANDS"
-  "804": "$CURRENCY_THOUSANDS"
+  "658": "$DIVIDE_THOUSANDS"
+  "803": "$DIVIDE_THOUSANDS"
+  "804": "$DIVIDE_THOUSANDS"
   "661": "$CHECKBOX"
   "662": "$CHECKBOX"
   "663": "$CHECKBOX"
   "664": "$CHECKBOX"
   "665": "$CHECKBOX"
-  "666": "$CURRENCY_THOUSANDS"
-  "667": "$CURRENCY_THOUSANDS"
-  "668": "$CURRENCY_THOUSANDS"
-  "669": "$CURRENCY_THOUSANDS"
-  "670": "$CURRENCY_THOUSANDS"
+  "666": "$DIVIDE_THOUSANDS"
+  "667": "$DIVIDE_THOUSANDS"
+  "668": "$DIVIDE_THOUSANDS"
+  "669": "$DIVIDE_THOUSANDS"
+  "670": "$DIVIDE_THOUSANDS"
   "671": "$CHECKBOX"
   "672": "$CHECKBOX"
   "673": "$CHECKBOX"
@@ -72,7 +72,7 @@ template:
   "684": "$CHECKBOX"
   "685": "$CHECKBOX"
   "686": "$YES_NO_RADIO"
-  "687": "$CURRENCY_THOUSANDS"
+  "687": "$DIVIDE_THOUSANDS"
   "805": "$CHECKBOX"
   "704": "$CHECKBOX"
   "705": "$CHECKBOX"
@@ -80,54 +80,54 @@ template:
   "707": "$CHECKBOX"
   "708": "$CHECKBOX"
   "709": "$CHECKBOX"
-  "806": "$CURRENCY_THOUSANDS"
-  "712": "$CURRENCY_THOUSANDS"
-  "713": "$CURRENCY_THOUSANDS"
-  "714": "$CURRENCY_THOUSANDS"
-  "715": "$CURRENCY_THOUSANDS"
-  "716": "$CURRENCY_THOUSANDS"
-  "717": "$CURRENCY_THOUSANDS"
+  "806": "$DIVIDE_THOUSANDS"
+  "712": "$DIVIDE_THOUSANDS"
+  "713": "$DIVIDE_THOUSANDS"
+  "714": "$DIVIDE_THOUSANDS"
+  "715": "$DIVIDE_THOUSANDS"
+  "716": "$DIVIDE_THOUSANDS"
+  "717": "$DIVIDE_THOUSANDS"
   "718": "$CHECKBOX"
   "719": "$CHECKBOX"
   "720": "$CHECKBOX"
-  "721": "$CURRENCY_THOUSANDS"
-  "722": "$CURRENCY_THOUSANDS"
-  "723": "$CURRENCY_THOUSANDS"
+  "721": "$DIVIDE_THOUSANDS"
+  "722": "$DIVIDE_THOUSANDS"
+  "723": "$DIVIDE_THOUSANDS"
   "724": "$CHECKBOX"
   "807": "$CHECKBOX"
-  "727": "$CURRENCY_THOUSANDS"
-  "808": "$CURRENCY_THOUSANDS"
-  "809": "$CURRENCY_THOUSANDS"
+  "727": "$DIVIDE_THOUSANDS"
+  "808": "$DIVIDE_THOUSANDS"
+  "809": "$DIVIDE_THOUSANDS"
   "730": "$CHECKBOX"
   "731": "$CHECKBOX"
-  "732": "$CURRENCY_THOUSANDS"
-  "733": "$CURRENCY_THOUSANDS"
-  "810": "$CURRENCY_THOUSANDS"
-  "811": "$CURRENCY_THOUSANDS"
-  "812": "$CURRENCY_THOUSANDS"
-  "813": "$CURRENCY_THOUSANDS"
+  "732": "$DIVIDE_THOUSANDS"
+  "733": "$DIVIDE_THOUSANDS"
+  "810": "$DIVIDE_THOUSANDS"
+  "811": "$DIVIDE_THOUSANDS"
+  "812": "$DIVIDE_THOUSANDS"
+  "813": "$DIVIDE_THOUSANDS"
   "753": "$YES_NO_RADIO"
   "814": "$YES_NO_RADIO"
-  "754": "$CURRENCY_THOUSANDS"
-  "755": "$CURRENCY_THOUSANDS"
+  "754": "$DIVIDE_THOUSANDS"
+  "755": "$DIVIDE_THOUSANDS"
   "815": "$YES_NO_RADIO"
-  "756": "$CURRENCY_THOUSANDS"
-  "757": "$CURRENCY_THOUSANDS"
+  "756": "$DIVIDE_THOUSANDS"
+  "757": "$DIVIDE_THOUSANDS"
   "816": "$YES_NO_RADIO"
-  "758": "$CURRENCY_THOUSANDS"
-  "759": "$CURRENCY_THOUSANDS"
-  "817": "$CURRENCY_THOUSANDS"
+  "758": "$DIVIDE_THOUSANDS"
+  "759": "$DIVIDE_THOUSANDS"
+  "817": "$DIVIDE_THOUSANDS"
   "760": "$YES_NO_RADIO"
-  "761": "$CURRENCY_THOUSANDS"
+  "761": "$DIVIDE_THOUSANDS"
   "762": "$CHECKBOX"
   "763": "$CHECKBOX"
   "190": "$CHECKBOX"
   "764": "$CHECKBOX"
-  "765": "$CURRENCY_THOUSANDS"
-  "766": "$CURRENCY_THOUSANDS"
-  "767": "$CURRENCY_THOUSANDS"
-  "768": "$CURRENCY_THOUSANDS"
-  "769": "$CURRENCY_THOUSANDS"
+  "765": "$DIVIDE_THOUSANDS"
+  "766": "$DIVIDE_THOUSANDS"
+  "767": "$DIVIDE_THOUSANDS"
+  "768": "$DIVIDE_THOUSANDS"
+  "769": "$DIVIDE_THOUSANDS"
   "365": "$CHECKBOX"
   "364": "$CHECKBOX"
   "359": "$CHECKBOX"
@@ -165,19 +165,21 @@ template:
 
 transforms:
   "YES_NO_RADIO":
-    "name": "LOOKUP",
-    "args": 
-      "Yes": "10",
-      "No": "01",
+    "name": "STARTS_WITH"
+    "args":
+      "match_str": "Yes"
+      "on_true": "10"
+      "on_false": "01"
   "CHECKBOX":
     "name": "EXISTS"
     "args":
       "on_true": "1"
       "on_false": "0"
 
-  "CURRENCY_THOUSANDS":
-    name: "CURRENCY_THOUSANDS"
-    args: { }
+  "DIVIDE_THOUSANDS":
+    name: "DIVIDE"
+    args:
+      by: "1000"
 
   "COMMENT":
     name: "EXISTS"
@@ -185,59 +187,59 @@ transforms:
       "on_true": "1"
       "on_false": "0"
 
-  "$MULTI_RADIO_277":
+  "MULTI_RADIO_277":
     name: "CONTAINS"
     args:
       "value": "#277"
-      "match_string": "Less than 2Mbps"
+      "match_str": "Less than 2Mbps"
       "on_true": "1"
       "on_false": "0"
 
-  "$MULTI_RADIO_278":
+  "MULTI_RADIO_278":
     name: "CONTAINS"
     args:
       "value": "#277"
-      "match_string": "2Mbps or more, but less than 10Mbps"
+      "match_str": "2Mbps or more, but less than 10Mbps"
       "on_true": "1"
       "on_false": "0"
 
-  "$MULTI_RADIO_279":
+  "MULTI_RADIO_279":
     name: "CONTAINS"
     args:
       "value": "#277"
-      "match_string": "10Mbps or more, but less than 30Mbps"
+      "match_str": "10Mbps or more, but less than 30Mbps"
       "on_true": "1"
       "on_false": "0"
 
-  "$MULTI_RADIO_280":
+  "MULTI_RADIO_280":
     name: "CONTAINS"
     args:
       "value": "#277"
-      "match_string": "30Mbps or more, but less than 100Mbps"
+      "match_str": "30Mbps or more, but less than 100Mbps"
       "on_true": "1"
       "on_false": "0"
 
-  "$MULTI_RADIO_497":
+  "MULTI_RADIO_497":
     name: "CONTAINS"
     args:
       "value": "#277"
-      "match_string": "100Mbps or more, but less than 500Mbps"
+      "match_str": "100Mbps or more, but less than 500Mbps"
       "on_true": "1"
       "on_false": "0"
 
-  "$MULTI_RADIO_498":
+  "MULTI_RADIO_498":
     name: "CONTAINS"
     args:
       "value": "#277"
-      "match_string": "500Mbps or more, but less than 1000Mbps (1Gbps)"
+      "match_str": "500Mbps or more, but less than 1000Mbps (1Gbps)"
       "on_true": "1"
       "on_false": "0"
 
-  "$MULTI_RADIO_499":
+  "MULTI_RADIO_499":
     name: "CONTAINS"
     args:
       "value": "#277"
-      "match_string": "1000Mbps (1Gbps) or more"
+      "match_str": "1000Mbps (1Gbps) or more"
       "on_true": "1"
       "on_false": "0"
 
