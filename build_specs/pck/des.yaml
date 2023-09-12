@@ -5,7 +5,13 @@ period_format: "YYYY"
 template:
   "022": "#022"
   "356": "$YES_NO_RADIO"
-  "277": "$MULTI_RADIO"
+  "277": "$MULTI_RADIO_277"
+  "278": "$MULTI_RADIO_278"
+  "279": "$MULTI_RADIO_279"
+  "280": "$MULTI_RADIO_280"
+  "497": "$MULTI_RADIO_497"
+  "498": "$MULTI_RADIO_498"
+  "499": "$MULTI_RADIO_499"
   "452": "$YES_NO_RADIO"
   "600": "$CHECKBOX"
   "601": "$CHECKBOX"
@@ -179,9 +185,59 @@ transforms:
       "on_true": "1"
       "on_false": "0"
 
-  "MULTI_RADIO":
-    name: "EXISTS"
+  "$MULTI_RADIO_277":
+    name: "CONTAINS"
     args:
+      "value": "#277"
+      "match_string": "Less than 2Mbps"
+      "on_true": "1"
+      "on_false": "0"
+
+  "$MULTI_RADIO_278":
+    name: "CONTAINS"
+    args:
+      "value": "#277"
+      "match_string": "2Mbps or more, but less than 10Mbps"
+      "on_true": "1"
+      "on_false": "0"
+
+  "$MULTI_RADIO_279":
+    name: "CONTAINS"
+    args:
+      "value": "#277"
+      "match_string": "10Mbps or more, but less than 30Mbps"
+      "on_true": "1"
+      "on_false": "0"
+
+  "$MULTI_RADIO_280":
+    name: "CONTAINS"
+    args:
+      "value": "#277"
+      "match_string": "30Mbps or more, but less than 100Mbps"
+      "on_true": "1"
+      "on_false": "0"
+
+  "$MULTI_RADIO_497":
+    name: "CONTAINS"
+    args:
+      "value": "#277"
+      "match_string": "100Mbps or more, but less than 500Mbps"
+      "on_true": "1"
+      "on_false": "0"
+
+  "$MULTI_RADIO_498":
+    name: "CONTAINS"
+    args:
+      "value": "#277"
+      "match_string": "500Mbps or more, but less than 1000Mbps (1Gbps)"
+      "on_true": "1"
+      "on_false": "0"
+
+  "$MULTI_RADIO_499":
+    name: "CONTAINS"
+    args:
+      "value": "#277"
+      "match_string": "1000Mbps (1Gbps) or more"
       "on_true": "1"
       "on_false": "0"
 
