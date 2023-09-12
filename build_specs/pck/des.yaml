@@ -5,7 +5,7 @@ period_format: "YYYY"
 template:
   "022": "#022"
   "356": "$YES_NO_RADIO"
-  "277": ""
+  "277": "$MULTI_RADIO"
   "452": "$YES_NO_RADIO"
   "600": "$CHECKBOX"
   "601": "$CHECKBOX"
@@ -154,7 +154,7 @@ template:
   "482": "$CHECKBOX"
   "485": "$CHECKBOX"
   "798": "$CHECKBOX"
-  "500": ""
+  "500": "$COMMENT"
 
 
 transforms:
@@ -172,3 +172,16 @@ transforms:
   "CURRENCY_THOUSANDS":
     name: "CURRENCY_THOUSANDS"
     args: { }
+
+  "COMMENT":
+    name: "EXISTS"
+    args:
+      "on_true": "1"
+      "on_false": "0"
+
+  "MULTI_RADIO":
+    name: "EXISTS"
+    args:
+      "on_true": "1"
+      "on_false": "0"
+
