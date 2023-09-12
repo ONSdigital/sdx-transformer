@@ -6,7 +6,7 @@ from tests.integration.pck import remove_empties, read_submission_data, are_equa
 
 
 class BlocksPckTests(unittest.TestCase):
-    def test_0002_to_pck(self):
+    def test_0001_to_pck(self):
         filepath = "tests/data/blocks/073.0001.json"
         submission_data = read_submission_data(filepath)
 
