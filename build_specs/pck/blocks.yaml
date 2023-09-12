@@ -1,0 +1,26 @@
+"title": "Build Spec for Blocks survey"
+"survey_id": "073"
+"target": "CS"
+"period_format": "YYYYMM"
+"pck_period_format": "YYMM"
+"template":
+    "101": "#101"
+    "102": "#102"
+    "103": "#103"
+    "104": "#104"
+    "111": "#111"
+    "112": "#112"
+    "113": "#113"
+    "114": "#114"
+    "121": "#121"
+    "122": "#122"
+    "123": "#123"
+    "124": "#124"
+    "145": "$COMMENT"
+    "146": "$COMMENT"
+"transforms":
+    "COMMENT":
+          "name": "EXISTS"
+          "args":
+              "on_true": "1"
+              "on_false": "2"

@@ -20,6 +20,7 @@ survey_mapping: dict[str, str] = {
     "009": "mbs",
     "017": "stocks",
     "019": "qcas",
+    "073": "blocks",
     "074": "bricks",
     "092": "mes",
     "127": "mcg",
