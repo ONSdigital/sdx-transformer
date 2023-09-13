@@ -1,0 +1,33 @@
+title: "Quarterly Business Survey (QBS)"
+survey_id: "139"
+target: "CS"
+period_format: "YYMM"
+form_mapping:
+    "0001": "Q018"
+
+template:
+  "0001": "$EXISTS2"
+  "50": "$EXISTS"
+  "51": "$EXISTS"
+  "52": "$EXISTS"
+  "53": "$EXISTS"
+  "54": "$EXISTS"
+  "146": "$COMMENT"
+
+transforms:
+  "EXISTS":
+    "name": "EXISTS"
+    "value": "#d50"
+    "args":
+      "on_true": "0"
+      "on_false": "&value"
+  "EXISTS2":
+    "name": "EXISTS"
+    "args":
+      "on_true": "&value"
+      "on_false": "00000000002"
+  "COMMENT":
+    name: "EXISTS"
+    args:
+      "on_true": "1"
+      "on_false": "0"
