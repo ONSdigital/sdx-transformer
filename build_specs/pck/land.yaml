@@ -1,0 +1,45 @@
+"title": "Build Spec for Land survey"
+"survey_id": "066"
+"target": "CS"
+"period_format": "YYYYMM"
+"pck_period_format": "YYMM"
+"template":
+    "601": "$UNIT"
+    "602": "$UNIT"
+    "603": "$UNIT"
+    "604": "$UNIT"
+    "605": "$UNIT"
+    "606": "$UNIT"
+    "607": "$UNIT"
+    "608": "$TOTAL"
+    "147": "$COMMENT"
+    "146": "$COMMENT"
+"transforms":
+    "UNIT":
+          "name": "EXISTS"
+          "args":
+              "on_true": "$VALUE"
+              "on_false": ""
+    "VALUE":
+          "name": "VALUE"
+          "args": {}
+    "COMMENT":
+          "name": "EXISTS"
+          "args":
+              "on_true": "1"
+              "on_false": "2"
+    "TOTAL":
+          "name": "TOTAL"
+          "args": {
+              "value": "0",
+              "values": [
+                    "&601",
+                    "&602",
+                    "&603",
+                    "&604",
+                    "&605",
+                    "&606",
+                    "&607",
+              ]
+          }
+
