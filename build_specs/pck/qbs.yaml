@@ -59,4 +59,4 @@ transforms:
     name: "EXISTS"
     args:
       "on_true": "1"
-      "on_false": "0"
+      "on_false": "2"
