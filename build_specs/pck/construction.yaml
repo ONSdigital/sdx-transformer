@@ -1,0 +1,45 @@
+title: "Build Spec for Stocks (QSS)"
+survey_id: "017"
+target: "CS"
+period_format: "YYMM"
+template:
+    "11": "$START_DATE"
+    "12": "$END_DATE"
+    "201": "$CURRENCY_THOUSANDS"
+    "202": "$CURRENCY_THOUSANDS"
+    "211": "$CURRENCY_THOUSANDS"
+    "212": "$CURRENCY_THOUSANDS"
+    "221": "$CURRENCY_THOUSANDS"
+    "222": "$CURRENCY_THOUSANDS"
+    "231": "$CURRENCY_THOUSANDS"
+    "232": "$CURRENCY_THOUSANDS"
+    "241": "$CURRENCY_THOUSANDS"
+    "242": "$CURRENCY_THOUSANDS"
+    "243": "$CURRENCY_THOUSANDS"
+    "901": "$COMMENT"
+    "902": "$COMMENT"
+    "903": "$COMMENT"
+    "904": "$COMMENT"
+    "0001": "$EXISTS"
+transforms:
+    "START_DATE":
+        "name": "PERIOD_START"
+        "args":
+            "period_start_date": "#period_start_date"
+    "END_DATE":
+        "name": "PERIOD_END"
+        "args":
+            "period_end_date": "#period_end_date"
+    "CURRENCY_THOUSANDS":
+        "name": "CURRENCY_THOUSANDS"
+        "args": {}
+    "COMMENT":
+        "name": "EXISTS"
+        "args":
+            "on_true": "1"
+            "on_false": "2"
+    "EXISTS":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$VALUE"
+            "on_false": "2"
