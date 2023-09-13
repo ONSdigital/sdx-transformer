@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import ParseTree
-from app.populate import populate_mappings, add_implicit_values
+from app.populate import populate_mappings, resolve_value_fields
 
 
 class ImplicitValueTests(unittest.TestCase):
@@ -42,7 +42,7 @@ class ImplicitValueTests(unittest.TestCase):
             "171": "#171"
         }
 
-        actual = add_implicit_values(parse_tree)
+        actual = resolve_value_fields(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_nested(self):
@@ -90,7 +90,7 @@ class ImplicitValueTests(unittest.TestCase):
             }
         }
 
-        actual = add_implicit_values(parse_tree)
+        actual = resolve_value_fields(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_blank_value(self):
@@ -133,7 +133,7 @@ class ImplicitValueTests(unittest.TestCase):
             }
         }
 
-        actual = add_implicit_values(parse_tree)
+        actual = resolve_value_fields(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_in_list(self):
@@ -186,7 +186,104 @@ class ImplicitValueTests(unittest.TestCase):
             }
         }
 
-        actual = add_implicit_values(parse_tree)
+        actual = resolve_value_fields(parse_tree)
+        self.assertEqual(expected, actual)
+
+    def test_hash_value(self):
+
+        parse_tree: ParseTree = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                    "value": "#value"
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            }
+        }
+
+        expected = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                    "value": "#151"
+                                },
+                            },
+                            "by": "3",
+                        }
+                    },
+                    "precision": "1",
+                }
+            }
+        }
+
+        actual = resolve_value_fields(parse_tree)
+        self.assertEqual(expected, actual)
+
+    def test_hash_value_as_non_value_arg(self):
+
+        parse_tree: ParseTree = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                },
+                            },
+                            "by": "#value",
+                        }
+                    },
+                    "precision": "1",
+                }
+            }
+        }
+
+        expected = {
+            "151": {
+                "name": "ROUND",
+                "args": {
+                    "value": {
+                        "name": "MULTIPLY",
+                        "args": {
+                            "value": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2",
+                                    "value": "#151"
+                                },
+                            },
+                            "by": "#151",
+                        }
+                    },
+                    "precision": "1",
+                }
+            }
+        }
+
+        actual = resolve_value_fields(parse_tree)
         self.assertEqual(expected, actual)
 
 

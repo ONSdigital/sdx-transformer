@@ -12,7 +12,7 @@ from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.interpolate import interpolate
-from app.populate import populate_mappings, add_implicit_values
+from app.populate import populate_mappings, resolve_value_fields
 
 logger = get_logger()
 
@@ -97,7 +97,7 @@ def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMet
 
 def transform(data: Data, build_spec: BuildSpec) -> dict[str, Value]:
     parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
-    full_tree: ParseTree = add_implicit_values(parse_tree)
+    full_tree: ParseTree = resolve_value_fields(parse_tree)
     populated_tree: ParseTree = populate_mappings(full_tree, data)
     result_data: dict[str, Value] = execute(populated_tree)
     logger.info("Completed data transformation")
