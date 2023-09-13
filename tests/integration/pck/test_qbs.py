@@ -69,6 +69,3 @@ class QBSTest(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
-
-
-
