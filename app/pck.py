@@ -5,7 +5,7 @@ from os.path import exists
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
+from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata, BuildSpecError
 from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cs_formatter import CSFormatter
@@ -85,6 +85,8 @@ def get_build_spec(survey_id: str) -> BuildSpec:
 
 def get_formatter(build_spec: BuildSpec) -> Formatter:
     f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
+    if f is None:
+        raise BuildSpecError(f"Unable to find formatter for target: {build_spec['target']}")
 
     period_format = build_spec["period_format"]
     pck_period_format = build_spec["pck_period_format"] if "pck_period_format" in build_spec else period_format

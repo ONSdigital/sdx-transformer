@@ -1,8 +1,12 @@
 from copy import deepcopy
 from typing import Final
 
+from sdx_gcp.app import get_logger
+
 from app.definitions import ParseTree, Field, Data
 from app.tree_walker import TreeWalker
+
+logger = get_logger()
 
 
 MAPPING_PREFIX: Final = "#"
@@ -54,6 +58,7 @@ def resolve_value_fields(parse_tree: ParseTree) -> ParseTree:
                 for field_name, value in field.items():
                     if value == MAPPING_VALUE:
                         f[field_name] = f'{MAPPING_PREFIX}{self._qcode}'
+
                 return super().on_dict(name, f)
 
             return super().on_dict(name, field)
@@ -104,7 +109,10 @@ def populate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
     """
     def base_str(_name: str, field: str, _walker: TreeWalker) -> Field:
         if field.startswith(MAPPING_PREFIX):
-            return data.get(field[1:])
+            d = data.get(field[1:])
+            if d is None:
+                logger.warning(f"Mapping {field} not found in data!")
+            return d
         return field
 
     return TreeWalker(tree=parse_tree, on_str=base_str).walk_tree()
