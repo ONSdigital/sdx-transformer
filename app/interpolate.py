@@ -1,11 +1,15 @@
 from copy import deepcopy
 from typing import Final
 
-from app.definitions import Template, Transforms, ParseTree, Field
+from sdx_gcp.app import get_logger
+
+from app.definitions import Template, Transforms, ParseTree, Field, BuildSpecError
 from app.tree_walker import TreeWalker
 
+logger = get_logger()
 
-FUNCTION_PREFIX: Final[str] = "$"
+
+TRANSFORM_PREFIX: Final[str] = "$"
 
 
 def interpolate(template: Template, transforms: Transforms) -> ParseTree:
@@ -37,11 +41,15 @@ def expand_nested_transforms(transforms: Transforms) -> Transforms:
     """
     Fully expand each transform i.e. where ever a transform is referenced,
     replace the reference with the full definition. Note that transforms
-    can reference other transforms before they have been defined.
+    can reference other transforms prior to the referenced transform
+    being expanded.
     """
     def on_str(name: str, field: str, walker: TreeWalker) -> Field:
-        if field.startswith(FUNCTION_PREFIX):
-            return walker.evaluate_field(name, transforms.get(field[1:]))
+        if field.startswith(TRANSFORM_PREFIX):
+            nested = transforms.get(field[1:])
+            if nested is None:
+                raise BuildSpecError(f"Nested transform {field} not found!")
+            return walker.evaluate_field(name, nested)
         return field
 
     return TreeWalker(tree=transforms, on_str=on_str).walk_tree()
@@ -52,8 +60,11 @@ def map_template(template: Template, transforms: Transforms) -> ParseTree:
     Create a ParseTree in the structure of the template
     """
     def on_str(name: str, field: str, walker: TreeWalker) -> Field:
-        if field.startswith(FUNCTION_PREFIX):
-            return walker.evaluate_field(name, transforms.get(field[1:]))
+        if field.startswith(TRANSFORM_PREFIX):
+            root = transforms.get(field[1:])
+            if root is None:
+                raise BuildSpecError(f"Root transform {field} not found!")
+            return walker.evaluate_field(name, root)
         return field
 
     return TreeWalker(tree=template, on_str=on_str).walk_tree()
@@ -72,6 +83,10 @@ def invert_post_transforms(tree: ParseTree) -> ParseTree:
                 child = deepcopy(field)
                 parent = deepcopy(field["post"])
                 child.pop("post")
+                if "value" in parent["args"]:
+                    # Overwriting an existing value might be intended if the parent is used
+                    # in multiple places. Therefore, provide a warning but do not raise an exception.
+                    logger.warning(f"Overwriting value {parent['args']['value']} with child!")
                 parent["args"]["value"] = child
                 return self.on_dict(name, parent)
 

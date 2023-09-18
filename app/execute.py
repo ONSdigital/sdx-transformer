@@ -1,13 +1,17 @@
 from collections.abc import Callable
 from typing import Final
 
-from app.definitions import ParseTree, Transform, Field, Value, Empty
+from sdx_gcp.app import get_logger
+
+from app.definitions import ParseTree, Transform, Field, Value, Empty, BuildSpecError
 from app.functions.compound import currency_thousands, period_start, period_end
 from app.functions.general import no_transform, exists, any_exists, lookup
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.functions.string import starts_with, contains, any_contains, concat
 from app.functions.time import to_date, any_date, start_of_month, end_of_month, start_of_year, end_of_year
 from app.tree_walker import TreeWalker
+
+logger = get_logger()
 
 
 DERIVED_PREFIX: Final[str] = "&"
@@ -60,7 +64,11 @@ def execute(tree: ParseTree) -> dict[str, Value]:
 
     def on_leaf(_name: str, field: str, walker: ExecuteTreeWalker) -> Field:
         if field.startswith(DERIVED_PREFIX) and field != CURRENT_VALUE:
-            return walker.read_from_current(field[1:])
+            derived = walker.read_from_current(field[1:])
+            if derived is None:
+                logger.warning(f"Failed to find derived value {field}")
+            return derived
+
         return field
 
     return ExecuteTreeWalker(tree=tree, on_str=on_leaf).walk_tree()
@@ -70,7 +78,7 @@ def execute_transform(transform: Transform, walker: TreeWalker) -> Value:
     name = transform["name"]
     f = _function_lookup.get(name)
     if f is None:
-        return Empty
+        raise BuildSpecError(f"Transform name {name} is not a valid function!")
 
     args = transform["args"]
     expanded_args: dict[str, Value] = {}
