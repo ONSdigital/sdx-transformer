@@ -25,6 +25,8 @@ def process_pck(req: Request, _tx_id: TX_ID):
         "period_end_date": req.args.get("period_end_date", ""),
     }
 
+    logger.info("Received Parameters", **survey_metadata)
+
     for k, v in survey_metadata.items():
         if v == "":
             raise DataError(f"Missing required parameter {k} from request")

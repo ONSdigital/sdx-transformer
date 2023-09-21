@@ -1,14 +1,19 @@
 from copy import deepcopy
 from typing import Final
 
+from sdx_gcp.app import get_logger
+
 from app.definitions import ParseTree, Field, Data
 from app.tree_walker import TreeWalker
 
+logger = get_logger()
+
 
 MAPPING_PREFIX: Final = "#"
+MAPPING_VALUE: Final[str] = MAPPING_PREFIX + "value"
 
 
-def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
+def resolve_value_fields(parse_tree: ParseTree) -> ParseTree:
     """
     Create a "value" field (in args) for all transforms in the tree
     without an explicit value. The value is assumed to be a mapping
@@ -34,7 +39,8 @@ def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
         }
 
     Transforms that already contain a value field (even if it is the empty string)
-    will remain untouched.
+    will remain untouched. Any arguments which equal the mapping value will be mapped to
+    the root key also.
     """
 
     class ValueTreeWalker(TreeWalker):
@@ -45,10 +51,15 @@ def add_implicit_values(parse_tree: ParseTree) -> ParseTree:
 
         def on_dict(self, name: str, field: dict[str, Field]) -> Field:
             if name == "args":
+                f = deepcopy(field)
                 if "value" not in field:
-                    f = deepcopy(field)
                     f["value"] = f'{MAPPING_PREFIX}{self._qcode}'
-                    return super().on_dict(name, f)
+
+                for field_name, value in field.items():
+                    if value == MAPPING_VALUE:
+                        f[field_name] = f'{MAPPING_PREFIX}{self._qcode}'
+
+                return super().on_dict(name, f)
 
             return super().on_dict(name, field)
 
@@ -98,7 +109,10 @@ def populate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
     """
     def base_str(_name: str, field: str, _walker: TreeWalker) -> Field:
         if field.startswith(MAPPING_PREFIX):
-            return data.get(field[1:])
+            d = data.get(field[1:])
+            if d is None:
+                logger.warning(f"Mapping {field} not found in data!")
+            return d
         return field
 
     return TreeWalker(tree=parse_tree, on_str=base_str).walk_tree()

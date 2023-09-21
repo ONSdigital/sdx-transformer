@@ -1,0 +1,34 @@
+title: "Public Bodies/Civil Service (QPSESPB)"
+survey_id: "165"
+target: "CS"
+period_format: "YYMM"
+form_mapping:
+    "0002": "T17A"
+
+template:
+    "50": "#50"
+    "60": "$ROUND"
+    "146": "$COMMENT"
+    "551": "#551"
+    "552": "#552"
+    "553": "#553"
+    "554": "#554"
+    "561": "$ROUND"
+    "562": "$ROUND"
+    "651": "#651"
+    "652": "#652"
+    "653": "#653"
+    "654": "#654"
+    "661": "$ROUND"
+    "662": "$ROUND"
+    
+transforms:
+    "ROUND":
+        "name": "ROUND"
+        "args":
+            "nearest": "1"
+    "COMMENT":
+        name: "EXISTS"
+        args:
+            "on_true": "1"
+            "on_false": "2"

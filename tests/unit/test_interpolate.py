@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions import Template, Transforms, ParseTree
+from app.definitions import Template, Transforms, ParseTree, BuildSpecError
 from app.interpolate import interpolate, expand_nested_transforms, invert_post_transforms, map_template
 
 
@@ -285,6 +285,27 @@ class ExpandNestedTransformsTests(unittest.TestCase):
         actual = expand_nested_transforms(transforms)
         self.assertEqual(expected, actual)
 
+    def test_missing_transform_raises_error(self):
+
+        transforms: Transforms = {
+            "DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "value": "$ADD",
+                    "by": "2"
+                },
+            },
+            "MULTIPLY": {
+                "name": "MULTIPLY",
+                "args": {
+                    "by": "3",
+                },
+            }
+        }
+
+        with self.assertRaises(BuildSpecError):
+            expand_nested_transforms(transforms)
+
 
 class MapTemplateTests(unittest.TestCase):
 
@@ -430,6 +451,25 @@ class MapTemplateTests(unittest.TestCase):
 
         actual = map_template(template, transforms)
         self.assertEqual(expected, actual)
+
+    def test_missing_mapping_raises_error(self):
+
+        template: Template = {
+            "150": "#150",
+            "151": "$ROUND",
+        }
+
+        transforms: Transforms = {
+            "DIVIDE": {
+                "name": "DIVIDE",
+                "args": {
+                    "by": "2"
+                }
+            }
+        }
+
+        with self.assertRaises(BuildSpecError):
+            map_template(template, transforms)
 
 
 class InvertPostTransformsTest(unittest.TestCase):

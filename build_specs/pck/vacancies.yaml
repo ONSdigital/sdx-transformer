@@ -1,0 +1,19 @@
+title: "Vacancies (182, 183, 184, 185)"
+survey_id: "182"
+target: "CS"
+period_format: "YYMM"
+form_mapping:
+  "0005": "VT5A"
+  "0006": "VT6A"
+
+template:
+  "10": "#10"
+  "146": "$COMMENT"
+
+transforms:
+  "COMMENT":
+    "name": "EXISTS"
+    "args":
+      "on_true": "1"
+      "on_false": "2"
+

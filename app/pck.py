@@ -5,14 +5,14 @@ from os.path import exists
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
+from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata, BuildSpecError
 from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.interpolate import interpolate
-from app.populate import populate_mappings, add_implicit_values
+from app.populate import populate_mappings, resolve_value_fields
 
 logger = get_logger()
 
@@ -25,8 +25,16 @@ survey_mapping: dict[str, str] = {
     "092": "mes",
     "127": "mcg",
     "134": "mwss",
+    "139": "qbs",
     "144": "ukis",
+    "160": "qpses",
+    "165": "qpsespb",
+    "169": "qpsesrap",
     "171": "acas",
+    "182": "vacancies",
+    "183": "vacancies",
+    "184": "vacancies",
+    "185": "vacancies",
     "187": "des",
     "202": "abs",
     "228": "construction",
@@ -78,6 +86,8 @@ def get_build_spec(survey_id: str) -> BuildSpec:
 
 def get_formatter(build_spec: BuildSpec) -> Formatter:
     f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
+    if f is None:
+        raise BuildSpecError(f"Unable to find formatter for target: {build_spec['target']}")
 
     period_format = build_spec["period_format"]
     pck_period_format = build_spec["pck_period_format"] if "pck_period_format" in build_spec else period_format
@@ -94,7 +104,7 @@ def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMet
 
 def transform(data: Data, build_spec: BuildSpec) -> dict[str, Value]:
     parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
-    full_tree: ParseTree = add_implicit_values(parse_tree)
+    full_tree: ParseTree = resolve_value_fields(parse_tree)
     populated_tree: ParseTree = populate_mappings(full_tree, data)
     result_data: dict[str, Value] = execute(populated_tree)
     logger.info("Completed data transformation")
