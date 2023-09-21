@@ -29,6 +29,7 @@ survey_mapping: dict[str, str] = {
     "171": "acas",
     "187": "des",
     "202": "abs",
+    "228": "construction",
 }
 
 formatter_mapping: dict[str, Formatter.__class__] = {
