@@ -3,7 +3,7 @@ from typing import Final
 
 from sdx_gcp.app import get_logger
 
-from app.definitions import ParseTree, Transform, Field, Value, Empty, BuildSpecError
+from app.definitions import ParseTree, Transform, Field, Value, BuildSpecError
 from app.functions.compound import currency_thousands, period_start, period_end
 from app.functions.general import no_transform, exists, any_exists, lookup
 from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide

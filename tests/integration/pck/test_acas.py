@@ -237,7 +237,7 @@ class ACASPckTests(unittest.TestCase):
             "ru_ref": "12346789012A",
             "form_type": "0002",
             "period_start_date": "2016-05-01",
-            "period_end_date": "20216-05-31",
+            "period_end_date": "2016-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
@@ -258,7 +258,7 @@ class ACASPckTests(unittest.TestCase):
             "ru_ref": "12346789012A",
             "form_type": "0003",
             "period_start_date": "2016-05-01",
-            "period_end_date": "20216-05-31",
+            "period_end_date": "2016-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)

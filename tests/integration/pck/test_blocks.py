@@ -16,7 +16,7 @@ class BlocksPckTests(unittest.TestCase):
             "ru_ref": "12346789012A",
             "form_type": "0001",
             "period_start_date": "2016-05-01",
-            "period_end_date": "20216-05-31",
+            "period_end_date": "2016-05-31",
         }
         actual: PCK = get_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/blocks/073.0001.pck"
