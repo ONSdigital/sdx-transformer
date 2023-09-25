@@ -10,6 +10,7 @@ from app.execute import execute
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
+from app.formatters.json_formatter import JSONFormatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.interpolate import interpolate
 from app.populate import populate_mappings, resolve_value_fields
@@ -20,6 +21,7 @@ survey_mapping: dict[str, str] = {
     "009": "mbs",
     "017": "stocks",
     "019": "qcas",
+    "024": "fuels",
     "073": "blocks",
     "074": "bricks",
     "092": "mes",
@@ -45,6 +47,7 @@ formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA_MES": MESFormatter,
     "CS": CSFormatter,
     "OpenROAD": OpenRoadFormatter,
+    "JSON": JSONFormatter,
 }
 
 

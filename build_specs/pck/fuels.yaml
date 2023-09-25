@@ -1,0 +1,20 @@
+title: "Quarterly Fuels Survey (QFS)"
+survey_id: "024"
+target: "json"
+period_format: "YYMM"
+
+template:
+    "9": "$CURRENCY_THOUSANDS"
+    "10": "$CURRENCY_THOUSANDS"
+    
+transforms:
+    "START_TOTAL_0001":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&139", "&144", "&149"]
+    "END_TOTAL_0001":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": ["&140", "&145", "&150"]
