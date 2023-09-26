@@ -4,7 +4,8 @@ from copy import deepcopy
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field, SurveyMetadata, ListCollector
+from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field, SurveyMetadata, \
+    ListCollector, LoopedData
 from app.execute import execute
 from app.interpolate import interpolate
 from app.populate import populate_mappings
@@ -25,7 +26,6 @@ def get_looping(loop_data: ListCollector, survey_metadata: SurveyMetadata) -> st
     parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
 
 
-
 def get_build_spec(survey_id: str) -> BuildSpec:
     """
     Looks up the relevant build spec based on the provided survey id
@@ -39,3 +39,7 @@ def get_build_spec(survey_id: str) -> BuildSpec:
         build_spec: BuildSpec = json.load(f)
 
     return build_spec
+
+
+def convert_to_looped_data(data: ListCollector) -> LoopedData:
+    pass
