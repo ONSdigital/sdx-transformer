@@ -51,8 +51,32 @@ Identifier = str
 
 PrepopData = dict[Identifier, list[Data]]
 
+
 PCK = str
 
 
 class BuildSpecError(Exception):
     pass
+
+
+class Answer(TypedDict):
+    answer_id: str
+    value: Field
+    list_item_id: NotRequired[str]
+
+
+class Group(TypedDict):
+    items: list[str]
+    name: str
+
+
+class AnswerCode(TypedDict):
+    answer_id: str
+    code: str
+    answer_value: NotRequired[str]
+
+
+class ListCollector(TypedDict):
+    answer_codes: list[AnswerCode]
+    answers: list[Answer]
+    lists: list[Group]
