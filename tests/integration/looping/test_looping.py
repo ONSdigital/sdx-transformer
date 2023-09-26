@@ -37,7 +37,7 @@ class LoopingTests(unittest.TestCase):
             },
 
             "data_section": {
-                "3": 4,  # Number of bedrooms
+                "3": "4",  # Number of bedrooms
                 "4": "Broadband or WiFi",  # internet-answer
                 "5": "A mobile phone network such as 3G, 4G or 5G",
                 "6": "Public WiFi hotspot",

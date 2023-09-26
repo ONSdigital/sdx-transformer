@@ -41,6 +41,14 @@ def get_build_spec(survey_id: str) -> BuildSpec:
     return build_spec
 
 
+def set_data_value(d: Data, qcode: str, value: str):
+    """
+    Setter function to enforce string type
+    for value
+    """
+    d[qcode] = str(value)
+
+
 def get_answer_code(answer_id: str, data: ListCollector) -> AnswerCode:
     for ac in data['answer_codes']:
         if ac['answer_id'] == answer_id:
@@ -68,14 +76,14 @@ def get_list_item_data(list_item_id: str, data: ListCollector) -> Data:
 
                 for v in answer_value:
                     qcode: str = get_qcode(answer['answer_id'], v, data)
-                    d[qcode] = v
+                    set_data_value(d, qcode, v)
             elif isinstance(answer_value, dict):
                 i = 0
                 for value in answer_value.values():
                     i += 1
-                    d[f"{ac['code']}.{i}"] = value
+                    set_data_value(d, f"{ac['code']}.{i}", value)
             else:
-                d[ac['code']] = answer_value
+                set_data_value(d, ac['code'], answer_value)
 
     return d
 
@@ -107,14 +115,14 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
 
                 for v in answer_value:
                     qcode: str = get_qcode(answer['answer_id'], v, data)
-                    data_section[qcode] = v
+                    set_data_value(data_section, qcode, v)
             elif isinstance(answer_value, dict):
                 i = 0
                 for value in answer_value.values():
                     i += 1
-                    data_section[f"{ac['code']}.{i}"] = value
+                    set_data_value(data_section, f"{ac['code']}.{i}", value)
             else:
-                data_section[ac['code']] = answer_value
+                set_data_value(data_section, ac['code'], answer_value)
 
     return {
         "looped_sections": looped_sections,

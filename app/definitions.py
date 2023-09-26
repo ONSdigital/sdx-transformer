@@ -8,19 +8,6 @@ Field = dict | list | str | None
 Template = dict[str, Field]
 
 
-"""
-LoopedData/
-├─ loopingSection1/
-│  ├─ Data1/
-│  │  ├─ qcode
-│  │  ├─ answer
-│  ├─ Data2/
-├─ loopingSection2/
-│  ├─ Data3/
- 
-"""
-
-
 class Transform(TypedDict):
     name: str
     args: dict[str, Field]
