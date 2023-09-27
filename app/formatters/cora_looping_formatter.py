@@ -3,7 +3,10 @@ from app.formatters.cora_formatter import CORAFormatter
 
 
 class CORALoopingFormatter(CORAFormatter):
-	_instances: dict[str, Data] = {}
+
+	def __init__(self, period_format: str, pck_period_format: str):
+		super().__init__(period_format, pck_period_format)
+		self._instances: dict[str, Data] = {}
 
 	def create_or_update_instance(self, instance_id: str, data: dict[str, Value]):
 
@@ -25,5 +28,3 @@ class CORALoopingFormatter(CORAFormatter):
 
 		output = "\n".join(pck_lines)
 		return output + "\n"
-
-
