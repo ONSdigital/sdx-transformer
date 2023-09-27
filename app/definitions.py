@@ -85,4 +85,4 @@ class ListCollector(TypedDict):
 # Our top level looping object
 class LoopedData(TypedDict):
     looped_sections: dict[str, list[Data]]
-    data_section: Data
+    data_section: dict[str, Value]
