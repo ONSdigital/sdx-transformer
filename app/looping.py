@@ -93,19 +93,28 @@ def get_list_item_data(list_item_id: str, data: ListCollector) -> Data:
 
 
 def convert_to_looped_data(data: ListCollector) -> LoopedData:
+    """
+    Entry point for creating our loopedData object, we take in data
+    as a ListCollector, create each section of the loopData
+    """
 
-    # Create our looped sections
+    # ----- Step 1. Create our looped sections -----
+
+    # Find the 'lists' section in the data, then assign each list.name to an empty list
     looped_sections: dict[str, list[Data]] = {d['name']: [] for d in data['lists']}
 
     for group in data['lists']:
 
+        # Fetch the group name (i.e. people, pets etc)
         name: str = group['name']
 
         for list_item_id in group['items']:
+
+            # Fetch the data associated with this list_item_id and store
             d: Data = get_list_item_data(list_item_id, data)
             looped_sections[name].append(d)
 
-    # Create the data part of the loopedData
+    # Step 2. Create the data section part of the loopedData
     data_section = {}
 
     for answer in data['answers']:
