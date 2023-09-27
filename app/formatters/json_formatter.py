@@ -1,6 +1,6 @@
 import json
 
-from app.definitions import Value, SurveyMetadata, PCK
+from app.definitions import Value, SurveyMetadata, PCK, Empty
 from app.formatters.formatter import Formatter
 
 
@@ -12,4 +12,4 @@ class JSONFormatter(Formatter):
         super().__init__(period_format, pck_period_format, form_mapping)
 
     def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
-        return json.dumps(data)
+        return json.dumps({k: v for k, v in data.items() if v is not Empty})
