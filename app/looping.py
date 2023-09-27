@@ -65,7 +65,7 @@ def get_qcode(answer_id: str, answer_value: str, data: ListCollector) -> str:
             return ac['code']
 
 
-def my_new_func(data: ListCollector, list_item_id=None) -> Data:
+def find_data(data: ListCollector, list_item_id=None) -> Data:
     """
     This function will get the data associated with a specific list_item_id (if specified)
     otherwise it will get the data of all NON looping answers (those without a list_item_id)
@@ -124,12 +124,12 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
         for list_item_id in group['items']:
 
             # Fetch the data associated with this list_item_id and store
-            d: Data = my_new_func(data, list_item_id)
+            d: Data = find_data(data, list_item_id)
 
             looped_sections[name].append(d)
 
     # ----- Step 2. Create the data section part of the loopedData -----
-    data_section = my_new_func(data)
+    data_section = find_data(data)
 
     return {
         "looped_sections": looped_sections,
