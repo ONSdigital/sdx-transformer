@@ -59,7 +59,7 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
         for d in data_list:
             populated_tree: parse_tree = populate_mappings(full_tree, d)
             result: dict[str, Value] = execute(populated_tree)
-            formatter.create_or_update_instance(instance_id=instance_id,data=result)
+            formatter.create_or_update_instance(instance_id=str(instance_id), data=result)
             instance_id += 1
 
     return formatter.generate_pck(result_data, survey_metadata)
@@ -128,7 +128,8 @@ def find_data(data: ListCollector, list_item_id=None) -> Data:
     for answer in data['answers']:
 
         # This allows the function to handle data with or without list_item_id's and only process the relevant answers
-        if ("list_item_id" not in answer.keys() and not list_item_id) or ("list_item_id" in answer.keys() and answer['list_item_id'] == list_item_id):
+        if ("list_item_id" not in answer.keys() and not list_item_id) or (
+                "list_item_id" in answer.keys() and answer['list_item_id'] == list_item_id):
 
             # Fetch the answer code for the current answer_id
             ac = get_answer_code(answer['answer_id'], data)
@@ -186,4 +187,3 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
         "looped_sections": looped_sections,
         "data_section": data_section
     }
-
