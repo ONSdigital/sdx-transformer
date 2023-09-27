@@ -65,30 +65,40 @@ def get_qcode(answer_id: str, answer_value: str, data: ListCollector) -> str:
             return ac['code']
 
 
-def my_new_func(data: ListCollector, list_item_id=None):
+def my_new_func(data: ListCollector, list_item_id=None) -> Data:
+    """
+    This function will get the data associated with a specific list_item_id (if specified)
+    otherwise it will get the data of all NON looping answers (those without a list_item_id)
+    """
 
+    # Store our Data object
     data_section = {}
 
     for answer in data['answers']:
 
-        # Handle the non looping
+        # This allows the function to handle data with or without list_item_id's and only process the relevant answers
         if ("list_item_id" not in answer.keys() and not list_item_id) or ("list_item_id" in answer.keys() and answer['list_item_id'] == list_item_id):
 
+            # Fetch the answer code for the current answer_id
             ac = get_answer_code(answer['answer_id'], data)
-
             answer_value = answer['value']
 
-            # If the value is a list, lookup each value
+            # If the value is a list, lookup each value in the answer_codes section of the ListCollector
             if isinstance(answer_value, list):
 
                 for v in answer_value:
                     qcode: str = get_qcode(answer['answer_id'], v, data)
                     set_data_value(data_section, qcode, v)
+
+            # If the value is a dict, we suffix the qcode with a counter value
+            # So if the qcode is 7, each item in the dict becomes 7.1, 7.2 etc
             elif isinstance(answer_value, dict):
                 i = 0
                 for value in answer_value.values():
                     i += 1
                     set_data_value(data_section, f"{ac['code']}.{i}", value)
+
+            # Else, we have a simple 1-1 mapping
             else:
                 set_data_value(data_section, ac['code'], answer_value)
 
