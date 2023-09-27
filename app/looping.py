@@ -65,12 +65,15 @@ def get_qcode(answer_id: str, answer_value: str, data: ListCollector) -> str:
             return ac['code']
 
 
-def get_list_item_data(list_item_id: str, data: ListCollector) -> Data:
+def my_new_func(data: ListCollector, list_item_id=None):
 
-    d = {}
+    data_section = {}
 
     for answer in data['answers']:
-        if "list_item_id" in answer.keys() and answer['list_item_id'] == list_item_id:
+
+        # Handle the non looping
+        if ("list_item_id" not in answer.keys() and not list_item_id) or ("list_item_id" in answer.keys() and answer['list_item_id'] == list_item_id):
+
             ac = get_answer_code(answer['answer_id'], data)
 
             answer_value = answer['value']
@@ -80,16 +83,16 @@ def get_list_item_data(list_item_id: str, data: ListCollector) -> Data:
 
                 for v in answer_value:
                     qcode: str = get_qcode(answer['answer_id'], v, data)
-                    set_data_value(d, qcode, v)
+                    set_data_value(data_section, qcode, v)
             elif isinstance(answer_value, dict):
                 i = 0
                 for value in answer_value.values():
                     i += 1
-                    set_data_value(d, f"{ac['code']}.{i}", value)
+                    set_data_value(data_section, f"{ac['code']}.{i}", value)
             else:
-                set_data_value(d, ac['code'], answer_value)
+                set_data_value(data_section, ac['code'], answer_value)
 
-    return d
+    return data_section
 
 
 def convert_to_looped_data(data: ListCollector) -> LoopedData:
@@ -111,31 +114,12 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
         for list_item_id in group['items']:
 
             # Fetch the data associated with this list_item_id and store
-            d: Data = get_list_item_data(list_item_id, data)
+            d: Data = my_new_func(data, list_item_id)
+
             looped_sections[name].append(d)
 
-    # Step 2. Create the data section part of the loopedData
-    data_section = {}
-
-    for answer in data['answers']:
-        if "list_item_id" not in answer.keys():
-            ac = get_answer_code(answer['answer_id'], data)
-
-            answer_value = answer['value']
-
-            # If the value is a list, lookup each value
-            if isinstance(answer_value, list):
-
-                for v in answer_value:
-                    qcode: str = get_qcode(answer['answer_id'], v, data)
-                    set_data_value(data_section, qcode, v)
-            elif isinstance(answer_value, dict):
-                i = 0
-                for value in answer_value.values():
-                    i += 1
-                    set_data_value(data_section, f"{ac['code']}.{i}", value)
-            else:
-                set_data_value(data_section, ac['code'], answer_value)
+    # ----- Step 2. Create the data section part of the loopedData -----
+    data_section = my_new_func(data)
 
     return {
         "looped_sections": looped_sections,
