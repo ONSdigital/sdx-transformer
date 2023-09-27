@@ -1,21 +1,35 @@
 title: "Test build spec for Looping"
 survey_id: "001"
-target: "SPP"
+target: "CORA"
 period_format: "YYYYMM"
 
 template:
-    "1": "#1"
-    "2": "#2"
+    "1": "$STARTSWITH_J"
     "3": "#3"
-    "4": "#4"
-    "5": "#5"
-    "6": "#6"
-    "7": "#CONCAT"
-    "8": "#8"
+    "4": "$EXISTS"
+    "5": "$EXISTS"
+    "6": "$EXISTS"
+    "8": "$CONTAINS_DOG"
+    "9": "#9"
     
 transforms:
-    "CONCAT":
-        "name": "CONCAT"
+    "STARTSWITH_J":
+        "name": "STARTS_WITH"
         "args":
-            "value": "#7"
-            "seperator": " "
+            "match_str": "J"
+            "on_true": "1"
+            "on_false": "2"
+
+    "EXISTS":
+        "name": "EXISTS"
+        "args":
+            "on_true": "3"
+            "on_false": null
+
+    "CONTAINS_DOG":
+        "name": "CONTAINS"
+        "args":
+            "match_str": "Dog"
+            "on_true": "5"
+            "on_false": "6"
+

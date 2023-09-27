@@ -1,11 +1,15 @@
 import json
+from os.path import exists
 
+import yaml
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
-    ListCollector, LoopedData, Data, AnswerCode
+    ListCollector, LoopedData, Data, AnswerCode, Value
+from app.execute import execute
 from app.interpolate import interpolate
+from app.populate import resolve_value_fields, populate_mappings
 
 logger = get_logger()
 
@@ -14,25 +18,46 @@ survey_mapping: dict[str, str] = {
 }
 
 
-def get_looping(loop_data: ListCollector, survey_metadata: SurveyMetadata) -> str:
+def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> str:
     """
     Performs the steps required to transform looped data.
     """
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"])
     parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    full_tree: parse_tree = resolve_value_fields(parse_tree)
+    looped_data: LoopedData = convert_to_looped_data(list_data)
+
+    data_section: Data = looped_data['data_section']
+    populated_tree: parse_tree = populate_mappings(full_tree, data_section)
+    result_data: dict[str, Value] = execute(populated_tree)
+
+    # TODO
+    looped_sections: dict[str, list[Data]] = looped_data['looped_sections']
+    for data_list in looped_sections.values():
+        for d in data_list:
+            populated_tree: parse_tree = populate_mappings(full_tree, d)
+            result: dict[str, Value] = execute(populated_tree)
 
 
 def get_build_spec(survey_id: str) -> BuildSpec:
     """
-    Looks up the relevant build spec based on the provided survey id
+    Looks up the relevant build spec for the submission provided.
     """
     survey_name = survey_mapping.get(survey_id)
     if survey_name is None:
         raise DataError(f"Could not lookup survey id {survey_id}")
-    filepath = f"build_specs/looping/{survey_name}.json"
-    logger.info(f"Getting build spec from {filepath}")
-    with open(filepath) as f:
-        build_spec: BuildSpec = json.load(f)
+
+    filepath = f"build_specs/looping/{survey_name}.yaml"
+    if exists(filepath):
+        logger.info(f"Getting build spec from {filepath}")
+        with open(filepath) as y:
+            build_spec: BuildSpec = yaml.safe_load(y.read())
+
+    else:
+        filepath = f"build_specs/looping/{survey_name}.json"
+        logger.info(f"Getting build spec from {filepath}")
+        with open(filepath) as j:
+            build_spec: BuildSpec = json.load(j)
 
     return build_spec
 

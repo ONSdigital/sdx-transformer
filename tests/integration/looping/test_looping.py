@@ -2,10 +2,12 @@ import json
 import unittest
 
 from app.definitions import SurveyMetadata, PCK, LoopedData
-from app.looping import convert_to_looped_data
+from app.looping import convert_to_looped_data, get_looping
 from app.pck import get_pck
 from tests.integration.looping import read_submission_data
 import pprint
+
+from tests.integration.pck import are_equal
 
 
 class LoopingTests(unittest.TestCase):
@@ -22,11 +24,13 @@ class LoopingTests(unittest.TestCase):
                 "people": [
                     {
                         "1": "John",
-                        "2": "Doe"
+                        "2": "Doe",
+                        "9": "35"
                     },
                     {
                         "1": "Marie",
-                        "2": "Doe"
+                        "2": "Doe",
+                        "9": "29"
                     },
                 ],
                 "pets": [
@@ -49,6 +53,27 @@ class LoopingTests(unittest.TestCase):
             },
 
         }
-        print("\n ========================== \n \n \n")
-        pprint.pprint(actual)
+
         self.assertEquals(expected, actual)
+
+    def test_looped_to_cora_pck(self):
+
+        filepath = "tests/data/looping/looping-example.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "001",
+            "period_id": "201605",
+            "ru_ref": "75553402515",
+            "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+        }
+
+        actual: PCK = get_looping(submission_data, survey_metadata)
+
+        pck_filepath = "tests/data/looping/looping-example-cora.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertTrue(are_equal(expected, actual))

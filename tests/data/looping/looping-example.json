@@ -34,6 +34,10 @@
     {
       "answer_id": "pet-species",
       "code": "8"
+    },
+    {
+      "answer_id": "age",
+      "code": "9"
     }
   ],
   "answers": [
@@ -48,6 +52,11 @@
       "list_item_id": "zGBdpb"
     },
     {
+      "answer_id": "age",
+      "value": 35,
+      "list_item_id": "zGBdpb"
+    },
+    {
       "answer_id": "first-name",
       "value": "Marie",
       "list_item_id": "cWGwcF"
@@ -55,6 +64,11 @@
     {
       "answer_id": "last-name",
       "value": "Doe",
+      "list_item_id": "cWGwcF"
+    },
+    {
+      "answer_id": "age",
+      "value": 29,
       "list_item_id": "cWGwcF"
     },
     {
