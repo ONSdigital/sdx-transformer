@@ -1,22 +1,9 @@
-from app.definitions import Value, Data, SurveyMetadata, PCK
+from app.definitions import Value, SurveyMetadata, PCK
 from app.formatters.cora_formatter import CORAFormatter
+from app.formatters.looping_formatter import LoopingFormatter
 
 
-class CORALoopingFormatter(CORAFormatter):
-
-	def __init__(self, period_format: str, pck_period_format: str):
-		super().__init__(period_format, pck_period_format)
-		self._instances: dict[str, Data] = {}
-
-	def create_or_update_instance(self, instance_id: str, data: dict[str, Value]):
-
-		# Update
-		if instance_id in self._instances:
-			self._instances[instance_id].update(data)
-
-		# Create
-		else:
-			self._instances[instance_id] = data
+class CORALoopingFormatter(CORAFormatter, LoopingFormatter):
 
 	def generate_pck(self, data_section: dict[str, Value], metadata: SurveyMetadata) -> PCK:
 

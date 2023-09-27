@@ -6,8 +6,11 @@ from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
-    ListCollector, LoopedData, Data, AnswerCode, Value
+    ListCollector, LoopedData, Data, AnswerCode, Value, BuildSpecError, PCK
 from app.execute import execute
+from app.formatters.cora_looping_formatter import CORALoopingFormatter
+from app.formatters.formatter import Formatter
+from app.formatters.looping_formatter import LoopingFormatter
 from app.interpolate import interpolate
 from app.populate import resolve_value_fields, populate_mappings
 
@@ -17,8 +20,25 @@ survey_mapping: dict[str, str] = {
     "001": "looping"
 }
 
+formatter_mapping: dict[str, Formatter.__class__] = {
+    "CORA": CORALoopingFormatter,
+}
 
-def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> str:
+
+def get_formatter(build_spec: BuildSpec) -> LoopingFormatter:
+    f: LoopingFormatter.__class__ = formatter_mapping.get(build_spec["target"])
+    if f is None:
+        raise BuildSpecError(f"Unable to find formatter for target: {build_spec['target']}")
+
+    period_format = build_spec["period_format"]
+    pck_period_format = build_spec["pck_period_format"] if "pck_period_format" in build_spec else period_format
+    form_mapping = build_spec["form_mapping"] if "form_mapping" in build_spec else {}
+
+    formatter: LoopingFormatter = f(build_spec["period_format"], pck_period_format, form_mapping)
+    return formatter
+
+
+def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PCK:
     """
     Performs the steps required to transform looped data.
     """
@@ -31,12 +51,18 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> st
     populated_tree: parse_tree = populate_mappings(full_tree, data_section)
     result_data: dict[str, Value] = execute(populated_tree)
 
-    # TODO
+    formatter: LoopingFormatter = get_formatter(build_spec)
+
     looped_sections: dict[str, list[Data]] = looped_data['looped_sections']
     for data_list in looped_sections.values():
+        instance_id = 1
         for d in data_list:
             populated_tree: parse_tree = populate_mappings(full_tree, d)
             result: dict[str, Value] = execute(populated_tree)
+            formatter.create_or_update_instance(instance_id=instance_id,data=result)
+            instance_id += 1
+
+    return formatter.generate_pck(result_data, survey_metadata)
 
 
 def get_build_spec(survey_id: str) -> BuildSpec:

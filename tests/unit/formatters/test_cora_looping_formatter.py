@@ -50,4 +50,3 @@ class CoraLoopingFormatterTest(unittest.TestCase):
 		"""
 
 		self.assertTrue(are_equal(expected, result))
-

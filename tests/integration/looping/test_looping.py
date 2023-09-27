@@ -1,12 +1,8 @@
-import json
 import unittest
 
 from app.definitions import SurveyMetadata, PCK, LoopedData
 from app.looping import convert_to_looped_data, get_looping
-from app.pck import get_pck
 from tests.integration.looping import read_submission_data
-import pprint
-
 from tests.integration.pck import are_equal
 
 
