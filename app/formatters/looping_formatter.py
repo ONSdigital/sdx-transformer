@@ -1,4 +1,4 @@
-from app.definitions import Data, Value
+from app.definitions import Data, Value, Empty
 from app.formatters.formatter import Formatter
 
 

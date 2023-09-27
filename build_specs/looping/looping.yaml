@@ -5,14 +5,17 @@ period_format: "YYYYMM"
 
 template:
     "1": "$STARTSWITH_J"
-    "3": "#3"
+    "3": "$VALUE"
     "4": "$EXISTS"
     "5": "$EXISTS"
     "6": "$EXISTS"
     "8": "$CONTAINS_DOG"
-    "9": "#9"
+    "9": "$VALUE"
     
 transforms:
+    "VALUE":
+        "name": "VALUE"
+        "args": {}
     "STARTSWITH_J":
         "name": "STARTS_WITH"
         "args":

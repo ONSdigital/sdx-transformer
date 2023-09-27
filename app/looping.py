@@ -6,7 +6,7 @@ from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
-    ListCollector, LoopedData, Data, AnswerCode, Value, BuildSpecError, PCK
+    ListCollector, LoopedData, Data, AnswerCode, Value, BuildSpecError, PCK, Empty
 from app.execute import execute
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
 from app.formatters.formatter import Formatter
@@ -49,7 +49,8 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
 
     data_section: Data = looped_data['data_section']
     populated_tree: parse_tree = populate_mappings(full_tree, data_section)
-    result_data: dict[str, Value] = execute(populated_tree)
+    transformed_data_section: dict[str, Value] = execute(populated_tree)
+    result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
     formatter: LoopingFormatter = get_formatter(build_spec)
 
@@ -58,7 +59,8 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
         instance_id = 1
         for d in data_list:
             populated_tree: parse_tree = populate_mappings(full_tree, d)
-            result: dict[str, Value] = execute(populated_tree)
+            transformed_data: dict[str, Value] = execute(populated_tree)
+            result = {k: v for k, v in transformed_data.items() if v is not Empty}
             formatter.create_or_update_instance(instance_id=str(instance_id), data=result)
             instance_id += 1
 
