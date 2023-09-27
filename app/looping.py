@@ -1,15 +1,11 @@
 import json
-from copy import deepcopy
 
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field, SurveyMetadata, \
-    ListCollector, LoopedData, Data, Answer, AnswerCode
-from app.execute import execute
+from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
+    ListCollector, LoopedData, Data, AnswerCode
 from app.interpolate import interpolate
-from app.populate import populate_mappings
-
 
 logger = get_logger()
 
@@ -50,12 +46,20 @@ def set_data_value(d: Data, qcode: str, value: str):
 
 
 def get_answer_code(answer_id: str, data: ListCollector) -> AnswerCode:
+    """
+    Given an answer id, find the first matching answer code
+    associated with this answer_id
+    """
     for ac in data['answer_codes']:
         if ac['answer_id'] == answer_id:
             return ac
 
 
 def get_qcode(answer_id: str, answer_value: str, data: ListCollector) -> str:
+    """
+    Used to find the qcode for answers_codes that have an answer_value field, this
+    is usually for answers that have multiple values, such as a checkbox
+    """
     for ac in data['answer_codes']:
         if ac['answer_id'] == answer_id and answer_value == ac['answer_value']:
             return ac['code']
