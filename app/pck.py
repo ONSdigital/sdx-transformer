@@ -35,6 +35,7 @@ survey_mapping: dict[str, str] = {
     "184": "vacancies",
     "185": "vacancies",
     "187": "des",
+    "194": "rails",
     "202": "abs",
     "228": "construction",
 }

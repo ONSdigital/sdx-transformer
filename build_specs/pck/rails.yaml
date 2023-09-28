@@ -18,4 +18,7 @@ template:
 
 
 transforms:
+    "TEMP": # TODO cannot have empty transforms
+        "name": "VALUE"
+        "args": { }
 
