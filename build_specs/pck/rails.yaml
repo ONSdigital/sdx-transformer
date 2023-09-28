@@ -15,10 +15,3 @@ template:
     "4.1": "#10"
     "4.2": "#13"
     "146": "#146"
-
-
-transforms:
-    "TEMP": # TODO cannot have empty transforms
-        "name": "VALUE"
-        "args": { }
-

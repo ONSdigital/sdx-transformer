@@ -68,7 +68,11 @@ def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMet
 
 
 def transform(data: Data, build_spec: BuildSpec) -> dict[str, Value]:
-    parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+
+    if 'transforms' in build_spec:
+        parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    else:
+        parse_tree: ParseTree = build_spec['template']
     full_tree: ParseTree = resolve_value_fields(parse_tree)
     populated_tree: ParseTree = populate_mappings(full_tree, data)
     result_data: dict[str, Value] = execute(populated_tree)
