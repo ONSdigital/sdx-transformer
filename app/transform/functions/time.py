@@ -4,7 +4,7 @@ from datetime import datetime, date
 from typing import Final
 
 from app.definitions import Value, Empty
-from app.functions.general import handle_empties
+from app.transform.functions.general import handle_empties
 
 
 EQ_DATETIME_FORMAT: Final[str] = "DD/MM/YYYY"

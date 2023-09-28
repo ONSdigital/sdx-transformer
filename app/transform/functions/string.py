@@ -1,5 +1,5 @@
 from app.definitions import Value
-from app.functions.general import handle_empties
+from app.transform.functions.general import handle_empties
 
 """
 This file contains the functions that represent

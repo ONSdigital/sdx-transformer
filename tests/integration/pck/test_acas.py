@@ -11,7 +11,7 @@ class ACASTransformTests(unittest.TestCase):
         filepath = "tests/data/acas/acas.json"
         submission_data = read_submission_data(filepath)
 
-        build_spec = get_build_spec("171")
+        build_spec = get_build_spec("171", {"171": "acas"})
         transformed_data = transform(submission_data, build_spec)
         actual = remove_empties(transformed_data)
 

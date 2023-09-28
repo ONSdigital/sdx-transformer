@@ -4,7 +4,7 @@ from typing import Final
 from sdx_gcp.app import get_logger
 
 from app.definitions import ParseTree, Field, Data
-from app.tree_walker import TreeWalker
+from app.transform.tree_walker import TreeWalker
 
 logger = get_logger()
 

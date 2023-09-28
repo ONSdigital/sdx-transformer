@@ -11,7 +11,7 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_minimal.json"
         submission_data = read_submission_data(filepath)
 
-        build_spec = get_build_spec("134")
+        build_spec = get_build_spec("134", {"134": "mwss"})
         transformed_data = transform(submission_data, build_spec)
         actual = remove_empties(transformed_data)
 
@@ -23,7 +23,7 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_full.json"
         submission_data = read_submission_data(filepath)
 
-        build_spec = get_build_spec("134")
+        build_spec = get_build_spec("134", {"134": "mwss"})
         transformed_data = transform(submission_data, build_spec)
         actual = remove_empties(transformed_data)
 

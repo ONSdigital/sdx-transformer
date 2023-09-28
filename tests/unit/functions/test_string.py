@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.string import contains, any_contains, concat, starts_with
+from app.transform.functions.string import contains, any_contains, concat, starts_with
 
 
 class StartsWithTests(unittest.TestCase):

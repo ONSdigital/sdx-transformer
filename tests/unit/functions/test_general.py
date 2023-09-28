@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.general import exists, any_exists
+from app.transform.functions.general import exists, any_exists
 
 
 class ExistsTests(unittest.TestCase):

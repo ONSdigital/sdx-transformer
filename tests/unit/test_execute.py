@@ -1,9 +1,9 @@
 import unittest
 from collections.abc import Callable
 
-import app.execute
+import app.transform.execute
 from app.definitions import ParseTree
-from app.execute import execute
+from app.transform.execute import execute
 
 
 def fake_remove_chars(value: str, n: str = "1") -> str:
@@ -28,7 +28,7 @@ class ExecutionTests(unittest.TestCase):
             "ADD": fake_add,
             "CONTAINS": fake_contains
         }
-        app.execute._function_lookup = fake_function_lookup
+        app.transform.execute._function_lookup = fake_function_lookup
 
     def test_execute_single(self):
 

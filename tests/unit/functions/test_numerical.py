@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.functions.numerical import round_half_up, aggregate, mean, number_equals, total
+from app.transform.functions.numerical import round_half_up, aggregate, mean, number_equals, total
 
 
 class RoundTests(unittest.TestCase):

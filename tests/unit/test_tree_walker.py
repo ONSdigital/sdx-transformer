@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import ParseTree, Field
-from app.tree_walker import TreeWalker
+from app.transform.tree_walker import TreeWalker
 
 
 class TreeWalkerTests(unittest.TestCase):

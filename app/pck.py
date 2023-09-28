@@ -1,19 +1,16 @@
-import json
-import yaml
-from os.path import exists
 
 from sdx_gcp.app import get_logger
-from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata, BuildSpecError
-from app.execute import execute
+from app.build_spec import get_build_spec, get_formatter
+from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.json_formatter import JSONFormatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
-from app.interpolate import interpolate
-from app.populate import populate_mappings, resolve_value_fields
+from app.transform.execute import execute
+from app.transform.interpolate import interpolate
+from app.transform.populate import populate_mappings, resolve_value_fields
 
 logger = get_logger()
 
@@ -55,49 +52,13 @@ def get_pck(submission_data: Data, survey_metadata: SurveyMetadata) -> PCK:
     """
     Performs the steps required to generate a pck file from the submission data.
     """
-    build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"])
+    build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping)
     add_metadata_to_input_data(submission_data, survey_metadata)
     transformed_data: dict[str, Value] = transform(submission_data, build_spec)
-    formatter = get_formatter(build_spec)
+    formatter = get_formatter(build_spec, formatter_mapping)
     pck = formatter.generate_pck(transformed_data, survey_metadata)
     logger.info("Generated pck file")
     return pck
-
-
-def get_build_spec(survey_id: str) -> BuildSpec:
-    """
-    Looks up the relevant build spec for the submission provided.
-    """
-    survey_name = survey_mapping.get(survey_id)
-    if survey_name is None:
-        raise DataError(f"Could not lookup survey id {survey_id}")
-
-    filepath = f"build_specs/pck/{survey_name}.yaml"
-    if exists(filepath):
-        logger.info(f"Getting build spec from {filepath}")
-        with open(filepath) as y:
-            build_spec: BuildSpec = yaml.safe_load(y.read())
-
-    else:
-        filepath = f"build_specs/pck/{survey_name}.json"
-        logger.info(f"Getting build spec from {filepath}")
-        with open(filepath) as j:
-            build_spec: BuildSpec = json.load(j)
-
-    return build_spec
-
-
-def get_formatter(build_spec: BuildSpec) -> Formatter:
-    f: Formatter.__class__ = formatter_mapping.get(build_spec["target"])
-    if f is None:
-        raise BuildSpecError(f"Unable to find formatter for target: {build_spec['target']}")
-
-    period_format = build_spec["period_format"]
-    pck_period_format = build_spec["pck_period_format"] if "pck_period_format" in build_spec else period_format
-    form_mapping = build_spec["form_mapping"] if "form_mapping" in build_spec else {}
-
-    formatter: Formatter = f(build_spec["period_format"], pck_period_format, form_mapping)
-    return formatter
 
 
 def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMetadata):
