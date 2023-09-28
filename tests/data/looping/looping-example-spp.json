@@ -2,7 +2,7 @@
   "formtype": "0001",
   "reference": "12346789012A",
   "period": "202212",
-  "survey": "001",
+  "survey": "999",
   "responses": [
     {
       "questioncode": "1",
@@ -48,6 +48,16 @@
       "questioncode": "7",
       "response": "Address Line 1 Town NP10 8XG",
       "instance": 0
+    },
+    {
+      "questioncode": "9",
+      "response": "35",
+      "instance": 1
+    },
+    {
+      "questioncode": "9",
+      "response": "29",
+      "instance": 2
     },
     {
       "questioncode": "8",

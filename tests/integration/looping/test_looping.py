@@ -1,6 +1,7 @@
+import json
 import unittest
 
-from app.definitions import SurveyMetadata, PCK, LoopedData
+from app.definitions import SurveyMetadata, PCK, LoopedData, SPP
 from app.looping import convert_to_looped_data, get_looping
 from tests.integration.looping import read_submission_data
 from tests.integration.pck import are_equal
@@ -73,3 +74,28 @@ class LoopingTests(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
+
+    def test_looped_to_spp(self):
+
+        filepath = "tests/data/looping/looping-example.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "999",
+            "period_id": "202212",
+            "ru_ref": "12346789012A",
+            "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+        }
+
+        actual: SPP = json.loads(get_looping(submission_data, survey_metadata))
+
+        spp_filepath = "tests/data/looping/looping-example-spp.json"
+        with open(spp_filepath) as f:
+            expected: SPP = json.load(f)
+
+        expected['responses'].sort(key=lambda i: i['instance'])
+        actual['responses'].sort(key=lambda i: i['instance'])
+
+        self.assertEqual(expected, actual)

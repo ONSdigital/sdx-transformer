@@ -1,4 +1,5 @@
 import json
+from collections.abc import Mapping
 from os.path import exists
 from typing import TypeVar
 
@@ -7,7 +8,7 @@ from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.definitions import BuildSpec, BuildSpecError
-
+from app.formatters.formatter import Formatter
 
 logger = get_logger()
 
@@ -35,10 +36,10 @@ def get_build_spec(survey_id: str, survey_mapping: dict[str, str], subdir: str =
     return build_spec
 
 
-T = TypeVar("T")
+T = TypeVar("T", bound=Formatter)
 
 
-def get_formatter(build_spec: BuildSpec, formatter_mapping: dict[str, T.__class__]) -> T:
+def get_formatter(build_spec: BuildSpec, formatter_mapping: Mapping[str, T.__class__]) -> T:
     f: T.__class__ = formatter_mapping.get(build_spec["target"])
     if f is None:
         raise BuildSpecError(f"Unable to find formatter for target: {build_spec['target']}")

@@ -86,3 +86,17 @@ class ListCollector(TypedDict):
 class LoopedData(TypedDict):
     looped_sections: dict[str, list[Data]]
     data_section: dict[str, Value]
+
+
+class SPPResponse(TypedDict):
+    questioncode: str
+    response: str
+    instance: int
+
+
+class SPP(TypedDict):
+    formtype: str
+    reference: str
+    period: str
+    survey: str
+    responses: list[SPPResponse]

@@ -6,6 +6,7 @@ from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.looping_formatter import LoopingFormatter
+from app.formatters.spp_formatter import SPPFormatter
 from app.transform.execute import execute
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields, populate_mappings
@@ -13,11 +14,13 @@ from app.transform.populate import resolve_value_fields, populate_mappings
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
-    "001": "looping"
+    "001": "looping",
+    "999": "looping-spp"
 }
 
 formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA": CORALoopingFormatter,
+    "SPP": SPPFormatter
 }
 
 
@@ -26,7 +29,10 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
     Performs the steps required to transform looped data.
     """
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
-    parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    if 'transforms' in build_spec:
+        parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    else:
+        parse_tree: ParseTree = build_spec['template']
     full_tree: parse_tree = resolve_value_fields(parse_tree)
     looped_data: LoopedData = convert_to_looped_data(list_data)
 
