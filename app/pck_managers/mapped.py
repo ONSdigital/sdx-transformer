@@ -39,6 +39,7 @@ survey_mapping: dict[str, str] = {
     "228": "construction",
 }
 
+
 formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA": CORAFormatter,
     "CORA_MES": MESFormatter,

@@ -1,4 +1,4 @@
-title: "Build Spec for ABS short forms"
+title: "Build Spec for ABS long forms"
 survey_id: "202"
 target: "CS"
 period_format: "YYYYMM"
@@ -22,7 +22,6 @@ template:
     "339": "$CURRENCY_THOUSANDS"
     "346": "$CURRENCY_THOUSANDS"
     "399": "$CURRENCY_THOUSANDS"
-    "400": "$CURRENCY_THOUSANDS"
     "403": "$CURRENCY_THOUSANDS"
     "412": "$CURRENCY_THOUSANDS"
     "414": "$CURRENCY_THOUSANDS"
@@ -31,17 +30,13 @@ template:
     "419": "$CURRENCY_THOUSANDS"
     "420": "$CURRENCY_THOUSANDS"
     "431": "$CURRENCY_THOUSANDS"
-    "450": "$CURRENCY_THOUSANDS"
     "455": "$CURRENCY_THOUSANDS"
     "475": "$CURRENCY_THOUSANDS"
     "476": "$CURRENCY_THOUSANDS"
-    "499": "$499"
     "500": "$CURRENCY_THOUSANDS"
     "501": "$CURRENCY_THOUSANDS"
     "502": "$CURRENCY_THOUSANDS"
     "599": "$CURRENCY_THOUSANDS"
-    "600": "$CURRENCY_THOUSANDS"
-    "699": "$CURRENCY_THOUSANDS"
 
     "321": "$CURRENCY_THOUSANDS"
     "753": "$CURRENCY_THOUSANDS"
@@ -95,7 +90,8 @@ template:
     "1392": "$CURRENCY_THOUSANDS"
     "1393": "$CURRENCY_THOUSANDS"
     "745": "$CURRENCY_THOUSANDS"
-    "746": "$746_LOOKUP_FORM_TYPE"
+
+    "746": "$COMMENT"
     "347": "$CURRENCY_THOUSANDS"
     "747": "$CURRENCY_THOUSANDS"
     "179": "$CURRENCY_THOUSANDS"
@@ -149,7 +145,12 @@ template:
     "601": "$CURRENCY_THOUSANDS"
     "602": "$CURRENCY_THOUSANDS"
 
-    "345": "$345_LOOKUP_FORM_TYPE"
+    "345": "$TOTAL_345"
+    "450": "$TOTAL_450"
+    "499": "$TOTAL_499"
+    "400": "$TOTAL_400"
+    "600": "$TOTAL_600"
+    "699": "$TOTAL_699"
 
 transforms:
     "START_OF_PERIOD":
@@ -218,105 +219,37 @@ transforms:
             "on_false": "2"
         "post": "$NO_COMMENT_1820"
 
-    "746_LOOKUP_FORM_TYPE":
-        "name": "LOOKUP"
+    "TOTAL":
+        "name": "TOTAL"
         "args":
-            value: "#form_type"
-            "1805": "$COMMENT"
-            on_no_match: null
-
-    "345_LOOKUP_FORM_TYPE":
-        "name": "LOOKUP"
-        "args":
-            value: "#form_type"
-            "1805": "$TOTAL_345"
-            on_no_match: null
+            "value": "0"
+            "values": ["&403", "&420"]
     "TOTAL_345":
         "name": "TOTAL"
         "args":
             "value": "0"
             "values": [ "&753", "&754", "&755", "&756", "&757", "&758" ]
-    "450":
-        "name": "EXISTS"
-        "args":
-            "on_true": "$CURRENCY_THOUSANDS"
-            "on_false": "$450_LOOKUP_FORM_TYPE"
-    "450_LOOKUP_FORM_TYPE":
-        "name": "LOOKUP"
-        "args":
-            value: "#form_type"
-            "1805": "$450_TOTAL_LONG_FORM"
-            on_no_match: null
-    "450_TOTAL_LONG_FORM":
+    "TOTAL_450":
         "name": "TOTAL"
         "args":
             "value": "0"
             "values": [ "&446", "&447", "&448", "&449"]
-    "499":
-        "name": "EXISTS"
-        "args":
-            "on_true": "$CURRENCY_THOUSANDS"
-            "on_false": "$499_LOOKUP_FORM_TYPE"
-    "499_LOOKUP_FORM_TYPE":
-        "name": "LOOKUP"
-        "args":
-            value: "#form_type"
-            "1805": "$499_TOTAL_LONG_FORM"
-            on_no_match: "$499_TOTAL_SHORT_FORM"
-    "499_TOTAL_LONG_FORM":
+    "TOTAL_499":
         "name": "TOTAL"
         "args":
             "value": "0"
             "values": ["&402", "&405",  "&406", "&407", "&408", "&409", "&410", "&411", "&421", "&427", "&428", "&433", "&435", "&767", "&781"]
-    "499_TOTAL_SHORT_FORM":
-        "name": "TOTAL"
-        "args":
-            "value": "0"
-            "values": ["&403",  "&420"]
-    "400":
-        "name": "EXISTS"
-        "args":
-            "on_true": "$CURRENCY_THOUSANDS"
-            "on_false": "$400_LOOKUP_FORM_TYPE"
-    "400_LOOKUP_FORM_TYPE":
-        "name": "LOOKUP"
-        "args":
-            value: "#form_type"
-            "1805": "$400_TOTAL_LONG_FORM"
-            on_no_match: null
-    "400_TOTAL_LONG_FORM":
+    "TOTAL_400":
         "name": "TOTAL"
         "args":
             "value": "0"
             "values": [ "&412", "&413",  "&431", "&455"]
-    "600":
-        "name": "EXISTS"
-        "args":
-            "on_true": "$CURRENCY_THOUSANDS"
-            "on_false": "$600_LOOKUP_FORM_TYPE"
-    "600_LOOKUP_FORM_TYPE":
-        "name": "LOOKUP"
-        "args":
-            value: "#form_type"
-            "1805": "$600_TOTAL_LONG_FORM"
-            on_no_match: null
-    "600_TOTAL_LONG_FORM":
+    "TOTAL_600":
         "name": "TOTAL"
         "args":
             "value": "0"
             "values": [ "&763", "&764",  "&771", "&788", "&1641", "&1644", "&1646", "&1648", "&1651" ]
-    "699":
-        "name": "EXISTS"
-        "args":
-            "on_true": "$CURRENCY_THOUSANDS"
-            "on_false": "$699_LOOKUP_FORM_TYPE"
-    "699_LOOKUP_FORM_TYPE":
-        "name": "LOOKUP"
-        "args":
-            value: "#form_type"
-            "1805": "$699_TOTAL_LONG_FORM"
-            on_no_match: null
-    "699_TOTAL_LONG_FORM":
+    "TOTAL_699":
         "name": "TOTAL"
         "args":
             "value": "0"
