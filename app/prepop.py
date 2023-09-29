@@ -3,7 +3,7 @@ from copy import deepcopy
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.build_spec import get_build_spec
+from app.build_spec import get_build_spec, interpolate_build_spec
 from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field
 from app.transform.execute import execute
 from app.transform.interpolate import interpolate
@@ -21,7 +21,8 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
     Performs the steps required to transform prepopulated data.
     """
     build_spec: BuildSpec = get_build_spec(survey_id, survey_mapping, "prepop")
-    parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    parse_tree: ParseTree = interpolate_build_spec(build_spec)
+
     result: dict[Identifier: Template] = {}
     for ru_ref, data_list in prepop_data.items():
         items: list[Template] = []
