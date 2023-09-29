@@ -1,13 +1,15 @@
 import json
 
 from app.definitions import Value, SurveyMetadata, PCK, SPP
-from app.formatters.looping_formatter import LoopingFormatter
+from app.formatters.formatter import Formatter
 
 
-class SPPFormatter(LoopingFormatter):
+class SPPFormatter(Formatter):
 
-    def generate_pck(self, data_section: dict[str, Value], metadata: SurveyMetadata) -> PCK:
+    def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
+        return json.dumps(self.get_spp_template(data, metadata))
 
+    def get_spp_template(self, data: dict[str, Value], metadata: SurveyMetadata) -> SPP:
         result: SPP = {
             'formtype': metadata['form_type'],
             'reference': metadata['ru_ref'],
@@ -16,19 +18,11 @@ class SPPFormatter(LoopingFormatter):
             'responses': []
         }
 
-        for qcode, value in data_section.items():
+        for qcode, value in data.items():
             result['responses'].append({
                 "questioncode": qcode,
                 "response": value,
                 "instance": 0
             })
 
-        for instance_id, data in self._instances.items():
-            for qcode, value in data.items():
-                result['responses'].append({
-                    "questioncode": qcode,
-                    "response": value,
-                    "instance": int(instance_id)
-                })
-
-        return json.dumps(result)
+        return result

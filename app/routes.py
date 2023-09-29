@@ -2,7 +2,8 @@ from sdx_gcp import Request, Flask, TX_ID
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import PrepopData, Identifier, Template, PCK, Data, SurveyMetadata
+from app.definitions import PrepopData, Identifier, Template, PCK, Data, SurveyMetadata, ListCollector
+from app.looping import get_looping
 from app.pck import get_pck
 from app.prepop import get_prepop
 
@@ -12,9 +13,6 @@ logger = get_logger()
 
 def process_pck(req: Request, _tx_id: TX_ID):
     logger.info("Received pck request")
-    submission_data: Data = req.get_json(force=True, silent=True)
-    if submission_data is None:
-        raise DataError("Submission data is not in json format")
 
     survey_metadata: SurveyMetadata = {
         "survey_id": req.args.get("survey_id", ""),
@@ -31,7 +29,19 @@ def process_pck(req: Request, _tx_id: TX_ID):
         if v == "":
             raise DataError(f"Missing required parameter {k} from request")
 
-    pck: PCK = get_pck(submission_data, survey_metadata)
+    data_version: str = req.args.get("data_version", "0.0.1")
+
+    if data_version == "0.0.3":
+        submission_data: ListCollector = req.get_json(force=True, silent=True)
+        if submission_data is None:
+            raise DataError("Submission data is not in json format")
+        pck: PCK = get_looping(submission_data, survey_metadata)
+    else:
+        submission_data: Data = req.get_json(force=True, silent=True)
+        if submission_data is None:
+            raise DataError("Submission data is not in json format")
+        pck: PCK = get_pck(submission_data, survey_metadata)
+
     response: Flask.Response = Flask.make_response(pck, 200)
     response.mimetype = "text/plain"
     return response

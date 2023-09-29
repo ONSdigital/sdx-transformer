@@ -6,7 +6,7 @@ from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.looping_formatter import LoopingFormatter
-from app.formatters.spp_formatter import SPPFormatter
+from app.formatters.spp_looping_formatter import SPPLoopingFormatter
 from app.transform.execute import execute
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields, populate_mappings
@@ -20,7 +20,7 @@ survey_mapping: dict[str, str] = {
 
 formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA": CORALoopingFormatter,
-    "SPP": SPPFormatter
+    "SPP": SPPLoopingFormatter
 }
 
 
