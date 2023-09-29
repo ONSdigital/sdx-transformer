@@ -4,7 +4,7 @@ from app.definitions import BuildSpec
 
 content = open("content.txt", "r").readlines()
 
-filepath = "../build_specs/pck/abs-long.yaml"
+filepath = "../build_specs/pck/abs.yaml"
 with open(filepath) as y:
     build_spec: BuildSpec = yaml.safe_load(y.read())
 

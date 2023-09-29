@@ -37,8 +37,7 @@ template:
     "501": "$CURRENCY_THOUSANDS"
     "502": "$CURRENCY_THOUSANDS"
     "599": "$CURRENCY_THOUSANDS"
-
-
+#    -- Long form --
     "321": "$CURRENCY_THOUSANDS"
     "753": "$CURRENCY_THOUSANDS"
     "754": "$CURRENCY_THOUSANDS"
@@ -144,7 +143,7 @@ template:
     "1652": "$CURRENCY_THOUSANDS"
     "601": "$CURRENCY_THOUSANDS"
     "602": "$CURRENCY_THOUSANDS"
-
+    #    -- Derived --
     "499": "$499"
     "400": "$400"
     "345": "$345"
