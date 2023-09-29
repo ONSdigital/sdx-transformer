@@ -1,6 +1,6 @@
 from sdx_gcp.app import get_logger
 
-from app.build_spec import get_build_spec, get_formatter
+from app.build_spec import get_build_spec, get_formatter, interpolate_build_spec
 from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
     ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
@@ -8,8 +8,7 @@ from app.formatters.formatter import Formatter
 from app.formatters.looping_formatter import LoopingFormatter
 from app.formatters.spp_looping_formatter import SPPLoopingFormatter
 from app.transform.execute import execute
-from app.transform.interpolate import interpolate
-from app.transform.populate import resolve_value_fields, populate_mappings
+from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
@@ -29,15 +28,12 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
     Performs the steps required to transform looped data.
     """
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
-    if 'transforms' in build_spec:
-        parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
-    else:
-        parse_tree: ParseTree = build_spec['template']
-    full_tree: parse_tree = resolve_value_fields(parse_tree)
+
+    full_tree: ParseTree = interpolate_build_spec(build_spec)
     looped_data: LoopedData = convert_to_looped_data(list_data)
 
     data_section: Data = looped_data['data_section']
-    populated_tree: parse_tree = populate_mappings(full_tree, data_section)
+    populated_tree: ParseTree = populate_mappings(full_tree, data_section)
     transformed_data_section: dict[str, Value] = execute(populated_tree)
     result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
@@ -47,7 +43,7 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
     for data_list in looped_sections.values():
         instance_id = 1
         for d in data_list:
-            populated_tree: parse_tree = populate_mappings(full_tree, d)
+            populated_tree: ParseTree = populate_mappings(full_tree, d)
             transformed_data: dict[str, Value] = execute(populated_tree)
             result = {k: v for k, v in transformed_data.items() if v is not Empty}
             formatter.create_or_update_instance(instance_id=str(instance_id), data=result)

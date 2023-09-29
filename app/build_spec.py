@@ -7,8 +7,10 @@ import yaml
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, BuildSpecError
+from app.definitions import BuildSpec, BuildSpecError, ParseTree
 from app.formatters.formatter import Formatter
+from app.transform.interpolate import interpolate
+from app.transform.populate import resolve_value_fields
 
 logger = get_logger()
 
@@ -34,6 +36,14 @@ def get_build_spec(survey_id: str, survey_mapping: dict[str, str], subdir: str =
             build_spec: BuildSpec = json.load(j)
 
     return build_spec
+
+
+def interpolate_build_spec(build_spec: BuildSpec) -> ParseTree:
+    if 'transforms' in build_spec:
+        parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+    else:
+        parse_tree: ParseTree = build_spec['template']
+    return resolve_value_fields(parse_tree)
 
 
 T = TypeVar("T", bound=Formatter)

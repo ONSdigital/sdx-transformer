@@ -1,7 +1,7 @@
 
 from sdx_gcp.app import get_logger
 
-from app.build_spec import get_build_spec, get_formatter
+from app.build_spec import get_build_spec, get_formatter, interpolate_build_spec
 from app.definitions import BuildSpec, ParseTree, Value, PCK, Data, SurveyMetadata
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cs_formatter import CSFormatter
@@ -68,12 +68,7 @@ def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMet
 
 
 def transform(data: Data, build_spec: BuildSpec) -> dict[str, Value]:
-
-    if 'transforms' in build_spec:
-        parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
-    else:
-        parse_tree: ParseTree = build_spec['template']
-    full_tree: ParseTree = resolve_value_fields(parse_tree)
+    full_tree: ParseTree = interpolate_build_spec(build_spec)
     populated_tree: ParseTree = populate_mappings(full_tree, data)
     result_data: dict[str, Value] = execute(populated_tree)
     logger.info("Completed data transformation")
