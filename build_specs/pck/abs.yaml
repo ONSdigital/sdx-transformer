@@ -22,7 +22,6 @@ template:
     "339": "$CURRENCY_THOUSANDS"
     "346": "$CURRENCY_THOUSANDS"
     "399": "$CURRENCY_THOUSANDS"
-    "400": "$CURRENCY_THOUSANDS"
     "403": "$CURRENCY_THOUSANDS"
     "412": "$CURRENCY_THOUSANDS"
     "414": "$CURRENCY_THOUSANDS"
@@ -31,17 +30,14 @@ template:
     "419": "$CURRENCY_THOUSANDS"
     "420": "$CURRENCY_THOUSANDS"
     "431": "$CURRENCY_THOUSANDS"
-    "450": "$CURRENCY_THOUSANDS"
     "455": "$CURRENCY_THOUSANDS"
     "475": "$CURRENCY_THOUSANDS"
     "476": "$CURRENCY_THOUSANDS"
-    "499": "$499"
     "500": "$CURRENCY_THOUSANDS"
     "501": "$CURRENCY_THOUSANDS"
     "502": "$CURRENCY_THOUSANDS"
     "599": "$CURRENCY_THOUSANDS"
-    "600": "$CURRENCY_THOUSANDS"
-    "699": "$CURRENCY_THOUSANDS"
+
 
     "321": "$CURRENCY_THOUSANDS"
     "753": "$CURRENCY_THOUSANDS"
@@ -149,7 +145,12 @@ template:
     "601": "$CURRENCY_THOUSANDS"
     "602": "$CURRENCY_THOUSANDS"
 
-    "345": "$345_LOOKUP_FORM_TYPE"
+    "499": "$499"
+    "400": "$400"
+    "345": "$345"
+    "450": "$450"
+    "600": "$600"
+    "699": "$699"
 
 transforms:
     "START_OF_PERIOD":
@@ -224,6 +225,12 @@ transforms:
             value: "#form_type"
             "1805": "$COMMENT"
             on_no_match: null
+
+    "345":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$345_LOOKUP_FORM_TYPE"
 
     "345_LOOKUP_FORM_TYPE":
         "name": "LOOKUP"
