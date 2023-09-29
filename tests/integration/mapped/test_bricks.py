@@ -1,8 +1,8 @@
 import unittest
 
 from app.definitions import SurveyMetadata, PCK
-from app.pck import get_build_spec, transform, get_pck
-from tests.integration.pck import remove_empties, read_submission_data, are_equal
+from app.pck_managers.mapped import get_build_spec, transform, get_pck
+from tests.integration.mapped import remove_empties, read_submission_data, are_equal
 
 
 class BricksTransformsTests(unittest.TestCase):

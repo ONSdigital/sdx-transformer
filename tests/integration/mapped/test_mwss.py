@@ -1,8 +1,8 @@
 import unittest
 
 from app.definitions import PCK, SurveyMetadata
-from app.pck import get_pck, transform, get_build_spec
-from tests.integration.pck import read_submission_data, remove_empties, are_equal
+from app.pck_managers.mapped import get_pck, transform, get_build_spec
+from tests.integration.mapped import read_submission_data, remove_empties, are_equal
 
 
 class MWSSTransformTests(unittest.TestCase):

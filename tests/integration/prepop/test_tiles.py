@@ -2,7 +2,7 @@ import json
 import unittest
 
 from app.definitions import PrepopData, Identifier, Template
-from app.prepop import get_prepop
+from app.pck_managers.prepop import get_prepop
 
 
 class TilesTests(unittest.TestCase):

@@ -6,7 +6,6 @@ from sdx_gcp.errors import DataError
 from app.build_spec import get_build_spec, interpolate_build_spec
 from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field
 from app.transform.execute import execute
-from app.transform.interpolate import interpolate
 from app.transform.populate import populate_mappings
 
 logger = get_logger()

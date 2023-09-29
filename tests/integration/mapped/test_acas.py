@@ -1,8 +1,8 @@
 import unittest
 
 from app.definitions import SurveyMetadata, PCK
-from app.pck import transform, get_build_spec, get_pck
-from tests.integration.pck import read_submission_data, remove_empties, are_equal
+from app.pck_managers.mapped import transform, get_build_spec, get_pck
+from tests.integration.mapped import read_submission_data, remove_empties, are_equal
 
 
 class ACASTransformTests(unittest.TestCase):

@@ -2,9 +2,9 @@ import json
 import unittest
 
 from app.definitions import SurveyMetadata, PCK, LoopedData, SPP
-from app.looping import convert_to_looped_data, get_looping
-from tests.integration.looping import read_submission_data
-from tests.integration.pck import are_equal
+from app.pck_managers.looped import convert_to_looped_data, get_looping
+from tests.integration.looped import read_submission_data
+from tests.integration.mapped import are_equal
 
 
 class LoopingTests(unittest.TestCase):

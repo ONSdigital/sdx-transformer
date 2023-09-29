@@ -9,8 +9,7 @@ from app.formatters.formatter import Formatter
 from app.formatters.json_formatter import JSONFormatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.transform.execute import execute
-from app.transform.interpolate import interpolate
-from app.transform.populate import populate_mappings, resolve_value_fields
+from app.transform.populate import populate_mappings
 
 logger = get_logger()
 

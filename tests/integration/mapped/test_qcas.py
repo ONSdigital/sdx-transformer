@@ -2,8 +2,8 @@ import os
 import unittest
 
 from app.definitions import SurveyMetadata, PCK, Data
-from app.pck import get_pck
-from tests.integration.pck import read_submission_data, are_equal
+from app.pck_managers.mapped import get_pck
+from tests.integration.mapped import read_submission_data, are_equal
 
 
 class QCASPckTests(unittest.TestCase):
