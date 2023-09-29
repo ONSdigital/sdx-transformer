@@ -1,0 +1,103 @@
+title: "Quarterly Fuels Survey (QFS)"
+survey_id: "024"
+target: "JSON"
+period_format: "YYYYMM"
+
+template:
+    "0a": "#10"
+    "0b": "#11"
+    "0c": "#12"
+    "0d": "#13"
+    "0e": "#14"
+    "1": "#110"
+    "2a": "#120"
+    "2b": "#121"
+    "2c": "#122"
+    "3": "#130"
+    "4a": "#140"
+    "4b": "#141"
+    "4c": "#142"
+    "5": "#150"
+    "6": "#160"
+    "8": "#180"
+    "9": "#190"
+    "11": "#200"
+    "12": "#210"
+    "12a": "#211"
+    "13": "#220"
+    "15": "#230"
+    "16": "#240"
+    "18": "#250"
+    "19": "#260"
+    "20": "#270"
+    "20a": "#271"
+    "21": "#280"
+    "23": "#290"
+    "24": "#300"
+    "26": "#310"
+    "27": "#320"
+    "28": "#330"
+    "29": "#340"
+    "31": "#350"
+    "32": "#360"
+    "34": "#370"
+    "146": "#146"
+
+    "17" : "$EXISTS_12a"
+    "25": "$EXISTS_20a"
+    "33": "$EXISTS_28"
+
+transforms:
+    "EXISTS_12a":
+        name: "EXISTS"
+        args:
+            value: "&12a"
+            on_true: "$EXISTS_15"
+            on_false: null
+    "EXISTS_15":
+        name: "EXISTS"
+        args:
+            value: "&15"
+            on_true: "$TOTAL_17"
+            on_false: null
+    "TOTAL_17":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": [ "&12a", "&15" ]
+
+    "EXISTS_20a":
+        name: "EXISTS"
+        args:
+            value: "&20a"
+            on_true: "$EXISTS_23"
+            on_false: null
+    "EXISTS_23":
+        name: "EXISTS"
+        args:
+            value: "&23"
+            on_true: "$TOTAL_25"
+            on_false: null
+    "TOTAL_25":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": [ "&20a", "&23" ]
+
+    "EXISTS_28":
+        name: "EXISTS"
+        args:
+            value: "&28"
+            on_true: "$EXISTS_31"
+            on_false: null
+    "EXISTS_31":
+        name: "EXISTS"
+        args:
+            value: "31"
+            on_true: "$TOTAL_33"
+            on_false: null
+    "TOTAL_33":
+        "name": "TOTAL"
+        "args":
+            "value": ""
+            "values": [ "&28", "&31" ]
