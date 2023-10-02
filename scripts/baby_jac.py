@@ -21,10 +21,12 @@ def strip(content: list):
 exists_already = (build_spec['template'].keys())
 excel = strip(content)
 
+# Print all the qcodes in the spreadsheet which are NOT in the build spec
 excel.sort(key=lambda x: int(x))
 for qcode in excel:
     if qcode not in exists_already:
         print(f'"{qcode}": "$CURRENCY_THOUSANDS"')
+
 
 # for qcode in exists_already:
 #     if qcode not in excel:

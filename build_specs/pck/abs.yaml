@@ -37,7 +37,7 @@ template:
     "502": "$CURRENCY_THOUSANDS"
     "599": "$CURRENCY_THOUSANDS"
 
-#    -- Long form --
+    #    -- Long form --
     "321": "$CURRENCY_THOUSANDS"
     "753": "$CURRENCY_THOUSANDS"
     "754": "$CURRENCY_THOUSANDS"
@@ -144,7 +144,7 @@ template:
     "601": "$CURRENCY_THOUSANDS"
     "602": "$CURRENCY_THOUSANDS"
 
-    # Fishing
+    #    -- Fishing additions --
     "309": "$CURRENCY_THOUSANDS"
     "310": "$CURRENCY_THOUSANDS"
     "336": "$CURRENCY_THOUSANDS"
@@ -152,6 +152,7 @@ template:
     "398": "$CURRENCY_THOUSANDS"
     "404": "$CURRENCY_THOUSANDS"
     "6100": "$CURRENCY_THOUSANDS"
+
 
     #    -- Derived --
     "499": "$499"
