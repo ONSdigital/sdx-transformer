@@ -37,5 +37,5 @@ class ABSPckTests(unittest.TestCase):
             passed = are_equal(expected, actual)
             if not passed:
                 print(actual)
-                
+
             self.assertTrue(passed)

@@ -21,7 +21,6 @@ template:
     "337": "$CURRENCY_THOUSANDS"
     "339": "$CURRENCY_THOUSANDS"
     "346": "$CURRENCY_THOUSANDS"
-    "399": "$CURRENCY_THOUSANDS"
     "403": "$CURRENCY_THOUSANDS"
     "412": "$CURRENCY_THOUSANDS"
     "414": "$CURRENCY_THOUSANDS"
@@ -37,6 +36,7 @@ template:
     "501": "$CURRENCY_THOUSANDS"
     "502": "$CURRENCY_THOUSANDS"
     "599": "$CURRENCY_THOUSANDS"
+
 #    -- Long form --
     "321": "$CURRENCY_THOUSANDS"
     "753": "$CURRENCY_THOUSANDS"
@@ -143,10 +143,21 @@ template:
     "1652": "$CURRENCY_THOUSANDS"
     "601": "$CURRENCY_THOUSANDS"
     "602": "$CURRENCY_THOUSANDS"
+
+    # Fishing
+    "309": "$CURRENCY_THOUSANDS"
+    "310": "$CURRENCY_THOUSANDS"
+    "336": "$CURRENCY_THOUSANDS"
+    "370": "$CURRENCY_THOUSANDS"
+    "398": "$CURRENCY_THOUSANDS"
+    "404": "$CURRENCY_THOUSANDS"
+    "6100": "$CURRENCY_THOUSANDS"
+
     #    -- Derived --
     "499": "$499"
     "400": "$400"
     "345": "$345"
+    "399": "$399"
     "450": "$450"
     "600": "$600"
     "699": "$699"
@@ -242,6 +253,24 @@ transforms:
         "args":
             "value": "0"
             "values": [ "&753", "&754", "&755", "&756", "&757", "&758" ]
+
+    "399":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$399_LOOKUP_FORM_TYPE"
+
+    "399_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1875": "$TOTAL_399"
+            on_no_match: null
+    "TOTAL_399":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&366", "&370", "&398", "&309", "&310", "&311" ]
     "450":
         "name": "EXISTS"
         "args":
