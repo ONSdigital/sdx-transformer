@@ -21,8 +21,6 @@ template:
     "337": "$CURRENCY_THOUSANDS"
     "339": "$CURRENCY_THOUSANDS"
     "346": "$CURRENCY_THOUSANDS"
-    "399": "$CURRENCY_THOUSANDS"
-    "400": "$CURRENCY_THOUSANDS"
     "403": "$CURRENCY_THOUSANDS"
     "412": "$CURRENCY_THOUSANDS"
     "414": "$CURRENCY_THOUSANDS"
@@ -31,17 +29,152 @@ template:
     "419": "$CURRENCY_THOUSANDS"
     "420": "$CURRENCY_THOUSANDS"
     "431": "$CURRENCY_THOUSANDS"
-    "450": "$CURRENCY_THOUSANDS"
     "455": "$CURRENCY_THOUSANDS"
     "475": "$CURRENCY_THOUSANDS"
     "476": "$CURRENCY_THOUSANDS"
-    "499": "$499"
     "500": "$CURRENCY_THOUSANDS"
     "501": "$CURRENCY_THOUSANDS"
     "502": "$CURRENCY_THOUSANDS"
     "599": "$CURRENCY_THOUSANDS"
-    "600": "$CURRENCY_THOUSANDS"
-    "699": "$CURRENCY_THOUSANDS"
+
+    #    -- Long form --
+    "321": "$CURRENCY_THOUSANDS"
+    "753": "$CURRENCY_THOUSANDS"
+    "754": "$CURRENCY_THOUSANDS"
+    "755": "$CURRENCY_THOUSANDS"
+    "756": "$CURRENCY_THOUSANDS"
+    "757": "$CURRENCY_THOUSANDS"
+    "758": "$CURRENCY_THOUSANDS"
+    "306": "$CURRENCY_THOUSANDS"
+    "704": "$CURRENCY_THOUSANDS"
+    "1363": "$CURRENCY_THOUSANDS"
+    "1364": "$CURRENCY_THOUSANDS"
+    "708": "$CURRENCY_THOUSANDS"
+    "1365": "$CURRENCY_THOUSANDS"
+    "1366": "$CURRENCY_THOUSANDS"
+    "1367": "$CURRENCY_THOUSANDS"
+    "1368": "$CURRENCY_THOUSANDS"
+    "1369": "$CURRENCY_THOUSANDS"
+    "1370": "$CURRENCY_THOUSANDS"
+    "705": "$CURRENCY_THOUSANDS"
+    "1371": "$CURRENCY_THOUSANDS"
+    "1372": "$CURRENCY_THOUSANDS"
+    "716": "$CURRENCY_THOUSANDS"
+    "722": "$CURRENCY_THOUSANDS"
+    "1373": "$CURRENCY_THOUSANDS"
+    "1374": "$CURRENCY_THOUSANDS"
+    "1375": "$CURRENCY_THOUSANDS"
+    "1376": "$CURRENCY_THOUSANDS"
+    "1377": "$CURRENCY_THOUSANDS"
+    "1378": "$CURRENCY_THOUSANDS"
+    "1379": "$CURRENCY_THOUSANDS"
+    "1380": "$CURRENCY_THOUSANDS"
+    "1381": "$CURRENCY_THOUSANDS"
+    "711": "$CURRENCY_THOUSANDS"
+    "712": "$CURRENCY_THOUSANDS"
+    "713": "$CURRENCY_THOUSANDS"
+    "715": "$CURRENCY_THOUSANDS"
+    "740": "$CURRENCY_THOUSANDS"
+    "1382": "$CURRENCY_THOUSANDS"
+    "1383": "$CURRENCY_THOUSANDS"
+    "729": "$CURRENCY_THOUSANDS"
+    "738": "$CURRENCY_THOUSANDS"
+    "1384": "$CURRENCY_THOUSANDS"
+    "1385": "$CURRENCY_THOUSANDS"
+    "1386": "$CURRENCY_THOUSANDS"
+    "1387": "$CURRENCY_THOUSANDS"
+    "1388": "$CURRENCY_THOUSANDS"
+    "1389": "$CURRENCY_THOUSANDS"
+    "1390": "$CURRENCY_THOUSANDS"
+    "1391": "$CURRENCY_THOUSANDS"
+    "1392": "$CURRENCY_THOUSANDS"
+    "1393": "$CURRENCY_THOUSANDS"
+    "745": "$CURRENCY_THOUSANDS"
+    "746": "$746_LOOKUP_FORM_TYPE"
+    "347": "$CURRENCY_THOUSANDS"
+    "747": "$CURRENCY_THOUSANDS"
+    "179": "$CURRENCY_THOUSANDS"
+    "250": "$CURRENCY_THOUSANDS"
+    "317": "$CURRENCY_THOUSANDS"
+    "325": "$CURRENCY_THOUSANDS"
+    "432": "$CURRENCY_THOUSANDS"
+    "446": "$CURRENCY_THOUSANDS"
+    "448": "$CURRENCY_THOUSANDS"
+    "449": "$CURRENCY_THOUSANDS"
+    "447": "$CURRENCY_THOUSANDS"
+    "427": "$CURRENCY_THOUSANDS"
+    "428": "$CURRENCY_THOUSANDS"
+    "435": "$CURRENCY_THOUSANDS"
+    "402": "$CURRENCY_THOUSANDS"
+    "781": "$CURRENCY_THOUSANDS"
+    "767": "$CURRENCY_THOUSANDS"
+    "433": "$CURRENCY_THOUSANDS"
+    "421": "$CURRENCY_THOUSANDS"
+    "405": "$CURRENCY_THOUSANDS"
+    "406": "$CURRENCY_THOUSANDS"
+    "407": "$CURRENCY_THOUSANDS"
+    "408": "$CURRENCY_THOUSANDS"
+    "409": "$CURRENCY_THOUSANDS"
+    "410": "$CURRENCY_THOUSANDS"
+    "430": "$CURRENCY_THOUSANDS"
+    "411": "$CURRENCY_THOUSANDS"
+    "413": "$CURRENCY_THOUSANDS"
+    "503": "$CURRENCY_THOUSANDS"
+    "504": "$CURRENCY_THOUSANDS"
+    "763": "$CURRENCY_THOUSANDS"
+    "765": "$CURRENCY_THOUSANDS"
+    "1639": "$CURRENCY_THOUSANDS"
+    "1640": "$CURRENCY_THOUSANDS"
+    "764": "$CURRENCY_THOUSANDS"
+    "766": "$CURRENCY_THOUSANDS"
+    "1641": "$CURRENCY_THOUSANDS"
+    "771": "$CURRENCY_THOUSANDS"
+    "1642": "$CURRENCY_THOUSANDS"
+    "788": "$CURRENCY_THOUSANDS"
+    "1643": "$CURRENCY_THOUSANDS"
+    "1644": "$CURRENCY_THOUSANDS"
+    "1645": "$CURRENCY_THOUSANDS"
+    "1646": "$CURRENCY_THOUSANDS"
+    "1647": "$CURRENCY_THOUSANDS"
+    "1648": "$CURRENCY_THOUSANDS"
+    "1649": "$CURRENCY_THOUSANDS"
+    "1650": "$CURRENCY_THOUSANDS"
+    "1651": "$CURRENCY_THOUSANDS"
+    "1652": "$CURRENCY_THOUSANDS"
+    "601": "$CURRENCY_THOUSANDS"
+    "602": "$CURRENCY_THOUSANDS"
+
+    # -- Fishing additions 1875 additions --
+    "309": "$CURRENCY_THOUSANDS"
+    "310": "$CURRENCY_THOUSANDS"
+    "336": "$CURRENCY_THOUSANDS"
+    "370": "$CURRENCY_THOUSANDS"
+    "398": "$CURRENCY_THOUSANDS"
+    "404": "$CURRENCY_THOUSANDS"
+    "6100": "$CURRENCY_THOUSANDS"
+
+    # -- Gas & Electric additions 1865 --
+    "302": "$CURRENCY_THOUSANDS"
+    "303": "$CURRENCY_THOUSANDS"
+    "308": "$CURRENCY_THOUSANDS"
+    "312": "$CURRENCY_THOUSANDS"
+    "417": "$CURRENCY_THOUSANDS"
+    "418": "$CURRENCY_THOUSANDS"
+    "422": "$CURRENCY_THOUSANDS"
+
+    #  -- Standard production additions 1863 --
+    "301": "$CURRENCY_THOUSANDS"
+    "1653": "$CURRENCY_THOUSANDS"
+
+    #    -- Derived --
+    "499": "$499"
+    "400": "$400"
+    "345": "$345"
+    "399": "$399"
+    "450": "$450"
+    "600": "$600"
+    "699": "$699"
+
 transforms:
     "START_OF_PERIOD":
         "name": "START_OF_YEAR"
@@ -108,13 +241,153 @@ transforms:
             "on_true": "1"
             "on_false": "2"
         "post": "$NO_COMMENT_1820"
+
+    "746_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1805": "$COMMENT"
+            on_no_match: null
+
+    "345":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$345_LOOKUP_FORM_TYPE"
+
+    "345_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1805": "$TOTAL_345"
+            on_no_match: null
+    "TOTAL_345":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&753", "&754", "&755", "&756", "&757", "&758" ]
+
+    "399":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$399_LOOKUP_FORM_TYPE"
+
+    "399_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1875": "$TOTAL_399_LONG_FORM"
+            "1865": "$TOTAL_399_LONG_FORM"
+            "1863": "$TOTAL_399_LONG_FORM"
+            on_no_match: null
+    "TOTAL_399_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": ["&301", "&302", "&303", "&308", "&309", "&310", "&311", "&312", "&366", "&370", "&398"]
+    "450":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$450_LOOKUP_FORM_TYPE"
+    "450_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1805": "$450_TOTAL_LONG_FORM"
+            "1875": "$450_TOTAL_LONG_FORM"
+            "1865": "$450_TOTAL_LONG_FORM"
+            "1863": "$450_TOTAL_LONG_FORM"
+            on_no_match: null
+    "450_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&446", "&447", "&448", "&449"]
     "499":
         "name": "EXISTS"
         "args":
             "on_true": "$CURRENCY_THOUSANDS"
-            "on_false": "$TOTAL"
-    "TOTAL":
+            "on_false": "$499_LOOKUP_FORM_TYPE"
+    "499_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1805": "$499_TOTAL_LONG_FORM"
+            "1875": "$499_TOTAL_LONG_FORM_FISH"
+            "1865": "$499_TOTAL_LONG_FORM_FISH"
+            "1863": "$499_TOTAL_LONG_FORM_FISH"
+            on_no_match: "$499_TOTAL_SHORT_FORM"
+    "499_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&402", "&405",  "&406", "&407", "&408", "&409", "&410", "&411", "&421", "&427", "&428", "&433", "&435", "&767", "&781" ]
+    "499_TOTAL_LONG_FORM_FISH":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&402", "&403", "&404", "&405",  "&406", "&407", "&408", "&409", "&410", "&411", "&417", "&418","&421", "&422","&427", "&428", "&430", "&433", "&435", "&767", "&781", "&6100" ]
+    "499_TOTAL_SHORT_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
             "values": ["&403",  "&420"]
+    "400":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$400_LOOKUP_FORM_TYPE"
+    "400_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1805": "$400_TOTAL_LONG_FORM"
+            "1875": "$400_TOTAL_LONG_FORM"
+            "1865": "$400_TOTAL_LONG_FORM"
+            "1863": "$400_TOTAL_LONG_FORM"
+            on_no_match: null
+    "400_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&412", "&413",  "&431", "&455"]
+    "600":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$600_LOOKUP_FORM_TYPE"
+    "600_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1805": "$600_TOTAL_LONG_FORM"
+            "1875": "$600_TOTAL_LONG_FORM"
+            "1865": "$600_TOTAL_LONG_FORM"
+            "1863": "$600_TOTAL_LONG_FORM"
+            on_no_match: null
+    "600_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&763", "&764",  "&771", "&788", "&1641", "&1644", "&1646", "&1648", "&1651", "&1653" ]
+    "699":
+        "name": "EXISTS"
+        "args":
+            "on_true": "$CURRENCY_THOUSANDS"
+            "on_false": "$699_LOOKUP_FORM_TYPE"
+    "699_LOOKUP_FORM_TYPE":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1805": "$699_TOTAL_LONG_FORM"
+            "1875": "$699_TOTAL_LONG_FORM"
+            "1865": "$699_TOTAL_LONG_FORM"
+            "1863": "$699_TOTAL_LONG_FORM"
+            on_no_match: null
+    "699_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&765", "&766",  "&1642", "&1643", "&1645", "&1647", "&1649", "&1652" ]

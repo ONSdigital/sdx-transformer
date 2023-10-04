@@ -34,4 +34,9 @@ class ABSPckTests(unittest.TestCase):
             with open(pck_filepath) as f:
                 expected: PCK = f.read()
 
-            self.assertTrue(are_equal(expected, actual))
+            passed = are_equal(expected, actual)
+            if not passed:
+                print(f"\n Failed test for {filename}")
+                print(actual)
+
+            self.assertTrue(passed)
