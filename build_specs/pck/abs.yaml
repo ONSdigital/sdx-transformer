@@ -161,7 +161,10 @@ template:
     "417": "$CURRENCY_THOUSANDS"
     "418": "$CURRENCY_THOUSANDS"
     "422": "$CURRENCY_THOUSANDS"
-    "9999": "$YES_NO_RADIO_SPECIFIC_FORM"
+
+    #  -- Standard production additions 1863 --
+    "301": "$CURRENCY_THOUSANDS"
+    "1653": "$CURRENCY_THOUSANDS"
 
     #    -- Derived --
     "499": "$499"
