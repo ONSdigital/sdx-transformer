@@ -1,7 +1,7 @@
 title: "Build Spec for ABS short forms"
 survey_id: "202"
 target: "CS"
-period_format: "YYYYMM"
+period_format: "YY"
 pck_period_format: "YY"
 template:
     "9": "$YES_NO_RADIO"
@@ -180,13 +180,13 @@ transforms:
         "name": "START_OF_YEAR"
         "args":
             "value": "#period_id"
-            "input_format": "YYYYMM"
+            "input_format": "YY"
             "display_as": "DDMMYY"
     "END_OF_PERIOD":
         "name": "END_OF_YEAR"
         "args":
             "value": "#period_id"
-            "input_format": "YYYYMM"
+            "input_format": "YY"
             "display_as": "DDMMYY"
     "TO_DATE":
         "name": "TO_DATE"
