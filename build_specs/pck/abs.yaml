@@ -144,7 +144,7 @@ template:
     "601": "$CURRENCY_THOUSANDS"
     "602": "$CURRENCY_THOUSANDS"
 
-    #    -- Fishing additions --
+    # -- Fishing additions 1875 additions -- # TODO 499 adds these Added 403, 404 430, 6100 (403,
     "309": "$CURRENCY_THOUSANDS"
     "310": "$CURRENCY_THOUSANDS"
     "336": "$CURRENCY_THOUSANDS"
@@ -265,13 +265,13 @@ transforms:
         "name": "LOOKUP"
         "args":
             value: "#form_type"
-            "1875": "$TOTAL_399"
+            "1875": "$TOTAL_399_LONG_FORM"
             on_no_match: null
-    "TOTAL_399":
+    "TOTAL_399_LONG_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": [ "&366", "&370", "&398", "&309", "&310", "&311" ]
+            "values": ["&309", "&310", "&311", "&366", "&370", "&398"]
     "450":
         "name": "EXISTS"
         "args":
@@ -282,6 +282,7 @@ transforms:
         "args":
             value: "#form_type"
             "1805": "$450_TOTAL_LONG_FORM"
+            "1875": "$450_TOTAL_LONG_FORM"
             on_no_match: null
     "450_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -298,12 +299,14 @@ transforms:
         "args":
             value: "#form_type"
             "1805": "$499_TOTAL_LONG_FORM"
+            "1875": "$499_TOTAL_LONG_FORM"
             on_no_match: "$499_TOTAL_SHORT_FORM"
     "499_TOTAL_LONG_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": ["&402", "&405",  "&406", "&407", "&408", "&409", "&410", "&411", "&421", "&427", "&428", "&433", "&435", "&767", "&781"]
+            #"values": [ "&402", "&405",  "&406", "&407", "&408", "&409", "&410", "&411", "&421", "&427", "&428", "&433", "&435", "&767", "&781" ]
+            "values": ["&402", "&403", "&404", "&405",  "&406", "&407", "&408", "&409", "&410", "&411","&421","&427", "&428", "&430", "&433", "&435", "&767", "&781", "&6100"]
     "499_TOTAL_SHORT_FORM":
         "name": "TOTAL"
         "args":
@@ -319,6 +322,7 @@ transforms:
         "args":
             value: "#form_type"
             "1805": "$400_TOTAL_LONG_FORM"
+            "1875": "$400_TOTAL_LONG_FORM"
             on_no_match: null
     "400_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -335,6 +339,7 @@ transforms:
         "args":
             value: "#form_type"
             "1805": "$600_TOTAL_LONG_FORM"
+            "1875": "$600_TOTAL_LONG_FORM"
             on_no_match: null
     "600_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -351,6 +356,7 @@ transforms:
         "args":
             value: "#form_type"
             "1805": "$699_TOTAL_LONG_FORM"
+            "1875": "$699_TOTAL_LONG_FORM"
             on_no_match: null
     "699_TOTAL_LONG_FORM":
         "name": "TOTAL"

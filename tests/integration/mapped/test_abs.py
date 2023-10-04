@@ -36,6 +36,7 @@ class ABSPckTests(unittest.TestCase):
 
             passed = are_equal(expected, actual)
             if not passed:
+                print(f"\n Failed test for {filename}")
                 print(actual)
 
             self.assertTrue(passed)
