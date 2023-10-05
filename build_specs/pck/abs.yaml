@@ -308,6 +308,7 @@ transforms:
             "1865": "$450_TOTAL_LONG_FORM"
             "1863": "$450_TOTAL_LONG_FORM"
             "1819": "$450_TOTAL_LONG_FORM"
+            "1825": "$450_TOTAL_LONG_FORM"
             on_no_match: null
     "450_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -328,6 +329,8 @@ transforms:
             "1865": "$499_TOTAL_LONG_FORM_FISH"
             "1863": "$499_TOTAL_LONG_FORM_FISH"
             "1819": "$499_TOTAL_LONG_FORM_FISH"
+            "1825": "$499_TOTAL_LONG_FORM_FISH"
+
             on_no_match: "$499_TOTAL_SHORT_FORM"
     "499_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -358,6 +361,7 @@ transforms:
             "1865": "$400_TOTAL_LONG_FORM"
             "1863": "$400_TOTAL_LONG_FORM"
             "1819": "$400_TOTAL_LONG_FORM"
+            "1825": "$400_TOTAL_LONG_FORM"
             on_no_match: null
     "400_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -378,6 +382,7 @@ transforms:
             "1865": "$600_TOTAL_LONG_FORM"
             "1863": "$600_TOTAL_LONG_FORM"
             "1819": "$600_TOTAL_LONG_FORM"
+            "1825": "$600_TOTAL_LONG_FORM"
             on_no_match: null
     "600_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -398,7 +403,7 @@ transforms:
             "1865": "$699_TOTAL_LONG_FORM"
             "1863": "$699_TOTAL_LONG_FORM"
             "1819": "$699_TOTAL_LONG_FORM"
-
+            "1825": "$699_TOTAL_LONG_FORM"
             on_no_match: null
     "699_TOTAL_LONG_FORM":
         "name": "TOTAL"
