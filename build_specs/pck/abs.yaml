@@ -330,7 +330,7 @@ transforms:
             "1863": "$499_TOTAL_LONG_FORM_FISH"
             "1819": "$499_TOTAL_LONG_FORM_FISH"
             "1825": "$499_TOTAL_LONG_FORM_FISH"
-
+            "1806": "$499_TOTAL_SHORT_FORM"
             on_no_match: "$499_TOTAL_SHORT_FORM"
     "499_TOTAL_LONG_FORM":
         "name": "TOTAL"
