@@ -235,12 +235,20 @@ transforms:
             "on_true": null
             "on_false": "&value"
         "post": "$NO_COMMENT_1808"
-    "COMMENT":
+
+    "_COMMENT_DEFAULT":
         "name": "EXISTS"
         "args":
             "on_true": "1"
             "on_false": "2"
         "post": "$NO_COMMENT_1820"
+
+    "COMMENT":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1819": null
+            "on_no_match": "$_COMMENT_DEFAULT"
 
     "746_LOOKUP_FORM_TYPE":
         "name": "LOOKUP"
@@ -299,6 +307,7 @@ transforms:
             "1875": "$450_TOTAL_LONG_FORM"
             "1865": "$450_TOTAL_LONG_FORM"
             "1863": "$450_TOTAL_LONG_FORM"
+            "1819": "$450_TOTAL_LONG_FORM"
             on_no_match: null
     "450_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -318,6 +327,7 @@ transforms:
             "1875": "$499_TOTAL_LONG_FORM_FISH"
             "1865": "$499_TOTAL_LONG_FORM_FISH"
             "1863": "$499_TOTAL_LONG_FORM_FISH"
+            "1819": "$499_TOTAL_LONG_FORM_FISH"
             on_no_match: "$499_TOTAL_SHORT_FORM"
     "499_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -347,6 +357,7 @@ transforms:
             "1875": "$400_TOTAL_LONG_FORM"
             "1865": "$400_TOTAL_LONG_FORM"
             "1863": "$400_TOTAL_LONG_FORM"
+            "1819": "$400_TOTAL_LONG_FORM"
             on_no_match: null
     "400_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -366,6 +377,7 @@ transforms:
             "1875": "$600_TOTAL_LONG_FORM"
             "1865": "$600_TOTAL_LONG_FORM"
             "1863": "$600_TOTAL_LONG_FORM"
+            "1819": "$600_TOTAL_LONG_FORM"
             on_no_match: null
     "600_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -385,6 +397,8 @@ transforms:
             "1875": "$699_TOTAL_LONG_FORM"
             "1865": "$699_TOTAL_LONG_FORM"
             "1863": "$699_TOTAL_LONG_FORM"
+            "1819": "$699_TOTAL_LONG_FORM"
+
             on_no_match: null
     "699_TOTAL_LONG_FORM":
         "name": "TOTAL"
