@@ -5,8 +5,8 @@ from app.pck import get_pck
 from tests.integration.pck import read_submission_data, are_equal
 
 
-class BlocksPckTests(unittest.TestCase):
-    def test_0001_to_pck(self):
+class LandPckTests(unittest.TestCase):
+    def test_0002_to_pck(self):
         filepath = "tests/data/land/066.0002.json"
         submission_data = read_submission_data(filepath)
 
