@@ -1,0 +1,24 @@
+title: "Test build spec for Looping SPP"
+survey_id: "999"
+target: "SPP"
+period_format: "YYYYMM"
+
+template:
+    "1": "#1"
+    "2": "#2"
+    "3": "#3"
+    "4": "#4"
+    "5": "#5"
+    "6": "#6"
+    "7": "$CONCAT"
+    "8": "#8"
+    "9": "#9"
+transforms:
+    "CONCAT":
+        name: "CONCAT"
+        args:
+            value: null
+            values: ["#7.1", "#7.2", "#7.3"]
+
+
+

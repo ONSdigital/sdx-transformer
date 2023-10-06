@@ -1,0 +1,17 @@
+title: "Annual Railways Investment Survey"
+survey_id: "194"
+target: "JSON"
+period_format: "YYYYMM"
+
+template:
+    "1.1": "#2"
+    "1.2": "#3"
+    "2.1": "#4"
+    "2.2": "#5"
+    "3.1": "#6"
+    "3.2": "#7"
+    "3.3": "#8"
+    "3.4": "#9"
+    "4.1": "#10"
+    "4.2": "#13"
+    "146": "#146"

@@ -51,8 +51,52 @@ Identifier = str
 
 PrepopData = dict[Identifier, list[Data]]
 
+
 PCK = str
 
 
 class BuildSpecError(Exception):
     pass
+
+
+class Answer(TypedDict):
+    answer_id: str
+    value: Field
+    list_item_id: NotRequired[str]
+
+
+class Group(TypedDict):
+    items: list[str]
+    name: str
+
+
+class AnswerCode(TypedDict):
+    answer_id: str
+    code: str
+    answer_value: NotRequired[str]
+
+
+class ListCollector(TypedDict):
+    answer_codes: list[AnswerCode]
+    answers: list[Answer]
+    lists: list[Group]
+
+
+# Our top level looping object
+class LoopedData(TypedDict):
+    looped_sections: dict[str, list[Data]]
+    data_section: dict[str, Value]
+
+
+class SPPResponse(TypedDict):
+    questioncode: str
+    response: str
+    instance: int
+
+
+class SPP(TypedDict):
+    formtype: str
+    reference: str
+    period: str
+    survey: str
+    responses: list[SPPResponse]

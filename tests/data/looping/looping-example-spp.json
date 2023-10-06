@@ -1,0 +1,68 @@
+{
+  "formtype": "0001",
+  "reference": "12346789012A",
+  "period": "202212",
+  "survey": "999",
+  "responses": [
+    {
+      "questioncode": "1",
+      "response": "John",
+      "instance": 1
+    },
+    {
+      "questioncode": "2",
+      "response": "Doe",
+      "instance": 1
+    },
+    {
+      "questioncode": "1",
+      "response": "Marie",
+      "instance": 2
+    },
+    {
+      "questioncode": "2",
+      "response": "Doe",
+      "instance": 2
+    },
+    {
+      "questioncode": "3",
+      "response": "4",
+      "instance": 0
+    },
+    {
+      "questioncode": "4",
+      "response": "Broadband or WiFi",
+      "instance": 0
+    },
+    {
+      "questioncode": "5",
+      "response": "A mobile phone network such as 3G, 4G or 5G",
+      "instance": 0
+    },
+    {
+      "questioncode": "6",
+      "response": "Public WiFi hotspot",
+      "instance": 0
+    },
+    {
+      "questioncode": "7",
+      "response": "Address Line 1 Town NP10 8XG",
+      "instance": 0
+    },
+    {
+      "questioncode": "9",
+      "response": "35",
+      "instance": 1
+    },
+    {
+      "questioncode": "9",
+      "response": "29",
+      "instance": 2
+    },
+    {
+      "questioncode": "8",
+      "response": "Dog",
+      "instance": 1
+    }
+  ]
+}

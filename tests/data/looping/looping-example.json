@@ -1,0 +1,116 @@
+{
+  "answer_codes": [
+    {
+      "answer_id": "first-name",
+      "code": "1"
+    },
+    {
+      "answer_id": "last-name",
+      "code": "2"
+    },
+    {
+      "answer_id": "number-of-bedrooms-answer",
+      "code": "3"
+    },
+    {
+      "answer_id": "internet-answer",
+      "answer_value": "Broadband or WiFi",
+      "code": "4"
+    },
+    {
+      "answer_id": "internet-answer",
+      "answer_value": "A mobile phone network such as 3G, 4G or 5G",
+      "code": "5"
+    },
+    {
+      "answer_id": "internet-answer",
+      "answer_value": "Public WiFi hotspot",
+      "code": "6"
+    },
+    {
+      "answer_id": "address-answer",
+      "code": "7"
+    },
+    {
+      "answer_id": "pet-species",
+      "code": "8"
+    },
+    {
+      "answer_id": "age",
+      "code": "9"
+    }
+  ],
+  "answers": [
+    {
+      "answer_id": "first-name",
+      "value": "John",
+      "list_item_id": "zGBdpb"
+    },
+    {
+      "answer_id": "last-name",
+      "value": "Doe",
+      "list_item_id": "zGBdpb"
+    },
+    {
+      "answer_id": "age",
+      "value": 35,
+      "list_item_id": "zGBdpb"
+    },
+    {
+      "answer_id": "first-name",
+      "value": "Marie",
+      "list_item_id": "cWGwcF"
+    },
+    {
+      "answer_id": "last-name",
+      "value": "Doe",
+      "list_item_id": "cWGwcF"
+    },
+    {
+      "answer_id": "age",
+      "value": 29,
+      "list_item_id": "cWGwcF"
+    },
+    {
+      "answer_id": "number-of-bedrooms-answer",
+      "value": 4
+    },
+    {
+      "answer_id": "internet-answer",
+      "value": [
+        "Broadband or WiFi",
+        "A mobile phone network such as 3G, 4G or 5G",
+        "Public WiFi hotspot"
+      ]
+    },
+    {
+      "answer_id": "address-answer",
+      "value": {
+        "line1": "Address Line 1",
+        "town": "Town",
+        "postcode": "NP10 8XG",
+        "uprn": "12345678912"
+      }
+    },
+    {
+      "answer_id": "pet-species",
+      "value": "Dog",
+      "list_item_id": "aTKweq"
+    }
+  ],
+  "lists": [
+    {
+      "items": [
+        "zGBdpb",
+        "cWGwcF"
+      ],
+      "name": "people"
+    },
+    {
+      "items": [
+        "aTKweq"
+      ],
+      "name": "pets"
+    }
+  ]
+}
