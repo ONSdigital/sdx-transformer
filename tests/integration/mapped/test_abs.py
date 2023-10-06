@@ -21,7 +21,7 @@ class ABSPckTests(unittest.TestCase):
 
             survey_metadata: SurveyMetadata = {
                 "survey_id": "202",
-                "period_id": "202112",
+                "period_id": "21",
                 "ru_ref": "12346789012A",
                 "form_type": form_type,
                 "period_start_date": "2021-01-01",
