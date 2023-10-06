@@ -166,6 +166,10 @@ template:
     "301": "$CURRENCY_THOUSANDS"
     "1653": "$CURRENCY_THOUSANDS"
 
+    #  -- Betting & Gambling 1815 --
+    "425": "$CURRENCY_THOUSANDS"
+
+
     #    -- Derived --
     "499": "$499"
     "400": "$400"
