@@ -5,13 +5,13 @@ from app.pck_managers.mapped import get_pck
 from tests.integration.mapped import read_submission_data, are_equal
 
 
-class LandPckTests(unittest.TestCase):
+class MarinePckTests(unittest.TestCase):
     def test_0002_to_pck(self):
-        filepath = "tests/data/land/066.0002.json"
+        filepath = "tests/data/marine/076.0002.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "066",
+            "survey_id": "076",
             "period_id": "201605",
             "ru_ref": "12346789012A",
             "form_type": "0002",
@@ -19,7 +19,7 @@ class LandPckTests(unittest.TestCase):
             "period_end_date": "20216-05-31",
         }
         actual: PCK = get_pck(submission_data, survey_metadata)
-        pck_filepath = "tests/data/land/066.0002.pck"
+        pck_filepath = "tests/data/marine/076.0002.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
