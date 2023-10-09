@@ -1,3 +1,5 @@
+import re
+
 import yaml
 
 from app.definitions import BuildSpec
@@ -17,8 +19,13 @@ def strip(content: list):
     for line in content:
         line = line.rstrip()
         if line not in ["\n", "", " "]:
-            clean_content.append(line)
+            clean_content.append(remove_spaces_and_special_chars(line))
     return clean_content
+
+
+def remove_spaces_and_special_chars(s: str) -> str:
+    """Remove all spaces and special characters from a string."""
+    return re.sub(r'[^a-zA-Z0-9]', '', s)
 
 
 def print_new_qcodes():
@@ -44,7 +51,8 @@ def convert_str_to_list(content: str, seperator="+") -> list[str]:
     Convert a string from an excel spreadsheet to
     a list of values
     """
-    return strip(content.split(seperator))
+    split = content.split(seperator)
+    return [remove_spaces_and_special_chars(s) for s in split]
 
 
 def compare_values(transform_name: str, new_values: list[str]):
@@ -77,7 +85,8 @@ def compare_values(transform_name: str, new_values: list[str]):
 
     # If new qcodes are found, create a new values array and print
     if len(new_codes) > 0:
-        mega_list = values + new_codes
+        print("New values found: ",new_codes)
+        mega_list = clean_values + new_codes
         print([f"&{v}" for v in mega_list])
     else:
         print("No new values found")

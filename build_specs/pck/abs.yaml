@@ -169,6 +169,22 @@ template:
     #  -- Betting & Gambling 1815 --
     "425": "$CURRENCY_THOUSANDS"
 
+    # -- Employment agencies 1831 --
+    "25": "$CURRENCY_THOUSANDS"
+    "26": "$CURRENCY_THOUSANDS"
+    "27": "$CURRENCY_THOUSANDS"
+    "298": "$CURRENCY_THOUSANDS"
+    "299": "$CURRENCY_THOUSANDS"
+    "1085": "$CURRENCY_THOUSANDS"
+    "1086": "$CURRENCY_THOUSANDS"
+    "1088": "$CURRENCY_THOUSANDS"
+    "1089": "$CURRENCY_THOUSANDS"
+    "1092": "$CURRENCY_THOUSANDS"
+    "1093": "$CURRENCY_THOUSANDS"
+    "1094": "$CURRENCY_THOUSANDS"
+    "1095": "$CURRENCY_THOUSANDS"
+    "1096": "$CURRENCY_THOUSANDS"
+    "1097": "$CURRENCY_THOUSANDS"
 
     #    -- Derived --
     "499": "$499"
@@ -178,6 +194,11 @@ template:
     "450": "$450"
     "600": "$600"
     "699": "$699"
+
+    "28": "$28"
+    "1084": "$1084"
+    "1087": "$1087"
+
 
 transforms:
     "START_OF_PERIOD":
@@ -419,3 +440,39 @@ transforms:
         "args":
             "value": "0"
             "values": [ "&765", "&766",  "&1642", "&1643", "&1645", "&1647", "&1649", "&1652" ]
+
+    "28":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1831": "28_TOTAL_LONG_FORM"
+            on_no_match: null
+    "28_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&25", "&26", "&27"]
+
+    "1084":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1831": "1084_TOTAL_LONG_FORM"
+            on_no_match: null
+    "1084_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&1085", "&1086"]
+
+    "1087":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1831": "1087_TOTAL_LONG_FORM"
+            on_no_match: null
+    "1087_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&1088", "&1089", "&1092", "&1093", "&1094", "&1095", "&1096" ]
