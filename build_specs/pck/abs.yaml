@@ -176,6 +176,9 @@ template:
     "1102": "$CURRENCY_THOUSANDS"
     "1104": "$CURRENCY_THOUSANDS"
 
+    # -- Sports Activities 1821 --
+    "1654": "$CURRENCY_THOUSANDS"
+    "1655": "$CURRENCY_THOUSANDS"
 
     #    -- Derived --
     "499": "$499"
@@ -326,6 +329,7 @@ transforms:
             "1825": "$450_TOTAL_LONG_FORM"
             "1815": "$450_TOTAL_LONG_FORM"
             "1827": "$450_TOTAL_LONG_FORM"
+            "1821": "$450_TOTAL_LONG_FORM"
             on_no_match: null
     "450_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -349,6 +353,7 @@ transforms:
             "1825": "$499_TOTAL_LONG_FORM_FISH"
             "1806": "$499_TOTAL_SHORT_FORM"
             "1815": "$499_TOTAL_LONG_FORM_FISH"
+            "1821": "$499_TOTAL_LONG_FORM_FISH"
             on_no_match: "$499_TOTAL_SHORT_FORM"
     "499_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -382,6 +387,7 @@ transforms:
             "1825": "$400_TOTAL_LONG_FORM"
             "1815": "$400_TOTAL_LONG_FORM"
             "1827": "$400_TOTAL_LONG_FORM"
+            "1821": "$400_TOTAL_LONG_FORM"
             on_no_match: null
     "400_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -405,12 +411,14 @@ transforms:
             "1825": "$600_TOTAL_LONG_FORM"
             "1815": "$600_TOTAL_LONG_FORM"
             "1827": "$600_TOTAL_LONG_FORM"
+            "1821": "$600_TOTAL_LONG_FORM"
+
             on_no_match: null
     "600_TOTAL_LONG_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": [ "&763", "&764",  "&771", "&788", "&1641", "&1644", "&1646", "&1648", "&1651", "&1653" ]
+            "values": [ "&763", "&764",  "&771", "&788", "&1641", "&1644", "&1646", "&1648", "&1651", "&1653", "&1654"]
     "699":
         "name": "EXISTS"
         "args":
@@ -428,12 +436,13 @@ transforms:
             "1825": "$699_TOTAL_LONG_FORM"
             "1815": "$699_TOTAL_LONG_FORM"
             "1827": "$699_TOTAL_LONG_FORM"
+            "1821": "$699_TOTAL_LONG_FORM"
             on_no_match: null
     "699_TOTAL_LONG_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": [ "&765", "&766",  "&1642", "&1643", "&1645", "&1647", "&1649", "&1652" ]
+            "values": [ "&765", "&766",  "&1642", "&1643", "&1645", "&1647", "&1649", "&1652", "&1655" ]
 
     "1103":
         "name": "LOOKUP"
