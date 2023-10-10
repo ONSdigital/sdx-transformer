@@ -188,6 +188,10 @@ template:
     "307": "$CURRENCY_THOUSANDS"
     "315": "$CURRENCY_THOUSANDS"
 
+    # -- Animal & Hunting 1879 --
+    "126": "$YES_NO_ANIMAL_RADIO"
+
+
     #    -- Derived --
     "499": "$499"
     "400": "$400"
@@ -240,6 +244,12 @@ transforms:
             "Yes": "10"
             "No": "1"
             "on_no_match": "0"
+    "YES_NO_ANIMAL_RADIO":
+        "name": "LOOKUP"
+        "args":
+            "Yes": "1"
+            "No": "2"
+            "on_no_match": null
     "CURRENCY_THOUSANDS":
         "name": "CURRENCY_THOUSANDS"
         "args": {}
@@ -314,6 +324,8 @@ transforms:
             "1869": "$TOTAL_399_LONG_FORM"
             "1871": "$TOTAL_399_LONG_FORM"
             "1877": "$TOTAL_399_LONG_FORM"
+            "1879": "$TOTAL_399_LONG_FORM"
+
             on_no_match: null
     "TOTAL_399_LONG_FORM":
         "name": "TOTAL"
@@ -341,6 +353,7 @@ transforms:
             "1869": "$450_TOTAL_LONG_FORM"
             "1871": "$450_TOTAL_LONG_FORM"
             "1877": "$450_TOTAL_LONG_FORM"
+            "1879": "$450_TOTAL_LONG_FORM"
             on_no_match: null
     "450_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -368,6 +381,7 @@ transforms:
             "1869": "$499_TOTAL_LONG_FORM_FISH"
             "1871": "$499_TOTAL_LONG_FORM_FISH"
             "1877": "$499_TOTAL_LONG_FORM_FISH"
+            "1879": "$499_TOTAL_LONG_FORM_FISH"
             on_no_match: "$499_TOTAL_SHORT_FORM"
     "499_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -405,6 +419,7 @@ transforms:
             "1824": "$400_TOTAL_LONG_FORM"
             "1871": "$400_TOTAL_LONG_FORM"
             "1877": "$400_TOTAL_LONG_FORM"
+            "1879": "$400_TOTAL_LONG_FORM"
             on_no_match: null
     "400_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -431,6 +446,7 @@ transforms:
             "1869": "$600_TOTAL_LONG_FORM"
             "1871": "$600_TOTAL_LONG_FORM"
             "1877": "$600_TOTAL_LONG_FORM"
+            "1879": "$600_TOTAL_LONG_FORM"
             on_no_match: null
     "600_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -458,6 +474,7 @@ transforms:
             "1869": "$699_TOTAL_LONG_FORM"
             "1871": "$699_TOTAL_LONG_FORM"
             "1877": "$699_TOTAL_LONG_FORM"
+            "1879": "$699_TOTAL_LONG_FORM"
             on_no_match: null
     "699_TOTAL_LONG_FORM":
         "name": "TOTAL"
