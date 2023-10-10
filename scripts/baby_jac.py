@@ -87,7 +87,7 @@ def compare_values(transform_name: str, new_values: list[str]):
     if len(new_codes) > 0:
         print("New values found: ",new_codes)
         mega_list = clean_values + new_codes
-        print([f"&{v}" for v in mega_list])
+        print([f"&{v}" for v in sorted(mega_list)])
     else:
         print("No new values found")
 
