@@ -1,8 +1,8 @@
 title: "Build Spec for Monthly Business Survey"
 survey_id: "009"
 target: "CS"
-period_format: "YYYYMM"
-pck_period_format: "YYYYMM"
+period_format: "YYMM"
+pck_period_format: "YYMM"
 form_mapping:
     "0106": "T106G"
     "0111": "T111G"
