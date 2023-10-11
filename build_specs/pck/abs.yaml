@@ -170,6 +170,53 @@ template:
     "425": "$CURRENCY_THOUSANDS"
 
 
+    # -- Insurance Organisations 1827 --
+    "1100": "$CURRENCY_THOUSANDS"
+    "1101": "$CURRENCY_THOUSANDS"
+    "1102": "$CURRENCY_THOUSANDS"
+    "1104": "$CURRENCY_THOUSANDS"
+
+    # -- Sports Activities 1821 --
+    "1654": "$CURRENCY_THOUSANDS"
+    "1655": "$CURRENCY_THOUSANDS"
+
+    # -- Water 1869 --
+    "305": "$CURRENCY_THOUSANDS"
+    "424": "$CURRENCY_THOUSANDS"
+
+    # -- Mineral oil 1871 --
+    "307": "$CURRENCY_THOUSANDS"
+    "315": "$CURRENCY_THOUSANDS"
+
+    # -- Animal & Hunting 1879 --
+    "126": "$YES_NO_ANIMAL_RADIO"
+
+    # -- 1801 Motor trades
+    "110": "$CURRENCY_THOUSANDS"
+    "120": "$CURRENCY_THOUSANDS"
+    "169": "$CURRENCY_THOUSANDS"
+    "371": "$CURRENCY_THOUSANDS"
+    "372": "$CURRENCY_THOUSANDS"
+    "373": "$CURRENCY_THOUSANDS"
+    "374": "$CURRENCY_THOUSANDS"
+    "375": "$CURRENCY_THOUSANDS"
+    "376": "$CURRENCY_THOUSANDS"
+    "377": "$CURRENCY_THOUSANDS"
+    "378": "$CURRENCY_THOUSANDS"
+    "380": "$CURRENCY_THOUSANDS"
+    "382": "$CURRENCY_THOUSANDS"
+    "383": "$CURRENCY_THOUSANDS"
+    "478": "$CURRENCY_THOUSANDS"
+    "479": "$CURRENCY_THOUSANDS"
+    "483": "$CURRENCY_THOUSANDS"
+
+    # -- Wholesale 1803 --
+    "158": "$CURRENCY_THOUSANDS"
+
+    # -- Construction 1873 --
+    "679": "$CURRENCY_THOUSANDS"
+
+
     #    -- Derived --
     "499": "$499"
     "400": "$400"
@@ -178,6 +225,7 @@ template:
     "450": "$450"
     "600": "$600"
     "699": "$699"
+    "1103": "$1103"
 
 transforms:
     "START_OF_PERIOD":
@@ -221,6 +269,12 @@ transforms:
             "Yes": "10"
             "No": "1"
             "on_no_match": "0"
+    "YES_NO_ANIMAL_RADIO":
+        "name": "LOOKUP"
+        "args":
+            "Yes": "1"
+            "No": "2"
+            "on_no_match": null
     "CURRENCY_THOUSANDS":
         "name": "CURRENCY_THOUSANDS"
         "args": {}
@@ -292,12 +346,18 @@ transforms:
             "1875": "$TOTAL_399_LONG_FORM"
             "1865": "$TOTAL_399_LONG_FORM"
             "1863": "$TOTAL_399_LONG_FORM"
+            "1869": "$TOTAL_399_LONG_FORM"
+            "1871": "$TOTAL_399_LONG_FORM"
+            "1877": "$TOTAL_399_LONG_FORM"
+            "1879": "$TOTAL_399_LONG_FORM"
+            "1801": "$TOTAL_399_LONG_FORM"
+            "1803": "$TOTAL_399_LONG_FORM"
             on_no_match: null
     "TOTAL_399_LONG_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": ["&301", "&302", "&303", "&308", "&309", "&310", "&311", "&312", "&366", "&370", "&398"]
+            "values": ['&110', '&120', '&158', '&169', '&301', '&302', '&303', '&305', '&306', '&307', '&308', '&309', '&310', '&311', '&312', '&315', '&366', '&370', '&371', '&372', '&373', '&374', '&375', '&376', '&377', '&378', '&380', '&382', '&383', '&398']
     "450":
         "name": "EXISTS"
         "args":
@@ -314,6 +374,20 @@ transforms:
             "1819": "$450_TOTAL_LONG_FORM"
             "1825": "$450_TOTAL_LONG_FORM"
             "1815": "$450_TOTAL_LONG_FORM"
+            "1827": "$450_TOTAL_LONG_FORM"
+            "1821": "$450_TOTAL_LONG_FORM"
+            "1869": "$450_TOTAL_LONG_FORM"
+            "1871": "$450_TOTAL_LONG_FORM"
+            "1877": "$450_TOTAL_LONG_FORM"
+            "1879": "$450_TOTAL_LONG_FORM"
+            "1801": "$450_TOTAL_LONG_FORM"
+            "1803": "$450_TOTAL_LONG_FORM"
+            "1807": "$450_TOTAL_LONG_FORM"
+            "1811": "$450_TOTAL_LONG_FORM"
+            "1813": "$450_TOTAL_LONG_FORM"
+            "1817": "$450_TOTAL_LONG_FORM"
+            "1823": "$450_TOTAL_LONG_FORM"
+            "1873": "$450_TOTAL_LONG_FORM"
             on_no_match: null
     "450_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -337,6 +411,19 @@ transforms:
             "1825": "$499_TOTAL_LONG_FORM_FISH"
             "1806": "$499_TOTAL_SHORT_FORM"
             "1815": "$499_TOTAL_LONG_FORM_FISH"
+            "1821": "$499_TOTAL_LONG_FORM_FISH"
+            "1869": "$499_TOTAL_LONG_FORM_FISH"
+            "1871": "$499_TOTAL_LONG_FORM_FISH"
+            "1877": "$499_TOTAL_LONG_FORM_FISH"
+            "1879": "$499_TOTAL_LONG_FORM_FISH"
+            "1801": "$499_TOTAL_LONG_FORM_FISH"
+            "1803": "$499_TOTAL_LONG_FORM_FISH"
+            "1807": "$499_TOTAL_LONG_FORM_FISH"
+            "1811": "$499_TOTAL_LONG_FORM_FISH"
+            "1813": "$499_TOTAL_LONG_FORM_FISH"
+            "1817": "$499_TOTAL_LONG_FORM_FISH"
+            "1823": "$499_TOTAL_LONG_FORM_FISH"
+            "1873": "$499_TOTAL_LONG_FORM_FISH"
             on_no_match: "$499_TOTAL_SHORT_FORM"
     "499_TOTAL_LONG_FORM":
         "name": "TOTAL"
@@ -347,7 +434,7 @@ transforms:
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": [ "&402", "&403", "&404", "&405",  "&406", "&407", "&408", "&409", "&410", "&411", "&417", "&418","&421", "&422", "&425", "&427", "&428", "&430", "&433", "&435", "&767", "&781", "&6100" ]
+            "values": ['&402', '&403', '&404', '&405', '&406', '&407', '&408', '&409', '&410', '&411', '&417', '&418', '&421', '&422', '&424', '&425', '&427', '&428', '&430', '&433', '&435', '&767', '&781', '&6100', '&478', '&479', '&483']
     "499_TOTAL_SHORT_FORM":
         "name": "TOTAL"
         "args":
@@ -369,12 +456,25 @@ transforms:
             "1819": "$400_TOTAL_LONG_FORM"
             "1825": "$400_TOTAL_LONG_FORM"
             "1815": "$400_TOTAL_LONG_FORM"
+            "1827": "$400_TOTAL_LONG_FORM"
+            "1821": "$400_TOTAL_LONG_FORM"
+            "1824": "$400_TOTAL_LONG_FORM"
+            "1871": "$400_TOTAL_LONG_FORM"
+            "1877": "$400_TOTAL_LONG_FORM"
+            "1879": "$400_TOTAL_LONG_FORM"
+            "1801": "$400_TOTAL_LONG_FORM"
+            "1803": "$400_TOTAL_LONG_FORM"
+            "1807": "$400_TOTAL_LONG_FORM"
+            "1811": "$400_TOTAL_LONG_FORM"
+            "1813": "$400_TOTAL_LONG_FORM"
+            "1817": "$400_TOTAL_LONG_FORM"
+            "1823": "$400_TOTAL_LONG_FORM"
+            "1873": "$400_TOTAL_LONG_FORM"
             on_no_match: null
     "400_TOTAL_LONG_FORM":
         "name": "TOTAL"
         "args":
-            "value": "0"
-            "values": [ "&412", "&413",  "&431", "&455"]
+            "values": [ "&412", "&413",  "&431", "&455", "&415", "&419"]
     "600":
         "name": "EXISTS"
         "args":
@@ -391,12 +491,26 @@ transforms:
             "1819": "$600_TOTAL_LONG_FORM"
             "1825": "$600_TOTAL_LONG_FORM"
             "1815": "$600_TOTAL_LONG_FORM"
+            "1827": "$600_TOTAL_LONG_FORM"
+            "1821": "$600_TOTAL_LONG_FORM"
+            "1869": "$600_TOTAL_LONG_FORM"
+            "1871": "$600_TOTAL_LONG_FORM"
+            "1877": "$600_TOTAL_LONG_FORM"
+            "1879": "$600_TOTAL_LONG_FORM"
+            "1801": "$600_TOTAL_LONG_FORM"
+            "1803": "$600_TOTAL_LONG_FORM"
+            "1807": "$600_TOTAL_LONG_FORM"
+            "1811": "$600_TOTAL_LONG_FORM"
+            "1813": "$600_TOTAL_LONG_FORM"
+            "1817": "$600_TOTAL_LONG_FORM"
+            "1823": "$600_TOTAL_LONG_FORM"
+            "1873": "$600_TOTAL_LONG_FORM"
             on_no_match: null
     "600_TOTAL_LONG_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": [ "&763", "&764",  "&771", "&788", "&1641", "&1644", "&1646", "&1648", "&1651", "&1653" ]
+            "values": [ "&763", "&764",  "&771", "&788", "&1641", "&1644", "&1646", "&1648", "&1651", "&1653", "&1654"]
     "699":
         "name": "EXISTS"
         "args":
@@ -413,9 +527,36 @@ transforms:
             "1819": "$699_TOTAL_LONG_FORM"
             "1825": "$699_TOTAL_LONG_FORM"
             "1815": "$699_TOTAL_LONG_FORM"
+            "1827": "$699_TOTAL_LONG_FORM"
+            "1821": "$699_TOTAL_LONG_FORM"
+            "1869": "$699_TOTAL_LONG_FORM"
+            "1871": "$699_TOTAL_LONG_FORM"
+            "1877": "$699_TOTAL_LONG_FORM"
+            "1879": "$699_TOTAL_LONG_FORM"
+            "1801": "$699_TOTAL_LONG_FORM"
+            "1803": "$699_TOTAL_LONG_FORM"
+            "1807": "$699_TOTAL_LONG_FORM"
+            "1811": "$699_TOTAL_LONG_FORM"
+            "1813": "$699_TOTAL_LONG_FORM"
+            "1817": "$699_TOTAL_LONG_FORM"
+            "1823": "$699_TOTAL_LONG_FORM"
+            "1873": "$699_TOTAL_LONG_FORM"
             on_no_match: null
     "699_TOTAL_LONG_FORM":
         "name": "TOTAL"
         "args":
             "value": "0"
-            "values": [ "&765", "&766",  "&1642", "&1643", "&1645", "&1647", "&1649", "&1652" ]
+            "values": [ "&765", "&766",  "&1642", "&1643", "&1645", "&1647", "&1649", "&1652", "&1655" ]
+
+    "1103":
+        "name": "LOOKUP"
+        "args":
+            value: "#form_type"
+            "1831": "1103_TOTAL_LONG_FORM"
+            on_no_match: null
+    "1103_TOTAL_LONG_FORM":
+        "name": "TOTAL"
+        "args":
+            "value": "0"
+            "values": [ "&1100", "&1101", "&1102"]
+
