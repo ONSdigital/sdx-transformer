@@ -12,9 +12,18 @@ template:
     items:
         local_units:
             identifier: "#luref"
-            name: "$CONCAT"
-            trading_name: "$CONCAT"
+            name: "$CONCAT_TRADING_NAME"
+            lu_name: "$CONCAT_NAME"
             business_description: "$CONCAT"
             address: "$CONCAT"
 transforms:
-
+    "CONCAT_NAME":
+        name: "CONCAT"
+        args:
+            value: "#luname1"
+            values: ["#luname2", "#luname3"]
+    "CONCAT_TRADING_NAME":
+        name: "CONCAT"
+        args:
+            value: "#lutradingname1"
+            values: [ "#lutradingname2", "#lutradingname3" ]
