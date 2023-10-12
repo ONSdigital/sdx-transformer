@@ -1,0 +1,20 @@
+title: "Build Spec for BRES"
+survey_id: "999"
+target: "SDS"
+period_format: "YYYYM"
+item_list_path: "items.local_units"
+template:
+    schema_version: "v1"
+    identifier: "#ruref"
+    vat: "#vat"
+    employer_paye: "#employer_paye"
+    address: "#address"
+    items:
+        local_units:
+            identifier: "#luref"
+            name: "$CONCAT"
+            trading_name: "$CONCAT"
+            business_description: "$CONCAT"
+            address: "$CONCAT"
+transforms:
+
