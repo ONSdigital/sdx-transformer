@@ -85,7 +85,7 @@ def compare_values(transform_name: str, new_values: list[str]):
 
     # If new qcodes are found, create a new values array and print
     if len(new_codes) > 0:
-        print("New values found: ",new_codes)
+        print("New values found: ", new_codes)
         mega_list = clean_values + new_codes
         print([f"&{v}" for v in sorted(mega_list)])
     else:
@@ -111,6 +111,3 @@ while True:
         compare_values(user_input1, list2)
     else:
         print("Invalid choice. Please enter 1, 2, or 'q'.")
-
-
-

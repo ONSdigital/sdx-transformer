@@ -57,7 +57,7 @@ def execute(tree: ParseTree) -> dict[str, Value]:
     class ExecuteTreeWalker(TreeWalker):
 
         def on_dict(self, name: str, field: dict[str, Field]) -> Field:
-            if 'name' in field.keys():
+            if 'name' in field.keys() and 'args' in field.keys():
                 return execute_transform(field, self)
 
             return super().on_dict(name, field)
