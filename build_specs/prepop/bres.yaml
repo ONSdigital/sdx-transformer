@@ -22,8 +22,10 @@ transforms:
         args:
             value: "#luname1"
             values: ["#luname2", "#luname3"]
+            seperator: " "
     "CONCAT_TRADING_NAME":
         name: "CONCAT"
         args:
             value: "#lutradingname1"
             values: [ "#lutradingname2", "#lutradingname3" ]
+            seperator: " "
