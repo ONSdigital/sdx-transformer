@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.transform.functions.string import contains, any_contains, concat, starts_with
+from app.transform.functions.string import contains, any_contains, concat, starts_with, carve
 
 
 class StartsWithTests(unittest.TestCase):
@@ -99,3 +99,25 @@ class ConcatTests(unittest.TestCase):
         actual = concat(value, values=values, seperator="_")
         expected = "a_c"
         self.assertEqual(expected, actual)
+
+
+class CarveTest(unittest.TestCase):
+
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        actual = carve(value)
+        expected = Empty
+        self.assertEqual(expected, actual)
+
+    def test_simple(self):
+        value = "112185561111"
+        actual = carve(value, index=3)
+        expected = "112"
+        self.assertEqual(expected, actual)
+
+    def test_with_no_index(self):
+        value = "123456789"
+        actual = carve(value)
+        expected = "1234"
+        self.assertEqual(expected, actual)
+
