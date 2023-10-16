@@ -11,7 +11,8 @@ from app.transform.populate import populate_mappings
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
-    "068": "tiles"
+    "068": "tiles",
+    "221": "bres"
 }
 
 

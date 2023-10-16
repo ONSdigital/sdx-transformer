@@ -1,5 +1,5 @@
 title: "Build Spec for BRES"
-survey_id: "999"
+survey_id: "221"
 target: "SDS"
 period_format: "YYYYM"
 item_list_path: "items.local_units"
