@@ -111,7 +111,7 @@ class CarveTest(unittest.TestCase):
 
     def test_simple(self):
         value = "112185561111"
-        actual = carve(value, index=3)
+        actual = carve(value, end_index=3)
         expected = "112"
         self.assertEqual(expected, actual)
 
@@ -120,4 +120,17 @@ class CarveTest(unittest.TestCase):
         actual = carve(value)
         expected = "1234"
         self.assertEqual(expected, actual)
+
+    def test_with_start_and_end(self):
+        value = "123456789"
+        actual = carve(value, start_index=2, end_index=5)
+        expected = "345"
+        self.assertEqual(expected, actual)
+
+    def test_with_vat_ref(self):
+        value = "112185561111"
+        first = carve(value, end_index=9)
+        second = carve(value, start_index=9)
+
+        self.assertEqual(["112185561", "111"], [first, second])
 

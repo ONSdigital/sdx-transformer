@@ -55,10 +55,17 @@ def concat(value: str, values: list[str], seperator: str = " ") -> Value:
 
 
 @handle_empties
-def carve(value: str, index=None) -> Value:
+def carve(value: str, start_index=0, end_index=None) -> Value:
     """
     Could not be named slice, as this is a keyword
     """
-    if not index:
-        index = math.floor(len(value)/2)
-    return value[:index]
+
+    # No params, just split in half
+    if start_index == 0 and not end_index:
+        return value[:math.floor(len(value)/2)]
+
+    # End index will default to end of string
+    elif not end_index:
+        return value[start_index:]
+
+    return value[start_index:end_index]
