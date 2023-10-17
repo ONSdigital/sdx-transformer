@@ -64,10 +64,6 @@
   "50000000001": {
     "schema_version": "v1",
     "identifier": "50000000001",
-    "vat": {
-      "registration_number": "112185561",
-      "subsidiary_identifier": "111"
-    },
     "employer_paye": {
       "tax_office_number": "940",
       "reference": "FA51320"
@@ -101,10 +97,6 @@
     "vat": {
       "registration_number": "112185561",
       "subsidiary_identifier": "111"
-    },
-    "employer_paye": {
-      "tax_office_number": "245",
-      "reference": "BT210"
     },
     "address": [
       "99 Long road",

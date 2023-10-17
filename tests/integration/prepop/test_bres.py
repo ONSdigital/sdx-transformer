@@ -21,5 +21,5 @@ class BresTest(unittest.TestCase):
         actual = get_prepop(prepop_data, survey_id)
 
         print("\n")
-        print(actual)
+        print(json.dumps(actual))
         self.assertEqual(expected, actual)
