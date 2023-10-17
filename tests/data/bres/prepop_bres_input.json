@@ -21,7 +21,6 @@
       "lupostcode": "CH124AT",
       "tradstyle1": "TAL",
       "tradstyle2": "LLC",
-      "tradstyle3": "",
       "region": "FE",
       "bus_desc": "We make the finest thyme lubricant on the planet",
       "formtype": "0001",
@@ -29,9 +28,6 @@
       "payeref": "121XB18868",
       "ruaddr1": "56 Random Lane",
       "ruaddr2": "Turtleland",
-      "ruaddr3": "",
-      "ruaddr4": "",
-      "ruaddr5": "",
       "rupostcode": "RU67B52"
     },
     {
@@ -51,7 +47,6 @@
       "luaddr2": "Carpenter Crossing",
       "luaddr3": "Di Loreto",
       "luaddr4": "Bohorodchany",
-      "luaddr5": "",
       "lupostcode": "LN154UP",
       "tradstyle1": "Sunshine Oil",
       "tradstyle2": "LTD",
@@ -63,9 +58,6 @@
       "payeref": "121XB18868",
       "ruaddr1": "56 Random Lane",
       "ruaddr2": "Turtleland",
-      "ruaddr3": "",
-      "ruaddr4": "",
-      "ruaddr5": "",
       "rupostcode": "RU67B52"
     },
     {
@@ -80,7 +72,6 @@
       "ftempees": "50.000",
       "luname1": "OXYGEN",
       "luname2": "Parrot",
-      "luname3": "",
       "luaddr1": "84551",
       "luaddr2": "Jackson Way",
       "luaddr3": "Steensland",
@@ -88,8 +79,6 @@
       "luaddr5": "Poland",
       "lupostcode": "PL998YH",
       "tradstyle1": "Oxygen Parrot",
-      "tradstyle2": "",
-      "tradstyle3": "",
       "region": "FE",
       "bus_desc": "A fast paced startup based in Poland",
       "formtype": "0001",
@@ -97,9 +86,6 @@
       "payeref": "121XB18868",
       "ruaddr1": "56 Random Lane",
       "ruaddr2": "Turtleland",
-      "ruaddr3": "",
-      "ruaddr4": "",
-      "ruaddr5": "",
       "rupostcode": "RU67B52"
     }
   ],
@@ -120,12 +106,10 @@
       "luaddr1": "271 ",
       "luaddr2": "Sutherland Crossing",
       "luaddr3": "Ludington",
-      "luaddr4": "",
       "luaddr5": "Indonesia",
       "lupostcode": "IN1235T",
       "tradstyle1": "Valdo Lentil Wine",
       "tradstyle2": "Inc",
-      "tradstyle3": "",
       "region": "FE",
       "bus_desc": "Famous Indonesian Lentil Wine",
       "formtype": "0001",
@@ -133,9 +117,6 @@
       "payeref": "940FA51320",
       "ruaddr1": "128 Somewhere",
       "ruaddr2": "Westland",
-      "ruaddr3": "",
-      "ruaddr4": "",
-      "ruaddr5": "",
       "rupostcode": "RU59PDL"
     }
   ],
@@ -151,8 +132,6 @@
       "employment": "51",
       "ftempees": "50.000",
       "luname1": "Gawk",
-      "luname2": "",
-      "luname3": "",
       "luaddr1": "303 ",
       "luaddr2": "Dwight Hill",
       "luaddr3": "Ohio",
@@ -160,8 +139,6 @@
       "luaddr5": "Portugal",
       "lupostcode": "POO123",
       "tradstyle1": "GAWK",
-      "tradstyle2": "",
-      "tradstyle3": "",
       "region": "FE",
       "bus_desc": "Please mind the gap",
       "formtype": "0001",
@@ -169,9 +146,6 @@
       "payeref": "245BT210",
       "ruaddr1": "99 Long road",
       "ruaddr2": "Longland",
-      "ruaddr3": "",
-      "ruaddr4": "",
-      "ruaddr5": "",
       "rupostcode": "RUPOO54"
     }
   ]
