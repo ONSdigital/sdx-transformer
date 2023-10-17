@@ -6,9 +6,15 @@ item_list_path: "items.local_units"
 template:
     schema_version: "v1"
     identifier: "#ruref"
-    vat: ["$VAT1" "$VAT1"]          
-    employer_paye: "#employer_paye" # TODO
-    address: "#address"             # TODO
+    vat:
+        registration_number: "$VAT1"
+        subsidiary_identifier: "$VAT2"
+    employer_paye: # TODO where this come from?
+        tax_office_number: "???"
+        reference: "???"
+    "address": [
+        "#ruaddr2", "#ruaddr2", "#ruaddr3", "#ruaddr4", "#ruaddr5", "#rupostcode" # TODO where is this
+    ]
     items:
         local_units:
             -   identifier: "#luref"
