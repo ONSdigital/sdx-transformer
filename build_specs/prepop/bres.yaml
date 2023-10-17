@@ -7,13 +7,13 @@ template:
     schema_version: "v1"
     identifier: "#ruref"
     vat:
-        registration_number: "$VAT1"
-        subsidiary_identifier: "$VAT2"
+        registration_number: "$VAT_REG"
+        subsidiary_identifier: "$VAT_SUB"
     employer_paye:
-        tax_office_number: "$PAY1"
-        reference: "$PAY2"
+        tax_office_number: "$PAYE_OFFICE"
+        reference: "$PAYE_REF"
     "address": [
-        "#ruaddr2", "#ruaddr2", "#ruaddr3", "#ruaddr4", "#ruaddr5", "#rupostcode"
+        "#ruaddr1", "#ruaddr2", "#ruaddr3", "#ruaddr4", "#ruaddr5", "#rupostcode"
     ]
     items:
         local_units:
@@ -37,23 +37,23 @@ transforms:
             value: "#tradstyle1"
             values: [ "#tradstyle2", "#tradstyle3" ]
             seperator: " "
-    "VAT1":
+    "VAT_REG":
         name: "CARVE"
         args:
             value: "#vatref"
             end_index: 9
-    "VAT2":
+    "VAT_SUB":
         name: "CARVE"
         args:
             value: "#vatref"
             start_index: 9
 
-    "PAY1":
+    "PAYE_OFFICE":
         name: "CARVE"
         args:
             value: "#payeref"
             end_index: 3
-    "PAY2":
+    "PAYE_REF":
         name: "CARVE"
         args:
             value: "#payeref"
