@@ -25,7 +25,14 @@
       "region": "FE",
       "bus_desc": "We make the finest thyme lubricant on the planet",
       "formtype": "0001",
-      "vatref": "112185561111"
+      "vatref": "112185561111",
+      "payeref": "121XB18868",
+      "ruaddr1": "56 Random Lane",
+      "ruaddr2": "Turtleland",
+      "ruaddr3": "",
+      "ruaddr4": "",
+      "ruaddr5": "",
+      "rupostcode": "RU67B52"
     },
     {
       "ruref": "50000000000",
@@ -52,7 +59,14 @@
       "region": "FE",
       "bus_desc": "Craving a bit of sunshine? Look no further than our famous sunshine oil",
       "formtype": "0001",
-      "vatref": "112185561111"
+      "vatref": "112185561111",
+      "payeref": "121XB18868",
+      "ruaddr1": "56 Random Lane",
+      "ruaddr2": "Turtleland",
+      "ruaddr3": "",
+      "ruaddr4": "",
+      "ruaddr5": "",
+      "rupostcode": "RU67B52"
     },
     {
       "ruref": "50000000000",
@@ -79,7 +93,14 @@
       "region": "FE",
       "bus_desc": "A fast paced startup based in Poland",
       "formtype": "0001",
-      "vatref": "112185561111"
+      "vatref": "112185561111",
+      "payeref": "121XB18868",
+      "ruaddr1": "56 Random Lane",
+      "ruaddr2": "Turtleland",
+      "ruaddr3": "",
+      "ruaddr4": "",
+      "ruaddr5": "",
+      "rupostcode": "RU67B52"
     }
   ],
   "50000000001": [
@@ -108,7 +129,14 @@
       "region": "FE",
       "bus_desc": "Famous Indonesian Lentil Wine",
       "formtype": "0001",
-      "vatref": "112185561111"
+      "vatref": "112185561111",
+      "payeref": "940FA51320",
+      "ruaddr1": "128 Somewhere",
+      "ruaddr2": "Westland",
+      "ruaddr3": "",
+      "ruaddr4": "",
+      "ruaddr5": "",
+      "rupostcode": "RU59PDL"
     }
   ],
   "50000000002": [
@@ -137,7 +165,14 @@
       "region": "FE",
       "bus_desc": "Please mind the gap",
       "formtype": "0001",
-      "vatref": "112185561111"
+      "vatref": "112185561111",
+      "payeref": "245BT210",
+      "ruaddr1": "99 Long road",
+      "ruaddr2": "Longland",
+      "ruaddr3": "",
+      "ruaddr4": "",
+      "ruaddr5": "",
+      "rupostcode": "RUPOO54"
     }
   ]
 }
