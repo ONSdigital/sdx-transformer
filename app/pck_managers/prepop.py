@@ -29,6 +29,7 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
         for data in data_list:
             populated_tree: ParseTree = populate_mappings(parse_tree, data)
             result_item: Template = execute(populated_tree)
+
             items.append(result_item)
 
         item = merge_items(items, build_spec["item_list_path"])
@@ -67,3 +68,4 @@ def get_item_list(template: Template, item_list_path: str) -> list[Field]:
         raise DataError(f'Incorrect item_list_path: {item_list_path}')
 
     return t
+
