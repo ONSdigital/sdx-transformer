@@ -133,4 +133,3 @@ class CarveTest(unittest.TestCase):
         second = carve(value, start_index=9)
 
         self.assertEqual(["112185561", "111"], [first, second])
-

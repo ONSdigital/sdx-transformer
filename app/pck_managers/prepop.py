@@ -69,4 +69,3 @@ def get_item_list(template: Template, item_list_path: str) -> list[Field]:
         raise DataError(f'Incorrect item_list_path: {item_list_path}')
 
     return t
-
