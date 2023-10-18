@@ -9,6 +9,8 @@ class BresTest(unittest.TestCase):
 
     def test_bres(self):
 
+        self.maxDiff = None
+
         survey_id = "221"
         input_filepath = "tests/data/bres/prepop_bres_input.json"
         with open(input_filepath) as f:
