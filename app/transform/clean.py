@@ -11,7 +11,6 @@ class CleanTreeWalker(TreeWalker):
     def on_list(self, name: str, field: list[Field]) -> Field:
         new_list = []
         for item in field:
-            f = self.evaluate_field(name)
             if item not in BLACK_LIST:
                 new_list.append(item)
         return new_list
