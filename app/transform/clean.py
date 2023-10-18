@@ -10,11 +10,7 @@ class CleanTreeWalker(TreeWalker):
 
     def on_dict(self, name: str, field: dict[str, Field]) -> Field:
         d = super().on_dict(name, field)
-        new_dict = {}
-        for key, value in d.items():
-            if value not in BLACK_LIST:
-                new_dict[key] = value
-        return new_dict
+        return {k: v for k, v in d.items() if v not in BLACK_LIST}
 
     def on_list(self, name: str, field: list[Field]) -> Field:
         new_list = []
@@ -26,12 +22,5 @@ class CleanTreeWalker(TreeWalker):
 
 
 def clean(template: Template) -> Template:
-
     tree: Template = CleanTreeWalker(template).walk_tree()
-
-    new_dict = {}
-    for key, value in tree.items():
-        if value not in BLACK_LIST:
-            new_dict[key] = value
-    return new_dict
-
+    return {k: v for k, v in tree.items() if v not in BLACK_LIST}
