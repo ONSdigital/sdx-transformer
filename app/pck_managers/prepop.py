@@ -5,13 +5,15 @@ from sdx_gcp.errors import DataError
 
 from app.build_spec import get_build_spec, interpolate_build_spec
 from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field
+from app.transform.clean import clean
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
-    "068": "tiles"
+    "068": "tiles",
+    "221": "bres"
 }
 
 
@@ -28,6 +30,7 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
         for data in data_list:
             populated_tree: ParseTree = populate_mappings(parse_tree, data)
             result_item: Template = execute(populated_tree)
+            result_item = clean(result_item)
             items.append(result_item)
 
         item = merge_items(items, build_spec["item_list_path"])

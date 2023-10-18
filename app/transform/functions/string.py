@@ -1,3 +1,5 @@
+import math
+
 from app.definitions import Value
 from app.transform.functions.general import handle_empties
 
@@ -50,3 +52,20 @@ def any_contains(
 @handle_empties
 def concat(value: str, values: list[str], seperator: str = " ") -> Value:
     return seperator.join([v for v in [value] + values if v != ""])
+
+
+@handle_empties
+def carve(value: str, start_index=0, end_index=None) -> Value:
+    """
+    Could not be named slice, as this is a keyword
+    """
+
+    # No params, just split in half
+    if start_index == 0 and not end_index:
+        return value[:math.floor(len(value)/2)]
+
+    # End index will default to end of string
+    elif not end_index:
+        return value[start_index:]
+
+    return value[start_index:end_index]
