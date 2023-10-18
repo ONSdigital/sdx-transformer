@@ -7,6 +7,11 @@ BLACK_LIST: final = ["", Empty, [], {}]
 
 
 class CleanTreeWalker(TreeWalker):
+    """
+    Removing blank and empty fields from the Template
+    - Items with a blank or empty value will be removed
+    - Parents with ALL empty children will be removed
+    """
 
     def on_dict(self, name: str, field: dict[str, Field]) -> Field:
         return {k: v for k, v in super().on_dict(name, field).items() if v not in BLACK_LIST}
@@ -16,4 +21,5 @@ class CleanTreeWalker(TreeWalker):
 
 
 def clean(template: Template) -> Template:
+    # This comprehension is needed at the top level as the TreeWalker cannot handle top level items
     return {k: v for k, v in CleanTreeWalker(template).walk_tree().items() if v not in BLACK_LIST}
