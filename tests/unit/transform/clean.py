@@ -93,3 +93,93 @@ class CleanTests(unittest.TestCase):
 
         }
         self.assertEqual(expected, actual)
+
+    def test_remove_parent_if_no_children(self):
+
+        input_data: Template = {
+            "company": {
+                "name": "My company",
+                "address": [
+                    "",
+                    "",
+                    "",
+                ],
+            }
+
+        }
+
+        actual = clean(input_data)
+        expected = {
+            "company": {
+                "name": "My company",
+            }
+
+        }
+        self.assertEqual(expected, actual)
+
+    def test_remove_field_from_object(self):
+
+        input_data: Template = {
+            "company": {
+                "name": "My company",
+                "vat": {
+                    "thing1": "",
+                    "thing2": "123"
+                }
+            }
+
+        }
+
+        actual = clean(input_data)
+        expected = {
+            "company": {
+                "name": "My company",
+                "vat": {
+                    "thing2": "123"
+                }
+            }
+
+        }
+        self.assertEqual(expected, actual)
+
+    def test_remove_whole_object_empty(self):
+
+        input_data: Template = {
+            "company": {
+                "name": "My company",
+                "vat": {
+                    "thing1": "",
+                    "thing2": ""
+                }
+            }
+
+        }
+
+        actual = clean(input_data)
+        expected = {
+            "company": {
+                "name": "My company",
+            }
+
+        }
+        self.assertEqual(expected, actual)
+
+    def test_remove_top_level_key(self):
+
+        input_data: Template = {
+            "company": {
+                "name": "",
+                "vat": {
+                    "thing1": "",
+                    "thing2": ""
+                }
+            },
+            "pet": "cat"
+
+        }
+
+        actual = clean(input_data)
+        expected = {
+            "pet": "cat"
+        }
+        self.assertEqual(expected, actual)
