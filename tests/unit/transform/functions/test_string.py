@@ -144,3 +144,17 @@ class TrimAndConcatTest(unittest.TestCase):
         actual = trim_and_concat(value, values=values)
         expected = "my important business"
         self.assertEqual(expected, actual)
+
+    def test_trim_start_of_all_values(self):
+        value = " my"
+        values = [" important", " business"]
+        actual = trim_and_concat(value, values=values)
+        expected = "my important business"
+        self.assertEqual(expected, actual)
+
+    def test_trim_with_big_random_spaces(self):
+        value = "           my    "
+        values = ["    important         ", "  business"]
+        actual = trim_and_concat(value, values=values)
+        expected = "my important business"
+        self.assertEqual(expected, actual)

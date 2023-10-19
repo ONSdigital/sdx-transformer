@@ -77,6 +77,4 @@ def trim_and_concat(value: str, values: list[str], seperator: str = " ") -> Valu
     """
     Remove excess spaces from the start and end of strings only, and concat
     """
-    new_value = value.rstrip()
-    new_values = [v.rstrip() for v in values]
-    return concat(new_value, values=new_values, seperator=seperator)
+    return concat(value.strip(), values=[v.strip() for v in values], seperator=seperator)
