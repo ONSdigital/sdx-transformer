@@ -1,7 +1,8 @@
 import unittest
+from functools import partial
 
 from app.definitions import Empty
-from app.transform.functions.string import contains, any_contains, concat, starts_with, carve
+from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, trim_and_concat
 
 
 class StartsWithTests(unittest.TestCase):
@@ -133,3 +134,14 @@ class CarveTest(unittest.TestCase):
         second = carve(value, start_index=9)
 
         self.assertEqual(["112185561", "111"], [first, second])
+
+
+class TrimAndConcatTest(unittest.TestCase):
+
+    def test_trim_end_of_all_values(self):
+        value = "my "
+        values = ["important ", "business "]
+        actual = trim_and_concat(value, values=values)
+        expected = "my important business"
+        self.assertEqual(expected, actual)
+        

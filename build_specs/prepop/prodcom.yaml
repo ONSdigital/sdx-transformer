@@ -11,16 +11,16 @@ template:
         description: "$NOTE_DESC"
     items:
         products:
-            -   identifier: "#luref"
-                name: "$name"
-                cn_codes: "#cncode?"
+            -   identifier: "#luref"                            # Required
+                name: "$name"                                   # Required
+                cn_codes: "#cncode?"                            # Required
                 guidance_include:
                     title: "#guidance_include_title"
                     list: ["example1", "example2"]
                 guidance_exclude:
                     title: "#guidance_exclude_title"
                     list: ["example1", "example2"]
-                value_sales:
+                value_sales:                                    # Required
                     answer_code: "#value_sales_answer_code"
                     label: "#value_sales_label"
                 volume_sales:

@@ -57,7 +57,8 @@ def concat(value: str, values: list[str], seperator: str = " ") -> Value:
 @handle_empties
 def carve(value: str, start_index=0, end_index=None) -> Value:
     """
-    Could not be named slice, as this is a keyword
+    Will slice a string given the start index and end_index
+    eg. 123456789 (start_index = 2, end_index = 5) -> 345
     """
 
     # No params, just split in half
@@ -69,3 +70,11 @@ def carve(value: str, start_index=0, end_index=None) -> Value:
         return value[start_index:]
 
     return value[start_index:end_index]
+
+
+@handle_empties
+def trim_and_concat(value: str, values: list[str], seperator: str = " ") -> Value:
+    """
+    Remove excess spaces from the start and end of strings only, and concat
+    """
+    return concat(value, values=values, seperator=seperator)
