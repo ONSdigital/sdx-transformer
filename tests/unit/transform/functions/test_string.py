@@ -144,4 +144,3 @@ class TrimAndConcatTest(unittest.TestCase):
         actual = trim_and_concat(value, values=values)
         expected = "my important business"
         self.assertEqual(expected, actual)
-        
