@@ -12,13 +12,24 @@ template:
     items:
         products:
             -   identifier: "#luref"
-                name: "???"
-                cn_codes: "???"
-                guidance_include: "???"
-                guidance_exclude: "???"
-                value_sales: "???"
-                volume_sales: "???"
-                total_volume: "???"
+                name: "$name"
+                cn_codes: "#cncode?"
+                guidance_include:
+                    title: "#guidance_include_title"
+                    list: ["example1", "example2"]
+                guidance_exclude:
+                    title: "#guidance_exclude_title"
+                    list: ["example1", "example2"]
+                value_sales:
+                    answer_code: "#value_sales_answer_code"
+                    label: "#value_sales_label"
+                volume_sales:
+                    answer_code: "#volume_sales_answer_code"
+                    label: "#volume_sales_label"
+                total_volume:
+                    answer_code: "#total_volume_answer_code"
+                    label: "#total_volume_label"
+                    unit_label: "#total_volume_unit_label"
 transforms:
     "NOTE_TITLE":
         name: "CONCAT"
