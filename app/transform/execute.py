@@ -7,7 +7,8 @@ from app.definitions import ParseTree, Transform, Field, Value, BuildSpecError
 from app.transform.functions.compound import currency_thousands, period_start, period_end
 from app.transform.functions.general import no_transform, exists, any_exists, lookup
 from app.transform.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
-from app.transform.functions.string import starts_with, contains, any_contains, concat, carve
+from app.transform.functions.string import starts_with, contains, any_contains, concat, carve, trim_and_concat, \
+    remove_substring
 from app.transform.functions.time import to_date, any_date, start_of_month, end_of_month, start_of_year, end_of_year
 from app.transform.tree_walker import TreeWalker
 
@@ -43,6 +44,8 @@ _function_lookup: dict[str, Callable] = {
     "PERIOD_START": period_start,
     "PERIOD_END": period_end,
     "CARVE": carve,
+    "TRIM_AND_CONCAT": trim_and_concat,
+    "REMOVE_SUBSTRING": remove_substring,
 }
 
 

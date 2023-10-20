@@ -1,5 +1,5 @@
 title: "Build Spec for Prodcom"
-survey_id: "???" #TODO
+survey_id: "014" #TODO
 target: "SDS"
 period_format: "YYYYM"
 item_list_path: "items.products"

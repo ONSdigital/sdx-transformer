@@ -77,4 +77,19 @@ def trim_and_concat(value: str, values: list[str], seperator: str = " ") -> Valu
     """
     Remove excess spaces from the start and end of strings only, and concat
     """
+
+    # NOTE, when calling other wrapped functions, params must be passed manually like this
     return concat(value.strip(), values=[v.strip() for v in values], seperator=seperator)
+
+
+@handle_empties
+def remove_substring(value: str, target: str, trim=True) -> Value:
+    """
+    Remove a target substring from a value
+    :param value: The value passed
+    :param target: The substring to remove from value
+    :param trim: Boolean, should excess whitespace be removed
+    :return:
+    """
+
+    return value.replace(target, "").strip()

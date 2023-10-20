@@ -2,7 +2,8 @@ import unittest
 from functools import partial
 
 from app.definitions import Empty
-from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, trim_and_concat
+from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, trim_and_concat, \
+    remove_substring
 
 
 class StartsWithTests(unittest.TestCase):
@@ -158,3 +159,14 @@ class TrimAndConcatTest(unittest.TestCase):
         actual = trim_and_concat(value, values=values)
         expected = "my important business"
         self.assertEqual(expected, actual)
+
+
+class RemoveSubstringTest(unittest.TestCase):
+
+    def test_remove_simple_substring(self):
+        value = "hello world (remove this)"
+        actual = remove_substring(value, target="(remove this)")
+        expected = "hello world"
+        self.assertEqual(expected, actual)
+
+
