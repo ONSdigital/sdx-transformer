@@ -52,3 +52,27 @@ class ConvertPeriodTests(unittest.TestCase):
         actual = Formatter("YYYYMMDD", "MMYYYY").convert_period(period)
         expected = "072023"
         self.assertEqual(expected, actual)
+
+    def test_incorrect_format_uses_default_value(self):
+        period = "202310"
+        actual = Formatter("YY", "YY").convert_period(period)
+        expected = "23"
+        self.assertEqual(expected, actual)
+
+    def test_incorrect_format_uses_default_value_length_4(self):
+        period = "2301"
+        actual = Formatter("YY", "YY").convert_period(period)
+        expected = "23"
+        self.assertEqual(expected, actual)
+
+    def test_incorrect_format_uses_default_value_length_4_with_different_pck_format(self):
+        period = "2301"
+        actual = Formatter("YYYYMM", "YYYYMM").convert_period(period)
+        expected = "202301"
+        self.assertEqual(expected, actual)
+
+    def test_incorrect_format_uses_default_value_length_2(self):
+        period = "23"
+        actual = Formatter("YYYYMM", "YYYYMM").convert_period(period)
+        expected = "202301"
+        self.assertEqual(expected, actual)

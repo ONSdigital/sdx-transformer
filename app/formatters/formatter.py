@@ -24,15 +24,29 @@ class Formatter:
         pass
 
     def convert_period(self, period: str) -> str:
+
+        period_format = self._period_format
+
+        # If the period does not match the period format,
+        # use a default input format, based on the length of the period
+        if len(period) != len(period_format):
+            if len(period) == 6:
+                period_format = "YYYYMM"
+            elif len(period) == 4:
+                period_format = "YYMM"
+            elif len(period) == 2:
+                period_format = "YY"
+
         symbols: dict[str, list[str]] = {
             "D": [],
             "M": [],
             "Y": []
         }
+
         for i in range(0, len(period)):
-            k = self._period_format[i]
+            k = period_format[i]
             if k not in symbols:
-                raise BuildSpecError(f"Build spec period in wrong format {self._period_format}")
+                raise BuildSpecError(f"Build spec period in wrong format {period_format}")
             symbols[k].append(period[i])
 
         if self._pck_period_format.count("Y") == 4:
@@ -43,6 +57,11 @@ class Formatter:
             if len(symbols["Y"]) == 4:
                 symbols["Y"].pop(0)
                 symbols["Y"].pop(0)
+
+        if self._pck_period_format.count("M") == 2:
+            if len(symbols["M"]) == 0:
+                symbols["M"].append("0")
+                symbols["M"].append("1")
 
         result = ""
         for f in self._pck_period_format:
