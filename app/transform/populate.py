@@ -109,10 +109,8 @@ def populate_mappings(parse_tree: ParseTree, data: Data) -> ParseTree:
     """
     def base_str(_name: str, field: str, _walker: TreeWalker) -> Field:
         if field.startswith(MAPPING_PREFIX):
-            d = data.get(field[1:])
-            if d is None:
-                logger.warning(f"Mapping {field} not found in data!")
-            return d
+            return data.get(field[1:])
+
         return field
 
     return TreeWalker(tree=parse_tree, on_str=base_str).walk_tree()

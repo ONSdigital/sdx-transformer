@@ -65,10 +65,7 @@ def execute(tree: ParseTree) -> dict[str, Value]:
 
     def on_leaf(_name: str, field: str, walker: ExecuteTreeWalker) -> Field:
         if field.startswith(DERIVED_PREFIX) and field != CURRENT_VALUE:
-            derived = walker.read_from_current(field[1:])
-            if derived is None:
-                logger.warning(f"Failed to find derived value {field}")
-            return derived
+            return walker.read_from_current(field[1:])
 
         return field
 
