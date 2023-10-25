@@ -13,7 +13,8 @@ logger = get_logger()
 
 survey_mapping: dict[str, str] = {
     "068": "tiles",
-    "221": "bres"
+    "221": "bres",
+    "241": "brs",
 }
 
 

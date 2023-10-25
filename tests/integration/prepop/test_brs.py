@@ -5,18 +5,18 @@ from app.definitions import PrepopData, Identifier, Template
 from app.pck_managers.prepop import get_prepop
 
 
-class BresTest(unittest.TestCase):
+class BrsTest(unittest.TestCase):
 
-    def test_bres(self):
+    def test_brs(self):
 
         self.maxDiff = None
 
-        survey_id = "221"
-        input_filepath = "tests/data/bres/prepop_bres_input.json"
+        survey_id = "241"
+        input_filepath = "tests/data/brs/prepop_brs_input.json"
         with open(input_filepath) as f:
             prepop_data: PrepopData = json.load(f)
 
-        output_filepath = "tests/data/bres/prepop_bres_output.json"
+        output_filepath = "tests/data/brs/prepop_brs_output.json"
         with open(output_filepath) as f:
             expected: dict[Identifier: Template] = json.load(f)
 
