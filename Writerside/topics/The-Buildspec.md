@@ -133,14 +133,49 @@ Hello
 
 ### template {collapsible="true"}
 
+<code-block lang="json">
+{
+    "300": "56123",
+    "301": "4567",
+    "302": "1834",
+    "400": "Yes",
+    "500": "0-9%"
+}
+</code-block>
 The template section dictates both the 'shape' of the output data and how to determine its values. It as a parametrised object that will be interpolated at runtime. The interpolation follows these rules:
 
-- Values prefixed with a "#" will be looked up from the input data e.g. "#301" means lookup the value in the input data corresponding to key "301". For the input data above this would resolve in the value "4567" at runtime. Certain survey metadata can also be looked up. The allowed values are: "#survey_id", "#period_id", "#ru_ref", "#form_type", "period_start_date", and "period_end_date".
-- Values prefixed with a "$" will be replaced with the result of performing the corresponding transform in the "transforms" section at runtime. E.g. "$ROUND".
+#### # Symbols {id=direct_lookup}
+Values prefixed with a `#` will be looked up from the input data e.g. `#301` means lookup the value in the input data corresponding to key **"301"**. For the input data above this would resolve in the value **"4567"** at runtime.
+  
+Certain survey metadata can also be looked up. The allowed values are...
+
+{style="medium"}
+`#survey_id`
+: Return the survey ID of the current survey
+
+`#period_id`
+: Return the period ID of the current survey
+
+`#ru_ref`
+: Return the ru_ref of the current survey
+
+`#form_type`
+: Return the form type for the current survey
+
+`#period_start_date`
+: Return the period start date for the current survey
+
+`#period_end_date`
+: Return the period end date for the current survey
+
+#### $ Symbols {id=transform_lookup}
+
+Values prefixed with a `$` will be replaced with the result of performing the corresponding transform in the [Transforms](#transforms) section at runtime. E.g. "$ROUND".
+
 - Values prefixed with a "&" will be looked up from the resulting output data e.g. "&301" means lookup the calculated value for 301.
 - Anything else will be considered as a literal and will remain unchanged at runtime.
 
-### transforms {collapsible="true"}
+### transforms {collapsible="true" id=transforms}
 
 Hello
 
