@@ -135,6 +135,8 @@ Hello
 
 ### template
 
+The template section dictates both the 'shape' of the output data and how to determine its values.
+
 <tabs>
 <tab title="Template">
 
@@ -186,7 +188,7 @@ Hello
     </p>
 </note>
 
-The template section dictates both the 'shape' of the output data and how to determine its values. It as a parametrised object that will be interpolated at runtime. The interpolation follows these rules:
+It as a parametrised object that will be interpolated at runtime. The interpolation follows these rules:
 
 #### # Symbols {collapsible="true" id=direct_lookup}
 Values prefixed with a `#` will be looked up from the input data e.g. `#301` means lookup the value in the input data corresponding to key **"301"**. For the input data above this would resolve in the value **"4567"** at runtime (as 4567 corresponds to `301` in the Input Data .
@@ -272,7 +274,42 @@ In the example above, code `42` will be assigned to the value **"Hello world"**
 
 ### transforms {id=transforms}
 
-Hello
+The `transforms` section provides the definition for any transform identifier referenced in the [template](#template) section (as denoted with a `$` prefix). It is a set of key value mappings of identifier to definition. 
+
+<code-block lang="json">
+"transforms": {
+    "ROUND_THOUSAND": {
+      "name": "ROUND",
+      "args": {
+        "nearest": "1000"
+      }
+    },    
+    "PERCENTAGE_RADIO": {
+      "name": "LOOKUP",
+      "args": {
+        "0-9%": "10000",
+        "10-24%": "1000",
+        "25-49%": "100",
+        "50-74%": "10",
+        "75-100%": "1",
+        "on_no_match": "0"
+      }
+    }
+}
+</code-block>
+
+In the example above we define two transforms, `ROUND_THOUSAND` and `PERCENTAGE_RADIO`. The attributes each transform can have are defined below...
+
+{style="full"}
+name 
+: Type: `string`
+: A transform must specify a transformation function in the `name` attribute, in this case the transformation functions are `ROUND` and `LOOKUP` respectively. These functions need to be defined in `app/transform/execute.py` in the `_function_lookup` dictionary.
+
+
+args
+: Type: `object`
+: Key value pairs representing the arguments to be passed to the function specified by the `name` attribute. For example the `ROUND` function can take an optional parameter `nearest` that specifies how the input should be rounded.
+
 
 ## Example Build Spec
 
