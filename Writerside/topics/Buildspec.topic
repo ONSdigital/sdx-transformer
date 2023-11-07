@@ -99,7 +99,26 @@
         <p>A more detailed description of each of the build spec fields</p>
 
         <chapter title="title" id="title_field">
-            <p>The title field</p>
+            <deflist type="narrow">
+                <def title="type">
+                    <code>string</code>
+                </def>
+                <def title="required">
+                    <code>true</code>
+                </def>
+            </deflist>
+            <p>The title field is used to associate a descriptive name to a particular build spec, the common practice is to prepend titles with <control>"Build spec for"</control> </p>
+
+            <deflist type="full">
+                <def title="example">
+                    <code-block lang="json">
+                        {
+                        "title": "Build spec for DES survey"
+                        }
+                    </code-block>
+                </def>
+            </deflist>
+
         </chapter>
 
         <chapter title="survey_id" id="survey_id_field">
