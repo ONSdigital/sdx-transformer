@@ -4,10 +4,9 @@
 
 <instance-profile id="s"
                  name="SDX-Transformer"
-                 start-page="starter-topic.md">
+                 start-page="Home.topic">
 
-    <toc-element topic="starter-topic.md"/>
-    <toc-element topic="Overview.topic"/>
+    <toc-element topic="Home.topic"/>
     <toc-element topic="The-Buildspec.md"/>
     <toc-element topic="Advanced-Buildspec.md"/>
 </instance-profile>

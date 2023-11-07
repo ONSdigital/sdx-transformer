@@ -101,7 +101,7 @@ Build specs are written either in yaml or json format with the following top lev
 </tr>
 </table>
 
-## Fields {id="fields-chapter"}
+## Fields
 
 A more detailed description of each of the build spec fields
 
