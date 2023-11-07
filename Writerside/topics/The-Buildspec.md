@@ -2,7 +2,7 @@
 
 # The Buildspec
 
-## Format overview
+## Fields overview
 
 Build specs are written either in yaml or json format with the following top level fields:
 
@@ -105,35 +105,51 @@ Build specs are written either in yaml or json format with the following top lev
 
 A more detailed description of each of the build spec fields
 
-### title {collapsible="true"}
+### title 
 
 The title field
 
-### survey_id {collapsible="true"}
+### survey_id 
 
 Hello
 
-### period_format {collapsible="true"}
+### period_format 
 
 Hello
 
-### pck_period_format {collapsible="true"}
+### pck_period_format
 
 Hello
 
-### form_mapping {collapsible="true"}
+### form_mapping
 
 Hello
 
-### item_list_path {collapsible="true"}
+### item_list_path
 
 Hello
 
-### target {collapsible="true"}
+### target
 
 Hello
 
-### template {collapsible="true"}
+### template
+
+<tabs>
+<tab title="Template">
+
+<code-block lang="json">
+{
+    "300": "Literal value",
+    "301": "#301",
+    "302": "$ROUND_THOUSAND",
+    "400": "$CONTAINS",
+    "500": "#500"
+}
+</code-block>
+
+</tab>
+<tab title="Input Data" id="input_data">
 
 <code-block lang="json">
 {
@@ -144,10 +160,36 @@ Hello
     "500": "0-9%"
 }
 </code-block>
+
+
+</tab>
+
+<tab title="Output">
+
+<code-block lang="json">
+{
+    "300": "Literal value",
+    "301": "4567",
+    "302": "2000",
+    "400": "True",
+    "500": "0-9%"
+}
+</code-block>
+
+</tab>
+
+</tabs>
+
+<note>
+    <p>
+        We assume <code>$CONTAINS</code> is a transform that outputs "True" if it contains the string "Yes"
+    </p>
+</note>
+
 The template section dictates both the 'shape' of the output data and how to determine its values. It as a parametrised object that will be interpolated at runtime. The interpolation follows these rules:
 
-#### # Symbols {id=direct_lookup}
-Values prefixed with a `#` will be looked up from the input data e.g. `#301` means lookup the value in the input data corresponding to key **"301"**. For the input data above this would resolve in the value **"4567"** at runtime.
+#### # Symbols {collapsible="true" id=direct_lookup}
+Values prefixed with a `#` will be looked up from the input data e.g. `#301` means lookup the value in the input data corresponding to key **"301"**. For the input data above this would resolve in the value **"4567"** at runtime (as 4567 corresponds to `301` in the Input Data .
   
 Certain survey metadata can also be looked up. The allowed values are...
 
@@ -170,7 +212,7 @@ Certain survey metadata can also be looked up. The allowed values are...
 `#period_end_date`
 : Return the period end date for the current survey
 
-#### $ Symbols {id=transform_lookup}
+#### $ Symbols {collapsible="true" id=transform_lookup}
 
 <code-block lang="json">
 {
@@ -192,7 +234,7 @@ Values prefixed with a `$` will be replaced with the result of performing the co
 
 For example the value of `42` in the input data will be sent to the `$ROUND` transform which is defined in the `Transforms` section of the build spec
 
-#### & Symbols {id=computed_lookup}
+#### & Symbols {collapsible="true" id=computed_lookup}
 
 <code-block lang="json">
 {
@@ -215,7 +257,7 @@ Values prefixed with a `&` will be looked up from the resulting output data.
 
 For example, in the above snippet `&42` means, calculate the value for `42` as before using the `ROUND` transform, then assign the value to `43` which will result in codes `42` and `43` containing the same value.
 
-#### No symbols (literals) {id=literals}
+#### No symbols (literals) {collapsible="true" id=literals}
 
 <code-block lang="json">
 {
@@ -228,7 +270,7 @@ Anything else will be considered as a literal and will remain unchanged at runti
 
 In the example above, code `42` will be assigned to the value **"Hello world"**
 
-### transforms {collapsible="true" id=transforms}
+### transforms {id=transforms}
 
 Hello
 

@@ -5,4 +5,9 @@
         <primary-color>aqua</primary-color>
         <header-logo>logo.png</header-logo>
     </variables>
+
+    <build-profile instance="instance_id"/>
+    <footer>
+        <link href="https://github.com/ONSdigital/sdx-transformer">SDX-Transformer</link>
+    </footer>
 </buildprofiles>
