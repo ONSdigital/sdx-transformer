@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+    SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="The Buildspec" id="Buildspec">
+    <show-structure for="chapter" depth="2"/>
+
+    <chapter title="Fields Overview" id="fields_overview" >
+        <p>Build specs are written either in yaml or json format with the following top level fields:</p>
+        <table>
+            <tr>
+                <td>Field</td>
+                <td>Description</td>
+                <td>Type</td>
+                <td>Example</td>
+            </tr>
+            <tr>
+                <td><code>title</code></td>
+                <td>A descriptive title for the build spec</td>
+                <td>string</td>
+                <td>"Build Spec for Monthly Credit Grantors"</td>
+            </tr>
+            <tr>
+                <td><code>survey_id</code></td>
+                <td>The survey id for this particular survey</td>
+                <td>string</td>
+                <td>"127"</td>
+            </tr>
+            <tr>
+                <td><code>period_format</code></td>
+                <td>A string representing the format of the period as passed to SDX from upstream</td>
+                <td>string</td>
+                <td>"YYYYMM"</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>pck_period_format</code>
+                    <note>
+                        <p>
+                            Required for pck only
+                        </p>
+                    </note>
+                </td>
+                <td>The format of the period as it should be displayed on the pck</td>
+                <td>string</td>
+                <td>"YY"</td>
+            </tr>
+            <tr>
+                <td><code>form_mapping</code></td>
+                <td>An object mapping formtypes to idbr codes used in the pck</td>
+                <td>object</td>
+                <td>
+                    <code>{"0001": "STP01", "0011": "STE17"}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>item_list_path</code>
+                    <note>
+                        <p>
+                            Required for pre-pop only
+                        </p>
+                    </note>
+                </td>
+                <td>The XPath of the item subsets within a template</td>
+                <td>object</td>
+                <td>
+                    <code>{"0001": "STP01", "0011": "STE17"}</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>target</code></td>
+                <td>The name of the target system. This will decide the formatting and shape of the output file</td>
+                <td>string</td>
+                <td>"OpenROAD"</td>
+            </tr>
+            <tr>
+                <td><code>template</code></td>
+                <td>A mapping of qcodes/identifiers to values/transforms. Explained in detail below</td>
+                <td>object</td>
+                <td>
+                    <code>{"001": "1", "002":"#045, "003":"$round"}</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>transforms</code></td>
+                <td>The definition of the transforms used within the template. Explained in detail below</td>
+                <td>object</td>
+                <td>
+                    <code>{"round":{"name": "ROUND", "args":{"nearest":"1000"}}}</code>
+                </td>
+            </tr>
+        </table>
+
+    </chapter>
+
+    <chapter title="Fields" id="fields" >
+        <p>A more detailed description of each of the build spec fields</p>
+
+        <chapter title="title" id="title_field">
+            <p>The title field</p>
+        </chapter>
+
+        <chapter title="survey_id" id="survey_id_field">
+            <p>The title field</p>
+        </chapter>
+
+        <chapter title="period_format" id="period_format_field">
+            <p>The title field</p>
+        </chapter>
+
+        <chapter title="pck_period_format" id="pack_period_format_field">
+            <p>The title field</p>
+        </chapter>
+
+        <chapter title="form_mapping" id="form_mapping_field">
+            <p>The title field</p>
+        </chapter>
+
+        <chapter title="item_list_path" id="item_list_path_field">
+            <p>The title field</p>
+        </chapter>
+
+        <chapter title="target" id="target_field">
+            <p>The title field</p>
+        </chapter>
+
+        <chapter title="template" id="template_field">
+            <p>The template section dictates both the 'shape' of the output data and how to determine its values.</p>
+
+            <tabs>
+                <tab title="Template">
+                    <code-block lang="json">
+                        "template": {
+                            "300": "Literal value",
+                            "301": "#301",
+                            "302": "$ROUND_THOUSAND",
+                            "400": "$CONTAINS",
+                            "500": "#500"
+                        }
+                    </code-block>
+                </tab>
+                <tab title="Input Data" id="input_data">
+                    <code-block lang="json">
+                        {
+                            "300": "56123",
+                            "301": "4567",
+                            "302": "1834",
+                            "400": "Yes",
+                            "500": "0-9%"
+                        }
+                    </code-block>
+                </tab>
+                <tab title="Output">
+                    <code-block lang="json">
+                        {
+                            "300": "Literal value",
+                            "301": "4567",
+                            "302": "2000",
+                            "400": "True",
+                            "500": "0-9%"
+                        }
+                    </code-block>
+                </tab>
+            </tabs>
+
+            <note>
+                <p>
+                    We assume <code>$CONTAINS</code> is a transform that outputs "True" if it contains the string "Yes".
+                </p>
+            </note>
+
+            <p>A template is as a parametrised object that will be interpolated at runtime. The values for interpolation
+                follows these rules:</p>
+
+            <chapter title="# Symbols" id="direct_lookup" collapsible="true">
+                <p>Values prefixed with a <code>#</code> will be looked up from the input data e.g. <code>#301</code>
+                    means lookup the value in the input data corresponding to key
+                    <control>"301"</control>
+                    . For the input data above this would resolve in the value
+                    <control>"4567"</control>
+                    at runtime (as 4567 corresponds to <code>301</code> in the Input Data.
+                </p>
+                <p>Certain survey metadata can also be looked up. The allowed values are...</p>
+
+                <deflist type="medium">
+                    <def>
+                        <title>
+                            <code>#survey_id</code></title>
+                        <p>Return the survey ID of the current survey</p>
+                    </def>
+                    <def>
+                        <title><code>#period_id</code></title>
+                        <p>Return the period ID of the current survey</p>
+                    </def>
+                    <def>
+                        <title><code>#ru_ref</code></title>
+                        <p>Return the ru_ref of the current survey</p>
+                    </def>
+                    <def>
+                        <title><code>#form_type</code></title>
+                        <p>Return the form type for the current survey</p>
+                    </def>
+                    <def>
+                        <title><code>#period_start_date</code></title>
+                        <p>Return the period start date for the current survey</p>
+                    </def>
+                    <def>
+                        <title><code>#period_end_date</code></title>
+                        <p>Return the period end date for the current survey</p>
+                    </def>
+                </deflist>
+
+            </chapter>
+
+            <chapter title="$ Symbols" id="transform_lookup" collapsible="true">
+                <code-block lang="json">
+                    {
+                        "template": {
+                            "42": "$ROUND",
+                        },
+                        "transforms": {
+                            "ROUND": {
+                                "name": "ROUND",
+                                "args": {
+                                    "nearest": "1"
+                                }
+                            },
+                        }
+                    }
+                </code-block>
+
+                <p>Values prefixed with a <code>$</code> will be replaced with the result of performing the
+                    corresponding transform in the <a anchor="transforms_field">Transforms</a> section at runtime.</p>
+
+                <p>For example the value of <code>42</code> in the input data will be sent to the <code>$ROUND</code>
+                    transform which is defined in the <code>transforms</code> section of the build spec</p>
+
+
+            </chapter>
+
+            <chapter title="&amp; Symbols" id="computed_lookup" collapsible="true">
+                <code-block lang="json">
+                {
+                    "template": {
+                        "42": "$ROUND",
+                        "43": "&amp;42"
+                    },
+                    "transforms": {
+                        "ROUND": {
+                            "name": "ROUND",
+                            "args": {
+                                "nearest": "1"
+                            }
+                        },
+                    }
+                }
+                </code-block>
+
+                <p>Values prefixed with a <code>&amp;</code> will be looked up from the resulting output data.</p>
+
+                <p>For example, in the above snippet <code>&amp;42</code> means, calculate the value for <code>42</code>
+                    as before using the <code>ROUND</code> transform, then assign the value to <code>43</code> which
+                    will result in codes <code>42</code> and <code>43</code> containing the same value.</p>
+
+
+
+            </chapter>
+
+            <chapter title="No symbols (literals)" id="literals" collapsible="true">
+
+                <code-block lang="json">
+                {
+                    "template": {
+                        "42": "Hello world",
+                    },
+                }
+                </code-block>
+
+                <p>Anything else will be considered as a literal and will remain unchanged at runtime.</p>
+                <p>In the example above, code <code>42</code> will be assigned to the value
+                    <control>&quot;Hello world&quot;</control>
+                </p>
+
+
+            </chapter>
+
+
+        </chapter>
+
+        <chapter title="transforms" id="transforms_field">
+            <p>The <code>transforms</code> section provides the definition for any transform identifier referenced in
+                the <a anchor="template_field">template</a> section (as denoted with a <code>$</code> prefix). It is a set of
+                key value mappings of identifier to definition.</p>
+
+            <tabs>
+                <tab title="Transforms">
+                    <code-block lang="json">
+                        "transforms": {
+                            "ROUND_THOUSAND": {
+                              "name": "ROUND",
+                              "args": {
+                                "nearest": "1000"
+                              }
+                            },
+                            "CONTAINS": {
+                              "name": "LOOKUP",
+                              "args": {
+                                "Yes": "True",
+                                "No": "False",
+                                "on_no_match": "0"
+                              }
+                            }
+                        }
+                    </code-block>
+                </tab>
+                <tab title="Template">
+                    <code-block lang="json">
+                        "template": {
+                            "300": "Literal value",
+                            "301": "#301",
+                            "302": "$ROUND_THOUSAND",
+                            "400": "$CONTAINS",
+                            "500": "#500"
+                        }
+                    </code-block>
+                </tab>
+                <tab title="Input Data">
+                    <code-block lang="json">
+                        {
+                            "300": "56123",
+                            "301": "4567",
+                            "302": "1834",
+                            "400": "Yes",
+                            "500": "0-9%"
+                        }
+                    </code-block>
+                </tab>
+                <tab title="Output">
+                    <code-block lang="json">
+                        {
+                            "300": "Literal value",
+                            "301": "4567",
+                            "302": "2000",
+                            "400": "True",
+                            "500": "0-9%"
+                        }
+                    </code-block>
+                </tab>
+            </tabs>
+
+            <p>In the example above we define two transforms, <code>ROUND_THOUSAND</code> and <code>CONTAINS</code>. The
+                attributes each transform can have are defined below...</p>
+
+            <deflist type="full">
+                <def>
+                    <title>name</title>
+                    <p>
+                        <control>Required</control>
+                    </p>
+                    <p>Type: <code>string</code></p>
+                    <p>A transform must specify a transformation function in the <code>name</code>
+                        attribute, in this case the transformation functions are <code>ROUND</code> and
+                        <code>LOOKUP</code> respectively. These functions need to be defined in <code>app/transform/execute.py</code>
+                        in the <code>_function_lookup</code> dictionary.</p>
+                </def>
+                <def>
+                    <title>args</title>
+                    <p>
+                        <control>Required</control>
+                    </p>
+                    <p>Type: <code>object</code></p>
+                    <p>Key value pairs representing the arguments to be passed to the function specified by
+                        the <code>name</code> attribute. For example the <code>ROUND</code> function can take an
+                        optional parameter <code>nearest</code> that specifies how the input should be rounded.</p>
+                    <p>The values for each argument are evaluated using the same rules as the <a
+                        anchor="transforms_field">Transform</a> values, i.e using the <code>#</code>, <code>$</code>, <code>&amp;</code>
+                        symbols, the example below shows hard coding the <code>value</code> attribute to qcode
+                        <code>302</code></p>
+
+                    <code-block lang="json" collapsible="true">
+                        "transforms": {
+                            "ROUND_THOUSAND": {
+                                "name": "ROUND",
+                                "args": {
+                                    "value": "#302"
+                                    "nearest": "1000"
+                                }
+                        }
+                    </code-block>
+                    <p>By default all transforms have an implicit <code>value</code> argument passed to the
+                        function, unless this argument is specified (as above). The default value is a lookup to the
+                        input data based on the qcode that calls the transform.</p>
+                    <p>Additionally, a <code>values</code> list can be supplied as an argument, this allows
+                        multiple values to be passed to the function, all values inside this list are also evaluated
+                        using the same evaluation symbols (<code>#</code>, <code>$</code>, <code>&amp;</code> ...).</p>
+                    <p>To learn more about the different argument types, read the <a
+                        href="Advanced-Buildspec.md">Advanced Build Specs</a> section.</p>
+                </def>
+                <def>
+                    <title>post</title>
+                    <p>
+                        <control>Optional</control>
+                    </p>
+                    <p>Type: <code>string</code></p>
+                    <p>An identifier for a transform to be run directly after this one, this allows
+                        transforms to be chained together</p>
+
+                    <code-block lang="json" collapsible="true">
+                        "transforms": {
+                            "ROUND_THOUSAND": {
+                                "name": "ROUND",
+                                "args": {
+                                    "nearest": "1000"
+                                },
+                                "post": "$DIVIDE_BY_TWO"
+                            },
+                            "DIVIDE_BY_TWO": {
+                                "name": "DIVIDE",
+                                "args": {
+                                    "by": "2"
+                                }
+                            }
+                        }
+                    </code-block>
+                    <p>In this example, a value will be rounded to the nearest thousand, then divided by
+                        two.</p>
+                </def>
+            </deflist>
+
+        </chapter>
+
+    </chapter>
+
+    <chapter title="Example Build Spec" id="example-build-spec">
+        <p>Here we have an example build spec for the
+            <control>qpses</control>
+            survey, both a YAML and JSON example are provided.
+        </p>
+
+        <tabs>
+            <tab title="YAML">
+                <code-block lang="yaml" src="qpses.yaml">
+                </code-block>
+            </tab>
+            <tab title="JSON">
+
+                <code-block lang="json" src="qpses.json">
+                </code-block>
+            </tab>
+        </tabs>
+
+
+    </chapter>
+</topic>
