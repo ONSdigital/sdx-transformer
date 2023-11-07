@@ -1,0 +1,8 @@
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+        <color-preset>Soft</color-preset>
+        <primary-color>aqua</primary-color>
+        <header-logo>logo.png</header-logo>
+    </variables>
+</buildprofiles>
