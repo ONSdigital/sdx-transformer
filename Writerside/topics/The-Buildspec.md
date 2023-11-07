@@ -103,6 +103,8 @@ Build specs are written either in yaml or json format with the following top lev
 
 ## Fields {id="fields-chapter"}
 
+A more detailed description of each of the build spec fields
+
 ### title {collapsible="true"}
 
 The title field
@@ -170,10 +172,61 @@ Certain survey metadata can also be looked up. The allowed values are...
 
 #### $ Symbols {id=transform_lookup}
 
-Values prefixed with a `$` will be replaced with the result of performing the corresponding transform in the [Transforms](#transforms) section at runtime. E.g. "$ROUND".
+<code-block lang="json">
+{
+    "template": {
+        "42": "$ROUND",
+    },
+    "transforms": {
+        "ROUND": {
+            "name": "ROUND",
+            "args": {
+                "nearest": "1"
+            }
+        },
+    }
+}
+</code-block>
 
-- Values prefixed with a "&" will be looked up from the resulting output data e.g. "&301" means lookup the calculated value for 301.
-- Anything else will be considered as a literal and will remain unchanged at runtime.
+Values prefixed with a `$` will be replaced with the result of performing the corresponding transform in the [Transforms](#transforms) section at runtime.
+
+For example the value of `42` in the input data will be sent to the `$ROUND` transform which is defined in the `Transforms` section of the build spec
+
+#### & Symbols {id=computed_lookup}
+
+<code-block lang="json">
+{
+    "template": {
+        "42": "$ROUND",
+        "43": "&42"
+    },
+    "transforms": {
+        "ROUND": {
+            "name": "ROUND",
+            "args": {
+                "nearest": "1"
+            }
+        },
+    }
+}
+</code-block>
+
+Values prefixed with a `&` will be looked up from the resulting output data.
+
+For example, in the above snippet `&42` means, calculate the value for `42` as before using the `ROUND` transform, then assign the value to `43` which will result in codes `42` and `43` containing the same value.
+
+#### No symbols (literals) {id=literals}
+
+<code-block lang="json">
+{
+    "template": {
+        "42": "Hello world",
+    },
+}
+</code-block>
+Anything else will be considered as a literal and will remain unchanged at runtime.
+
+In the example above, code `42` will be assigned to the value **"Hello world"**
 
 ### transforms {collapsible="true" id=transforms}
 
@@ -181,6 +234,7 @@ Hello
 
 ## Example Build Spec
 
+Here we have an example build spec for the **qpses** survey, both a YAML and JSON example are provided.
 <tabs>
 <tab title="YAML">
 
