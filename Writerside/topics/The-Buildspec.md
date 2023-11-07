@@ -141,7 +141,7 @@ The template section dictates both the 'shape' of the output data and how to det
 <tab title="Template">
 
 <code-block lang="json">
-{
+"template": {
     "300": "Literal value",
     "301": "#301",
     "302": "$ROUND_THOUSAND",
@@ -184,11 +184,11 @@ The template section dictates both the 'shape' of the output data and how to det
 
 <note>
     <p>
-        We assume <code>$CONTAINS</code> is a transform that outputs "True" if it contains the string "Yes"
+        We assume <code>$CONTAINS</code> is a transform that outputs "True" if it contains the string "Yes".
     </p>
 </note>
 
-It as a parametrised object that will be interpolated at runtime. The interpolation follows these rules:
+A template is as a parametrised object that will be interpolated at runtime. The values for interpolation follows these rules:
 
 #### # Symbols {collapsible="true" id=direct_lookup}
 Values prefixed with a `#` will be looked up from the input data e.g. `#301` means lookup the value in the input data corresponding to key **"301"**. For the input data above this would resolve in the value **"4567"** at runtime (as 4567 corresponds to `301` in the Input Data .
@@ -276,6 +276,8 @@ In the example above, code `42` will be assigned to the value **"Hello world"**
 
 The `transforms` section provides the definition for any transform identifier referenced in the [template](#template) section (as denoted with a `$` prefix). It is a set of key value mappings of identifier to definition. 
 
+<tabs>
+<tab title="Transforms">
 <code-block lang="json">
 "transforms": {
     "ROUND_THOUSAND": {
@@ -284,31 +286,113 @@ The `transforms` section provides the definition for any transform identifier re
         "nearest": "1000"
       }
     },    
-    "PERCENTAGE_RADIO": {
+    "CONTAINS": {
       "name": "LOOKUP",
       "args": {
-        "0-9%": "10000",
-        "10-24%": "1000",
-        "25-49%": "100",
-        "50-74%": "10",
-        "75-100%": "1",
+        "Yes": "True",
+        "No": "False",
         "on_no_match": "0"
       }
     }
 }
 </code-block>
+</tab>
+<tab title="Template">
 
-In the example above we define two transforms, `ROUND_THOUSAND` and `PERCENTAGE_RADIO`. The attributes each transform can have are defined below...
+<code-block lang="json">
+"template": {
+    "300": "Literal value",
+    "301": "#301",
+    "302": "$ROUND_THOUSAND",
+    "400": "$CONTAINS",
+    "500": "#500"
+}
+</code-block>
+
+</tab>
+<tab title="Input Data">
+
+<code-block lang="json">
+{
+    "300": "56123",
+    "301": "4567",
+    "302": "1834",
+    "400": "Yes",
+    "500": "0-9%"
+}
+</code-block>
+
+
+</tab>
+
+<tab title="Output">
+
+<code-block lang="json">
+{
+    "300": "Literal value",
+    "301": "4567",
+    "302": "2000",
+    "400": "True",
+    "500": "0-9%"
+}
+</code-block>
+
+</tab>
+</tabs>
+
+
+In the example above we define two transforms, `ROUND_THOUSAND` and `CONTAINS`. The attributes each transform can have are defined below...
 
 {style="full"}
 name 
+: **Required**
 : Type: `string`
 : A transform must specify a transformation function in the `name` attribute, in this case the transformation functions are `ROUND` and `LOOKUP` respectively. These functions need to be defined in `app/transform/execute.py` in the `_function_lookup` dictionary.
 
 
 args
+: **Required**
 : Type: `object`
 : Key value pairs representing the arguments to be passed to the function specified by the `name` attribute. For example the `ROUND` function can take an optional parameter `nearest` that specifies how the input should be rounded.
+: The values for each argument are evaluated using the same rules as the [Transform](#transforms) values, i.e using the `#`, `$`, `&` symbols, the example below shows hard coding the `value` attribute to qcode `302`
+: ```json
+"transforms": {
+    "ROUND_THOUSAND": {
+        "name": "ROUND",
+        "args": {
+            "value": "#302"
+            "nearest": "1000"
+        }
+}
+    ```
+{collapsible="true"}
+: By default all transforms have an implicit `value` argument passed to the function, unless this argument is specified (as above). The default value is a lookup to the input data based on the qcode that calls the transform.
+: Additionally, a `values` list can be supplied as an argument, this allows multiple values to be passed to the function, all values inside this list are also evaluated using the same evaluation symbols (`#`, `$`, `&` ...).
+: To learn more about the different argument types, read the [Advanced Build Specs](Advanced-Buildspec.md) section.
+
+post
+: **Optional**
+: Type: `string`
+: An identifier for a transform to be run directly after this one, this allows transforms to be chained together
+: ```json
+"transforms": {
+    "ROUND_THOUSAND": {
+        "name": "ROUND",
+        "args": {
+            "nearest": "1000"
+        },
+        "post": "$DIVIDE_BY_TWO"
+    },    
+    "DIVIDE_BY_TWO": {
+        "name": "DIVIDE",
+        "args": {
+            "by": "2"
+        }
+    }
+}
+    ```
+{collapsible="true"}
+: In this example, a value will be rounded to the nearest thousand, then divided by two.
 
 
 ## Example Build Spec
