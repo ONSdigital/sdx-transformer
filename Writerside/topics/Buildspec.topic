@@ -104,10 +104,10 @@
                     <code>string</code>
                 </def>
                 <def title="required">
-                    <code>true</code>
+                    Yes
                 </def>
             </deflist>
-            <p>The title field is used to associate a descriptive name to a particular build spec, the common practice is to prepend titles with <control>"Build spec for"</control> </p>
+            <p>The <code>title</code> field is used to associate a descriptive name to a particular build spec, the common practice is to prepend titles with <control>"Build spec for"</control> </p>
 
             <deflist type="full">
                 <def title="example">
@@ -122,27 +122,137 @@
         </chapter>
 
         <chapter title="survey_id" id="survey_id_field">
-            <p>The title field</p>
+            <deflist type="narrow">
+                <def title="type">
+                    <code>string</code>
+                </def>
+                <def title="required">
+                    Yes
+                </def>
+            </deflist>
+            <p> The <code>survey_id</code> field specifies the survey id this build spec refers to </p>
+
+            <deflist type="full">
+                <def title="example">
+                    <code-block lang="json">
+                        {
+                        "survey_id": "127"
+                        }
+                    </code-block>
+                </def>
+            </deflist>
         </chapter>
 
         <chapter title="period_format" id="period_format_field">
-            <p>The title field</p>
+            <deflist type="narrow">
+                <def title="type">
+                    <code>string</code>
+                </def>
+                <def title="required">
+                    Yes
+                </def>
+            </deflist>
+            <p>The <code>pck_format</code> field represents the format of the period as it is passed to SDX from upstream </p>
+
+            <deflist type="full">
+                <def title="example">
+                    <code-block lang="json">
+                        {
+                        "pck_format": "YYYYMM"
+                        }
+                    </code-block>
+                </def>
+            </deflist>
         </chapter>
 
         <chapter title="pck_period_format" id="pack_period_format_field">
-            <p>The title field</p>
+            <deflist type="narrow">
+                <def title="type">
+                    <code>string</code>
+                </def>
+                <def title="required">
+                    No, only required for PCK
+                </def>
+            </deflist>
+            <p>The <code>pck_period_format</code> field is used to determine how the period should be displayed on the pck </p>
+
+            <deflist type="full">
+                <def title="example">
+                    <code-block lang="json">
+                        {
+                        "pck_period_format": "YY"
+                        }
+                    </code-block>
+                </def>
+            </deflist>
         </chapter>
 
         <chapter title="form_mapping" id="form_mapping_field">
-            <p>The title field</p>
+            <deflist type="narrow">
+                <def title="type">
+                    <code>object</code>
+                </def>
+                <def title="required">
+                    No
+                </def>
+            </deflist>
+            <p>The <code>form_mapping</code> field is an object mapping formtypes to idbr codes used in the pck </p>
+
+            <deflist type="full">
+                <def title="example">
+                    <code-block lang="json">
+                        {
+                        "form_mapping": {"0001": "STP01", "0011": "STE17"}
+                        }
+                    </code-block>
+                    <p>In this example, TODO</p>
+                </def>
+            </deflist>
         </chapter>
 
         <chapter title="item_list_path" id="item_list_path_field">
-            <p>The title field</p>
+            <deflist type="narrow">
+                <def title="type">
+                    <code>object</code>
+                </def>
+                <def title="required">
+                    No, Required for pre-pop only
+                </def>
+            </deflist>
+            <p>The <code>item_list_path</code> field is an XPath of the item subsets within a template </p>
+
+            <deflist type="full">
+                <def title="example">
+                    <code-block lang="json">
+                        {
+                        "item_list_path": {"0001": "STP01", "0011": "STE17"}
+                        }
+                    </code-block>
+                    <p>In this example, TODO</p>
+                </def>
+            </deflist>
         </chapter>
 
         <chapter title="target" id="target_field">
-            <p>The title field</p>
+            <deflist type="narrow">
+                <def title="type">
+                    <code>string</code>
+                </def>
+                <def title="required">
+                    Yes
+                </def>
+            </deflist>
+            <p>The <code>target</code> field is the name of the target system. This will decide the formatting and shape of the output file </p>
+
+            <deflist type="full">
+                <def title="example">
+                    <code-block lang="json">
+                        {
+                        "target": "OpenROAD"
+                        }
+                    </code-block>
+                </def>
+            </deflist>
         </chapter>
 
         <chapter title="template" id="template_field">
