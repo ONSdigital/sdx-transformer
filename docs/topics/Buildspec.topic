@@ -130,7 +130,7 @@
                     Yes
                 </def>
             </deflist>
-            <p> The <code>survey_id</code> field specifies the survey id this build spec refers to </p>
+            <p>The <code>survey_id</code> field specifies the survey id this build spec refers to </p>
 
             <deflist type="full">
                 <def title="example">
@@ -325,28 +325,27 @@
 
                 <deflist type="medium">
                     <def>
-                        <title>
-                            <code>#survey_id</code></title>
+                        <title>#survey_id</title>
                         <p>Return the survey ID of the current survey</p>
                     </def>
                     <def>
-                        <title><code>#period_id</code></title>
+                        <title>#period_id</title>
                         <p>Return the period ID of the current survey</p>
                     </def>
                     <def>
-                        <title><code>#ru_ref</code></title>
+                        <title>#ru_ref</title>
                         <p>Return the ru_ref of the current survey</p>
                     </def>
                     <def>
-                        <title><code>#form_type</code></title>
+                        <title>#form_type</title>
                         <p>Return the form type for the current survey</p>
                     </def>
                     <def>
-                        <title><code>#period_start_date</code></title>
+                        <title>#period_start_date</title>
                         <p>Return the period start date for the current survey</p>
                     </def>
                     <def>
-                        <title><code>#period_end_date</code></title>
+                        <title>#period_end_date</title>
                         <p>Return the period end date for the current survey</p>
                     </def>
                 </deflist>
