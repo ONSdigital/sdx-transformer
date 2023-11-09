@@ -3,7 +3,7 @@
     SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="The Buildspec" id="Buildspec">
+       title="The Buildspec" id="buildspec" help-id="Buildspec">
     <show-structure for="chapter" depth="2"/>
 
     <chapter title="Fields Overview" id="fields_overview" >
@@ -544,7 +544,9 @@
                         multiple values to be passed to the function, all values inside this list are also evaluated
                         using the same evaluation symbols (<code>#</code>, <code>$</code>, <code>&amp;</code> ...).</p>
                     <p>To learn more about the different argument types, read the <a
-                        href="Advanced-Buildspec.md">Advanced Build Specs</a> section.</p>
+                            href="Advanced-Buildspec.md" instance="!transformer">Advanced Build Specs</a>
+                        <if instance="transformer">Advanced Build Specs</if>
+                        section.</p>
                 </def>
                 <def>
                     <title>post</title>
