@@ -256,6 +256,16 @@
         </chapter>
 
         <chapter title="template" id="template_field">
+
+            <deflist type="narrow">
+                <def title="type">
+                    <code>object</code>
+                </def>
+                <def title="required">
+                    Yes
+                </def>
+            </deflist>
+
             <p>The template section dictates both the 'shape' of the output data and how to determine its values.</p>
 
             <tabs>
@@ -419,6 +429,16 @@
         </chapter>
 
         <chapter title="transforms" id="transforms_field">
+
+            <deflist type="narrow">
+                <def title="type">
+                    <code>object</code>
+                </def>
+                <def title="required">
+                    Yes
+                </def>
+            </deflist>
+
             <p>The <code>transforms</code> section provides the definition for any transform identifier referenced in
                 the <a anchor="template_field">template</a> section (as denoted with a <code>$</code> prefix). It is a set of
                 key value mappings of identifier to definition.</p>
