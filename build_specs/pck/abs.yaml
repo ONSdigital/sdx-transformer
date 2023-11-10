@@ -7,8 +7,8 @@ template:
     "9": "$YES_NO_RADIO"
     "11": "$START_DATE"
     "12": "$END_DATE"
-    "15": "$YES_NO_RADIO"
-    "16": "$YES_NO_RADIO"
+    "15": "$YES_NO_RADIO_1827"
+    "16": "$YES_NO_RADIO_1827"
     "80": "$YES_NO_RADIO"
     "81": "$PERCENTAGE_RADIO"
     "146": "$COMMENT"
@@ -272,6 +272,14 @@ transforms:
             "Yes": "10"
             "No": "1"
             "on_no_match": "0"
+    "YES_NO_RADIO_1827":
+        "name": "ANY_CONTAINS"
+        "args":
+            "values": [ "#form_type" ]
+            "match_str": "1827"
+            "on_true": null
+            "on_false": "$YES_NO_RADIO"
+
     "YES_NO_ANIMAL_RADIO":
         "name": "LOOKUP"
         "args":
