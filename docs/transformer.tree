@@ -9,4 +9,5 @@
     <toc-element topic="home.topic"/>
     <toc-element topic="buildspec.topic"/>
     <toc-element topic="advanced-buildspec.topic"/>
+    <toc-element topic="help.topic"/>
 </instance-profile>
