@@ -6,6 +6,6 @@
        title="Help" id="help" help-id="Help">
 
     <chapter title="Adding to Documentation" id="documentation" >
-        <p>This documentation is written using <a href="https://www.jetbrains.com/help/writerside">Jetbrains Writerside</a> , the documentation </p>
+        <p>This documentation is written using <a href="https://www.jetbrains.com/help/writerside">Jetbrains Writerside</a>.</p>
     </chapter>
 </topic>
