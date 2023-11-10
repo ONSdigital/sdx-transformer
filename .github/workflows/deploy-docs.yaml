@@ -3,10 +3,11 @@ name: Build documentation
 on:
     # If specified, the workflow will be triggered automatically once you push to the `main` branch.
     # Replace `main` with your branch’s name
-    push:
-        branches: ["angus-writerside"] # TODO remember to change this
+#    push:
+#        branches: ["main"]
     # Specify to run a workflow manually from the Actions tab on GitHub
     workflow_dispatch:
+
 
 # Gives the workflow permissions to clone the repo and create a page deployment
 permissions:
@@ -17,7 +18,7 @@ permissions:
 env:
     # Name of module and id separated by a slash
     INSTANCE: docs/transformer
-    # ID of the instance in capital letters
+    # Name needs to be webHelpXX2-all.zip where XX is capital instance name
     ARTIFACT: webHelpTRANSFORMER2-all.zip
     # Writerside docker image version
     DOCKER_VERSION: 232.10165.1
