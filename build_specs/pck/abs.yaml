@@ -219,7 +219,6 @@ template:
     # -- Shipbuilding 1867 --
     "304": "$CURRENCY_THOUSANDS"
 
-
     #    -- Derived --
     "499": "$499"
     "400": "$400"

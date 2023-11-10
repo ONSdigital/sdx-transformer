@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+    SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Help" id="help" help-id="Help">
+
+    <chapter title="Adding to Documentation" id="documentation" >
+        <p>This documentation is written using <a href="https://www.jetbrains.com/help/writerside">Jetbrains Writerside</a>.</p>
+    </chapter>
+</topic>
