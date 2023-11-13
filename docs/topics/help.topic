@@ -6,6 +6,51 @@
        title="Help" id="help" help-id="Help">
 
     <chapter title="Adding to Documentation" id="documentation" >
-        <p>This documentation is written using <a href="https://www.jetbrains.com/help/writerside">Jetbrains Writerside</a>.</p>
+        <tip>
+            <p>This documentation is written using <a href="https://www.jetbrains.com/help/writerside">Jetbrains Writerside</a>.</p>
+        </tip>
+
+        <p>Documentation is stored in the <path>docs</path> folder of the project repository.</p>
+
+        <chapter title="Creating a new topic" id="create_a_topic">
+            <list type="decimal">
+                <li>
+                    <p>Topics are the pages that appear in the left side bar of the documentation page, for example this help page is a topic called <path>docs/topics/help.topic</path></p>
+                </li>
+                <li>
+                    <p>Topics are written in either XML or Markdown and the syntax guides for each can be found <a href="https://www.jetbrains.com/help/writerside/markup-reference.html">here</a></p>
+                </li>
+                <li>
+                    <p>Once a new topic has been created, it will need to be added to the instance tree, this is found in <path>docs/transformer.tree</path>. Here you will find all the topics that will be displayed in the docs. </p>
+
+                    <code-block lang="xml">
+                        <![CDATA[
+                        <?xml version="1.0" encoding="UTF-8"?>
+                        <!DOCTYPE instance-profile
+                        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+                        <instance-profile id="transformer"
+                                          name="SDX-Transformer"
+                                          start-page="home.topic">
+
+                            <toc-element topic="home.topic"/>
+                            <toc-element topic="buildspec.topic"/>
+                            <toc-element topic="advanced-buildspec.topic"/>
+                            <toc-element topic="help.topic"/>
+                            <!-- Your new topic -->
+                            <toc-element topic="my_new_topic.topic"/>
+                        </instance-profile>
+                        ]]>
+                    </code-block>
+
+                    <note>
+                        <p>The name of the topic that is displayed on the docs is NOT the name of the topic filename</p>
+                    </note>
+                </li>
+            </list>
+
+
+
+        </chapter>
     </chapter>
 </topic>
