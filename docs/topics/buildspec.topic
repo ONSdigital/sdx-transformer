@@ -544,8 +544,7 @@
                         multiple values to be passed to the function, all values inside this list are also evaluated
                         using the same evaluation symbols (<code>#</code>, <code>$</code>, <code>&amp;</code> ...).</p>
                     <p>To learn more about the different argument types, read the <a
-                            href="Advanced-Buildspec.md" instance="!transformer">Advanced Build Specs</a>
-                        <if instance="transformer">Advanced Build Specs</if>
+                        href="advanced-buildspec.topic" instance="transformer">Advanced Build Specs</a>
                         section.</p>
                 </def>
                 <def>
