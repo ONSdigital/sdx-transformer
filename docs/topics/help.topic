@@ -3,7 +3,7 @@
     SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Help" id="help" help-id="Help">
+       title="Help" id="help">
 
     <chapter title="Adding to Documentation" id="documentation" >
         <tip>
@@ -15,7 +15,7 @@
         <chapter title="Creating a new topic" id="create_a_topic">
             <list type="decimal">
                 <li>
-                    <p>Topics are the pages that appear in the left side bar of the documentation page, for example this help page is a topic called <path>docs/topics/help.topic</path></p>
+                    <p>Topics are the pages that appear in the left side-bar of the documentation page, for example this help page is a topic called <path>docs/topics/help.topic</path></p>
                 </li>
                 <li>
                     <p>Topics are written in either XML or Markdown and the syntax guides for each can be found <a href="https://www.jetbrains.com/help/writerside/markup-reference.html">here</a></p>
@@ -55,17 +55,17 @@
     </chapter>
 
     <chapter title="Deploying documentation" id="deployment">
-        <p>A Github actions workflow is setup to deploy the documentation, this is currently setup to only be triggered manually. The workflow file can be found in <path>.github/workflows/deploy-docs.yalm</path></p>
+        <p>A GitHub actions workflow is set up to deploy the documentation, this is currently setup to only be triggered manually. The workflow file can be found in <path>.github/workflows/deploy-docs.yalm</path></p>
 
         <chapter title="Testing" id="testing">
             <p>Before merging the documentation into <code>main</code> it is good practice to test the documentation locally. This is done in real time if using the <a href="https://plugins.jetbrains.com/plugin/20158-writerside">Writerside plugin</a>. Any problems such as missing closing tags or formatting issues will be displayed in the live preview window, or if you build the project using the <b>Generate Website</b> tool. </p>
 
             <warning>
-                <p>The Github action will also test the documentation and will fail to deploy if the tests do not pass</p>
+                <p>The GitHub action will also test the documentation and will fail to deploy if the tests do not pass</p>
             </warning>
         </chapter>
 
-        <chapter title="Deployment on Github" id="deploy_on_github">
+        <chapter title="Deployment on GitHub" id="deploy_on_github">
             <list type="decimal">
                 <li>
                     <p>Ensure that the documentation changes you have made have been merged into <code>main</code>.</p>
