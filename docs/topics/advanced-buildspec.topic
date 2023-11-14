@@ -31,5 +31,7 @@
                   "post": "$ROUND"
             }
         </code-block>
+
+        <p>This example will calculate the total of the values in <code>#301</code> and <code>#302</code>.Then use the result as the value for the <code>$ROUND</code> transform.</p>
     </chapter>
 </topic>
