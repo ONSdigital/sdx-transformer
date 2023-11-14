@@ -3,22 +3,37 @@
     SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="SDX-Transformer" id="home" help-id="Home">
-    <p>
-        The sdx-transformer service provides data transformation functionality for SDX.
-        It is used to transform both survey submission data into pck files on the journey downstream, and for transforming the data headed upstream for pre-population.
-    </p>
+       title="Discover SDX-Transformer" id="home">
 
-    <p>
-        It has been designed with the goal of detaching the configuration (what transforms need to be applied) from the actual process of performing those transformations (how they work).
-    </p>
+    <section-starting-page>
+        <title>Welcome to the SDX-Transformer docs</title>
+        <description>
+           Learn how Transformer works
+        </description>
 
-    <chapter title="Motivation" id="motivation" >
-        <p>The decisions behind what needs to be transformed are outside the scope of the SDX team and are provided to us in the form of a build spec. Build specs have traditionally been written in Excel; as a table of qcodes mapped to columns dedicated to the questions' text, type and transform. Unfortunately whilst this format is fairly "human readable", it is not optimal for a machine to understand. Also, fully describing a transformation in a single cell of text is often difficult for all but the most trivial of transformations.</p>
+        <spotlight>
+            <a href="overview.topic"
+               description="A brief overview of SDX-Transformer" type="start"/>
+            <a href="buildspec.topic"
+               description="Learn about survey build specs" type="mixed"/>
+        </spotlight>
 
-        <p>This means that we often have follow up questions to ensure that we have a full understanding of what to do in every conceivable case for each transform. We then write these transforms as code within SDX - meaning that any changes to the build spec require code changes and redeployment of the system. This means that changes have to be performed by the SDX team and as such, conform to our priorities and build windows. </p>
+        <primary>
+            <title>Build Spec</title>
+            <a href="buildspec.topic"
+               description="Learn about the buildspec format"/>
+            <a href="advanced-buildspec.topic"
+               description="Learn about advanced build spec features"/>
+        </primary>
 
-        <p>It would be better if the "owners" of the build spec had the autonomy to write it, run tests through SDX, and then make changes accordingly, all without the need for code changes and redeployment within SDX. For this to happen, the code in SDX needs to detach itself from the actual build specs. The build specs need to be a "machine readable" configuration that specifies how the data is to be transformed in a consistent language. For this purpose we have defined a new "build spec" format in <control>json</control> / <control>yaml</control>  and created the sdx-transformer service to run them.</p>
+        <secondary>
+            <title>Help</title>
+            <a href="help.topic"
+               description="Get help with sdx transformer"/>
+        </secondary>
 
-    </chapter>
+
+
+    </section-starting-page>
+
 </topic>

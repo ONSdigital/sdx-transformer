@@ -6,7 +6,32 @@
        title="Advanced Buildspecs" id="advanced-buildspec">
     <show-structure for="chapter" depth="2"/>
 
-    <chapter title="Chapter 1" id="chapter_1" >
-        Hello world
+    <chapter title="Post transforms" id="post" >
+        <p>Sometimes nesting transforms within the args of other transforms is not the most succinct way to write a build spec.</p>
+
+        <p>A common case is where you have many unique transforms that all require a common step to occur after they have executed. In this case the <code>post</code> field can be used to reference a transform to be performed directly after this one. E.g:</p>
+
+        <code-block lang="json">
+            "transforms": {
+                "ROUND": {
+                  "name": "ROUND",
+                  "args": {
+                    "nearest": "1"
+                  }
+                },
+                "TOTAL": {
+                  "name": "TOTAL",
+                  "args": {
+                    "value": 0
+                    "values": [
+                      "#301"
+                      "#302"
+                    ]
+                  },
+                  "post": "$ROUND"
+            }
+        </code-block>
+
+        <p>This example will calculate the total of the values in <code>#301</code> and <code>#302</code>.Then use the result as the value for the <code>$ROUND</code> transform.</p>
     </chapter>
 </topic>

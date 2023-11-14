@@ -6,8 +6,10 @@
                  name="SDX-Transformer"
                  start-page="home.topic">
 
-    <toc-element topic="home.topic"/>
-    <toc-element topic="buildspec.topic"/>
-    <toc-element topic="advanced-buildspec.topic"/>
+    <toc-element topic="home.topic">
+        <toc-element topic="overview.topic"/>
+        <toc-element topic="buildspec.topic"/>
+        <toc-element topic="advanced-buildspec.topic"/>
+    </toc-element>
     <toc-element topic="help.topic"/>
 </instance-profile>
