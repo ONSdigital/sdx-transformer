@@ -3,7 +3,7 @@
     SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Overview" id="overview" help-id="Overview;overview">
+       title="Overview" id="overview">
     <p>
         The sdx-transformer service provides data transformation functionality for SDX.
         It is used to transform both survey submission data into pck files on the journey downstream, and for transforming the data headed upstream for pre-population.
