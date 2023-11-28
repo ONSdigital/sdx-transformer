@@ -316,6 +316,7 @@ transforms:
         "args":
             value: "#form_type"
             "1819": null
+            "1807": null
             "on_no_match": "$_COMMENT_DEFAULT"
 
     "746_LOOKUP_FORM_TYPE":
@@ -323,6 +324,7 @@ transforms:
         "args":
             value: "#form_type"
             "1805": "$COMMENT"
+            "1806": "$COMMENT"
             on_no_match: null
 
     "345":
