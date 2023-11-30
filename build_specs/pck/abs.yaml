@@ -4,7 +4,7 @@ target: "CS"
 period_format: "YY"
 pck_period_format: "YY"
 template:
-    "9": "$YES_NO_RADIO"
+    "9": "$YES_NO_RADIO_1827"
     "11": "$START_DATE"
     "12": "$END_DATE"
     "15": "$YES_NO_RADIO_1827"
