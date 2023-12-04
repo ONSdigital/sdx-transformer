@@ -1,0 +1,20 @@
+title: "Build Spec for Slate"
+survey_id: "071"
+period_format: "YYYYM"
+target: "SDS"
+item_list_path: "items.local_units"
+template:
+    schema_version: "v1"
+    identifier: "#ruref"
+    items:
+        local_units:
+            -   identifier: "#luref"
+                lu_name: "$CONCAT"
+                lu_address: [ "#luaddr1", "#luaddr2", "#luaddr3", "#luaddr4", "#luaddr5" ]
+transforms:
+    CONCAT:
+        name: "CONCAT"
+        args:
+            value: "#luname1"
+            values: [ "#luname2", "#luname3" ]
+            seperator: " "
