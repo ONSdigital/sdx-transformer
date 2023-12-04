@@ -1,0 +1,62 @@
+{
+  "10000000000": {
+    "identifier": "10000000000",
+    "schema_version": "v1",
+    "items": {
+      "local_units": [
+        {
+          "identifier": "1000000",
+          "lu_name": "STUBBS BUILDING PRODUCTS LTD",
+          "lu_address": [
+            "WELLINGTON ROAD",
+            "LOCHMABEN",
+            "SWINDON",
+            "BEDS",
+            "GLOS"
+          ]
+        }
+      ]
+    }
+  },
+  "20000000000": {
+    "identifier": "20000000000",
+    "schema_version": "v1",
+    "items": {
+      "local_units": [
+        {
+          "identifier": "2000000",
+          "lu_name": "TUBBS BATHROOM PRODUCTS",
+          "lu_address": [
+            "IVORY ROAD",
+            "SNOWDONIA",
+            "WINDON",
+            "BEDS",
+            "HAMP"
+          ]
+        },
+        {
+          "identifier": "2000001",
+          "lu_name": "TUBBS BATHROOM PRODUCTS LTD",
+          "lu_address": [
+            "HAPPY STREET",
+            "CORNWALL",
+            "RUNDON",
+            "BEDS",
+            "GLOS"
+          ]
+        },
+        {
+          "identifier": "2000002",
+          "lu_name": "TUBBS BATHROOM PRODUCTS AND CO",
+          "lu_address": [
+            "GRACE ROAD",
+            "DEVON",
+            "HAPPY",
+            "BEDS",
+            "GLOS"
+          ]
+        }
+      ]
+    }
+  }
+}

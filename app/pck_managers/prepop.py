@@ -12,8 +12,10 @@ from app.transform.populate import populate_mappings
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
+    "066": "land",
     "068": "tiles",
     "071": "slate",
+    "076": "marine",
     "221": "bres",
     "241": "brs",
 }
