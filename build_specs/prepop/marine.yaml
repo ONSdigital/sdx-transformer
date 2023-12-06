@@ -2,12 +2,12 @@ title: "Build Spec for Sand and Gravel Marine Dredged"
 survey_id: "076"
 period_format: "YYYYM"
 target: "SDS"
-item_list_path: "items.local_units"
+item_list_path: "items.local-units"
 template:
     schema_version: "v1"
     identifier: "#ruref"
     items:
-        local_units:
+        local-units:
             -   identifier: "#luref"
                 lu_name: "$CONCAT"
                 lu_address: [ "#luaddr1", "#luaddr2", "#luaddr3", "#luaddr4", "#luaddr5" ]

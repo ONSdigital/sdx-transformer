@@ -376,7 +376,7 @@ class MapTemplateTests(unittest.TestCase):
             "schema_version": "v1",
             "identifier": "#ruref",
             "items": {
-                "local_units": [
+                "local-units": [
                     {
                         "identifier": "#luref",
                         "lu_name": "$1",
@@ -417,7 +417,7 @@ class MapTemplateTests(unittest.TestCase):
             "schema_version": "v1",
             "identifier": "#ruref",
             "items": {
-                "local_units": [
+                "local-units": [
                     {
                         "identifier": "#luref",
                         "lu_name": {

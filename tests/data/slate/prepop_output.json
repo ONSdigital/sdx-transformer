@@ -3,7 +3,7 @@
     "identifier": "10000000000",
     "schema_version": "v1",
     "items": {
-      "local_units": [
+      "local-units": [
         {
           "identifier": "1000000",
           "lu_name": "STUBBS BUILDING PRODUCTS LTD",
@@ -22,7 +22,7 @@
     "identifier": "20000000000",
     "schema_version": "v1",
     "items": {
-      "local_units": [
+      "local-units": [
         {
           "identifier": "2000000",
           "lu_name": "TUBBS BATHROOM PRODUCTS",

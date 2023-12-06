@@ -3,12 +3,12 @@
   "survey_id": "068",
   "period_format": "YYYYM",
   "target": "SDS",
-  "item_list_path": "items.local_units",
+  "item_list_path": "items.local-units",
   "template": {
     "schema_version": "v1",
     "identifier": "#ruref",
     "items": {
-      "local_units": [
+      "local-units": [
         {
           "identifier": "#luref",
           "lu_name": "$CONCAT",
