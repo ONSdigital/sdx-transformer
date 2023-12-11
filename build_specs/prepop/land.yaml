@@ -9,8 +9,8 @@ template:
     items:
         local-units:
             -   identifier: "#luref"
-                lu_name: "$CONCAT"
-                lu_address: [ "#luaddr1", "#luaddr2", "#luaddr3", "#luaddr4", "#luaddr5" ]
+                name: "$CONCAT"
+                address: [ "#luaddr1", "#luaddr2", "#luaddr3", "#luaddr4", "#luaddr5" ]
 transforms:
     CONCAT:
         name: "CONCAT"

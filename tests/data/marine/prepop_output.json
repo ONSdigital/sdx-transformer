@@ -6,8 +6,8 @@
       "local-units": [
         {
           "identifier": "1000000",
-          "lu_name": "STUBBS BUILDING PRODUCTS LTD",
-          "lu_address": [
+          "name": "STUBBS BUILDING PRODUCTS LTD",
+          "address": [
             "WELLINGTON ROAD",
             "LOCHMABEN",
             "SWINDON",
@@ -25,8 +25,8 @@
       "local-units": [
         {
           "identifier": "2000000",
-          "lu_name": "TUBBS BATHROOM PRODUCTS",
-          "lu_address": [
+          "name": "TUBBS BATHROOM PRODUCTS",
+          "address": [
             "IVORY ROAD",
             "SNOWDONIA",
             "WINDON",
@@ -36,8 +36,8 @@
         },
         {
           "identifier": "2000001",
-          "lu_name": "TUBBS BATHROOM PRODUCTS LTD",
-          "lu_address": [
+          "name": "TUBBS BATHROOM PRODUCTS LTD",
+          "address": [
             "HAPPY STREET",
             "CORNWALL",
             "RUNDON",
@@ -47,8 +47,8 @@
         },
         {
           "identifier": "2000002",
-          "lu_name": "TUBBS BATHROOM PRODUCTS AND CO",
-          "lu_address": [
+          "name": "TUBBS BATHROOM PRODUCTS AND CO",
+          "address": [
             "GRACE ROAD",
             "DEVON",
             "HAPPY",
