@@ -65,9 +65,15 @@ class Answer(TypedDict):
     list_item_id: NotRequired[str]
 
 
+class SupplementaryDataMapping(TypedDict):
+    identifier: str
+    list_item_id: str
+
+
 class Group(TypedDict):
     items: list[str]
     name: str
+    supplementary_data_mappings: NotRequired[list[SupplementaryDataMapping]]
 
 
 class AnswerCode(TypedDict):
@@ -84,7 +90,7 @@ class ListCollector(TypedDict):
 
 # Our top level looping object
 class LoopedData(TypedDict):
-    looped_sections: dict[str, list[Data]]
+    looped_sections: dict[str, dict[str, Data]]
     data_section: dict[str, Value]
 
 
@@ -100,3 +106,10 @@ class SPP(TypedDict):
     period: str
     survey: str
     responses: list[SPPResponse]
+
+
+class ImageResponse(TypedDict):
+    questioncode: str
+    response: str
+    instance: int
+    sd_identifier: NotRequired[str]
