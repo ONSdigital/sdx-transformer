@@ -11,12 +11,13 @@ class SPPLoopingFormatter(SPPFormatter, LoopingFormatter):
 
         result: SPP = self.get_spp_template(data_section, metadata)
 
-        for instance_id, data in self._instances.items():
-            for qcode, value in data.items():
-                result['responses'].append({
-                    "questioncode": qcode,
-                    "response": value,
-                    "instance": int(instance_id)
-                })
+        for instance_id, instance_data_list in self._instances.items():
+            for instance_data in instance_data_list:
+                for qcode, value in instance_data["data"].items():
+                    result['responses'].append({
+                        "questioncode": qcode,
+                        "response": value,
+                        "instance": int(instance_id)
+                    })
 
         return json.dumps(result)
