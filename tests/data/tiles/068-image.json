@@ -1,5 +1,40 @@
 [
   {
+    "questioncode": "9990",
+    "response": "No",
+    "instance": 0
+  },
+  {
+    "questioncode": "9994",
+    "response": "Yes",
+    "instance": 0
+  },
+  {
+    "questioncode": "9996",
+    "response": "Some new works",
+    "instance": 0
+  },
+  {
+    "questioncode": "9997",
+    "response": "23000",
+    "instance": 0
+  },
+  {
+    "questioncode": "9998",
+    "response": "46000",
+    "instance": 0
+  },
+  {
+    "questioncode": "9999",
+    "response": "79000",
+    "instance": 0
+  },
+  {
+    "questioncode": "147",
+    "response": "My comment about tiles.",
+    "instance": 0
+  },
+  {
     "questioncode": "9995",
     "response": "Ceased production last Monday",
     "instance": 1,

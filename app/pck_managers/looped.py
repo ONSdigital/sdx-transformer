@@ -40,6 +40,7 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
     result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
     if use_image_formatter:
+        # reset the target in the build spec
         bs: BuildSpec = build_spec.copy()
         bs["target"] = "Image"
         formatter: LoopingFormatter = get_formatter(bs, formatter_mapping)

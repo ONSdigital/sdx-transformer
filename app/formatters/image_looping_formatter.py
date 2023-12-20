@@ -17,6 +17,13 @@ class ImageLoopingFormatter(LoopingFormatter):
 
         result: list[ImageResponse] = []
 
+        for qcode, value in data_section.items():
+            result.append({
+                "questioncode": qcode,
+                "response": value,
+                "instance": 0
+            })
+
         for instance_id, instance_data_list in self._instances.items():
             for instance_data in instance_data_list:
                 for qcode, value in instance_data["data"].items():

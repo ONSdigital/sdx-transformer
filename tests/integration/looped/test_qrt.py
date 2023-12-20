@@ -8,7 +8,7 @@ from tests.integration.looped import read_submission_data
 
 class QrtTests(unittest.TestCase):
 
-    def test_to_spp(self):
+    def test_to_image(self):
 
         filepath = "tests/data/tiles/068.0001.json"
         submission_data = read_submission_data(filepath)
@@ -31,6 +31,6 @@ class QrtTests(unittest.TestCase):
         expected.sort(key=lambda i: i['instance'])
         actual.sort(key=lambda i: i['instance'])
 
-        # print(json.dumps(actual))
+        print(json.dumps(actual))
 
         self.assertEqual(expected, actual)
