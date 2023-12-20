@@ -25,7 +25,7 @@ formatter_mapping: dict[str, LoopingFormatter.__class__] = {
 }
 
 
-def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PCK:
+def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_image_formatter: bool = False) -> PCK:
     """
     Performs the steps required to transform looped data.
     """
@@ -39,7 +39,13 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
     transformed_data_section: dict[str, Value] = execute(populated_tree)
     result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
-    formatter: LoopingFormatter = get_formatter(build_spec, formatter_mapping)
+    if use_image_formatter:
+        bs: BuildSpec = build_spec.copy()
+        bs["target"] = "Image"
+        formatter: LoopingFormatter = get_formatter(bs, formatter_mapping)
+    else:
+        formatter: LoopingFormatter = get_formatter(build_spec, formatter_mapping)
+
     formatter.set_original(list_data)
 
     looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
