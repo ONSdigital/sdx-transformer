@@ -19,7 +19,7 @@ class LoopingFormatter(Formatter):
     def set_original(self, original_data: ListCollector):
         self.original_data = original_data
 
-    def create_or_update_instance(self, instance_id: str, data: dict[str, Value], list_item_id: str):
+    def create_or_update_instance(self, instance_id: str, data: dict[str, Value], list_item_id: str = ""):
         if instance_id not in self._instances:
             self._instances[instance_id] = []
 
