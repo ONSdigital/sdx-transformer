@@ -1,6 +1,6 @@
 import json
 
-from app.definitions import Value, SurveyMetadata, PCK, SPP
+from app.definitions import Value, SurveyMetadata, PCK, SPP, Empty
 from app.formatters.formatter import Formatter
 
 
@@ -10,19 +10,22 @@ class SPPFormatter(Formatter):
         return json.dumps(self.get_spp_template(data, metadata))
 
     def get_spp_template(self, data: dict[str, Value], metadata: SurveyMetadata) -> SPP:
+        ru_ref = metadata["ru_ref"]
+
         result: SPP = {
             'formtype': metadata['form_type'],
-            'reference': metadata['ru_ref'],
+            'reference': ru_ref[0:-1] if ru_ref[-1].isalpha() else ru_ref,
             'period': metadata['period_id'],
             'survey': metadata['survey_id'],
             'responses': []
         }
 
         for qcode, value in data.items():
-            result['responses'].append({
-                "questioncode": qcode,
-                "response": value,
-                "instance": 0
-            })
+            if value is not Empty:
+                result['responses'].append({
+                    "questioncode": qcode,
+                    "response": value,
+                    "instance": 0
+                })
 
         return result
