@@ -142,3 +142,44 @@ class TestRoutes(unittest.TestCase):
         # Assert the kind of error
         response_json = response.json
         self.assertEqual(response_json, {'Unrecoverable error': 'Submission data is not in json format'})
+
+    def test_pck_happy_path(self):
+
+        # Define some valid json
+        data = {
+            "50": "100",
+            "60": "110",
+            "146": "This is another comment",
+            "551": "33",
+            "552": "44",
+            "553": "55",
+            "554": "66",
+            "561": "44",
+            "562": "66",
+            "651": "33",
+            "652": "44",
+            "653": "55",
+            "654": "66",
+            "661": "44",
+            "662": "66"
+        }
+
+        # Define valid query params for 169.0003
+        query_params = {
+            "survey_id": "169",
+            "period_id": "201605",
+            "ru_ref": "12346789012A",
+            "form_type": "0003",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+            "data_version": "0.0.1",
+        }
+
+        # Send a POST request with JSON body and query parameters
+        response = self.client.post('/pck',
+                                    data=json.dumps(data),
+                                    query_string=query_params,
+                                    content_type='application/json')
+
+        # Assert a 200
+        self.assertEqual(response.status_code, 200)
