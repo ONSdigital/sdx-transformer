@@ -32,7 +32,7 @@ class TestRoutes(unittest.TestCase):
                                     content_type='application/json')
 
         # Assert the HTTP status code (BAD request)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(400, response.status_code)
 
         # Assert the kind of error
         response_json = response.json
@@ -54,7 +54,7 @@ class TestRoutes(unittest.TestCase):
                                     content_type='application/json')
 
         # Assert the HTTP status code (BAD request)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(400, response.status_code)
 
         # Assert the kind of error
         response_json = response.json
@@ -82,7 +82,7 @@ class TestRoutes(unittest.TestCase):
                                     content_type='application/json')
 
         # Assert the HTTP status code (BAD request)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(400, response.status_code)
 
         # Assert the kind of error
         response_json = response.json
@@ -109,11 +109,11 @@ class TestRoutes(unittest.TestCase):
                                     content_type='application/json')
 
         # Assert the HTTP status code (BAD request)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(400, response.status_code)
 
         # Assert the kind of error
         response_json = response.json
-        self.assertEqual(response_json, {'Unrecoverable error': 'Submission data is not in json format'})
+        self.assertEqual({'Unrecoverable error': 'Submission data is not in json format'}, response_json)
 
     def test_process_pck_with_invalid_format_version_03(self):
         # Define some valid json
@@ -137,11 +137,11 @@ class TestRoutes(unittest.TestCase):
                                     content_type='application/json')
 
         # Assert the HTTP status code (BAD request)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(400, response.status_code)
 
         # Assert the kind of error
         response_json = response.json
-        self.assertEqual(response_json, {'Unrecoverable error': 'Submission data is not in json format'})
+        self.assertEqual({'Unrecoverable error': 'Submission data is not in json format'}, response_json)
 
     def test_pck_happy_path(self):
 
@@ -182,4 +182,84 @@ class TestRoutes(unittest.TestCase):
                                     content_type='application/json')
 
         # Assert a 200
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(200, response.status_code)
+
+    def test_prepop_happy_path(self):
+
+        # Define some valid json
+        data = {
+            "10000000000": [
+                {
+                    "ruref": "10000000000",
+                    "luref": "1000000",
+                    "luname1": "STUBBS BUILDING PRODUCTS LTD",
+                    "luname2": "",
+                    "luname3": "",
+                    "luaddr1": "WELLINGTON ROAD",
+                    "luaddr2": "LOCHMABEN",
+                    "luaddr3": "SWINDON",
+                    "luaddr4": "BEDS",
+                    "luaddr5": "GLOS",
+                    "lupostcode": "DE41 2WA",
+                    "formtype": "01"
+                }
+            ],
+            "20000000000": [
+                {
+                    "ruref": "20000000000",
+                    "luref": "2000000",
+                    "luname1": "TUBBS",
+                    "luname2": "BATHROOM",
+                    "luname3": "PRODUCTS",
+                    "luaddr1": "IVORY ROAD",
+                    "luaddr2": "SNOWDONIA",
+                    "luaddr3": "WINDON",
+                    "luaddr4": "BEDS",
+                    "luaddr5": "HAMP",
+                    "lupostcode": "HA41 2WA",
+                    "formtype": "02"
+                },
+                {
+                    "ruref": "20000000000",
+                    "luref": "2000001",
+                    "luname1": "TUBBS BATHROOM PRODUCTS",
+                    "luname2": "LTD",
+                    "luname3": "",
+                    "luaddr1": "HAPPY STREET",
+                    "luaddr2": "CORNWALL",
+                    "luaddr3": "RUNDON",
+                    "luaddr4": "BEDS",
+                    "luaddr5": "GLOS",
+                    "lupostcode": "GL2X 5EF",
+                    "formtype": "02"
+                },
+                {
+                    "ruref": "20000000000",
+                    "luref": "2000002",
+                    "luname1": "TUBBS BATHROOM PRODUCTS",
+                    "luname2": "AND CO",
+                    "luname3": "",
+                    "luaddr1": "GRACE ROAD",
+                    "luaddr2": "DEVON",
+                    "luaddr3": "HAPPY",
+                    "luaddr4": "BEDS",
+                    "luaddr5": "GLOS",
+                    "lupostcode": "DE41 2XJ",
+                    "formtype": "02"
+                }
+            ]
+        }
+
+        # Define valid query params for 066
+        query_params = {
+            "survey_id": "066",
+        }
+
+        # Send a POST request with JSON body and query parameters
+        response = self.client.post('/prepop',
+                                    data=json.dumps(data),
+                                    query_string=query_params,
+                                    content_type='application/json')
+
+        # Assert a 200
+        self.assertEqual(200, response.status_code)
