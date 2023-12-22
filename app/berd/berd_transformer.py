@@ -15,6 +15,7 @@ logger = get_logger()
 def berd_to_spp(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PCK:
     berd_data: list[SPP] = convert_to_spp(collect_list_items(extract_answers(list_data)))
     berd_data_list: list[dict[str, str | int]] = [asdict(d) for d in berd_data]
+    # the SPP file should not contain prepended values and requires a transform for civil & defence
     data = remove_prepend_values(convert_civil_defence(berd_data_list))
 
     ru_ref = survey_metadata["ru_ref"]
@@ -33,5 +34,4 @@ def berd_to_spp(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
 def berd_to_image(list_data: ListCollector, _survey_metadata: SurveyMetadata) -> PCK:
     berd_data: list[SPP] = convert_to_spp(collect_list_items(extract_answers(list_data)))
     berd_data_list: list[dict[str, str | int]] = [asdict(d) for d in berd_data]
-    data = remove_prepend_values(convert_civil_defence(berd_data_list))
-    return json.dumps(data)
+    return json.dumps(berd_data_list)

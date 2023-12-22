@@ -9,7 +9,6 @@ from tests.integration.looped import read_submission_data
 class BerdTests(unittest.TestCase):
 
     def test_to_image(self):
-
         filepath = "tests/data/berd/002.0001.json"
         submission_data = read_submission_data(filepath)
 
