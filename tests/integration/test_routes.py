@@ -15,8 +15,6 @@ class TestRoutes(unittest.TestCase):
         # Create a test client for our SDX app
         cls.client = sdx_app.app.test_client()
 
-    
-
     def test_process_prepop_without_json(self):
 
         # Define some invalid data in the body
@@ -97,7 +95,7 @@ class TestRoutes(unittest.TestCase):
             "ru_ref": "123",
             "form_type": "123",
             "period_start_date": "123",
-            "period_end_date":"123",
+            "period_end_date": "123",
         }
 
         # Send a POST request with JSON body and query parameters
