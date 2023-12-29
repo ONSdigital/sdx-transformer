@@ -15,7 +15,9 @@ class TestRoutes(unittest.TestCase):
         # Create a test client for our SDX app
         cls.client = sdx_app.app.test_client()
 
-    def test_process_prepop_with_invalid_json(self):
+    
+
+    def test_process_prepop_without_json(self):
 
         # Define some invalid data in the body
         data = None
@@ -37,6 +39,29 @@ class TestRoutes(unittest.TestCase):
         # Assert the kind of error
         response_json = response.json
         self.assertEqual(response_json, {'Unrecoverable error': 'Data is not in json format'})
+
+    def test_prepop_with_bad_json(self):
+
+        # Define some json as a top level list
+        data = [
+            {"Item1": "Hi"}
+        ]
+
+        # Define a valid survey id
+        query_params = {
+            'survey_id': '066',
+        }
+
+        # Send a POST request with JSON body and query parameters
+        response = self.client.post('/prepop',
+                                    data=json.dumps(data),
+                                    query_string=query_params,
+                                    content_type='application/json')
+
+        # Assert the HTTP status code (BAD request)
+        self.assertEqual(400, response.status_code)
+        response_json = response.json
+        self.assertEqual(response_json, {'Unrecoverable error': 'Prepop data is not in correct format'})
 
     def test_process_prepop_without_a_survey_id(self):
         # Define some valid json
