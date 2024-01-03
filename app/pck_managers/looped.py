@@ -1,5 +1,6 @@
 from sdx_gcp.app import get_logger
 
+from app.berd.berd_transformer import berd_to_spp, berd_to_image
 from app.build_spec import get_build_spec, get_formatter, interpolate_build_spec
 from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
     ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
@@ -29,6 +30,15 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
     """
     Performs the steps required to transform looped data.
     """
+
+    # temporary solution for Berd --------------
+    if survey_metadata["survey_id"] == "002" and survey_metadata["form_type"] == "0001":
+        if use_image_formatter:
+            return berd_to_image(list_data, survey_metadata)
+        else:
+            return berd_to_spp(list_data, survey_metadata)
+    # ------------------------------------------
+
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
 
     full_tree: ParseTree = interpolate_build_spec(build_spec)
