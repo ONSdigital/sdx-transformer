@@ -25,6 +25,8 @@ def process_pck(req: Request, _tx_id: TX_ID):
 
     logger.info("Received Parameters", **survey_metadata)
 
+    use_image_formatter: bool = req.args.get("use_image_formatter", False, type=bool)
+
     for k, v in survey_metadata.items():
         if v == "":
             raise DataError(f"Missing required parameter {k} from request")
@@ -35,7 +37,9 @@ def process_pck(req: Request, _tx_id: TX_ID):
         submission_data: ListCollector = req.get_json(force=True, silent=True)
         if submission_data is None:
             raise DataError("Submission data is not in json format")
-        pck: PCK = get_looping(submission_data, survey_metadata)
+
+        pck: PCK = get_looping(submission_data, survey_metadata, use_image_formatter=use_image_formatter)
+
     else:
         submission_data: Data = req.get_json(force=True, silent=True)
         if submission_data is None:

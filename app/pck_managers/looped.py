@@ -1,10 +1,11 @@
 from sdx_gcp.app import get_logger
 
+from app.berd.berd_transformer import berd_to_spp, berd_to_image
 from app.build_spec import get_build_spec, get_formatter, interpolate_build_spec
 from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
     ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
-from app.formatters.formatter import Formatter
+from app.formatters.image_looping_formatter import ImageLoopingFormatter
 from app.formatters.looping_formatter import LoopingFormatter
 from app.formatters.spp_looping_formatter import SPPLoopingFormatter
 from app.transform.execute import execute
@@ -14,19 +15,30 @@ logger = get_logger()
 
 survey_mapping: dict[str, str] = {
     "001": "looping",
-    "999": "looping-spp"
+    "068": "qrt",
+    "999": "looping-spp",
 }
 
-formatter_mapping: dict[str, Formatter.__class__] = {
+formatter_mapping: dict[str, LoopingFormatter.__class__] = {
     "CORA": CORALoopingFormatter,
-    "SPP": SPPLoopingFormatter
+    "SPP": SPPLoopingFormatter,
+    "Image": ImageLoopingFormatter,
 }
 
 
-def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PCK:
+def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_image_formatter: bool = False) -> PCK:
     """
     Performs the steps required to transform looped data.
     """
+
+    # temporary solution for Berd --------------
+    if survey_metadata["survey_id"] == "002" and survey_metadata["form_type"] == "0001":
+        if use_image_formatter:
+            return berd_to_image(list_data, survey_metadata)
+        else:
+            return berd_to_spp(list_data, survey_metadata)
+    # ------------------------------------------
+
     build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
 
     full_tree: ParseTree = interpolate_build_spec(build_spec)
@@ -37,16 +49,24 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
     transformed_data_section: dict[str, Value] = execute(populated_tree)
     result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
-    formatter: LoopingFormatter = get_formatter(build_spec, formatter_mapping)
+    if use_image_formatter:
+        # reset the target in the build spec
+        bs: BuildSpec = build_spec.copy()
+        bs["target"] = "Image"
+        formatter: LoopingFormatter = get_formatter(bs, formatter_mapping)
+    else:
+        formatter: LoopingFormatter = get_formatter(build_spec, formatter_mapping)
 
-    looped_sections: dict[str, list[Data]] = looped_data['looped_sections']
-    for data_list in looped_sections.values():
+    formatter.set_original(list_data)
+
+    looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
+    for data_dict in looped_sections.values():
         instance_id = 1
-        for d in data_list:
+        for list_item_id, d in data_dict.items():
             populated_tree: ParseTree = populate_mappings(full_tree, d)
             transformed_data: dict[str, Value] = execute(populated_tree)
             result = {k: v for k, v in transformed_data.items() if v is not Empty}
-            formatter.create_or_update_instance(instance_id=str(instance_id), data=result)
+            formatter.create_or_update_instance(instance_id=str(instance_id), data=result, list_item_id=list_item_id)
             instance_id += 1
 
     return formatter.generate_pck(result_data, survey_metadata)
@@ -130,7 +150,7 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
     # ----- Step 1. Create our looped sections -----
 
     # Find the 'lists' section in the data, then assign each list.name to an empty list
-    looped_sections: dict[str, list[Data]] = {d['name']: [] for d in data['lists']}
+    looped_sections: dict[str, dict[str, Data]] = {d['name']: {} for d in data['lists']}
 
     for group in data['lists']:
 
@@ -142,7 +162,7 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
             # Fetch the data associated with this list_item_id and store
             d: Data = find_data(data, list_item_id)
 
-            looped_sections[name].append(d)
+            looped_sections[name][list_item_id] = d
 
     # ----- Step 2. Create the data section part of the loopedData -----
     data_section = find_data(data)

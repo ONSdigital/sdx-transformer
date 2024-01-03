@@ -1,0 +1,78 @@
+{
+  "formtype": "0006",
+  "reference": "12346789012",
+  "period": "23",
+  "survey": "002",
+  "responses": [
+    {
+      "questioncode": "101",
+      "response": "Yes, I can report for this period",
+      "instance": 0
+    },
+    {
+      "questioncode": "604",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "701",
+      "response": "34000",
+      "instance": 0
+    },
+    {
+      "questioncode": "702",
+      "response": "22000",
+      "instance": 0
+    },
+    {
+      "questioncode": "713",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "999",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "703",
+      "response": "18000",
+      "instance": 0
+    },
+    {
+      "questioncode": "704",
+      "response": "15000",
+      "instance": 0
+    },
+    {
+      "questioncode": "714",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "705",
+      "response": "23",
+      "instance": 0
+    },
+    {
+      "questioncode": "706",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "707",
+      "response": "2",
+      "instance": 0
+    },
+    {
+      "questioncode": "708",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "712",
+      "response": "Major changes!",
+      "instance": 0
+    }
+  ]
+}

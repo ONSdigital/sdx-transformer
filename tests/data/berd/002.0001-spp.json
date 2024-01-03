@@ -1,0 +1,873 @@
+{
+  "formtype": "0001",
+  "reference": "12346789012",
+  "period": "201605",
+  "survey": "002",
+  "responses": [
+    {
+      "questioncode": "101",
+      "response": "Yes, I can report for this period",
+      "instance": 0
+    },
+    {
+      "questioncode": "604",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "99991",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "201",
+      "response": "1 - Agriculture, hunting and forestry; fishing",
+      "instance": 1
+    },
+    {
+      "questioncode": "201",
+      "response": "2 - Mining and quarrying (including solids, liquids and gases)",
+      "instance": 2
+    },
+    {
+      "questioncode": "201",
+      "response": "3 - Food products and beverages",
+      "instance": 3
+    },
+    {
+      "questioncode": "201",
+      "response": "3 - Food products and beverages",
+      "instance": 4
+    },
+    {
+      "questioncode": "99992",
+      "response": "No",
+      "instance": 0
+    },
+    {
+      "questioncode": "200",
+      "response": "C",
+      "instance": 1
+    },
+    {
+      "questioncode": "202",
+      "response": "10000",
+      "instance": 1
+    },
+    {
+      "questioncode": "203",
+      "response": "5000",
+      "instance": 1
+    },
+    {
+      "questioncode": "222",
+      "response": "1000",
+      "instance": 1
+    },
+    {
+      "questioncode": "223",
+      "response": "4000",
+      "instance": 1
+    },
+    {
+      "questioncode": "205",
+      "response": "3000",
+      "instance": 1
+    },
+    {
+      "questioncode": "206",
+      "response": "4000",
+      "instance": 1
+    },
+    {
+      "questioncode": "207",
+      "response": "8000",
+      "instance": 1
+    },
+    {
+      "questioncode": "219",
+      "response": "2000",
+      "instance": 1
+    },
+    {
+      "questioncode": "220",
+      "response": "5000",
+      "instance": 1
+    },
+    {
+      "questioncode": "209",
+      "response": "3000",
+      "instance": 1
+    },
+    {
+      "questioncode": "221",
+      "response": "1000",
+      "instance": 1
+    },
+    {
+      "questioncode": "251",
+      "response": "Yes",
+      "instance": 1
+    },
+    {
+      "questioncode": "212",
+      "response": "10000",
+      "instance": 1
+    },
+    {
+      "questioncode": "214",
+      "response": "2000",
+      "instance": 1
+    },
+    {
+      "questioncode": "216",
+      "response": "2000",
+      "instance": 1
+    },
+    {
+      "questioncode": "242",
+      "response": "6000",
+      "instance": 1
+    },
+    {
+      "questioncode": "250",
+      "response": "5000",
+      "instance": 1
+    },
+    {
+      "questioncode": "243",
+      "response": "5000",
+      "instance": 1
+    },
+    {
+      "questioncode": "244",
+      "response": "3000",
+      "instance": 1
+    },
+    {
+      "questioncode": "245",
+      "response": "2000",
+      "instance": 1
+    },
+    {
+      "questioncode": "246",
+      "response": "10000",
+      "instance": 1
+    },
+    {
+      "questioncode": "247",
+      "response": "2500",
+      "instance": 1
+    },
+    {
+      "questioncode": "248",
+      "response": "1000",
+      "instance": 1
+    },
+    {
+      "questioncode": "249",
+      "response": "1500",
+      "instance": 1
+    },
+    {
+      "questioncode": "225",
+      "response": "2000",
+      "instance": 1
+    },
+    {
+      "questioncode": "2601",
+      "response": "3000",
+      "instance": 1
+    },
+    {
+      "questioncode": "2602",
+      "response": "5000",
+      "instance": 1
+    },
+    {
+      "questioncode": "228",
+      "response": "10000",
+      "instance": 1
+    },
+    {
+      "questioncode": "229",
+      "response": "2500",
+      "instance": 1
+    },
+    {
+      "questioncode": "237",
+      "response": "2500",
+      "instance": 1
+    },
+    {
+      "questioncode": "200",
+      "response": "D",
+      "instance": 2
+    },
+    {
+      "questioncode": "202",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "203",
+      "response": "500",
+      "instance": 2
+    },
+    {
+      "questioncode": "222",
+      "response": "200",
+      "instance": 2
+    },
+    {
+      "questioncode": "223",
+      "response": "300",
+      "instance": 2
+    },
+    {
+      "questioncode": "205",
+      "response": "500",
+      "instance": 2
+    },
+    {
+      "questioncode": "206",
+      "response": "500",
+      "instance": 2
+    },
+    {
+      "questioncode": "207",
+      "response": "500",
+      "instance": 2
+    },
+    {
+      "questioncode": "219",
+      "response": "5000",
+      "instance": 2
+    },
+    {
+      "questioncode": "220",
+      "response": "2000",
+      "instance": 2
+    },
+    {
+      "questioncode": "209",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "221",
+      "response": "200",
+      "instance": 2
+    },
+    {
+      "questioncode": "251",
+      "response": "Yes",
+      "instance": 2
+    },
+    {
+      "questioncode": "212",
+      "response": "500",
+      "instance": 2
+    },
+    {
+      "questioncode": "214",
+      "response": "2000",
+      "instance": 2
+    },
+    {
+      "questioncode": "216",
+      "response": "2000",
+      "instance": 2
+    },
+    {
+      "questioncode": "242",
+      "response": "2000",
+      "instance": 2
+    },
+    {
+      "questioncode": "250",
+      "response": "3000",
+      "instance": 2
+    },
+    {
+      "questioncode": "243",
+      "response": "500",
+      "instance": 2
+    },
+    {
+      "questioncode": "244",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "245",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "246",
+      "response": "2000",
+      "instance": 2
+    },
+    {
+      "questioncode": "247",
+      "response": "2000",
+      "instance": 2
+    },
+    {
+      "questioncode": "248",
+      "response": "1500",
+      "instance": 2
+    },
+    {
+      "questioncode": "249",
+      "response": "1500",
+      "instance": 2
+    },
+    {
+      "questioncode": "225",
+      "response": "500",
+      "instance": 2
+    },
+    {
+      "questioncode": "2601",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "2602",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "228",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "229",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "237",
+      "response": "5000",
+      "instance": 2
+    },
+    {
+      "questioncode": "200",
+      "response": "C",
+      "instance": 3
+    },
+    {
+      "questioncode": "200",
+      "response": "D",
+      "instance": 4
+    },
+    {
+      "questioncode": "202",
+      "response": "5000",
+      "instance": 3
+    },
+    {
+      "questioncode": "203",
+      "response": "3000",
+      "instance": 3
+    },
+    {
+      "questioncode": "222",
+      "response": "1500",
+      "instance": 3
+    },
+    {
+      "questioncode": "223",
+      "response": "1500",
+      "instance": 3
+    },
+    {
+      "questioncode": "205",
+      "response": "2000",
+      "instance": 3
+    },
+    {
+      "questioncode": "206",
+      "response": "2000",
+      "instance": 3
+    },
+    {
+      "questioncode": "207",
+      "response": "4000",
+      "instance": 3
+    },
+    {
+      "questioncode": "219",
+      "response": "2000",
+      "instance": 3
+    },
+    {
+      "questioncode": "220",
+      "response": "2000",
+      "instance": 3
+    },
+    {
+      "questioncode": "209",
+      "response": "3000",
+      "instance": 3
+    },
+    {
+      "questioncode": "221",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "251",
+      "response": "Yes",
+      "instance": 3
+    },
+    {
+      "questioncode": "212",
+      "response": "5000",
+      "instance": 3
+    },
+    {
+      "questioncode": "214",
+      "response": "5000",
+      "instance": 3
+    },
+    {
+      "questioncode": "216",
+      "response": "1500",
+      "instance": 3
+    },
+    {
+      "questioncode": "242",
+      "response": "1500",
+      "instance": 3
+    },
+    {
+      "questioncode": "250",
+      "response": "2000",
+      "instance": 3
+    },
+    {
+      "questioncode": "243",
+      "response": "5000",
+      "instance": 3
+    },
+    {
+      "questioncode": "244",
+      "response": "5000",
+      "instance": 3
+    },
+    {
+      "questioncode": "245",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "246",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "247",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "248",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "249",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "225",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "2601",
+      "response": "1000",
+      "instance": 3
+    },
+    {
+      "questioncode": "2602",
+      "response": "10000",
+      "instance": 3
+    },
+    {
+      "questioncode": "228",
+      "response": "500",
+      "instance": 3
+    },
+    {
+      "questioncode": "229",
+      "response": "500",
+      "instance": 3
+    },
+    {
+      "questioncode": "237",
+      "response": "2000",
+      "instance": 3
+    },
+    {
+      "questioncode": "202",
+      "response": "3000",
+      "instance": 4
+    },
+    {
+      "questioncode": "203",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "222",
+      "response": "200",
+      "instance": 4
+    },
+    {
+      "questioncode": "223",
+      "response": "800",
+      "instance": 4
+    },
+    {
+      "questioncode": "205",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "206",
+      "response": "2000",
+      "instance": 4
+    },
+    {
+      "questioncode": "207",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "219",
+      "response": "500",
+      "instance": 4
+    },
+    {
+      "questioncode": "220",
+      "response": "500",
+      "instance": 4
+    },
+    {
+      "questioncode": "209",
+      "response": "200",
+      "instance": 4
+    },
+    {
+      "questioncode": "221",
+      "response": "100",
+      "instance": 4
+    },
+    {
+      "questioncode": "251",
+      "response": "Yes",
+      "instance": 4
+    },
+    {
+      "questioncode": "212",
+      "response": "200",
+      "instance": 4
+    },
+    {
+      "questioncode": "214",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "216",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "242",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "250",
+      "response": "2000",
+      "instance": 4
+    },
+    {
+      "questioncode": "243",
+      "response": "200",
+      "instance": 4
+    },
+    {
+      "questioncode": "244",
+      "response": "500",
+      "instance": 4
+    },
+    {
+      "questioncode": "245",
+      "response": "500",
+      "instance": 4
+    },
+    {
+      "questioncode": "246",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "247",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "248",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "249",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "225",
+      "response": "200",
+      "instance": 4
+    },
+    {
+      "questioncode": "2601",
+      "response": "800",
+      "instance": 4
+    },
+    {
+      "questioncode": "2602",
+      "response": "200",
+      "instance": 4
+    },
+    {
+      "questioncode": "228",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "229",
+      "response": "1000",
+      "instance": 4
+    },
+    {
+      "questioncode": "237",
+      "response": "2000",
+      "instance": 4
+    },
+    {
+      "questioncode": "99993",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "301",
+      "response": "1 - Agriculture, hunting and forestry; fishing",
+      "instance": 1
+    },
+    {
+      "questioncode": "301",
+      "response": "4 - Tobacco",
+      "instance": 2
+    },
+    {
+      "questioncode": "99994",
+      "response": "No",
+      "instance": 0
+    },
+    {
+      "questioncode": "300",
+      "response": "C",
+      "instance": 1
+    },
+    {
+      "questioncode": "302",
+      "response": "1000",
+      "instance": 1
+    },
+    {
+      "questioncode": "307",
+      "response": "Yes",
+      "instance": 1
+    },
+    {
+      "questioncode": "303",
+      "response": "500",
+      "instance": 1
+    },
+    {
+      "questioncode": "308",
+      "response": "Yes",
+      "instance": 1
+    },
+    {
+      "questioncode": "304",
+      "response": "100",
+      "instance": 1
+    },
+    {
+      "questioncode": "309",
+      "response": "Yes",
+      "instance": 1
+    },
+    {
+      "questioncode": "300",
+      "response": "D",
+      "instance": 2
+    },
+    {
+      "questioncode": "302",
+      "response": "200",
+      "instance": 2
+    },
+    {
+      "questioncode": "307",
+      "response": "Yes",
+      "instance": 2
+    },
+    {
+      "questioncode": "303",
+      "response": "1000",
+      "instance": 2
+    },
+    {
+      "questioncode": "308",
+      "response": "Yes",
+      "instance": 2
+    },
+    {
+      "questioncode": "304",
+      "response": "200",
+      "instance": 2
+    },
+    {
+      "questioncode": "309",
+      "response": "Yes",
+      "instance": 2
+    },
+    {
+      "questioncode": "501",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "502",
+      "response": "20",
+      "instance": 0
+    },
+    {
+      "questioncode": "503",
+      "response": "20",
+      "instance": 0
+    },
+    {
+      "questioncode": "504",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "505",
+      "response": "30",
+      "instance": 0
+    },
+    {
+      "questioncode": "506",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "405",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "406",
+      "response": "20",
+      "instance": 0
+    },
+    {
+      "questioncode": "407",
+      "response": "20",
+      "instance": 0
+    },
+    {
+      "questioncode": "408",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "409",
+      "response": "30",
+      "instance": 0
+    },
+    {
+      "questioncode": "410",
+      "response": "30",
+      "instance": 0
+    },
+    {
+      "questioncode": "601",
+      "response": "PL31 1PN",
+      "instance": 1
+    },
+    {
+      "questioncode": "997",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "601",
+      "response": "PO2 1ZZ",
+      "instance": 2
+    },
+    {
+      "questioncode": "996",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "601",
+      "response": "ZX1 1PP",
+      "instance": 3
+    },
+    {
+      "questioncode": "995",
+      "response": "No",
+      "instance": 0
+    },
+    {
+      "questioncode": "602",
+      "response": "20",
+      "instance": 1
+    },
+    {
+      "questioncode": "602",
+      "response": "20",
+      "instance": 2
+    },
+    {
+      "questioncode": "602",
+      "response": "60",
+      "instance": 3
+    },
+    {
+      "questioncode": "708",
+      "response": "Yes",
+      "instance": 0
+    },
+    {
+      "questioncode": "712",
+      "response": "Here is a comment, what an amazing survey",
+      "instance": 0
+    }
+  ]
+}

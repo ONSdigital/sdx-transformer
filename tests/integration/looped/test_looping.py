@@ -18,23 +18,23 @@ class LoopingTests(unittest.TestCase):
 
         expected: LoopedData = {
             "looped_sections": {
-                "people": [
-                    {
+                "people": {
+                    "zGBdpb": {
                         "1": "John",
                         "2": "Doe",
                         "9": "35"
                     },
-                    {
+                    "cWGwcF": {
                         "1": "Marie",
                         "2": "Doe",
                         "9": "29"
                     },
-                ],
-                "pets": [
-                    {
+                },
+                "pets": {
+                    "aTKweq": {
                         "8": "Dog",  # Pet species
                     },
-                ]
+                }
             },
 
             "data_section": {

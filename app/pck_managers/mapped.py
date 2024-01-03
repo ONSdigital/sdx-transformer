@@ -8,12 +8,14 @@ from app.formatters.cs_formatter import CSFormatter
 from app.formatters.formatter import Formatter
 from app.formatters.json_formatter import JSONFormatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
+from app.formatters.spp_formatter import SPPFormatter
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
 survey_mapping: dict[str, str] = {
+    "002": "berd",
     "009": "mbs",
     "017": "stocks",
     "019": "qcas",
@@ -47,6 +49,7 @@ formatter_mapping: dict[str, Formatter.__class__] = {
     "CORA_MES": MESFormatter,
     "CS": CSFormatter,
     "OpenROAD": OpenRoadFormatter,
+    "SPP": SPPFormatter,
     "JSON": JSONFormatter,
 }
 

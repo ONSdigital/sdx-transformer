@@ -9,9 +9,11 @@ class CORALoopingFormatter(CORAFormatter, LoopingFormatter):
 
         pck_lines: list[str] = self._pck_lines(data_section, metadata)
 
-        for instance_id, data in self._instances.items():
-            self.instance = instance_id
-            pck_lines.extend(self._pck_lines(data, metadata))
+        for instance_id, instance_data_list in self._instances.items():
+            for instance_data in instance_data_list:
+                self.instance = instance_id
+                data: dict[str, Value] = instance_data["data"]
+                pck_lines.extend(self._pck_lines(data, metadata))
 
         output = "\n".join(pck_lines)
         return output + "\n"
