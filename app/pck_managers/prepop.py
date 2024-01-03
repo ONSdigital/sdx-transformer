@@ -29,6 +29,10 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
     parse_tree: ParseTree = interpolate_build_spec(build_spec)
 
     result: dict[Identifier: Template] = {}
+
+    if not isinstance(prepop_data, dict):
+        raise DataError("Prepop data is not in correct format")
+
     for ru_ref, data_list in prepop_data.items():
         items: list[Template] = []
         for data in data_list:

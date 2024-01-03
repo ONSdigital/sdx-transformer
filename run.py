@@ -1,7 +1,6 @@
 from app import sdx_app
-from app.routes import process_pck, process_prepop
+from app.routes import init_routes
 
 if __name__ == '__main__':
-    sdx_app.add_post_endpoint(process_pck, rule="/pck")
-    sdx_app.add_post_endpoint(process_prepop, rule="/prepop")
+    init_routes(sdx_app)
     sdx_app.run(port=5000)

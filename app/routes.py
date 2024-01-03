@@ -1,5 +1,5 @@
 from sdx_gcp import Request, Flask, TX_ID
-from sdx_gcp.app import get_logger
+from sdx_gcp.app import get_logger, SdxApp
 from sdx_gcp.errors import DataError
 
 from app.definitions import PrepopData, Identifier, Template, PCK, Data, SurveyMetadata, ListCollector
@@ -64,3 +64,8 @@ def process_prepop(req: Request, _tx_id: TX_ID):
 
     result: dict[Identifier: Template] = get_prepop(prepop_data, survey_id)
     return Flask.jsonify(result)
+
+
+def init_routes(app: SdxApp):
+    app.add_post_endpoint(process_pck, rule="/pck")
+    app.add_post_endpoint(process_prepop, rule="/prepop")
