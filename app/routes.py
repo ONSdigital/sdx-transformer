@@ -25,7 +25,8 @@ def process_pck(req: Request, _tx_id: TX_ID):
 
     logger.info("Received Parameters", **survey_metadata)
 
-    use_image_formatter: bool = req.args.get("use_image_formatter", False, type=bool)
+    use_image_formatter: bool = req.args.get("use_image_formatter", "False").upper() == "TRUE"
+
     if use_image_formatter:
         logger.info("Using image transformer")
     else:
