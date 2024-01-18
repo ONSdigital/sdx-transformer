@@ -10,7 +10,7 @@ template:
         local-units:
             -   identifier: "#luref"
                 name: "$CONCAT"
-                address: [ "#luaddr1", "#luaddr2", "#luaddr3", "#luaddr4", "#luaddr5" ]
+                address: "$ADDRESS_LIST"
 transforms:
     CONCAT:
         name: "CONCAT"
@@ -18,3 +18,7 @@ transforms:
             value: "#luname1"
             values: [ "#luname2", "#luname3" ]
             seperator: " "
+    ADDRESS_LIST:
+        name: "TRIM_LIST"
+        args:
+            values: [ "#tradstyle1", "#tradstyle2", "#luaddr1", "#luaddr2", "#luaddr3", "#luaddr4", "#luaddr5", "#lupostcode" ]

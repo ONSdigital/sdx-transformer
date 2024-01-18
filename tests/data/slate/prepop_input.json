@@ -12,6 +12,8 @@
       "luaddr4": "BEDS",
       "luaddr5": "GLOS",
       "lupostcode": "DE41 2WA",
+      "tradstyle1": "STUBBS",
+      "tradstyle2": "SWINDON BRANCH",
       "formtype": "01"
     }
   ],
@@ -24,10 +26,12 @@
       "luname3": "PRODUCTS",
       "luaddr1": "IVORY ROAD",
       "luaddr2": "SNOWDONIA",
-      "luaddr3": "WINDON",
+      "luaddr3": "",
       "luaddr4": "BEDS",
       "luaddr5": "HAMP",
       "lupostcode": "HA41 2WA",
+      "tradstyle1": "TUBBIES",
+      "tradstyle2": "",
       "formtype": "02"
     },
     {
@@ -40,8 +44,10 @@
       "luaddr2": "CORNWALL",
       "luaddr3": "RUNDON",
       "luaddr4": "BEDS",
-      "luaddr5": "GLOS",
+      "luaddr5": "",
       "lupostcode": "GL2X 5EF",
+      "tradstyle1": "",
+      "tradstyle2": "",
       "formtype": "02"
     },
     {
@@ -52,10 +58,12 @@
       "luname3": "",
       "luaddr1": "GRACE ROAD",
       "luaddr2": "DEVON",
-      "luaddr3": "HAPPY",
-      "luaddr4": "BEDS",
+      "luaddr3": "",
+      "luaddr4": "",
       "luaddr5": "GLOS",
       "lupostcode": "DE41 2XJ",
+      "tradstyle1": "TUBBS SOUTHWEST",
+      "tradstyle2": "BEST BATHROOMS",
       "formtype": "02"
     }
   ]

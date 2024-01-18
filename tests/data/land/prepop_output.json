@@ -8,11 +8,14 @@
           "identifier": "1000000",
           "name": "STUBBS BUILDING PRODUCTS LTD",
           "address": [
+            "STUBBS",
+            "SWINDON BRANCH",
             "WELLINGTON ROAD",
             "LOCHMABEN",
             "SWINDON",
             "BEDS",
-            "GLOS"
+            "GLOS",
+            "DE41 2WA"
           ]
         }
       ]
@@ -27,11 +30,12 @@
           "identifier": "2000000",
           "name": "TUBBS BATHROOM PRODUCTS",
           "address": [
+            "TUBBIES",
             "IVORY ROAD",
             "SNOWDONIA",
-            "WINDON",
             "BEDS",
-            "HAMP"
+            "HAMP",
+            "HA41 2WA"
           ]
         },
         {
@@ -42,18 +46,19 @@
             "CORNWALL",
             "RUNDON",
             "BEDS",
-            "GLOS"
+            "GL2X 5EF"
           ]
         },
         {
           "identifier": "2000002",
           "name": "TUBBS BATHROOM PRODUCTS AND CO",
           "address": [
+            "TUBBS SOUTHWEST",
+            "BEST BATHROOMS",
             "GRACE ROAD",
             "DEVON",
-            "HAPPY",
-            "BEDS",
-            "GLOS"
+            "GLOS",
+            "DE41 2XJ"
           ]
         }
       ]

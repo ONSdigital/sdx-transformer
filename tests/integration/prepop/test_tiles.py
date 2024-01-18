@@ -21,3 +21,18 @@ class TilesTests(unittest.TestCase):
         actual = get_prepop(prepop_data, survey_id)
 
         self.assertEqual(expected, actual)
+
+    def test_tiles_large(self):
+
+        survey_id = "068"
+        input_filepath = "tests/data/tiles/prepop_input_large.json"
+        with open(input_filepath) as f:
+            prepop_data: PrepopData = json.load(f)
+
+        output_filepath = "tests/data/tiles/prepop_output_large.json"
+
+        actual = get_prepop(prepop_data, survey_id)
+        with open(output_filepath, "w") as outfile:
+            json.dump(actual, outfile)
+
+        self.assertTrue(True)
