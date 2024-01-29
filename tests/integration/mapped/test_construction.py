@@ -138,3 +138,22 @@ class ConstructionPckTests(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
+
+    def test_0001_different_reporting_period_to_pck(self):
+        filepath = "tests/data/construction/228.0001.reporting.period.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "228",
+            "period_id": "2401",
+            "ru_ref": "12345678901A",
+            "form_type": "0001",
+            "period_start_date": "2024-01-01",
+            "period_end_date": "2024-01-31",
+        }
+        actual: PCK = get_pck(submission_data, survey_metadata)
+        pck_filepath = "tests/data/construction/228.0001.reporting.period.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertTrue(are_equal(expected, actual))
