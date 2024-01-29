@@ -1,4 +1,5 @@
 from sdx_gcp.app import get_logger
+from sdx_gcp.errors import DataError
 
 from app.berd.berd_transformer import berd_to_spp, berd_to_image
 from app.build_spec import get_build_spec, get_formatter, interpolate_build_spec
@@ -30,46 +31,51 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
     """
     Performs the steps required to transform looped data.
     """
+    try:
 
-    # temporary solution for Berd --------------
-    if survey_metadata["survey_id"] == "002" and survey_metadata["form_type"] == "0001":
+        # temporary solution for Berd --------------
+        if survey_metadata["survey_id"] == "002" and survey_metadata["form_type"] == "0001":
+            if use_image_formatter:
+                return berd_to_image(list_data, survey_metadata)
+            else:
+                return berd_to_spp(list_data, survey_metadata)
+        # ------------------------------------------
+
+        build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
+
+        full_tree: ParseTree = interpolate_build_spec(build_spec)
+        looped_data: LoopedData = convert_to_looped_data(list_data)
+
+        data_section: Data = looped_data['data_section']
+        populated_tree: ParseTree = populate_mappings(full_tree, data_section)
+        transformed_data_section: dict[str, Value] = execute(populated_tree)
+        result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
+
         if use_image_formatter:
-            return berd_to_image(list_data, survey_metadata)
+            # reset the target in the build spec
+            bs: BuildSpec = build_spec.copy()
+            bs["target"] = "Image"
+            formatter: LoopingFormatter = get_formatter(bs, formatter_mapping)
         else:
-            return berd_to_spp(list_data, survey_metadata)
-    # ------------------------------------------
+            formatter: LoopingFormatter = get_formatter(build_spec, formatter_mapping)
 
-    build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
+        formatter.set_original(list_data)
 
-    full_tree: ParseTree = interpolate_build_spec(build_spec)
-    looped_data: LoopedData = convert_to_looped_data(list_data)
+        looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
 
-    data_section: Data = looped_data['data_section']
-    populated_tree: ParseTree = populate_mappings(full_tree, data_section)
-    transformed_data_section: dict[str, Value] = execute(populated_tree)
-    result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
+        for data_dict in looped_sections.values():
+            instance_id = 1
+            for list_item_id, d in data_dict.items():
+                populated_tree: ParseTree = populate_mappings(full_tree, d)
+                transformed_data: dict[str, Value] = execute(populated_tree)
+                result = {k: v for k, v in transformed_data.items() if v is not Empty}
+                formatter.create_or_update_instance(instance_id=str(instance_id), data=result, list_item_id=list_item_id)
+                instance_id += 1
 
-    if use_image_formatter:
-        # reset the target in the build spec
-        bs: BuildSpec = build_spec.copy()
-        bs["target"] = "Image"
-        formatter: LoopingFormatter = get_formatter(bs, formatter_mapping)
-    else:
-        formatter: LoopingFormatter = get_formatter(build_spec, formatter_mapping)
+        return formatter.generate_pck(result_data, survey_metadata)
 
-    formatter.set_original(list_data)
-
-    looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
-    for data_dict in looped_sections.values():
-        instance_id = 1
-        for list_item_id, d in data_dict.items():
-            populated_tree: ParseTree = populate_mappings(full_tree, d)
-            transformed_data: dict[str, Value] = execute(populated_tree)
-            result = {k: v for k, v in transformed_data.items() if v is not Empty}
-            formatter.create_or_update_instance(instance_id=str(instance_id), data=result, list_item_id=list_item_id)
-            instance_id += 1
-
-    return formatter.generate_pck(result_data, survey_metadata)
+    except KeyError as ke:
+        raise DataError(ke)
 
 
 def set_data_value(d: Data, qcode: str, value: str):
