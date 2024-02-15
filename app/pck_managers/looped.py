@@ -16,6 +16,7 @@ logger = get_logger()
 
 survey_mapping: dict[str, str] = {
     "001": "looping",
+    "066": "qsl",
     "068": "qrt",
     "999": "looping-spp",
 }
@@ -75,6 +76,7 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
         return formatter.generate_pck(result_data, survey_metadata)
 
     except KeyError as ke:
+        logger.error(f'Missing required key!: {str(ke)}')
         raise DataError(ke)
 
 
@@ -102,8 +104,9 @@ def get_qcode(answer_id: str, answer_value: str, data: ListCollector) -> str:
     is usually for answers that have multiple values, such as a checkbox
     """
     for ac in data['answer_codes']:
-        if ac['answer_id'] == answer_id and answer_value == ac['answer_value']:
-            return ac['code']
+        if ac['answer_id'] == answer_id:
+            if 'answer_value' not in ac or answer_value == ac['answer_value']:
+                return ac['code']
 
 
 def find_data(data: ListCollector, list_item_id=None) -> Data:

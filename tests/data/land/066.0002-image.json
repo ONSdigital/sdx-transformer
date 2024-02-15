@@ -1,0 +1,112 @@
+[
+  {
+    "questioncode": "601",
+    "response": "",
+    "instance": 0
+  },
+  {
+    "questioncode": "602",
+    "response": "",
+    "instance": 0
+  },
+  {
+    "questioncode": "603",
+    "response": "",
+    "instance": 0
+  },
+  {
+    "questioncode": "604",
+    "response": "",
+    "instance": 0
+  },
+  {
+    "questioncode": "605",
+    "response": "",
+    "instance": 0
+  },
+  {
+    "questioncode": "606",
+    "response": "",
+    "instance": 0
+  },
+  {
+    "questioncode": "607",
+    "response": "",
+    "instance": 0
+  },
+  {
+    "questioncode": "608",
+    "response": "0",
+    "instance": 0
+  },
+  {
+    "questioncode": "147",
+    "response": "2",
+    "instance": 0
+  },
+  {
+    "questioncode": "146",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "601",
+    "response": "1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "602",
+    "response": "1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "603",
+    "response": "1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "604",
+    "response": "1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "605",
+    "response": "1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "606",
+    "response": "1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "607",
+    "response": "1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "608",
+    "response": "7",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "147",
+    "response": "2",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "146",
+    "response": "2",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  }
+]
