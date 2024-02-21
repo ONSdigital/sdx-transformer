@@ -35,8 +35,6 @@ class QslTests(unittest.TestCase):
         expected.sort(key=lambda i: i['instance'])
         actual.sort(key=lambda i: i['instance'])
 
-        print(json.dumps(actual))
-
         self.assertEqual(expected, actual)
 
     def test_to_cs_pck(self):

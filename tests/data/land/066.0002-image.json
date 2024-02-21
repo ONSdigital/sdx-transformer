@@ -1,55 +1,47 @@
 [
   {
-    "questioncode": "146",
-    "response": "Lorem ipsum",
-    "instance": 0
-  },
-  {
     "questioncode": "999",
     "response": "Sand - Gravel, Pebbles, Shingle, Flint - Sand and gravel used for constructional fill",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
   },
   {
     "questioncode": "601",
     "response": "1",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
   },
   {
     "questioncode": "602",
     "response": "1",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
   },
   {
     "questioncode": "603",
     "response": "1",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
   },
   {
     "questioncode": "604",
     "response": "1",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
   },
   {
     "questioncode": "605",
     "response": "1",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
   },
   {
     "questioncode": "606",
     "response": "1",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
   },
   {
     "questioncode": "607",
     "response": "1",
-    "instance": 1,
-    "sd_identifier": "3340224"
+    "instance": 0
+  },
+  {
+    "questioncode": "146",
+    "response": "Lorem ipsum",
+    "instance": 0
   }
 ]

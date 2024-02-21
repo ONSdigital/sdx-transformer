@@ -44,14 +44,8 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
                 return berd_to_spp(list_data, survey_metadata)
         # ------------------------------------------
 
-        if use_image_formatter:
-            build_spec: BuildSpec = get_image_spec(list_data, survey_metadata["survey_id"])
-        else:
-            build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
-
-        full_tree: ParseTree = interpolate_build_spec(build_spec)
+        build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
         looped_data: LoopedData = convert_to_looped_data(list_data)
-
         data_section: Data = looped_data['data_section']
 
         # CS can only handle one instance. Therefore, convert all looped data back into 'regular' data
@@ -63,6 +57,10 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
                 for data in item_dict.values():
                     data_section.update(data)
 
+        if use_image_formatter:
+            build_spec: BuildSpec = get_image_spec(list_data, survey_metadata["survey_id"])
+
+        full_tree: ParseTree = interpolate_build_spec(build_spec)
         populated_tree: ParseTree = populate_mappings(full_tree, data_section)
         transformed_data_section: dict[str, Value] = execute(populated_tree)
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
