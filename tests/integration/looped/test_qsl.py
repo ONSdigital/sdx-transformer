@@ -27,13 +27,13 @@ class QslTests(unittest.TestCase):
             survey_metadata,
             use_image_formatter=True))
 
-        # image_filepath = "tests/data/land/066.0002-image.json"
-        # with open(image_filepath) as f:
-        #     expected: list[ImageResponse] = json.load(f)
-        #
-        # expected.sort(key=lambda i: i['instance'])
-        # actual.sort(key=lambda i: i['instance'])
-        #
+        image_filepath = "tests/data/land/066.0002-image.json"
+        with open(image_filepath) as f:
+            expected: list[ImageResponse] = json.load(f)
+
+        expected.sort(key=lambda i: i['instance'])
+        actual.sort(key=lambda i: i['instance'])
+
         print(json.dumps(actual))
-        #
-        # self.assertEqual(expected, actual)
+
+        self.assertEqual(expected, actual)
