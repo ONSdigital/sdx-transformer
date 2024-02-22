@@ -19,6 +19,7 @@ survey_mapping: dict[str, str] = {
     "001": "looping",
     "066": "qsl",
     "068": "qrt",
+    "076": "qsm",
     "999": "looping-spp",
 }
 
@@ -57,6 +58,7 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
                 for data in item_dict.values():
                     data_section.update(data)
 
+        # for images use a fake build spec that maps all answers without transform
         if use_image_formatter:
             build_spec: BuildSpec = get_image_spec(list_data, survey_metadata["survey_id"])
 

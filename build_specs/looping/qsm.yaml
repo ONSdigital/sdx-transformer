@@ -1,4 +1,4 @@
-"title": "Build Spec for marine survey"
+"title": "Build Spec for Marine survey"
 "survey_id": "076"
 "target": "CS"
 "period_format": "YYYYMM"
@@ -30,8 +30,8 @@
               "on_false": "2"
     "TOTAL":
           "name": "TOTAL"
-          "args": {
-              "value": "0",
+          "args":
+              "value": "0"
               "values": [
                     "&601",
                     "&602",
@@ -41,4 +41,3 @@
                     "&606",
                     "&607",
               ]
-          }
