@@ -22,7 +22,7 @@ class QrtTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: list[ImageResponse] = json.loads(get_looping(submission_data, survey_metadata))
+        actual: list[ImageResponse] = json.loads(get_looping(submission_data, survey_metadata, use_image_formatter=True))
 
         spp_filepath = "tests/data/tiles/068-image.json"
         with open(spp_filepath) as f:
@@ -30,7 +30,5 @@ class QrtTests(unittest.TestCase):
 
         expected.sort(key=lambda i: i['instance'])
         actual.sort(key=lambda i: i['instance'])
-
-        print(json.dumps(actual))
 
         self.assertEqual(expected, actual)
