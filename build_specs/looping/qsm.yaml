@@ -19,7 +19,7 @@
           "name": "EXISTS"
           "args":
               "on_true": "$VALUE"
-              "on_false": ""
+              "on_false": null
     "VALUE":
           "name": "VALUE"
           "args": {}
