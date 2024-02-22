@@ -147,7 +147,7 @@ def find_data(data: ListCollector, list_item_id=None) -> Data:
                 for v in answer_value:
                     qcode: str = get_qcode(answer['answer_id'], v, data)
                     if qcode in list_value_mapping:
-                        list_value_mapping[qcode] = f'{list_value_mapping[qcode]} - {v}'
+                        list_value_mapping[qcode] = f'{list_value_mapping[qcode]}\n{v}'
                     else:
                         list_value_mapping[qcode] = v
 
