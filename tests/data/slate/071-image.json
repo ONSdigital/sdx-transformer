@@ -1,0 +1,148 @@
+[
+  {
+    "questioncode": "9999",
+    "response": "Slate for roofing\nSlate for cladding and other decorative uses based on sawn slabs\nSlate for powder and granules\nSlate for crude blocks\nSlate waste, for fill and other uses",
+    "instance": 0
+  },
+  {
+    "questioncode": "9997",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9996",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9995",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9994",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9993",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9992",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9991",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9990",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9989",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9988",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9987",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9986",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9985",
+    "response": "1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9984",
+    "response": "Item 1",
+    "instance": 0
+  },
+  {
+    "questioncode": "9982",
+    "response": "Yes",
+    "instance": 0
+  },
+  {
+    "questioncode": "9978",
+    "response": "No",
+    "instance": 0
+  },
+  {
+    "questioncode": "147",
+    "response": "Lorem ipsum",
+    "instance": 0
+  },
+  {
+    "questioncode": "9983",
+    "response": "Item 1",
+    "instance": 1,
+    "sd_identifier": "3340224"
+  },
+  {
+    "questioncode": "9981",
+    "response": "New stufff",
+    "instance": 1
+  },
+  {
+    "questioncode": "9980",
+    "response": "1",
+    "instance": 1
+  },
+  {
+    "questioncode": "9979",
+    "response": "2020-01-01",
+    "instance": 1
+  },
+  {
+    "questioncode": "9977",
+    "response": "Item 1",
+    "instance": 1
+  },
+  {
+    "questioncode": "9976",
+    "response": "Address Line 1 Item 1",
+    "instance": 1
+  },
+  {
+    "questioncode": "9975",
+    "response": "Address Line 2 Item 1",
+    "instance": 1
+  },
+  {
+    "questioncode": "9974",
+    "response": "Address Line 3 Item 1",
+    "instance": 1
+  },
+  {
+    "questioncode": "9973",
+    "response": "Address Line 4 Item 1",
+    "instance": 1
+  },
+  {
+    "questioncode": "9972",
+    "response": "Address Line 5 Item 1",
+    "instance": 1
+  },
+  {
+    "questioncode": "9971",
+    "response": "Postcode Item 1",
+    "instance": 1
+  }
+]

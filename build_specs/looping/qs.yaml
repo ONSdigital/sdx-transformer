@@ -1,0 +1,6 @@
+title: "Build spec for Slate"
+survey_id: "071"
+target: "Image"
+period_format: "YYYYMM"
+template: {}
+transforms: {}

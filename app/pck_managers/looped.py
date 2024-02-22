@@ -19,6 +19,7 @@ survey_mapping: dict[str, str] = {
     "001": "looping",
     "066": "qsl",
     "068": "qrt",
+    "071": "qs",
     "076": "qsm",
     "999": "looping-spp",
 }
