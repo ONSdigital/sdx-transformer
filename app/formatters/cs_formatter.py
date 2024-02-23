@@ -1,4 +1,4 @@
-from app.definitions import SurveyMetadata, Value, PCK
+from app.definitions import SurveyMetadata, Value
 from app.formatters.formatter import Formatter
 
 
@@ -12,6 +12,7 @@ class CSFormatter(Formatter):
         return self._pck_header(metadata) + self._pck_content(data)
 
     def _pck_header(self, metadata: SurveyMetadata) -> list[str]:
+        """Generate the header section for the pck as a list of strings"""
         return [
             "FV" + " " * 10,
             self._pck_form_header(metadata),
@@ -28,6 +29,7 @@ class CSFormatter(Formatter):
         return f"{form_type}:{ru_ref}{ru_check}:{period}"
 
     def _pck_content(self, data: dict[str, Value]) -> list[str]:
+        """Generate the contents of a pck file as a list of strings"""
         return [
             self._pck_item(q, a) for q, a in sorted(
                 {int(k): int(v) for k, v in data.items() if v is not None}.items()
