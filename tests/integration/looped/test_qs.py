@@ -6,15 +6,15 @@ from app.pck_managers.looped import get_looping
 from tests.integration.looped import read_submission_data
 
 
-class QrtTests(unittest.TestCase):
+class QsTests(unittest.TestCase):
 
     def test_to_image(self):
 
-        filepath = "tests/data/tiles/068.0001.json"
+        filepath = "tests/data/slate/071.0001.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "068",
+            "survey_id": "071",
             "period_id": "201605",
             "ru_ref": "12346789012A",
             "form_type": "0001",
@@ -24,7 +24,7 @@ class QrtTests(unittest.TestCase):
 
         actual: list[ImageResponse] = json.loads(get_looping(submission_data, survey_metadata, use_image_formatter=True))
 
-        spp_filepath = "tests/data/tiles/068-image.json"
+        spp_filepath = "tests/data/slate/071-image.json"
         with open(spp_filepath) as f:
             expected: list[ImageResponse] = json.load(f)
 
