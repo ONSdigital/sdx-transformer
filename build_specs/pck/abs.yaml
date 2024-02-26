@@ -10,7 +10,7 @@ template:
     "15": "$YES_NO_RADIO_1827"
     "16": "$YES_NO_RADIO_1827"
     "80": "$YES_NO_RADIO"
-    "81": "$PERCENTAGE_RADIO"
+    "81": "$LONG_SHORT_PERCENTAGE"
     "146": "$COMMENT"
     "163": "$CURRENCY_THOUSANDS"
     "164": "$CURRENCY_THOUSANDS"
@@ -256,7 +256,7 @@ transforms:
         "args":
             "on_true": "$TO_DATE"
             "on_false": "$END_OF_PERIOD"
-    "PERCENTAGE_RADIO":
+    "SHORT_PERCENTAGE_RADIO":
         "name": "LOOKUP"
         "args":
             "0-9%": "10000"
@@ -265,6 +265,22 @@ transforms:
             "50-74%": "10"
             "75-100%": "1"
             "on_no_match": "0"
+    "LONG_PERCENTAGE_RADIO":
+        "name": "LOOKUP"
+        "args":
+            "0% to 9%": "10000"
+            "10% to 24%": "1000"
+            "25% to 49%": "100"
+            "50% to 74%": "10"
+            "75% to 100%": "1"
+            "on_no_match": "0"
+    "LONG_SHORT_PERCENTAGE":
+        "name": "ANY_CONTAINS"
+        "args":
+            "values": [ "1808", "1818", "1874", "1820", "1804", "1864", "1812", "1826", "1802", "1862", "1814", "1824", "1810" ]
+            "match_str": "#form_type"
+            "on_true": "$SHORT_PERCENTAGE_RADIO"
+            "on_false": "$LONG_PERCENTAGE_RADIO"
     "YES_NO_RADIO":
         "name": "LOOKUP"
         "args":
