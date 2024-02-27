@@ -3,6 +3,8 @@ survey_id: "073"
 target: "CS"
 period_format: "YYYYMM"
 pck_period_format: "YYMM"
+form_mapping:
+    "0002": "0001"
 template:
     "101": "#101"
     "102": "#102"
@@ -18,8 +20,6 @@ template:
     "124": "#124"
     "145": "$COMMENT"
     "146": "$COMMENT"
-form_mapping:
-    "0002": "0001"
 transforms:
     "COMMENT":
         "name": "EXISTS"
