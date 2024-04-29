@@ -95,7 +95,8 @@
     "schema_version": "v1",
     "identifier": "50000000002",
     "vat": {
-      "registration_number": "123456789"
+      "registration_number": "123456789",
+      "subsidiary_identifier": "123"
     },
     "address": [
       "99 Long road",
