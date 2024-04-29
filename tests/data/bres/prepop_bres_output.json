@@ -2,10 +2,6 @@
   "50000000000": {
     "schema_version": "v1",
     "identifier": "50000000000",
-    "vat": {
-      "registration_number": "112185561",
-      "subsidiary_identifier": "111"
-    },
     "employer_paye": {
       "tax_office_number": "121",
       "reference": "XB18868"
