@@ -22,4 +22,6 @@ class BrsTest(unittest.TestCase):
 
         actual = get_prepop(prepop_data, survey_id)
 
+        print(actual)
+
         self.assertEqual(expected, actual)

@@ -47,6 +47,14 @@ transforms:
         args:
             value: "#vatref"
             start_index: 9
+        "post": "$FILTER_BLANK_VAT_SUB"
+
+    "FILTER_BLANK_VAT_SUB":
+        name: "CONTAINS"
+        "args":
+            "match_str": "000"
+            "on_true": null
+            "on_false": "&value"
 
     "PAYE_OFFICE":
         name: "CARVE"
