@@ -230,7 +230,7 @@
     "TO_DATE": {
       "name": "TO_DATE",
       "args": {
-        "display_as": "%d%m%Y"
+        "display_as": "%d%m%y"
       }
     },
     "CURRENCY_THOUSANDS": {
