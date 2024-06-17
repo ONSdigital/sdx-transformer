@@ -22,7 +22,7 @@ template:
                 trading_name: "$CONCAT_TRADING_NAME"
                 business_description: "#bus_desc"
                 "address": [
-                    "#luaddr1", "#luaddr2", "#luaddr3", "#luaddr4", "#luaddr5", "#lupostcode"
+                    "$LUNAME_ONE", "$LUNAME_TWO", "$LUNAME_THREE", "$LUNAME_FOUR", "$LUNAME_FIVE", "$LUPOSTCODE"
                 ]
 transforms:
     "CONCAT_NAME":
@@ -67,7 +67,38 @@ transforms:
             value: "#payeref"
             start_index: 3
     "LUNAME_ONE":
-        name: "EXISTS"
+        name: "LUREF_CHECK_REPLACE"
         args:
-            "on_true": "#luname1"
+            "value": "#luref"
+            "on_true": "#luaddr1"
             "on_false": "#ruaddr1"
+    "LUNAME_TWO":
+        name: "LUREF_CHECK_REPLACE"
+        args:
+            "value": "#luref"
+            "on_true": "#luaddr2"
+            "on_false": "#ruaddr2"
+    "LUNAME_THREE":
+        name: "LUREF_CHECK_REPLACE"
+        args:
+            "value": "#luref"
+            "on_true": "#luaddr3"
+            "on_false": "#ruaddr3"
+    "LUNAME_FOUR":
+        name: "LUREF_CHECK_REPLACE"
+        args:
+            "value": "#luref"
+            "on_true": "#luaddr4"
+            "on_false": "#ruaddr4"
+    "LUNAME_FIVE":
+        name: "LUREF_CHECK_REPLACE"
+        args:
+            "value": "#luref"
+            "on_true": "#luaddr5"
+            "on_false": "#ruaddr5"
+    "LUPOSTCODE":
+        name: "LUREF_CHECK_REPLACE"
+        args:
+            "value": "#luref"
+            "on_true": "#lupostcode"
+            "on_false": "#rupostcode"

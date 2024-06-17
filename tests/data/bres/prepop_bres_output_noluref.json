@@ -1,38 +1,34 @@
 {
-  "50000000000": [
-    {
-      "ruref": "50000000000",
-      "entref": "7000000000",
-      "luref": "00000000",
-      "chklet": "H",
-      "sic92": "50000",
-      "sic2007": "40000",
-      "employees": "2475",
-      "employment": "51",
-      "ftempees": "50.000",
-      "luname1": "56 Random Lane",
-      "luname2": "Turtleland",
-      "luname3": "",
-      "luaddr1": "",
-      "luaddr2": "",
-      "luaddr3": "",
-      "luaddr4": "",
-      "luaddr5": "",
-      "lupostcode": "RU67B52",
-      "tradstyle1": "TAL",
-      "tradstyle2": "LLC",
-      "tradstyle3": "",
-      "region": "FE",
-      "bus_desc": "We make the finest thyme lubricant on the planet",
-      "formtype": "0001",
-      "vatref": "112185561111",
-      "payeref": "121XB18868",
-      "ruaddr1": "56 Random Lane",
-      "ruaddr2": "Turtleland",
-      "ruaddr3": "",
-      "ruaddr4": "",
-      "ruaddr5": "",
-      "rupostcode": "RU67B52"
+  "50000000000": {
+    "schema_version": "v1",
+    "identifier": "50000000000",
+    "vat": {
+      "registration_number": "112185561",
+      "subsidiary_identifier": "111"
+    },
+    "employer_paye": {
+      "tax_office_number": "121",
+      "reference": "XB18868"
+    },
+    "address": [
+      "56 Random Lane",
+      "Turtleland",
+      "RU67B52"
+    ],
+    "items": {
+      "local-units": [
+        {
+          "identifier": "00000000",
+          "name": "",
+          "trading_name": "TAL LLC",
+          "business_description": "We make the finest thyme lubricant on the planet",
+          "address": [
+            "56 Random Lane",
+            "Turtleland",
+            "RU67B52"
+          ]
+        }
+      ]
     }
-  ]
+  }
 }
