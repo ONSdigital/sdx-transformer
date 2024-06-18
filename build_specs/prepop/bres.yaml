@@ -18,25 +18,51 @@ template:
     items:
         local-units:
             -   identifier: "#luref"
-                name: "$CONCAT_NAME"
-                trading_name: "$CONCAT_TRADING_NAME"
+                name: "$NAME_CHECK"
+                trading_name: "$TRADSTYLE_CHECK"
                 business_description: "#bus_desc"
                 "address": [
                     "$LUNAME_ONE", "$LUNAME_TWO", "$LUNAME_THREE", "$LUNAME_FOUR", "$LUNAME_FIVE", "$LUPOSTCODE"
                 ]
 transforms:
-    "CONCAT_NAME":
+    "CONCAT_NAME_LUNAME":
         name: "CONCAT"
         args:
             value: "#luname1"
-            values: ["#luname2", "#luname3"]
+            values: [ "#luname2", "#luname3" ]
             seperator: " "
-    "CONCAT_TRADING_NAME":
+    "CONCAT_NAME_RUNAME":
+        name: "CONCAT"
+        args:
+            value: "#runame1"
+            values: [ "#runame2", "#runame3" ]
+            seperator: " "
+    "NAME_CHECK":
+        name: "STARTS_WITH"
+        args:
+            "value": "#luref"
+            "match_str": "00000000"
+            "on_true": "$CONCAT_NAME_RUNAME"
+            "on_false": "$CONCAT_NAME_LUNAME"
+    "CONCAT_TRADSTYLE":
         name: "CONCAT"
         args:
             value: "#tradstyle1"
             values: [ "#tradstyle2", "#tradstyle3" ]
             seperator: " "
+    "CONCAT_RUTRADSTYLE":
+        name: "CONCAT"
+        args:
+            value: "#rutradstyle1"
+            values: [ "#rutradstyle2", "#rutradstyle3" ]
+            seperator: " "
+    "TRADSTYLE_CHECK":
+        name: "STARTS_WITH"
+        args:
+            "value": "#luref"
+            "match_str": "00000000"
+            "on_true": "$CONCAT_RUTRADSTYLE"
+            "on_false": "$CONCAT_TRADSTYLE"
     "VAT_REG":
         name: "CARVE"
         args:
@@ -67,38 +93,44 @@ transforms:
             value: "#payeref"
             start_index: 3
     "LUNAME_ONE":
-        name: "LUREF_CHECK_REPLACE"
+        name: "STARTS_WITH"
         args:
             "value": "#luref"
-            "on_true": "#luaddr1"
-            "on_false": "#ruaddr1"
+            "match_str": "00000000"
+            "on_true": "#ruaddr1"
+            "on_false": "#luaddr1"
     "LUNAME_TWO":
-        name: "LUREF_CHECK_REPLACE"
+        name: "STARTS_WITH"
         args:
             "value": "#luref"
-            "on_true": "#luaddr2"
-            "on_false": "#ruaddr2"
+            "match_str": "00000000"
+            "on_true": "#ruaddr2"
+            "on_false": "#luaddr2"
     "LUNAME_THREE":
-        name: "LUREF_CHECK_REPLACE"
+        name: "STARTS_WITH"
         args:
             "value": "#luref"
-            "on_true": "#luaddr3"
-            "on_false": "#ruaddr3"
+            "match_str": "00000000"
+            "on_true": "#ruaddr3"
+            "on_false": "#luaddr3"
     "LUNAME_FOUR":
-        name: "LUREF_CHECK_REPLACE"
+        name: "STARTS_WITH"
         args:
             "value": "#luref"
-            "on_true": "#luaddr4"
-            "on_false": "#ruaddr4"
+            "match_str": "00000000"
+            "on_true": "#ruaddr4"
+            "on_false": "#luaddr4"
     "LUNAME_FIVE":
-        name: "LUREF_CHECK_REPLACE"
+        name: "STARTS_WITH"
         args:
             "value": "#luref"
-            "on_true": "#luaddr5"
-            "on_false": "#ruaddr5"
+            "match_str": "00000000"
+            "on_true": "#ruaddr5"
+            "on_false": "#luaddr5"
     "LUPOSTCODE":
-        name: "LUREF_CHECK_REPLACE"
+        name: "STARTS_WITH"
         args:
             "value": "#luref"
-            "on_true": "#lupostcode"
-            "on_false": "#rupostcode"
+            "match_str": "00000000"
+            "on_true": "#rupostcode"
+            "on_false": "#lupostcode"

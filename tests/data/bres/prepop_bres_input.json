@@ -27,12 +27,18 @@
       "formtype": "0001",
       "vatref": "112185561111",
       "payeref": "121XB18868",
+      "runame1": "Happy",
+      "runame2": "Lubricant",
+      "runame3": "Company",
       "ruaddr1": "56 Random Lane",
       "ruaddr2": "Turtleland",
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU67B52"
+      "rupostcode": "RU67B52",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Lubricant",
+      "rutradstyle3": "Org"
     },
     {
       "ruref": "50000000000",
@@ -61,12 +67,18 @@
       "formtype": "0001",
       "vatref": "112185561111",
       "payeref": "121XB18868",
+      "runame1": "Happy",
+      "runame2": "Sunshine",
+      "runame3": "Company",
       "ruaddr1": "56 Random Lane",
       "ruaddr2": "Turtleland",
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU67B52"
+      "rupostcode": "RU67B52",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Sunshine",
+      "rutradstyle3": "Org"
     },
     {
       "ruref": "50000000000",
@@ -95,12 +107,18 @@
       "formtype": "0001",
       "vatref": "112185561111",
       "payeref": "121XB18868",
+      "runame1": "Happy",
+      "runame2": "Turtle",
+      "runame3": "Company",
       "ruaddr1": "56 Random Lane",
       "ruaddr2": "Turtleland",
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU67B52"
+      "rupostcode": "RU67B52",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Poland",
+      "rutradstyle3": "Org"
     }
   ],
   "50000000001": [
@@ -131,12 +149,18 @@
       "formtype": "0001",
       "vatref": "",
       "payeref": "940FA51320",
+      "runame1": "Happy",
+      "runame2": "Turtle",
+      "runame3": "Company",
       "ruaddr1": "128 Somewhere",
       "ruaddr2": "Westland",
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU59PDL"
+      "rupostcode": "RU59PDL",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Wine",
+      "rutradstyle3": "Org"
     }
   ],
   "50000000002": [
@@ -167,12 +191,18 @@
       "formtype": "0001",
       "vatref": "123456789123",
       "payeref": "",
+      "runame1": "Happy",
+      "runame2": "Turtle",
+      "runame3": "Company",
       "ruaddr1": "99 Long road",
       "ruaddr2": "Longland",
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RUPOO54"
+      "rupostcode": "RUPOO54",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Gap",
+      "rutradstyle3": "Org"
     }
   ]
 }

@@ -27,12 +27,18 @@
       "formtype": "0001",
       "vatref": "112185561111",
       "payeref": "121XB18868",
+      "runame1": "Happy",
+      "runame2": "Turtle",
+      "runame3": "Company",
       "ruaddr1": "56 Random Lane",
       "ruaddr2": "Turtleland",
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU67B52"
+      "rupostcode": "RU67B52",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Turtle",
+      "rutradstyle3": "Org"
     }
   ]
 }

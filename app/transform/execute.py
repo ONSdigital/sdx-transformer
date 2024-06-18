@@ -5,7 +5,7 @@ from sdx_gcp.app import get_logger
 
 from app.definitions import ParseTree, Transform, Field, Value, BuildSpecError
 from app.transform.functions.compound import currency_thousands, period_start, period_end
-from app.transform.functions.general import no_transform, exists, any_exists, lookup, luref_check_replace
+from app.transform.functions.general import no_transform, exists, any_exists, lookup
 from app.transform.functions.lists import as_list, append_to_list, prepend_to_list, trim_list
 from app.transform.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.transform.functions.string import starts_with, contains, any_contains, concat, carve
@@ -48,7 +48,6 @@ _function_lookup: dict[str, Callable] = {
     "APPEND_TO_LIST": append_to_list,
     "PREPEND_TO_LIST": prepend_to_list,
     "TRIM_LIST": trim_list,
-    "LUREF_CHECK_REPLACE": luref_check_replace,
 }
 
 

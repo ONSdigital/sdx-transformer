@@ -32,7 +32,10 @@
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU67B52"
+      "rupostcode": "RU67B52",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Lubricant",
+      "rutradstyle3": "Org"
     },
     {
       "ruref": "50000000000",
@@ -66,7 +69,10 @@
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU67B52"
+      "rupostcode": "RU67B52",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Sunshine",
+      "rutradstyle3": "Org"
     },
     {
       "ruref": "50000000000",
@@ -100,7 +106,10 @@
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU67B52"
+      "rupostcode": "RU67B52",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Poland",
+      "rutradstyle3": "Org"
     }
   ],
   "50000000001": [
@@ -136,7 +145,10 @@
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RU59PDL"
+      "rupostcode": "RU59PDL",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Wine",
+      "rutradstyle3": "Org"
     }
   ],
   "50000000002": [
@@ -172,7 +184,10 @@
       "ruaddr3": "",
       "ruaddr4": "",
       "ruaddr5": "",
-      "rupostcode": "RUPOO54"
+      "rupostcode": "RUPOO54",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Gap",
+      "rutradstyle3": "Org"
     }
   ]
 }

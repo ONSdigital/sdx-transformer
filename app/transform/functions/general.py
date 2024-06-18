@@ -56,10 +56,3 @@ def handle_empties(func: Callable[..., Value]) -> Callable[..., Value]:
             return Empty
 
     return inner
-
-
-# BRES Specific, no luref
-def luref_check_replace(luref: Value, on_true: str, on_false: str) -> Value:
-    if luref != "00000000":
-        return on_true
-    return on_false
