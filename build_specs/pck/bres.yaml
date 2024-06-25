@@ -1,0 +1,130 @@
+title: "Build Spec for BRES"
+survey_id: "221"
+target: "IDBR"
+period_format: ""
+template:
+    "001": ""
+    "002": ""
+    "010": "$010_LOOKUP"
+    "011": "$011_LOOKUP"
+    "012": "$012_LOOKUP"
+    "013": "$013_LOOKUP"
+    "014": "$014_LOOKUP"
+    "015": "$015_LOOKUP"
+    "016": "$016_LOOKUP"
+    "017": ""
+    "018": ""
+    "020": ""
+    "021": "$021_LOOKUP"
+    "022": "$022_LOOKUP"
+    "025": "$025_LOOKUP"
+    "030": ""
+    "031": "$031_LOOKUP"
+    "032": "$032_LOOKUP"
+    "033": ""
+    "051": "#051"
+    "052": ""
+    "053": ""
+    "061": ""
+    "062": ""
+    "071": ""
+    "072": ""
+    "081": ""
+    "090": "#090"
+    "110": "#110"
+    "150": "#150"
+    "155": ""
+    "156": ""
+    "200": "#200"
+    "210": "#210"
+    "220": ""
+    "230": ""
+    "231": ""
+    "240": "#240"
+transforms:
+    "010_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business is active will all or part of the activity taking place within Great Britain (GB)"
+            "on_true": 1
+            "on_false": 0
+    "011_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business is active with all of the activity taking place outside GB"
+            "on_true": 1
+            "on_false": 0
+    "012_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business is now part of another GB business due to a takeover or merger"
+            "on_true": 1
+            "on_false": 0
+    "013_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has not started operating yet"
+            "on_true": 1
+            "on_false": 0
+    "014_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has ceased operating but is expecting to restart within two years"
+            "on_true": 1
+            "on_false": 0
+    "015_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has ceased operating and is not expecting to restart within two years"
+            "on_true": 1
+            "on_false": 0
+    "016_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has never started operating and is not expecting to start"
+            "on_true": 1
+            "on_false": 0
+    "021_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9998"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "022_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9998"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "025_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9998"
+            "match_str": "The business is exempt from VAT"
+            "on_true": 1
+            "on_false": 0
+    "031_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9997"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "032_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9997"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+
+

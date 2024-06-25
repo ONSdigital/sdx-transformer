@@ -14,7 +14,10 @@
       "lupostcode": "DE41 2WA",
       "tradstyle1": "STUBBS",
       "tradstyle2": "SWINDON BRANCH",
-      "formtype": "01"
+      "formtype": "01",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Gap",
+      "rutradstyle3": "Org"
     }
   ],
   "20000000000": [
@@ -32,7 +35,10 @@
       "lupostcode": "HA41 2WA",
       "tradstyle1": "TUBBIES",
       "tradstyle2": "",
-      "formtype": "02"
+      "formtype": "02",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Gap",
+      "rutradstyle3": "Org"
     },
     {
       "ruref": "20000000000",
@@ -48,7 +54,10 @@
       "lupostcode": "GL2X 5EF",
       "tradstyle1": "",
       "tradstyle2": "",
-      "formtype": "02"
+      "formtype": "02",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Gap",
+      "rutradstyle3": "Org"
     },
     {
       "ruref": "20000000000",
@@ -64,7 +73,10 @@
       "lupostcode": "DE41 2XJ",
       "tradstyle1": "TUBBS SOUTHWEST",
       "tradstyle2": "BEST BATHROOMS",
-      "formtype": "02"
+      "formtype": "02",
+      "rutradstyle1": "Big",
+      "rutradstyle2": "Gap",
+      "rutradstyle3": "Org"
     }
   ]
 }
