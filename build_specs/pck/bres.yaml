@@ -21,15 +21,15 @@ template:
     "030": ""
     "031": "$031_LOOKUP"
     "032": "$032_LOOKUP"
-    "033": ""
+    "033": "$IS_BLANK"
     "051": "#051"
     "052": ""
     "053": ""
-    "061": ""
-    "062": ""
-    "071": ""
-    "072": ""
-    "081": ""
+    "061": "$061_LOOKUP"
+    "062": "$062_LOOKUP"
+    "071": "$071_LOOKUP"
+    "072": "$072_LOOKUP"
+    "081": "$IS_BLANK"
     "090": "#090"
     "110": "#110"
     "150": "#150"
@@ -124,6 +124,39 @@ transforms:
         "args":
             "value": "#9997"
             "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "061_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9948"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "062_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9948"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "071_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9947"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "072_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9947"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "IS_BLANK":
+        "name": "EXISTS"
+        args:
             "on_true": 1
             "on_false": 0
 

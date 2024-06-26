@@ -48,6 +48,7 @@ _function_lookup: dict[str, Callable] = {
     "APPEND_TO_LIST": append_to_list,
     "PREPEND_TO_LIST": prepend_to_list,
     "TRIM_LIST": trim_list,
+    "PADDING": string_padding,
 }
 
 
