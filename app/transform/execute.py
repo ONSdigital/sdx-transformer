@@ -8,7 +8,7 @@ from app.transform.functions.compound import currency_thousands, period_start, p
 from app.transform.functions.general import no_transform, exists, any_exists, lookup
 from app.transform.functions.lists import as_list, append_to_list, prepend_to_list, trim_list
 from app.transform.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
-from app.transform.functions.string import starts_with, contains, any_contains, concat, carve
+from app.transform.functions.string import starts_with, contains, any_contains, concat, carve, string_padding
 from app.transform.functions.time import to_date, any_date, start_of_month, end_of_month, start_of_year, end_of_year
 from app.transform.tree_walker import TreeWalker
 
