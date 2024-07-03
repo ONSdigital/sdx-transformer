@@ -65,6 +65,22 @@
       "tradstyle1": "TUBBS SOUTHWEST",
       "tradstyle2": "BEST BATHROOMS",
       "formtype": "02"
+    },
+    {
+      "ruref": "20000000000",
+      "luref": "",
+      "luname1": "",
+      "luname2": "",
+      "luname3": "",
+      "luaddr1": "",
+      "luaddr2": "",
+      "luaddr3": "",
+      "luaddr4": "",
+      "luaddr5": "",
+      "lupostcode": "",
+      "tradstyle1": "",
+      "tradstyle2": "",
+      "formtype": "02"
     }
   ]
 }

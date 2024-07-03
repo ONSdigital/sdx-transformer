@@ -1,4 +1,5 @@
 from copy import deepcopy
+from typing import Optional
 
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
@@ -57,12 +58,14 @@ def merge_items(items: list[Template], item_list_path: str) -> Template:
     first_item = deepcopy(items[0])
     item_list = get_item_list(first_item, item_list_path)
     for i in range(1, len(items)):
-        item_list.append(get_item_list(items[i], item_list_path)[0])
+        item = get_item_list(items[i], item_list_path)
+        if item:
+            item_list.append(item[0])
 
     return first_item
 
 
-def get_item_list(template: Template, item_list_path: str) -> list[Field]:
+def get_item_list(template: Template, item_list_path: str) -> Optional[list[Field]]:
     """
     Find the location within the template of the item sub list.
     """
@@ -70,10 +73,12 @@ def get_item_list(template: Template, item_list_path: str) -> list[Field]:
     t = template
     for p in path:
         if p not in t:
-            raise DataError(f'Incorrect item_list_path: {item_list_path}')
+            logger.warn(f'Incorrect item_list_path: {item_list_path}')
+            return None
         t = t[p]
 
     if not isinstance(t, list):
-        raise DataError(f'Incorrect item_list_path: {item_list_path}')
+        logger.warn(f'Incorrect item_list_path: {item_list_path}')
+        return None
 
     return t
