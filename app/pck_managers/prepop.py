@@ -54,6 +54,7 @@ def merge_items(items: list[Template], item_list_path: str) -> Template:
     Multiple items can exist for one identifier.
     These are merged into one template so that each identifier
     is represented by one (and only one) template.
+    Templates that do not contain the local unit path are removed.
     """
     first_item = deepcopy(items[0])
     item_list = get_item_list(first_item, item_list_path)
@@ -68,6 +69,8 @@ def merge_items(items: list[Template], item_list_path: str) -> Template:
 def get_item_list(template: Template, item_list_path: str) -> Optional[list[Field]]:
     """
     Find the location within the template of the item sub list.
+
+    If not found return None
     """
     path: list[str] = item_list_path.split(".")
     t = template
