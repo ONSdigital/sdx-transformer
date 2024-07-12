@@ -1,10 +1,11 @@
-title: "Build Spec for BRES"
-survey_id: "221"
-target: "IDBR"
-period_format: ""
-template:
-    "001": ""
-    "002": ""
+"title": "Build Spec for bres survey"
+"survey_id": "221"
+"target": "IDBR"
+"period_format": ""
+"pck_period_format": ""
+"template":
+    "001": "$001_MATCH"
+    "002": "$002_MATCH"
     "010": "$010_LOOKUP"
     "011": "$011_LOOKUP"
     "012": "$012_LOOKUP"
@@ -41,7 +42,21 @@ template:
     "230": ""
     "231": ""
     "240": "#240"
-transforms:
+"transforms":
+    "001 MATCH":
+        "name": "MATCH"
+        "args":
+            "match_str": "Yes"
+            "values": ["#9955", "#9953"]
+            "on_true": 0
+            "on_false": 1
+    "002 MATCH":
+        "name": "MATCH"
+        "args":
+            "match_str": "Yes"
+            "values": ["#9951", "#9949"]
+            "on_true": 0
+            "on_false": 1
     "010_LOOKUP":
         "name": "STARTS_WITH"
         "args":
@@ -159,5 +174,3 @@ transforms:
         args:
             "on_true": 1
             "on_false": 0
-
-

@@ -7,6 +7,7 @@ from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
     ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
 from app.formatters.cs_looping_formatter import CSLoopingFormatter
+from app.formatters.idbr_formatter import IDBRFormatter
 from app.formatters.image_looping_formatter import ImageLoopingFormatter
 from app.formatters.looping_formatter import LoopingFormatter
 from app.formatters.spp_looping_formatter import SPPLoopingFormatter
@@ -21,6 +22,7 @@ survey_mapping: dict[str, str] = {
     "068": "qrt",
     "071": "qs",
     "076": "qsm",
+    "221": "bres",
     "999": "looping-spp",
 }
 
@@ -29,6 +31,7 @@ formatter_mapping: dict[str, LoopingFormatter.__class__] = {
     "SPP": SPPLoopingFormatter,
     "Image": ImageLoopingFormatter,
     "CS": CSLoopingFormatter,
+    "IDBR": IDBRFormatter,
 }
 
 
