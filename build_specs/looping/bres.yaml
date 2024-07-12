@@ -43,14 +43,14 @@
     "231": ""
     "240": "#240"
 "transforms":
-    "001 MATCH":
+    "001_MATCH":
         "name": "MATCH"
         "args":
             "match_str": "Yes"
             "values": ["#9955", "#9953"]
             "on_true": 0
             "on_false": 1
-    "002 MATCH":
+    "002_MATCH":
         "name": "MATCH"
         "args":
             "match_str": "Yes"

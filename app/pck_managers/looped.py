@@ -7,7 +7,7 @@ from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
     ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
 from app.formatters.cs_looping_formatter import CSLoopingFormatter
-from app.formatters.idbr_formatter import IDBRFormatter
+from app.formatters.idbr_looping_formatter import IDBRLoopingFormatter
 from app.formatters.image_looping_formatter import ImageLoopingFormatter
 from app.formatters.looping_formatter import LoopingFormatter
 from app.formatters.spp_looping_formatter import SPPLoopingFormatter
@@ -31,7 +31,7 @@ formatter_mapping: dict[str, LoopingFormatter.__class__] = {
     "SPP": SPPLoopingFormatter,
     "Image": ImageLoopingFormatter,
     "CS": CSLoopingFormatter,
-    "IDBR": IDBRFormatter,
+    "IDBR": IDBRLoopingFormatter,
 }
 
 

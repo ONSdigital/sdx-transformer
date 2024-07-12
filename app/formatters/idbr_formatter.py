@@ -1,4 +1,4 @@
-from app.definitions import Value, SurveyMetadata
+from app.definitions import Value, SurveyMetadata, Empty
 from app.formatters.formatter import Formatter
 
 
@@ -14,8 +14,18 @@ class IDBRFormatter(Formatter):
             luref checklet, batchno can be left blank
 
     """
+    def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
+        ru: str = metadata["ru_ref"]
+        ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
+        checklet: str = ru[-1] if ru[-1].isalpha() else ""
+        period: str = metadata["period_id"]
+        survey_id = metadata["survey_id"]
+        form_type = metadata["form_type"]
+        lu_ref = "00000000"
+        page_no = "001"
 
-
-
-
+        return [
+            f"{ru_ref}^{checklet}^{lu_ref}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value if value is not Empty else ''}"
+            for qcode, value in sorted(data.items())
+        ]
 
