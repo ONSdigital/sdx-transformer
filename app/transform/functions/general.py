@@ -56,11 +56,3 @@ def handle_empties(func: Callable[..., Value]) -> Callable[..., Value]:
             return Empty
 
     return inner
-
-
-def match_values(value: Value, match_str: str, values: list[Value], on_true: str, on_false: str) -> Value:
-    for val in values:
-        if val != match_str:
-            return on_false
-
-    return on_true
