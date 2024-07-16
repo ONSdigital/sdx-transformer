@@ -4,7 +4,6 @@ import unittest
 from app.definitions import SurveyMetadata, ImageResponse, PCK
 from app.pck_managers.looped import get_looping
 from tests.integration.looped import read_submission_data
-from tests.integration.mapped import are_equal
 
 
 class BresTests(unittest.TestCase):
@@ -33,6 +32,25 @@ class BresTests(unittest.TestCase):
             expected: PCK = f.read()
 
         # self.assertTrue(are_equal(expected, actual))
+
+    def test_to_image(self):
+
+        filepath = "tests/data/bres/looping_bres_input_data.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "221",
+            "period_id": "201605",
+            "ru_ref": "12346789012A",
+            "form_type": "0019",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+        }
+
+        actual: list[ImageResponse] = json.loads(get_looping(submission_data, survey_metadata, use_image_formatter=True))
+
+        print("")
+        print(actual)
 
     def test_to_idbr_pck(self):
 
