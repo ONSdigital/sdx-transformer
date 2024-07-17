@@ -24,8 +24,15 @@ class IDBRFormatter(Formatter):
         lu_ref = "00000000"
         page_no = "001"
 
-        return [
-            f"{ru_ref}^{checklet}^{lu_ref}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value if value is not Empty else ''}"
-            for qcode, value in sorted(data.items())
-        ]
+        line_list = []
+        for qcode, value in sorted(data.items()):
+
+            if str(qcode)[-1].isalpha():
+                qcode = str(value)[:-1]
+
+            value = value if value is not Empty else ''
+
+            line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")
+
+        return line_list
 

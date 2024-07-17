@@ -41,7 +41,7 @@ class BresTests(unittest.TestCase):
         survey_metadata: SurveyMetadata = {
             "survey_id": "221",
             "period_id": "201605",
-            "ru_ref": "12346789012A",
+            "ru_ref": "1234678901A",
             "form_type": "0019",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
@@ -60,7 +60,7 @@ class BresTests(unittest.TestCase):
         survey_metadata: SurveyMetadata = {
             "survey_id": "221",
             "period_id": "201605",
-            "ru_ref": "12346789012A",
+            "ru_ref": "12345678901A",
             "form_type": "0019",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
@@ -68,11 +68,9 @@ class BresTests(unittest.TestCase):
 
         actual: PCK = get_looping(submission_data, survey_metadata)
 
-        print("")
-        print(actual)
-
         pck_filepath = "tests/data/bres/looping_bres.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
-        self.assertTrue(are_equal(expected, actual))
+        self.maxDiff = None
+        self.assertEqual(expected, actual)

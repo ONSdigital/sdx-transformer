@@ -76,7 +76,7 @@
         "name": "STARTS_WITH"
         "args":
             "value": "#9999"
-            "match_str": "The business is active will all or part of the activity taking place within Great Britain (GB)"
+            "match_str": "The business was active with all or part of the activity taking place within Great Britain (GB)"
             "on_true": 1
             "on_false": 0
     "011_LOOKUP":
