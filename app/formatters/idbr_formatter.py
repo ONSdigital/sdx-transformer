@@ -28,7 +28,7 @@ class IDBRFormatter(Formatter):
         for qcode, value in sorted(data.items()):
 
             if str(qcode)[-1].isalpha():
-                qcode = str(value)[:-1]
+                qcode = str(qcode)[:-1]
 
             value = value if value is not Empty else ''
 

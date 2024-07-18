@@ -23,8 +23,7 @@
     "053": "$053_LOOKUP"
     "090": "#090"
     "150": "#150"
-    "081": "$IS_BLANK"
-    "081a": "$IS_BLANK"
+    "081": "$081_EXISTS"
 
     # Luref codes (section B)
     "017": "$017_LOOKUP"
@@ -151,7 +150,7 @@
         "name": "STARTS_WITH"
         "args":
             "value": "#9998"
-            "match_str": "Yes"
+            "match_str": "Yes, these numbers are correct"
             "on_true": 1
             "on_false": 0
     "022_LOOKUP":
@@ -222,6 +221,18 @@
         "args":
             "value": "#9947"
             "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "081_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#081"
+            "on_true": 1
+            "on_false": "$081a_EXISTS"
+    "081a_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#081a"
             "on_true": 1
             "on_false": 0
     "150b_TOTAL":
