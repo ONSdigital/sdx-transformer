@@ -14,14 +14,14 @@ class IDBRFormatter(Formatter):
             luref checklet, batchno can be left blank
 
     """
-    def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
+    def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata, ref: str = "00000000") -> list[str]:
         ru: str = metadata["ru_ref"]
         ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
         checklet: str = ru[-1] if ru[-1].isalpha() else ""
         period: str = metadata["period_id"]
         survey_id = metadata["survey_id"]
         form_type = metadata["form_type"]
-        lu_ref = "00000000"
+        lu_ref = ref
         page_no = "001"
 
         line_list = []

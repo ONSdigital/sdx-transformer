@@ -35,7 +35,7 @@ class BresTests(unittest.TestCase):
 
     def test_to_image(self):
 
-        filepath = "tests/data/bres/looping_bres_input_data.json"
+        filepath = "tests/data/bres/looping_bres_two_new_lu_data.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {

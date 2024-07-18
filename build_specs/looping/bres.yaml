@@ -124,7 +124,7 @@
         "name": "STARTS_WITH"
         "args":
             "value": "#9952"
-            "match_str": "The site was active and operated by the business"
+            "match_str": "The site was active and operated by this business"
             "on_true": 1
             "on_false": 0
     "018_LOOKUP":
