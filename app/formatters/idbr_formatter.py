@@ -22,6 +22,7 @@ class IDBRFormatter(Formatter):
         survey_id = metadata["survey_id"]
         form_type = metadata["form_type"]
         lu_ref = ref
+        lu_checklet = "A"
         page_no = "001"
 
         line_list = []
@@ -32,7 +33,7 @@ class IDBRFormatter(Formatter):
 
             value = value if value is not Empty else ''
 
-            line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")
+            line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^{lu_checklet}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")
 
         return sorted(line_list)
 
