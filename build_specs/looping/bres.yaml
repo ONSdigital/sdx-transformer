@@ -24,6 +24,8 @@
     "090": "#090"
     "150": "#150"
     "081": "$081_EXISTS"
+    "071": "$071_LOOKUP"
+    "072": "$072_LOOKUP"
 
     #Derived variables
     "001": "$001_MATCH"
@@ -36,8 +38,6 @@
     "018": "$018_LOOKUP"
     "061": "$061_LOOKUP"
     "062": "$062_LOOKUP"
-    "071": "$071_LOOKUP"
-    "072": "$072_LOOKUP"
     "155b": "#155b"
     "156b": "#156b"
     "110": "#110"
@@ -53,8 +53,7 @@
 
     #Derived variables
     "002": "$002_MATCH"
-    "150b": "$150b_TOTAL"
-    "150c": "$150c_TOTAL"
+    "150": "$150"
     "220": "$220_CONCAT"
     "230": "$230_POSTCODE"
     "231": "$231_POSTCODE"
@@ -244,6 +243,12 @@
             value: "#9970"
             values: [ "#9969" ]
             seperator: ""
+    "150":
+        "name": "EXISTS"
+        args:
+            "value": "#155b"
+            "on_true": "$150b_TOTAL"
+            "on_false": "$150c_TOTAL"
     "150b_TOTAL":
         "name": "TOTAL"
         "args": {
@@ -266,17 +271,19 @@
         name: "CONCAT"
         args:
             value: "#9946"
-            values: [ "#9946", "#9945", "#9944", "#9943", "#9942" ]
+            values: [ "#9945", "#9944", "#9943", "#9942" ]
             seperator: " "
     "230_POSTCODE":
         name: "CARVE"
         args:
             value: "#9941"
-            end_index: 5
+            #TODO what is the correct value here?
+            end_index: 4
     "231_POSTCODE":
         name: "CARVE"
         args:
             value: "#9941"
+            #TODO what is the correct value here?
             start_index: 5
     "IS_BLANK":
         "name": "EXISTS"
