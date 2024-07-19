@@ -32,6 +32,7 @@ class BuildSpec(TypedDict):
     target: str
     item_list_path: NotRequired[str]
     template: Template
+    looped: NotRequired[Template]
     transforms: Transforms
 
 

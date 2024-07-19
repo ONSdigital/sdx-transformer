@@ -62,6 +62,8 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
                 for data in item_dict.values():
                     data_section.update(data)
 
+            looped_data["looped_sections"] = {}
+
         # for images use a fake build spec that maps all answers without transform
         if use_image_formatter:
             build_spec: BuildSpec = get_image_spec(list_data, survey_metadata["survey_id"])
@@ -75,17 +77,20 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
         formatter.set_original(list_data)
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
+        if looped_sections:
+            looped_tree: ParseTree = interpolate_build_spec(build_spec, "looped")
 
-        for data_dict in looped_sections.values():
-            instance_id = 1
-            for list_item_id, d in data_dict.items():
-                populated_tree: ParseTree = populate_mappings(full_tree, d)
-                transformed_data: dict[str, Value] = execute(populated_tree)
-                # remove any values that are empty or already appear in the data section
-                result = {k: v for k, v in transformed_data.items() if v is not Empty and k not in result_data}
-                formatter.create_or_update_instance(instance_id=str(instance_id), data=result,
-                                                    list_item_id=list_item_id)
-                instance_id += 1
+            for data_dict in looped_sections.values():
+                instance_id = 1
+                for list_item_id, d in data_dict.items():
+                    populated_tree: ParseTree = populate_mappings(looped_tree, d)
+                    transformed_data: dict[str, Value] = execute(populated_tree)
+                    # remove any values that are empty or already appear in the data section
+                    # result = {k: v for k, v in transformed_data.items() if v is not Empty and k not in result_data}
+                    result = {k: v for k, v in transformed_data.items() if v is not Empty}
+                    formatter.create_or_update_instance(instance_id=str(instance_id), data=result,
+                                                        list_item_id=list_item_id)
+                    instance_id += 1
 
         return formatter.generate_pck(result_data, survey_metadata)
 

@@ -33,7 +33,7 @@ class IDBRFormatter(Formatter):
 
             value = value if value is not Empty else ''
 
-            line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^{lu_checklet}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")
+            line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^"
+                             f"{lu_checklet}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")
 
         return sorted(line_list)
-

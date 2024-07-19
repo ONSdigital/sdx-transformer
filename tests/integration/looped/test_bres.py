@@ -47,7 +47,8 @@ class BresTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: list[ImageResponse] = json.loads(get_looping(submission_data, survey_metadata, use_image_formatter=True))
+        actual: list[ImageResponse] = json.loads(
+            get_looping(submission_data, survey_metadata, use_image_formatter=True))
 
         print("")
         print(actual)

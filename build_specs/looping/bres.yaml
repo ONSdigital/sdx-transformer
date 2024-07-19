@@ -25,6 +25,12 @@
     "150": "#150"
     "081": "$081_EXISTS"
 
+    #Derived variables
+    "001": "$001_MATCH"
+    "020": "$020_CONCAT"
+    "030": "$030_CONCAT"
+
+"looped":
     # Luref codes (section B)
     "017": "$017_LOOKUP"
     "018": "$018_LOOKUP"
@@ -35,7 +41,7 @@
     "155b": "#155b"
     "156b": "#156b"
     "110": "#110"
-    "081b": "$081_EXISTS"
+    "081b": "$081b_EXISTS"
 
     # New lu (section C)
     "110c": "#110c"
@@ -46,9 +52,6 @@
     "210": "#210"
 
     #Derived variables
-    "001": "$001_MATCH"
-    "020": "$020_CONCAT"
-    "030": "$030_CONCAT"
     "002": "$002_MATCH"
     "150b": "$150b_TOTAL"
     "150c": "$150c_TOTAL"

@@ -1,7 +1,7 @@
 import json
 from collections.abc import Mapping
 from os.path import exists
-from typing import TypeVar
+from typing import TypeVar, Literal
 
 import yaml
 from sdx_gcp.app import get_logger
@@ -38,11 +38,18 @@ def get_build_spec(survey_id: str, survey_mapping: dict[str, str], subdir: str =
     return build_spec
 
 
-def interpolate_build_spec(build_spec: BuildSpec) -> ParseTree:
+template_type = Literal["template", "looped"]
+
+
+def interpolate_build_spec(build_spec: BuildSpec, template: template_type = "template") -> ParseTree:
+    if template == "looped":
+        if template not in build_spec:
+            template: template_type = "template"
+
     if 'transforms' in build_spec:
-        parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+        parse_tree: ParseTree = interpolate(build_spec[template], build_spec["transforms"])
     else:
-        parse_tree: ParseTree = build_spec['template']
+        parse_tree: ParseTree = build_spec[template]
     return resolve_value_fields(parse_tree)
 
 
