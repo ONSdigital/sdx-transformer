@@ -34,5 +34,5 @@ class IDBRFormatter(Formatter):
 
             line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")
 
-        return line_list
+        return sorted(line_list)
 

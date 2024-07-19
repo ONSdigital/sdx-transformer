@@ -35,7 +35,7 @@
     "155b": "#155b"
     "156b": "#156b"
     "110": "#110"
-    "081b": "$IS_BLANK"
+    "081b": "$081_EXISTS"
 
     # New lu (section C)
     "110c": "#110c"
@@ -134,18 +134,6 @@
             "match_str": "The site has been transferred to another business"
             "on_true": 1
             "on_false": 0
-    "020_CONCAT":
-        name: "CONCAT"
-        args:
-            value: "#9972"
-            values: [ "#9971" ]
-            seperator: ""
-    "030_CONCAT":
-        name: "CONCAT"
-        args:
-            value: "#9970"
-            values: [ "#9969" ]
-            seperator: ""
     "021_LOOKUP":
         "name": "STARTS_WITH"
         "args":
@@ -235,6 +223,24 @@
             "value": "#081a"
             "on_true": 1
             "on_false": 0
+    "081b_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#081b"
+            "on_true": 1
+            "on_false": 0
+    "020_CONCAT":
+        name: "CONCAT"
+        args:
+            value: "#9972"
+            values: [ "#9971" ]
+            seperator: ""
+    "030_CONCAT":
+        name: "CONCAT"
+        args:
+            value: "#9970"
+            values: [ "#9969" ]
+            seperator: ""
     "150b_TOTAL":
         "name": "TOTAL"
         "args": {

@@ -72,5 +72,34 @@ class BresTests(unittest.TestCase):
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
+        # for line in sorted(expected.split("\n")):
+        #     print(line)
+
+        self.maxDiff = None
+        self.assertEqual(expected, actual)
+
+    def test_to_idbr_pck_new_lu(self):
+
+        filepath = "tests/data/bres/looping_bres_two_new_lu_data.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "221",
+            "period_id": "201605",
+            "ru_ref": "12345678901A",
+            "form_type": "0019",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+        }
+
+        actual: PCK = get_looping(submission_data, survey_metadata)
+
+        pck_filepath = "tests/data/bres/looping_bres.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        # for line in sorted(expected.split("\n")):
+        #     print(line)
+
         self.maxDiff = None
         self.assertEqual(expected, actual)
