@@ -28,8 +28,8 @@ class IDBRFormatter(Formatter):
         line_list = []
         for qcode, value in sorted(data.items()):
 
-            if str(qcode)[-1].isalpha():
-                qcode = str(qcode)[:-1]
+            if str(qcode)[0].isalpha():
+                qcode = str(qcode)[1:]
 
             if value is Empty:
                 continue
