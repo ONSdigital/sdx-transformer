@@ -183,4 +183,4 @@ class SpaceSplitTest(unittest.TestCase):
         value = "CV8P 4DU"
 
         with self.assertRaises(IndexError):
-            actual = space_split(value, index=2)
+            space_split(value, index=2)

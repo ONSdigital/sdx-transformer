@@ -88,5 +88,3 @@ def space_split(value: str, index: int = 0) -> Value:
     # Strip out any tabs and double spaces etc
     cleaned = re.sub(r"\s+", " ", value)
     return cleaned.split(" ")[index]
-
-
