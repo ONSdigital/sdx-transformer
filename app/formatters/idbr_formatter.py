@@ -31,7 +31,8 @@ class IDBRFormatter(Formatter):
             if str(qcode)[-1].isalpha():
                 qcode = str(qcode)[:-1]
 
-            value = value if value is not Empty else ''
+            if value is Empty:
+                continue
 
             line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^"
                              f"{lu_checklet}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")

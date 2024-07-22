@@ -230,7 +230,13 @@
         args:
             "value": "#081b"
             "on_true": 1
-            "on_false": 0
+            "on_false": "$110c_EXISTS"
+    "110c_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#110c"
+            "on_true": null
+            "on_false": "0"
     "020_CONCAT":
         name: "CONCAT"
         args:
