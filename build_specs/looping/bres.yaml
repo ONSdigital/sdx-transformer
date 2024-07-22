@@ -38,15 +38,15 @@
     "018": "$018_LOOKUP"
     "061": "$061_LOOKUP"
     "062": "$062_LOOKUP"
-    "155b": "#155b"
-    "156b": "#156b"
+    "b155": "#b155"
+    "b156": "#b156"
     "110": "#110"
-    "081b": "$081b_EXISTS"
+    "b081": "$b081_EXISTS"
 
     # New lu (section C)
-    "110c": "#110c"
-    "155c": "#155c"
-    "156c": "#156c"
+    "c110": "#c110"
+    "c155": "#c155"
+    "c156": "#c156"
     "240": "#240"
     "200": "#200"
     "210": "#210"
@@ -218,23 +218,23 @@
         args:
             "value": "#081"
             "on_true": 1
-            "on_false": "$081a_EXISTS"
-    "081a_EXISTS":
+            "on_false": "$a081_EXISTS"
+    "a081_EXISTS":
         "name": "EXISTS"
         args:
-            "value": "#081a"
+            "value": "#a081"
             "on_true": 1
             "on_false": 0
-    "081b_EXISTS":
+    "b081_EXISTS":
         "name": "EXISTS"
         args:
-            "value": "#081b"
+            "value": "#b081"
             "on_true": 1
-            "on_false": "$110c_EXISTS"
-    "110c_EXISTS":
+            "on_false": "$c110_EXISTS"
+    "c110_EXISTS":
         "name": "EXISTS"
         args:
-            "value": "#110c"
+            "value": "#c110"
             "on_true": null
             "on_false": "0"
     "020_CONCAT":
@@ -252,7 +252,7 @@
     "150":
         "name": "EXISTS"
         args:
-            "value": "#155b"
+            "value": "#b155"
             "on_true": "$150b_TOTAL"
             "on_false": "$150c_TOTAL"
     "150b_TOTAL":
@@ -260,8 +260,8 @@
         "args": {
             "value": "0",
             "values": [
-                "#155b",
-                "#156b",
+                "#b155",
+                "#b156",
             ]
         }
     "150c_TOTAL":
@@ -269,8 +269,8 @@
         "args": {
             "value": "0",
             "values": [
-                "#155c",
-                "#156c",
+                "#c155",
+                "#c156",
             ]
         }
     "220_CONCAT":
