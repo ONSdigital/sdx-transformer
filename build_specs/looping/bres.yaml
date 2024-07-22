@@ -280,17 +280,15 @@
             values: [ "#9945", "#9944", "#9943", "#9942" ]
             seperator: " "
     "230_POSTCODE":
-        name: "CARVE"
+        name: "SPACE_SPLIT"
         args:
             value: "#9941"
-            #TODO what is the correct value here?
-            end_index: 4
+            index: 0
     "231_POSTCODE":
-        name: "CARVE"
+        name: "SPACE_SPLIT"
         args:
             value: "#9941"
-            #TODO what is the correct value here?
-            start_index: 5
+            index: 1
     "IS_BLANK":
         "name": "EXISTS"
         args:
