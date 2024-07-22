@@ -24,6 +24,7 @@ class IDBRFormatter(Formatter):
         lu_ref = ref
         lu_checklet = "A"
         page_no = "001"
+        scan_no = f's{ref}'
 
         line_list = []
         for qcode, value in sorted(data.items()):
@@ -35,6 +36,6 @@ class IDBRFormatter(Formatter):
                 continue
 
             line_list.append(f"{ru_ref}^{checklet}^{lu_ref}^"
-                             f"{lu_checklet}^{survey_id}^{period}^{form_type}^{page_no}^^^{qcode}^{value}")
+                             f"{lu_checklet}^{survey_id}^{period}^{form_type}^{page_no}^{scan_no}^^{qcode}^{value}\r")
 
         return sorted(line_list)

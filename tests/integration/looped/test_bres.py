@@ -70,8 +70,11 @@ class BresTests(unittest.TestCase):
         actual: PCK = get_looping(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/bres/221.0019.pck"
-        with open(pck_filepath) as f:
-            expected: PCK = f.read()
+        with open(pck_filepath, 'rb') as f:
+            expected: PCK = f.read().decode()
+
+        # with open(pck_filepath, 'wb') as f:
+        #     f.write(actual.encode("utf-8"))
 
         self.maxDiff = None
         self.assertEqual(expected, actual)
