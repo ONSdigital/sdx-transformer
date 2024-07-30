@@ -4,7 +4,7 @@ from app.definitions import Value, SurveyMetadata, PCK, SupplementaryDataMapping
 from app.formatters.idbr_formatter import IDBRFormatter
 from app.formatters.looping_formatter import LoopingFormatter
 
-DEFAULT_REF: Final[str] = "00000000"
+DEFAULT_REF: Final[str] = "N0000000"
 LIST_ITEM_ID: Final[str] = "list_item_id"
 
 
@@ -25,7 +25,7 @@ class IDBRLoopingFormatter(IDBRFormatter, LoopingFormatter):
             if group["name"] and group["name"] == "additional_sites_name":
                 sites = group["items"]
                 for i, site in enumerate(sites):
-                    site_mapping[site] = f"{str(i+1).zfill(len(DEFAULT_REF))}"
+                    site_mapping[site] = f"N{str(i+1).zfill(len(DEFAULT_REF)-1)}"
 
         for instance_id, instance_data_list in self._instances.items():
             for instance_data in instance_data_list:
