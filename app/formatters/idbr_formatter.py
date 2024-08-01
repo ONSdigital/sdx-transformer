@@ -7,12 +7,6 @@ class IDBRFormatter(Formatter):
     Formatter for IDBR systems
     Headers: ruref, checklet, luref, checklet, surveycode, period, formtype, pageno, scanno, batchno,
             qcode, qvalue
-
-            cant provide  pageno, scanno
-            set these to fixed values
-
-            luref checklet, batchno can be left blank
-
     """
     def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata, ref: str = "00000000") -> list[str]:
         ru: str = metadata["ru_ref"]
