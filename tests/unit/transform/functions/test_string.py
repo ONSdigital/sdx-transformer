@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.transform.functions.string import contains, any_contains, concat, starts_with, carve
+from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, space_split
 
 
 class StartsWithTests(unittest.TestCase):
@@ -133,3 +133,54 @@ class CarveTest(unittest.TestCase):
         second = carve(value, start_index=9)
 
         self.assertEqual(["112185561", "111"], [first, second])
+
+
+class SpaceSplitTest(unittest.TestCase):
+
+    def test_all_empty_returns_empty(self):
+        value = Empty
+        actual = space_split(value)
+        expected = Empty
+        self.assertEqual(expected, actual)
+
+    def test_basic_left_with_three_letters(self):
+        value = "CV8 4DU"
+        actual = space_split(value)
+        expected = "CV8"
+        self.assertEqual(expected, actual)
+
+    def test_basic_right_with_three_letters(self):
+        value = "CV8 4DU"
+        actual = space_split(value, index=1)
+        expected = "4DU"
+        self.assertEqual(expected, actual)
+
+    def test_basic_left_with_four_letters(self):
+        value = "CV8P 4DU"
+        actual = space_split(value)
+        expected = "CV8P"
+        self.assertEqual(expected, actual)
+
+    def test_basic_right_with_four_letters(self):
+        value = "CV8P 4DU"
+        actual = space_split(value, index=1)
+        expected = "4DU"
+        self.assertEqual(expected, actual)
+
+    def test_left_with_tab(self):
+        value = "CV8P   4DU"
+        actual = space_split(value)
+        expected = "CV8P"
+        self.assertEqual(expected, actual)
+
+    def test_right_with_tab(self):
+        value = "CV8P   4DU"
+        actual = space_split(value, index=1)
+        expected = "4DU"
+        self.assertEqual(expected, actual)
+
+    def test_invalid_index_throws_error(self):
+        value = "CV8P 4DU"
+
+        with self.assertRaises(IndexError):
+            space_split(value, index=2)

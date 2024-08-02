@@ -1,0 +1,296 @@
+"title": "Build Spec for bres survey"
+"survey_id": "221"
+"target": "IDBR"
+"period_format": ""
+"pck_period_format": ""
+"template":
+    # Ruref codes (section A)
+    "010": "$010_LOOKUP"
+    "011": "$011_LOOKUP"
+    "012": "$012_LOOKUP"
+    "013": "$013_LOOKUP"
+    "014": "$014_LOOKUP"
+    "015": "$015_LOOKUP"
+    "016": "$016_LOOKUP"
+    "021": "$021_LOOKUP"
+    "022": "$022_LOOKUP"
+    "025": "$025_LOOKUP"
+    "031": "$031_LOOKUP"
+    "032": "$032_LOOKUP"
+    "033": "$IS_BLANK"
+    "051": "#051"
+    "052": "$052_LOOKUP"
+    "053": "$053_LOOKUP"
+    "090": "#090"
+    "150": "#150"
+    "081": "$081_EXISTS"
+    "071": "$071_LOOKUP"
+    "072": "$072_LOOKUP"
+
+    #Derived variables
+    "001": "$001_MATCH"
+    "020": "$020_CONCAT"
+    "030": "$030_CONCAT"
+
+"looped":
+    # Luref codes (section B)
+    "017": "$017_LOOKUP"
+    "018": "$018_LOOKUP"
+    "061": "$061_LOOKUP"
+    "062": "$062_LOOKUP"
+    "b155": "#b155"
+    "b156": "#b156"
+    "110": "#110"
+    "b081": "$b081_EXISTS"
+
+    # New lu (section C)
+    "c110": "#c110"
+    "c155": "#c155"
+    "c156": "#c156"
+    "240": "#240"
+    "200": "#200"
+    "210": "#210"
+
+    #Derived variables
+    "002": "$002_MATCH"
+    "150": "$150"
+    "220": "$220_CONCAT"
+    "230": "$230_POSTCODE"
+    "231": "$231_POSTCODE"
+
+"transforms":
+    "001_MATCH":
+        "name": "ANY_CONTAINS"
+        "args":
+            "values": [ "#9955", "#9953" ]
+            "match_str": "Yes"
+            "on_true": 0
+            "on_false": 1
+    "002_MATCH":
+        "name": "ANY_CONTAINS"
+        "args":
+            "values": [ "#9951", "#9949" ]
+            "match_str": "Yes"
+            "on_true": 0
+            "on_false": 1
+    "010_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business was active with all or part of the activity taking place within Great Britain (GB)"
+            "on_true": 1
+            "on_false": 0
+    "011_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business is active with all of the activity taking place outside GB"
+            "on_true": 1
+            "on_false": 0
+    "012_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business is now part of another GB business due to a takeover or merger"
+            "on_true": 1
+            "on_false": 0
+    "013_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has not started operating yet"
+            "on_true": 1
+            "on_false": 0
+    "014_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has ceased operating but is expecting to restart within two years"
+            "on_true": 1
+            "on_false": 0
+    "015_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has ceased operating and is not expecting to restart within two years"
+            "on_true": 1
+            "on_false": 0
+    "016_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9999"
+            "match_str": "The business has never started operating and is not expecting to start"
+            "on_true": 1
+            "on_false": 0
+    "017_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9952"
+            "match_str": "The site was active and operated by this business"
+            "on_true": 1
+            "on_false": 0
+    "018_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9952"
+            "match_str": "The site has been transferred to another business"
+            "on_true": 1
+            "on_false": 0
+    "021_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9998"
+            "match_str": "Yes, these numbers are correct"
+            "on_true": 1
+            "on_false": 0
+    "022_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9998"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "025_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9998"
+            "match_str": "The business is exempt from VAT"
+            "on_true": 1
+            "on_false": 0
+    "031_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9997"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "032_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9997"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "052_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9940"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "053_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9997"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "061_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9948"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "062_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9948"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "071_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9947"
+            "match_str": "Yes"
+            "on_true": 1
+            "on_false": 0
+    "072_LOOKUP":
+        "name": "STARTS_WITH"
+        "args":
+            "value": "#9947"
+            "match_str": "No"
+            "on_true": 1
+            "on_false": 0
+    "081_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#081"
+            "on_true": 1
+            "on_false": "$a081_EXISTS"
+    "a081_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#a081"
+            "on_true": 1
+            "on_false": 0
+    "b081_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#b081"
+            "on_true": 1
+            "on_false": "$c110_EXISTS"
+    "c110_EXISTS":
+        "name": "EXISTS"
+        args:
+            "value": "#c110"
+            "on_true": null
+            "on_false": "0"
+    "020_CONCAT":
+        name: "CONCAT"
+        args:
+            value: "#9972"
+            values: [ "#9971" ]
+            seperator: ""
+    "030_CONCAT":
+        name: "CONCAT"
+        args:
+            value: "#9970"
+            values: [ "#9969" ]
+            seperator: ""
+    "150":
+        "name": "EXISTS"
+        args:
+            "value": "#b155"
+            "on_true": "$150b_TOTAL"
+            "on_false": "$150c_TOTAL"
+    "150b_TOTAL":
+        "name": "TOTAL"
+        "args": {
+            "value": "0",
+            "values": [
+                "#b155",
+                "#b156",
+            ]
+        }
+    "150c_TOTAL":
+        "name": "TOTAL"
+        "args": {
+            "value": "0",
+            "values": [
+                "#c155",
+                "#c156",
+            ]
+        }
+    "220_CONCAT":
+        name: "CONCAT"
+        args:
+            value: "#9946"
+            values: [ "#9945", "#9944", "#9943", "#9942" ]
+            seperator: " "
+    "230_POSTCODE":
+        name: "SPACE_SPLIT"
+        args:
+            value: "#9941"
+            index: 0
+    "231_POSTCODE":
+        name: "SPACE_SPLIT"
+        args:
+            value: "#9941"
+            index: 1
+    "IS_BLANK":
+        "name": "EXISTS"
+        args:
+            "on_true": 1
+            "on_false": 0

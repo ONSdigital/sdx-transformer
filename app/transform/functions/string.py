@@ -1,4 +1,5 @@
 import math
+import re
 
 from app.definitions import Value
 from app.transform.functions.general import handle_empties
@@ -69,3 +70,21 @@ def carve(value: str, start_index=0, end_index=None) -> Value:
         return value[start_index:]
 
     return value[start_index:end_index]
+
+
+@handle_empties
+def string_padding(value: Value, padding_length: str) -> Value:
+    return value.ljust(int(padding_length))
+
+
+@handle_empties
+def space_split(value: str, index: int = 0) -> Value:
+    """
+    Will split a string based on a space
+    :param value The data
+    :param index The index of the data to return, 0 = first part, 1 = second part etc
+    """
+
+    # Strip out any tabs and double spaces etc
+    cleaned = re.sub(r"\s+", " ", value)
+    return cleaned.split(" ")[index]
