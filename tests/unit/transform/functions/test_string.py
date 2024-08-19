@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions import Empty
-from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, space_split
+from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, space_split, postcode
 
 
 class StartsWithTests(unittest.TestCase):
@@ -179,8 +179,30 @@ class SpaceSplitTest(unittest.TestCase):
         expected = "4DU"
         self.assertEqual(expected, actual)
 
-    def test_invalid_index_throws_error(self):
+    def test_invalid_index_returns_value(self):
         value = "CV8P 4DU"
+        result = space_split(value, index=2)
+        self.assertEqual(value, result)
 
-        with self.assertRaises(IndexError):
-            space_split(value, index=2)
+
+class PostcodeTest(unittest.TestCase):
+
+    def test_3_space_3(self):
+        value = "NP1 2BC"
+        expected = "NP1", "2BC"
+        self.assertEqual(expected, postcode(value))
+
+    def test_4_space_3(self):
+        value = "NP14 2BC"
+        expected = "NP14", "2BC"
+        self.assertEqual(expected, postcode(value))
+
+    def test_3_3(self):
+        value = "NP12BC"
+        expected = "NP1", "2BC"
+        self.assertEqual(expected, postcode(value))
+
+    def test_4_3(self):
+        value = "NP142BC"
+        expected = "NP14", "2BC"
+        self.assertEqual(expected, postcode(value))
