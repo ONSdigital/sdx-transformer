@@ -1,7 +1,6 @@
-import json
 import unittest
 
-from app.definitions import SurveyMetadata, ImageResponse, PCK
+from app.definitions import SurveyMetadata, PCK
 from app.pck_managers.looped import get_looping
 from tests.integration.looped import read_submission_data
 

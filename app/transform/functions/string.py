@@ -80,11 +80,34 @@ def string_padding(value: Value, padding_length: str) -> Value:
 @handle_empties
 def space_split(value: str, index: int = 0) -> Value:
     """
-    Will split a string based on a space
+    Will split a string based on a space and return the part as denoted by the index.
+    If the index is not valid then the un transformed value will be returned.
     :param value The data
     :param index The index of the data to return, 0 = first part, 1 = second part etc
     """
 
     # Strip out any tabs and double spaces etc
     cleaned = re.sub(r"\s+", " ", value)
-    return cleaned.split(" ")[index]
+    parts = cleaned.split(" ")
+    if len(parts) > index:
+        return parts[index]
+    return value
+
+
+def postcode(value: str) -> tuple[str, str]:
+    parts = value.split(" ")
+    if len(parts) > 1:
+        return parts[0], parts[1]
+
+    x = len(value) - 3
+    return value[:x], value[x:]
+
+
+@handle_empties
+def postcode_start(value: str) -> Value:
+    return postcode(value)[0]
+
+
+@handle_empties
+def postcode_end(value: str) -> Value:
+    return postcode(value)[1]
