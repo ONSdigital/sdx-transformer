@@ -40,6 +40,7 @@ iso_8601_date = str  # YYYY-MM-DD
 
 
 class SurveyMetadata(TypedDict):
+    tx_id: str
     survey_id: str
     period_id: str
     ru_ref: str

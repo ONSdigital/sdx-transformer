@@ -12,6 +12,7 @@ class MBSPckTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "009",
             "period_id": "1605",
             "ru_ref": "30237487572l",
@@ -35,6 +36,7 @@ class MBSPckTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "009",
             "period_id": "1605",
             "ru_ref": "46588678052M",
@@ -56,6 +58,7 @@ class MBSPckTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "009",
             "period_id": "1605",
             "ru_ref": "97148856319Y",
@@ -77,6 +80,7 @@ class MBSPckTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "009",
             "period_id": "1605",
             "ru_ref": "97148856319Y",

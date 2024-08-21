@@ -14,6 +14,7 @@ class BerdTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "002",
             "period_id": "23",
             "ru_ref": "12346789012A",

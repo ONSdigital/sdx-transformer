@@ -11,10 +11,11 @@ from app.pck_managers.prepop import get_prepop
 logger = get_logger()
 
 
-def process_pck(req: Request, _tx_id: TX_ID):
+def process_pck(req: Request, tx_id: TX_ID):
     logger.info("Received pck request")
 
     survey_metadata: SurveyMetadata = {
+        "tx_id": tx_id,
         "survey_id": req.args.get("survey_id", ""),
         "period_id": req.args.get("period_id", ""),
         "ru_ref": req.args.get("ru_ref", ""),

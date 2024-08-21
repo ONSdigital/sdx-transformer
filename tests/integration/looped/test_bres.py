@@ -13,6 +13,7 @@ class BresTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "221",
             "period_id": "201605",
             "ru_ref": "12346789012A",
@@ -42,6 +43,7 @@ class BresTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "221",
             "period_id": "201605",
             "ru_ref": "12345678901A",
@@ -68,6 +70,7 @@ class BresTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "221",
             "period_id": "201605",
             "ru_ref": "12345678901A",
@@ -94,6 +97,7 @@ class BresTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "221",
             "period_id": "201605",
             "ru_ref": "12345678901A",
@@ -120,6 +124,7 @@ class BresTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "221",
             "period_id": "201605",
             "ru_ref": "12345678901A",
@@ -129,6 +134,7 @@ class BresTests(unittest.TestCase):
         }
 
         actual: PCK = get_looping(submission_data, survey_metadata)
+        print(actual)
 
         pck_filepath = "tests/data/bres/221.0019.pck"
         with open(pck_filepath, 'rb') as f:
@@ -146,6 +152,7 @@ class BresTests(unittest.TestCase):
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
+            "tx_id": "ea82c224-0f80-41cc-b877-8a7804b56c26",
             "survey_id": "221",
             "period_id": "201605",
             "ru_ref": "12345678901A",
