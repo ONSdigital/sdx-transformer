@@ -9,6 +9,8 @@ def _get_scan_number(metadata: SurveyMetadata, ref: Optional[str] = None) -> str
     If no reference is passed (as should be the case for the top level ru) then
     create a unique number from the ruref, survey_id and period"""
     if ref:
+        if ref[0] == "N":
+            return f's_{metadata["ru_ref"]}_{metadata["survey_id"]}_{metadata["period_id"]}_{ref}'
         return f's{ref}'
 
     return f's_{metadata["ru_ref"]}_{metadata["survey_id"]}_{metadata["period_id"]}'
