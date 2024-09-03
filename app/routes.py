@@ -1,3 +1,5 @@
+import json
+
 from sdx_gcp import Request, Flask, TX_ID
 from sdx_gcp.app import get_logger, SdxApp
 from sdx_gcp.errors import DataError
@@ -58,7 +60,12 @@ def process_pck(req: Request, _tx_id: TX_ID):
 
 def process_prepop(req: Request, _tx_id: TX_ID):
     logger.info("Received prepop request")
-    prepop_data: PrepopData = req.get_json(force=True, silent=True)
+    data_chunks = []
+    for chunk in req.stream:
+        data_chunks.append(chunk)
+    full_data = b''.join(data_chunks).decode('utf-8')
+
+    prepop_data: PrepopData = json.loads(full_data)
     survey_id: str = req.args.get("survey_id")
 
     if prepop_data is None:
