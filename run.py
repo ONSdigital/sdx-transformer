@@ -5,4 +5,4 @@ from app.routes import init_routes
 
 if __name__ == '__main__':
     init_routes(sdx_app)
-    serve(sdx_app.app, host='0.0.0.0', port='5000')
+    serve(sdx_app.app, host='0.0.0.0', port='5000', channel_timeout=600)
