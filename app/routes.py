@@ -81,3 +81,4 @@ def process_prepop(req: Request, _tx_id: TX_ID):
 def init_routes(app: SdxApp):
     app.add_post_endpoint(process_pck, rule="/pck")
     app.add_post_endpoint(process_prepop, rule="/prepop")
+    app.app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
