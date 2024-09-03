@@ -5,10 +5,4 @@ from app.routes import init_routes
 
 if __name__ == '__main__':
     init_routes(sdx_app)
-    def new_run(app, port: int = 5000):
-        """Start the server"""
-        serve(app, host='0.0.0.0', port=port, channel_timeout=300, inactivity=300)
-
-
-    sdx_app.run = new_run
-    sdx_app.run(sdx_app)
+    serve(sdx_app.app, host='0.0.0.0', port='5000')
