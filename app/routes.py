@@ -71,6 +71,6 @@
 #     return Flask.jsonify(result)
 
 
-def init_routes(app: SdxApp):
-    app.add_post_endpoint(process_pck, rule="/pck")
-    app.add_post_endpoint(process_prepop, rule="/prepop")
+# def init_routes(app: SdxApp):
+#     app.add_post_endpoint(process_pck, rule="/pck")
+#     app.add_post_endpoint(process_prepop, rule="/prepop")

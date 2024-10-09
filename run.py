@@ -1,6 +1,6 @@
-from app import sdx_app
-from app.routes import init_routes
+import uvicorn
+
+from app.fapi_routes import app
 
 if __name__ == '__main__':
-    init_routes(sdx_app)
-    sdx_app.run(port=5000)
+    uvicorn.run(app, host='0.0.0.0', port=5000)
