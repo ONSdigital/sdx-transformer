@@ -17,6 +17,8 @@ logger = get_logger()
 async def process_pck(request: Request, _tx_id: TX_ID):
     logger.info("Received pck request")
 
+    logger.info(str(request.body()))
+
     survey_metadata: SurveyMetadata = {
         "survey_id": request.query_params.get("survey_id", ""),
         "period_id": request.query_params.get("period_id", ""),
