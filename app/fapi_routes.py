@@ -16,8 +16,7 @@ logger = get_logger()
 @app.post("/pck")
 async def process_pck(request: Request, _tx_id: TX_ID):
     logger.info("Received pck request")
-
-    logger.info(str(request.body()))
+    logger.info(f"Request body: {request.json()}")
 
     survey_metadata: SurveyMetadata = {
         "survey_id": request.query_params.get("survey_id", ""),
