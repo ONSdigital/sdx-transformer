@@ -111,3 +111,10 @@ def postcode_start(value: str) -> Value:
 @handle_empties
 def postcode_end(value: str) -> Value:
     return postcode(value)[1]
+
+
+def slice_lookup(value: str, lookup: str, slice_start: int, slice_end: int, on_true: str, on_false: str) -> Value:
+    if str(lookup[slice_start:slice_end]) == str(value):
+        return on_true
+    return on_false
+

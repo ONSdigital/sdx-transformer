@@ -1,0 +1,43 @@
+title: "Build Spec for ASHE"
+survey_id: "141"
+period_format: ""
+target: "SDS"
+item_list_path: "items.employee"
+template:
+    identifier: "$ID_CONCAT" #payes/empees
+    items:
+        employee:
+            -   identifier: "#emp_id" #empees
+                employee_name: "#emp_name" #empees
+                national_insurance_number_starred: "$NINO_STAR" #empees
+                work_id: "#emp_workid" #empees
+                work_postcode: "$WORK_POSTCODE_EXISTS" #empees
+                home_postcode: "$HOME_POSTCODE_EXISTS" #empees
+transforms:
+    ID_CONCAT:
+        name: "CONCAT"
+        args:
+            value: "#distno"
+            values: [ "#empref" ]
+            seperator: ""
+    "WORK_POSTCODE_EXISTS":
+        name: "EXISTS"
+        args:
+            "value": "#emp_work_postcode"
+            "on_true": "#emp_work_postcode"
+            "on_false": "NOT KNOWN"
+    "HOME_POSTCODE_EXISTS":
+        name: "EXISTS"
+        args:
+            "value": "#emp_home_postcode"
+            "on_true": "#emp_home_postcode"
+            "on_false": "NOT KNOWN"
+    "NINO_STAR":
+        name: "SLICE_LOOKUP"
+        args:
+            "value": "#emp_nino"
+            "lookup": "14"
+            "slice_start": "6"
+            "slice_end": "8"
+            "on_true": "******14*"
+            "on_false": "*********"
