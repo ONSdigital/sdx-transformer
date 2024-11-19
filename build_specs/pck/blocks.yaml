@@ -20,6 +20,8 @@ template:
     "124": "#124"
     "145": "$COMMENT"
     "146": "$COMMENT"
+    "115": "10"
+    "125": "10"
 transforms:
     "COMMENT":
         "name": "EXISTS"
