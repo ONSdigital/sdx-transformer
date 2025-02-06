@@ -147,7 +147,9 @@ template:
     "2132": "$DISTANCE_FURTHER_2131"
     "2133": "$DISTANCE_OUTSIDE_2131"
     "2134": "$DISTANCE_BUSINESS_2131"
-    "2140": "$YES_NO"
+
+    "2140": "$YES_NO" Removed
+
     "1876": "$CHECKBOX"
     "1877": "$CHECKBOX"
     "1878": "$CHECKBOX"
@@ -164,6 +166,25 @@ template:
     "1902": "$CHECKBOX"
     "1903": "$CHECKBOX"
     "1904": "$CHECKBOX"
+
+    "2461": "$YES_NO" new
+    "2462": "$YES_NO" new
+    "2463": "$CHECKBOX" new
+    "2464": "$CHECKBOX" new
+    "2465": "$CHECKBOX" new
+    "2470": "$CHECKBOX" new
+    "2471": "$CHECKBOX" new
+    "2472": "$CHECKBOX" new
+    "2473": "$CHECKBOX" new
+    "2474": "$CHECKBOX" new
+    "2475": "$CHECKBOX" new
+    "2476": "$CHECKBOX" new
+    "2477": "$CHECKBOX" new
+    "2478": "$CHECKBOX" new
+    "2479": "$CHECKBOX" new
+    "2480": "$CHECKBOX" new
+    "2481": "$CHECKBOX" new
+
     "2650": "$PERCENT_RADIO"
     "2651": "$PERCENT_RADIO"
     "2652": "$PERCENT_RADIO"
@@ -195,33 +216,43 @@ template:
     "2204": "$CHECKBOX"
     "2205": "$CHECKBOX"
     "2206": "$CHECKBOX"
+
+    "2209": "$CHECKBOX" new
+
     "2211": "$CHECKBOX"
     "2212": "$CHECKBOX"
     "2213": "$CHECKBOX"
     "2214": "$CHECKBOX"
     "2215": "$CHECKBOX"
     "2216": "$CHECKBOX"
+
+    "2217": "$CHECKBOX" new
+    "2218": "$CHECKBOX" new
+    "2219": "$CHECKBOX" new
+    "2399": "$CHECKBOX" new
+
     "2220": "$YES_NO"
-    "2221": "$YES_NO"
+
+    "2221": "$YES_NO" removed
     "2222": "$YES_NO"
-    "2223": "$YES_NO"
+    "2223": "$YES_NO" removed
     "2224": "$YES_NO"
-    "2225": "$YES_NO"
+    "2225": "$YES_NO" removed
     "2226": "$YES_NO"
-    "2227": "$YES_NO"
+    "2227": "$YES_NO" removed
     "2228": "$YES_NO"
-    "2229": "$YES_NO"
+    "2229": "$YES_NO" removed
     "2230": "$YES_NO"
-    "2231": "$YES_NO"
+    "2231": "$YES_NO" removed
     "2232": "$YES_NO"
-    "2233": "$YES_NO"
+    "2233": "$YES_NO" removed
     "2234": "$YES_NO"
-    "2235": "$YES_NO"
+    "2235": "$YES_NO" removed
     "2236": "$YES_NO"
-    "2237": "$YES_NO"
+    "2237": "$YES_NO" removed
     "2238": "$YES_NO"
-    "2239": "$YES_NO"
-    "2700": "$TEXT"
+    "2239": "$YES_NO" removed
+    "2700": "$TEXT" possibly changed to 146
     "2801": "#2801"
     "2800": "#2800"
     "2900": "$YES_NO"
