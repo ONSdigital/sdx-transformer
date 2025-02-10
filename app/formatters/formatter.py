@@ -1,4 +1,5 @@
 from app.definitions import Value, SurveyMetadata, PCK, BuildSpecError
+from app.period.period import PeriodFormatError, Period
 
 
 class Formatter:
@@ -23,48 +24,10 @@ class Formatter:
     def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
         pass
 
-    def convert_period(self, period: str) -> str:
+    def convert_period(self, period_id: str) -> str:
+        try:
+            period = Period(period_id, self._period_format)
+            return period.convert_to_format(self._pck_period_format)
 
-        period_format = self._period_format
-
-        # If the period does not match the period format,
-        # use a default input format, based on the length of the period
-        if len(period) != len(period_format):
-            if len(period) == 6:
-                period_format = "YYYYMM"
-            elif len(period) == 4:
-                period_format = "YYMM"
-            elif len(period) == 2:
-                period_format = "YY"
-
-        symbols: dict[str, list[str]] = {
-            "D": [],
-            "M": [],
-            "Y": []
-        }
-
-        for i in range(0, len(period)):
-            k = period_format[i]
-            if k not in symbols:
-                raise BuildSpecError(f"Build spec period in wrong format {period_format}")
-            symbols[k].append(period[i])
-
-        if self._pck_period_format.count("Y") == 4:
-            if len(symbols["Y"]) == 2:
-                symbols["Y"].insert(0, "0")
-                symbols["Y"].insert(0, "2")
-        elif self._pck_period_format.count("Y") == 2:
-            if len(symbols["Y"]) == 4:
-                symbols["Y"].pop(0)
-                symbols["Y"].pop(0)
-
-        if self._pck_period_format.count("M") == 2:
-            if len(symbols["M"]) == 0:
-                symbols["M"].append("0")
-                symbols["M"].append("1")
-
-        result = ""
-        for f in self._pck_period_format:
-            result += symbols[f].pop(0)
-
-        return result
+        except PeriodFormatError as e:
+            raise BuildSpecError(f"Build spec period in wrong format {self._period_format}") from e
