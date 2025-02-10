@@ -1,31 +1,18 @@
+from sdx_gcp.errors import DataError
+
 from app.definitions import SurveyMetadata
+from app.mappers.mappers import Mapper
 
 
-class BaseMapping:
+class SurveyMapping:
 
-    def get_mapping(self, survey_metadata: SurveyMetadata):
-        pass
+    def __init__(self, mappings: dict[str, Mapper]):
+        self._mappings = mappings
 
+    def get_mapping(self, survey_metadata: SurveyMetadata) -> str:
+        survey_id = survey_metadata["survey_id"]
+        mapper = self._mappings.get(survey_id)
+        if not mapper:
+            raise DataError(f"Could not lookup survey id {survey_id}")
 
-class SingleMapping(BaseMapping):
-
-    def __init__(self, mapping: str):
-        self._mapping = mapping
-
-    def get_mapping(self, survey_metadata: SurveyMetadata):
-        return self._mapping
-
-
-class PeriodMapping(BaseMapping):
-
-    def __init__(self, period_id, before: str, after_or_equal: str):
-        self._period_id = period_id
-        self._before = before
-        self._after_or_equal = after_or_equal
-
-    def get_mapping(self, survey_metadata: SurveyMetadata):
-        period = survey_metadata["period_id"]
-        if period < self._period_id:
-            return self._before
-        else:
-            return self._after_or_equal
+        return mapper.get_mapping(survey_metadata)

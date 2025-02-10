@@ -11,20 +11,22 @@ from app.formatters.idbr_looping_formatter import IDBRLoopingFormatter
 from app.formatters.image_looping_formatter import ImageLoopingFormatter
 from app.formatters.looping_formatter import LoopingFormatter
 from app.formatters.spp_looping_formatter import SPPLoopingFormatter
+from app.mappers.mappers import SingleMapper
+from app.mappers.survey_mapping import SurveyMapping
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
-survey_mapping: dict[str, str] = {
-    "001": "looping",
-    "066": "qsl",
-    "068": "qrt",
-    "071": "qs",
-    "076": "qsm",
-    "221": "bres",
-    "999": "looping-spp",
-}
+survey_mapping: SurveyMapping = SurveyMapping({
+    "001": SingleMapper("looping"),
+    "066": SingleMapper("qsl"),
+    "068": SingleMapper("qrt"),
+    "071": SingleMapper("qs"),
+    "076": SingleMapper("qsm"),
+    "221": SingleMapper("bres"),
+    "999": SingleMapper("looping-spp"),
+})
 
 formatter_mapping: dict[str, LoopingFormatter.__class__] = {
     "CORA": CORALoopingFormatter,
@@ -49,7 +51,8 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
                 return berd_to_spp(list_data, survey_metadata)
         # ------------------------------------------
 
-        build_spec: BuildSpec = get_build_spec(survey_metadata["survey_id"], survey_mapping, "looping")
+        survey_name = survey_mapping.get_mapping(survey_metadata)
+        build_spec: BuildSpec = get_build_spec(survey_name, "looping")
         looped_data: LoopedData = convert_to_looped_data(list_data)
         data_section: Data = looped_data['data_section']
 

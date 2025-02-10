@@ -26,7 +26,10 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
     """
     Performs the steps required to transform prepopulated data.
     """
-    build_spec: BuildSpec = get_build_spec(survey_id, survey_mapping, "prepop")
+    survey_name = survey_mapping.get(survey_id)
+    if not survey_name:
+        raise DataError(f"Survey id {survey_id} not found in survey mapping")
+    build_spec: BuildSpec = get_build_spec(survey_name, "prepop")
     parse_tree: ParseTree = interpolate_build_spec(build_spec)
 
     result: dict[Identifier: Template] = {}

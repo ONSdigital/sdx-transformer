@@ -7,22 +7,19 @@ import yaml
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.definitions import BuildSpec, BuildSpecError, ParseTree
+from app.definitions import BuildSpec, BuildSpecError, ParseTree, SurveyMetadata
 from app.formatters.formatter import Formatter
+from app.mappers.survey_mapping import SurveyMapping
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields
 
 logger = get_logger()
 
 
-def get_build_spec(survey_id: str, survey_mapping: dict[str, str], subdir: str = "pck") -> BuildSpec:
+def get_build_spec(survey_name: str, subdir: str = "pck") -> BuildSpec:
     """
     Looks up the relevant build spec for the submission provided.
     """
-    survey_name = survey_mapping.get(survey_id)
-    if survey_name is None:
-        raise DataError(f"Could not lookup survey id {survey_id}")
-
     filepath = f"build_specs/{subdir}/{survey_name}.yaml"
     if exists(filepath):
         logger.info(f"Getting build spec from {filepath}")
