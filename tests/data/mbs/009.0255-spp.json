@@ -1,0 +1,53 @@
+{
+  "formtype": "0255",
+  "reference": "97148856319",
+  "period": "2503",
+  "survey": "009",
+  "responses": [
+    {
+      "questioncode": "40",
+      "response": "81000",
+      "instance": 0
+    },
+    {
+      "questioncode": "49",
+      "response": "22000",
+      "instance": 0
+    },
+    {
+      "questioncode": "50",
+      "response": "67",
+      "instance": 0
+    },
+    {
+      "questioncode": "51",
+      "response": "15",
+      "instance": 0
+    },
+    {
+      "questioncode": "52",
+      "response": "15",
+      "instance": 0
+    },
+    {
+      "questioncode": "53",
+      "response": "15",
+      "instance": 0
+    },
+    {
+      "questioncode": "54",
+      "response": "22",
+      "instance": 0
+    },
+    {
+      "questioncode": "90",
+      "response": "35000",
+      "instance": 0
+    },
+    {
+      "questioncode": "146",
+      "response": "this is just a comment",
+      "instance": 0
+    }
+  ]
+}

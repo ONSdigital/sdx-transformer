@@ -1,0 +1,18 @@
+{
+  "formtype": "0106",
+  "reference": "97148856319",
+  "period": "2503",
+  "survey": "009",
+  "responses": [
+    {
+      "questioncode": "40",
+      "response": "24000",
+      "instance": 0
+    },
+    {
+      "questioncode": "146",
+      "response": "My significant comment",
+      "instance": 0
+    }
+  ]
+}
