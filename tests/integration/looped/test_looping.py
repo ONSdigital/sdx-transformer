@@ -51,7 +51,7 @@ class LoopingTests(unittest.TestCase):
 
         }
 
-        self.assertEquals(expected, actual)
+        self.assertEqual(expected, actual)
 
     def test_looped_to_cora_pck(self):
 
