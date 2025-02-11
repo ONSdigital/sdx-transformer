@@ -26,7 +26,7 @@ class BricksTransformsTests(unittest.TestCase):
                            "24": "0",
                            "9999": "Concrete"}
 
-        build_spec = get_build_spec("074", {"074": "bricks"})
+        build_spec = get_build_spec("bricks")
 
         for k, v in types.items():
             submission_data["9999"] = k
@@ -58,7 +58,7 @@ class BricksTransformsTests(unittest.TestCase):
         submission_data = {"145": "I am a comment that should be replaced with a 1",
                            "146": ""}
 
-        build_spec = get_build_spec("074", {"074": "bricks"})
+        build_spec = get_build_spec("bricks")
 
         expected = {"145": "1",
                     "146": "2",
@@ -90,7 +90,7 @@ class BricksTransformsTests(unittest.TestCase):
                            "24": "7",
                            "9999": ""}
 
-        build_spec = get_build_spec("074", {"074": "bricks"})
+        build_spec = get_build_spec("bricks")
 
         for k, v in types.items():
             submission_data["9999"] = k
