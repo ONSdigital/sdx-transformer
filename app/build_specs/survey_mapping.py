@@ -1,7 +1,7 @@
 from sdx_gcp.errors import DataError
 
 from app.definitions import SurveyMetadata
-from app.mappers.mappers import Mapper
+from app.build_specs.mappers import Mapper
 
 
 class SurveyMapping:

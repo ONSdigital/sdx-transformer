@@ -9,38 +9,38 @@ from app.formatters.formatter import Formatter
 from app.formatters.json_formatter import JSONFormatter
 from app.formatters.open_road_formatter import OpenRoadFormatter
 from app.formatters.spp_formatter import SPPFormatter
-from app.mappers.mappers import SingleMapper, PeriodMapper
-from app.mappers.survey_mapping import SurveyMapping
+from app.build_specs.mappers import BuildSpecMapper, PeriodMapper
+from app.build_specs.survey_mapping import SurveyMapping
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
 survey_mapping: SurveyMapping = SurveyMapping({
-    "002": SingleMapper("berd"),
+    "002": BuildSpecMapper("berd"),
     "009": PeriodMapper(period_id="2503", before="mbs", after_or_equal="mbs-spp"),
-    "017": SingleMapper("stocks"),
-    "019": SingleMapper("qcas"),
-    "024": SingleMapper("fuels"),
-    "073": SingleMapper("blocks"),
-    "074": SingleMapper("bricks"),
-    "092": SingleMapper("mes"),
-    "127": SingleMapper("mcg"),
-    "134": SingleMapper("mwss"),
-    "139": SingleMapper("qbs"),
-    "144": SingleMapper("ukis"),
-    "160": SingleMapper("qpses"),
-    "165": SingleMapper("qpsespb"),
-    "169": SingleMapper("qpsesrap"),
-    "171": SingleMapper("acas"),
-    "182": SingleMapper("vacancies"),
-    "183": SingleMapper("vacancies"),
-    "184": SingleMapper("vacancies"),
-    "185": SingleMapper("vacancies"),
-    "187": SingleMapper("des"),
-    "194": SingleMapper("rails"),
-    "202": SingleMapper("abs"),
-    "228": SingleMapper("construction"),
+    "017": BuildSpecMapper("stocks"),
+    "019": BuildSpecMapper("qcas"),
+    "024": BuildSpecMapper("fuels"),
+    "073": BuildSpecMapper("blocks"),
+    "074": BuildSpecMapper("bricks"),
+    "092": BuildSpecMapper("mes"),
+    "127": BuildSpecMapper("mcg"),
+    "134": BuildSpecMapper("mwss"),
+    "139": BuildSpecMapper("qbs"),
+    "144": BuildSpecMapper("ukis"),
+    "160": BuildSpecMapper("qpses"),
+    "165": BuildSpecMapper("qpsespb"),
+    "169": BuildSpecMapper("qpsesrap"),
+    "171": BuildSpecMapper("acas"),
+    "182": BuildSpecMapper("vacancies"),
+    "183": BuildSpecMapper("vacancies"),
+    "184": BuildSpecMapper("vacancies"),
+    "185": BuildSpecMapper("vacancies"),
+    "187": BuildSpecMapper("des"),
+    "194": BuildSpecMapper("rails"),
+    "202": BuildSpecMapper("abs"),
+    "228": BuildSpecMapper("construction"),
 })
 
 

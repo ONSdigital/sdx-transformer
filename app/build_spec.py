@@ -9,7 +9,7 @@ from sdx_gcp.errors import DataError
 
 from app.definitions import BuildSpec, BuildSpecError, ParseTree, SurveyMetadata
 from app.formatters.formatter import Formatter
-from app.mappers.survey_mapping import SurveyMapping
+from app.build_specs.survey_mapping import SurveyMapping
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields
 

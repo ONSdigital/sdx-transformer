@@ -11,21 +11,21 @@ from app.formatters.idbr_looping_formatter import IDBRLoopingFormatter
 from app.formatters.image_looping_formatter import ImageLoopingFormatter
 from app.formatters.looping_formatter import LoopingFormatter
 from app.formatters.spp_looping_formatter import SPPLoopingFormatter
-from app.mappers.mappers import SingleMapper
-from app.mappers.survey_mapping import SurveyMapping
+from app.build_specs.mappers import BuildSpecMapper
+from app.build_specs.survey_mapping import SurveyMapping
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
 survey_mapping: SurveyMapping = SurveyMapping({
-    "001": SingleMapper("looping"),
-    "066": SingleMapper("qsl"),
-    "068": SingleMapper("qrt"),
-    "071": SingleMapper("qs"),
-    "076": SingleMapper("qsm"),
-    "221": SingleMapper("bres"),
-    "999": SingleMapper("looping-spp"),
+    "001": BuildSpecMapper("looping"),
+    "066": BuildSpecMapper("qsl"),
+    "068": BuildSpecMapper("qrt"),
+    "071": BuildSpecMapper("qs"),
+    "076": BuildSpecMapper("qsm"),
+    "221": BuildSpecMapper("bres"),
+    "999": BuildSpecMapper("looping-spp"),
 })
 
 formatter_mapping: dict[str, LoopingFormatter.__class__] = {
