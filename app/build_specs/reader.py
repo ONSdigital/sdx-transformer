@@ -3,15 +3,9 @@ from os.path import exists
 import yaml
 from sdx_gcp.app import get_logger
 from app.definitions.spec import BuildSpec
-
+from app.definitions.spec_repo import BuildSpecRepository
 
 logger = get_logger()
-
-
-class BuildSpecRepository:
-
-    def get_build_spec(self, spec_name: str) -> BuildSpec:
-        pass
 
 
 class BuildSpecFileRepository(BuildSpecRepository):

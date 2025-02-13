@@ -1,20 +1,16 @@
-from typing import Literal
-
 from app.build_specs.formatter_selectors import FormatterMapping
-from app.build_specs.mappings import SpecMapping
+from app.build_specs.mappings import BuildSpecMapping
 from app.definitions.spec import BuildSpec, ParseTree, BuildSpecError
 from app.definitions.data import SurveyMetadata
+from app.definitions.spec_reader import template_type, SpecReader
 from app.formatters.formatter import Formatter
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields
 
 
-template_type = Literal["template", "looped"]
+class BuildSpecReader[T](SpecReader):
 
-
-class BuildSpecReader[T]:
-
-    def __init__(self, t: T, spec_mapping: SpecMapping[T], formatter_mapping: FormatterMapping):
+    def __init__(self, t: T, spec_mapping: BuildSpecMapping[T], formatter_mapping: FormatterMapping):
         self._spec_mapping = spec_mapping
         self._formatter_mapping = formatter_mapping
         self._build_spec: BuildSpec = self._load(t)

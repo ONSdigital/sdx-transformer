@@ -1,4 +1,4 @@
-from app.build_specs.definitions import Selector
+from app.definitions.mapper import Selector
 from app.definitions.data import SurveyMetadata
 from app.period.period import Period
 

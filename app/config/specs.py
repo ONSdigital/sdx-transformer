@@ -1,9 +1,9 @@
-from app.build_specs.mappings import BuildSpecMapping, PrepopBuildSpecMapping
+from app.build_specs.mappings import PckSpecMapping, PrepopBuildSpecMapping
 from app.build_specs.reader import BuildSpecFileRepository
 from app.build_specs.spec_selectors import BuildSpecSelector, BuildSpecPeriodSelector, PrepopSelector
 
 
-build_spec_mapping: BuildSpecMapping = BuildSpecMapping({
+build_spec_mapping: PckSpecMapping = PckSpecMapping({
     "001": BuildSpecSelector("looping"),
     "002": BuildSpecSelector("berd"),
     "009": BuildSpecPeriodSelector(period_id="2503", before="mbs", after_or_equal="mbs-spp"),
