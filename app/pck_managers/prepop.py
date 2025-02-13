@@ -7,7 +7,8 @@ from sdx_gcp.errors import DataError
 from app.build_specs.build_spec import PrepopSpecReader
 from app.config.formatters import formatter_mapping
 from app.config.specs import prepop_spec_mapping
-from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field
+from app.definitions.spec import BuildSpec, ParseTree, Template
+from app.definitions.data import Identifier, PrepopData, Field
 from app.transform.clean import clean
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings

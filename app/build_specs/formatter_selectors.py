@@ -1,7 +1,7 @@
 from typing import Optional
 
 from app.build_specs.definitions import Selector, Mapper
-from app.definitions import BuildSpecError
+from app.definitions.spec import BuildSpecError
 from app.formatters.formatter import Formatter
 from app.formatters.looping_formatter import LoopingFormatter
 

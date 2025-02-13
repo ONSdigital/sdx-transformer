@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions import Empty
+from app.definitions.data import Empty
 from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, space_split, postcode
 
 

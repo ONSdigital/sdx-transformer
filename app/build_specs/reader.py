@@ -2,7 +2,7 @@ import json
 from os.path import exists
 import yaml
 from sdx_gcp.app import get_logger
-from app.definitions import BuildSpec
+from app.definitions.spec import BuildSpec
 
 
 logger = get_logger()

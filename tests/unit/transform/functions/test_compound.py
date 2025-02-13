@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions import Empty
+from app.definitions.data import Empty
 from app.transform.functions.compound import currency_thousands
 
 

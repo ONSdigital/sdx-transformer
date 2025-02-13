@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from app.definitions import SurveyMetadata, ImageResponse, SPP
+from app.definitions.data import SurveyMetadata, SPP, ImageResponse
 from app.pck_managers.mapped import get_pck
 from tests.integration.mapped import read_submission_data
 

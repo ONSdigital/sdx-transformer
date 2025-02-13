@@ -1,6 +1,6 @@
 import json
 
-from app.definitions import Value, SurveyMetadata, PCK, Empty
+from app.definitions.data import SurveyMetadata, PCK, Empty, Value
 from app.formatters.formatter import Formatter
 
 

@@ -2,7 +2,8 @@ from sdx_gcp.errors import DataError
 
 from app.build_specs.definitions import Mapper
 from app.build_specs.reader import BuildSpecRepository
-from app.definitions import SurveyMetadata, BuildSpec
+from app.definitions.spec import BuildSpec
+from app.definitions.data import SurveyMetadata
 from app.build_specs.spec_selectors import Selector
 
 

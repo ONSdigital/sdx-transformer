@@ -1,41 +1,10 @@
 from typing import TypedDict, NotRequired
 
 
-Data = dict[str, str]
-
-Field = dict | list | str | None
-
-Template = dict[str, Field]
-
-
-class Transform(TypedDict):
-    name: str
-    args: dict[str, Field]
-    post: NotRequired[str]
-
-
-Transforms = dict[str, Transform]
-
 Empty = None
-
 Value = str | Empty
-
-ParseTree = dict[str, Field]
-
-
-class BuildSpec(TypedDict):
-    title: str
-    survey_id: str
-    period_format: str
-    pck_period_format: NotRequired[str]
-    form_mapping: NotRequired[dict[str, str]]
-    target: str
-    item_list_path: NotRequired[str]
-    template: Template
-    looped: NotRequired[Template]
-    transforms: Transforms
-
-
+Field = dict | list | str | None
+Data = dict[str, str]
 iso_8601_date = str  # YYYY-MM-DD
 
 
@@ -49,15 +18,7 @@ class SurveyMetadata(TypedDict):
 
 
 Identifier = str
-
 PrepopData = dict[Identifier, list[Data]]
-
-
-PCK = str
-
-
-class BuildSpecError(Exception):
-    pass
 
 
 class Answer(TypedDict):
@@ -93,6 +54,9 @@ class ListCollector(TypedDict):
 class LoopedData(TypedDict):
     looped_sections: dict[str, dict[str, Data]]
     data_section: dict[str, Value]
+
+
+PCK = str
 
 
 class SPPResponse(TypedDict):

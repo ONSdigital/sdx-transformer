@@ -5,8 +5,8 @@ from app.berd.berd_transformer import berd_to_spp
 from app.build_specs.build_spec import PckSpecReader
 from app.config.formatters import formatter_mapping
 from app.config.specs import build_spec_mapping
-from app.definitions import ParseTree, SurveyMetadata, \
-    ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
+from app.definitions.spec import ParseTree
+from app.definitions.data import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, PCK, Empty, Value
 
 from app.formatters.looping_formatter import LoopingFormatter
 

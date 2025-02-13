@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions import Template
+from app.definitions.spec import Template
 from app.transform.clean import clean
 
 

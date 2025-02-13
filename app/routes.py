@@ -2,7 +2,8 @@ from sdx_gcp import Request, Flask, TX_ID
 from sdx_gcp.app import get_logger, SdxApp
 from sdx_gcp.errors import DataError
 
-from app.definitions import PrepopData, Identifier, Template, PCK, Data, SurveyMetadata, ListCollector
+from app.definitions.spec import Template
+from app.definitions.data import Data, SurveyMetadata, Identifier, PrepopData, ListCollector, PCK
 from app.pck_managers.looped import get_looping
 from app.pck_managers.mapped import get_pck
 from app.pck_managers.prepop import get_prepop

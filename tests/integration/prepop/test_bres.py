@@ -1,7 +1,8 @@
 import json
 import unittest
 
-from app.definitions import PrepopData, Identifier, Template
+from app.definitions.spec import Template
+from app.definitions.data import Identifier, PrepopData
 from app.pck_managers.prepop import get_prepop
 
 

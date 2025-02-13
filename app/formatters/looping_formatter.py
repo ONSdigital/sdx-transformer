@@ -1,6 +1,6 @@
 from typing import TypedDict
 
-from app.definitions import Value, ListCollector
+from app.definitions.data import ListCollector, Value
 from app.formatters.formatter import Formatter
 
 

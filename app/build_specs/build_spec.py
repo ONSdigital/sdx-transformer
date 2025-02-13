@@ -2,7 +2,8 @@ from typing import Literal
 
 from app.build_specs.formatter_selectors import FormatterMapping
 from app.build_specs.mappings import SpecMapping
-from app.definitions import SurveyMetadata, BuildSpec, ParseTree, BuildSpecError
+from app.definitions.spec import BuildSpec, ParseTree, BuildSpecError
+from app.definitions.data import SurveyMetadata
 from app.formatters.formatter import Formatter
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields

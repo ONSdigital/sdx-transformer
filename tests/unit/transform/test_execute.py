@@ -2,7 +2,7 @@ import unittest
 from collections.abc import Callable
 
 import app.config.functions
-from app.definitions import ParseTree
+from app.definitions.spec import ParseTree
 from app.transform.execute import execute
 
 

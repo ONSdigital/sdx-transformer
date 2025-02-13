@@ -1,6 +1,7 @@
 from typing import final
 
-from app.definitions import Template, Field, Empty
+from app.definitions.spec import Template
+from app.definitions.data import Empty, Field
 from app.transform.tree_walker import TreeWalker
 
 BLACK_LIST: final = ["", Empty, [], {}]

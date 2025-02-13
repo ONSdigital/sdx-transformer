@@ -2,7 +2,7 @@ import re
 
 import yaml
 
-from app.definitions import BuildSpec
+from app.definitions.spec import BuildSpec
 
 
 build_spec_path = "../build_specs/abs.yaml"

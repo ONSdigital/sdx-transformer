@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions import ParseTree
+from app.definitions.spec import ParseTree
 from app.transform.populate import populate_mappings, resolve_value_fields
 
 

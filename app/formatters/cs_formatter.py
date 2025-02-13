@@ -1,4 +1,4 @@
-from app.definitions import SurveyMetadata, Value
+from app.definitions.data import SurveyMetadata, Value
 from app.formatters.formatter import Formatter
 
 

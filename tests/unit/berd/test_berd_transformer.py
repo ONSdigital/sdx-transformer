@@ -4,7 +4,7 @@ import unittest
 from app.berd.collect_items import collect_list_items
 from app.berd.convert_data import extract_answers, convert_to_spp
 from app.berd.definitions import Answer, SPP
-from app.definitions import SurveyMetadata
+from app.definitions.data import SurveyMetadata
 from app.pck_managers.looped import get_looping
 
 

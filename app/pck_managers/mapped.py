@@ -4,7 +4,8 @@ from sdx_gcp.app import get_logger
 from app.build_specs.build_spec import PckSpecReader
 from app.config.formatters import formatter_mapping
 from app.config.specs import build_spec_mapping
-from app.definitions import ParseTree, Value, PCK, Data, SurveyMetadata
+from app.definitions.spec import ParseTree
+from app.definitions.data import Data, SurveyMetadata, PCK, Value
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings
 

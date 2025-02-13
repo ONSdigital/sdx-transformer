@@ -1,7 +1,8 @@
 import unittest
 
 from app.build_specs.reader import BuildSpecFileRepository
-from app.definitions import PCK, SurveyMetadata, ParseTree
+from app.definitions.spec import ParseTree
+from app.definitions.data import SurveyMetadata, PCK
 from app.pck_managers.mapped import get_pck, transform
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields

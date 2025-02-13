@@ -1,6 +1,6 @@
 import json
 
-from app.definitions import Data, Empty, PCK
+from app.definitions.data import Data, PCK, Empty
 
 
 def read_submission_data(filepath: str) -> Data:

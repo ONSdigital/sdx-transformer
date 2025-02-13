@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from app.definitions import SurveyMetadata, PCK
+from app.definitions.data import SurveyMetadata, PCK
 from app.pck_managers.mapped import get_pck
 from tests.integration.mapped import read_submission_data
 

@@ -3,7 +3,8 @@ from typing import Final
 
 from sdx_gcp.app import get_logger
 
-from app.definitions import Template, Transforms, ParseTree, Field, BuildSpecError
+from app.definitions.spec import Template, Transforms, ParseTree, BuildSpecError
+from app.definitions.data import Field
 from app.transform.tree_walker import TreeWalker
 
 logger = get_logger()
