@@ -4,7 +4,8 @@ from typing import Optional
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.build_spec import get_build_spec, interpolate_build_spec
+from app.build_specs.build_spec import PrepopSpecReader
+from app.config import prepop_spec_mapping, formatter_mapping
 from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field
 from app.transform.clean import clean
 from app.transform.execute import execute
@@ -12,25 +13,14 @@ from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
-survey_mapping: dict[str, str] = {
-    "066": "land",
-    "068": "tiles",
-    "071": "slate",
-    "076": "marine",
-    "221": "bres",
-    "241": "brs",
-}
-
 
 def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Template]:
     """
     Performs the steps required to transform prepopulated data.
     """
-    survey_name = survey_mapping.get(survey_id)
-    if not survey_name:
-        raise DataError(f"Survey id {survey_id} not found in survey mapping")
-    build_spec: BuildSpec = get_build_spec(survey_name, "prepop")
-    parse_tree: ParseTree = interpolate_build_spec(build_spec)
+    build_spec_reader: PrepopSpecReader = PrepopSpecReader(survey_id, prepop_spec_mapping, formatter_mapping)
+    build_spec: BuildSpec = build_spec_reader.get()
+    parse_tree: ParseTree = build_spec_reader.interpolate()
 
     result: dict[Identifier: Template] = {}
 

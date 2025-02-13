@@ -1,43 +1,21 @@
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.berd.berd_transformer import berd_to_spp, berd_to_image
-from app.build_spec import get_build_spec, get_formatter, interpolate_build_spec
-from app.definitions import BuildSpec, ParseTree, SurveyMetadata, \
+from app.berd.berd_transformer import berd_to_spp
+from app.build_specs.build_spec import PckSpecReader
+from app.config import build_spec_mapping, formatter_mapping
+from app.definitions import ParseTree, SurveyMetadata, \
     ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
-from app.formatters.cora_looping_formatter import CORALoopingFormatter
-from app.formatters.cs_looping_formatter import CSLoopingFormatter
-from app.formatters.idbr_looping_formatter import IDBRLoopingFormatter
-from app.formatters.image_looping_formatter import ImageLoopingFormatter
+
 from app.formatters.looping_formatter import LoopingFormatter
-from app.formatters.spp_looping_formatter import SPPLoopingFormatter
-from app.build_specs.mappers import BuildSpecMapper
-from app.build_specs.survey_mapping import SurveyMapping
+
 from app.transform.execute import execute
 from app.transform.populate import populate_mappings
 
 logger = get_logger()
 
-survey_mapping: SurveyMapping = SurveyMapping({
-    "001": BuildSpecMapper("looping"),
-    "066": BuildSpecMapper("qsl"),
-    "068": BuildSpecMapper("qrt"),
-    "071": BuildSpecMapper("qs"),
-    "076": BuildSpecMapper("qsm"),
-    "221": BuildSpecMapper("bres"),
-    "999": BuildSpecMapper("looping-spp"),
-})
 
-formatter_mapping: dict[str, LoopingFormatter.__class__] = {
-    "CORA": CORALoopingFormatter,
-    "SPP": SPPLoopingFormatter,
-    "Image": ImageLoopingFormatter,
-    "CS": CSLoopingFormatter,
-    "IDBR": IDBRLoopingFormatter,
-}
-
-
-def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_image_formatter: bool = False) -> PCK:
+def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PCK:
     """
     Performs the steps required to transform looped data.
     """
@@ -45,19 +23,15 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
 
         # temporary solution for Berd --------------
         if survey_metadata["survey_id"] == "002" and survey_metadata["form_type"] == "0001":
-            if use_image_formatter:
-                return berd_to_image(list_data, survey_metadata)
-            else:
-                return berd_to_spp(list_data, survey_metadata)
+            return berd_to_spp(list_data, survey_metadata)
         # ------------------------------------------
 
-        survey_name = survey_mapping.get_mapping(survey_metadata)
-        build_spec: BuildSpec = get_build_spec(survey_name, "looping")
+        build_spec_reader: PckSpecReader = PckSpecReader(survey_metadata, build_spec_mapping, formatter_mapping)
         looped_data: LoopedData = convert_to_looped_data(list_data)
         data_section: Data = looped_data['data_section']
 
         # CS can only handle one instance. Therefore, convert all looped data back into 'regular' data
-        if build_spec["target"] == "CS":
+        if build_spec_reader.get()["target"] == "CS":
             looped_sections: dict[str, dict[str, Data]] = looped_data["looped_sections"]
             item_dict: dict[str, Data]
             for item_dict in looped_sections.values():
@@ -67,21 +41,17 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, use_i
 
             looped_data["looped_sections"] = {}
 
-        # for images use a fake build spec that maps all answers without transform
-        if use_image_formatter:
-            build_spec: BuildSpec = get_image_spec(list_data, survey_metadata["survey_id"])
-
-        full_tree: ParseTree = interpolate_build_spec(build_spec)
+        full_tree: ParseTree = build_spec_reader.interpolate()
         populated_tree: ParseTree = populate_mappings(full_tree, data_section)
         transformed_data_section: dict[str, Value] = execute(populated_tree)
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
-        formatter: LoopingFormatter = get_formatter(build_spec, formatter_mapping)
+        formatter: LoopingFormatter = build_spec_reader.get_formatter(looped=True)
         formatter.set_original(list_data)
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         if looped_sections:
-            looped_tree: ParseTree = interpolate_build_spec(build_spec, "looped")
+            looped_tree: ParseTree = build_spec_reader.interpolate("looped")
 
             for data_dict in looped_sections.values():
                 instance_id = 1
@@ -209,26 +179,4 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
     return {
         "looped_sections": looped_sections,
         "data_section": data_section
-    }
-
-
-def get_image_spec(list_data: ListCollector, survey_id: str) -> BuildSpec:
-    """
-    Create a build spec for image files.
-    This involves mapping all the qcodes that
-    appear in the data without any transformation
-    """
-    template: dict[str, str] = {}
-    a: AnswerCode
-    for a in list_data["answer_codes"]:
-        qcode: str = a["code"]
-        template[qcode] = f'#{qcode}'
-
-    return {
-        "title": "Generic Image Build Spec",
-        "survey_id": survey_id,
-        "target": "Image",
-        "period_format": "YYYYMM",
-        "template": template,
-        "transforms": {}
     }

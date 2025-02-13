@@ -59,7 +59,7 @@ class BERDTransformerTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual = get_looping(data, survey_metadata, False)
+        actual = get_looping(data, survey_metadata)
 
         expected = {
             'formtype': '0001',

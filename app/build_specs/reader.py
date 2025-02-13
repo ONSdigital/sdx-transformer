@@ -8,20 +8,29 @@ from app.definitions import BuildSpec
 logger = get_logger()
 
 
-def read_build_spec(spec_name: str, subdir: str = "pck") -> BuildSpec:
-    """
-    Looks up the relevant build spec for the submission provided.
-    """
-    filepath = f"build_specs/{subdir}/{spec_name}.yaml"
-    if exists(filepath):
-        logger.info(f"Getting build spec from {filepath}")
-        with open(filepath) as y:
-            build_spec: BuildSpec = yaml.safe_load(y.read())
+class BuildSpecRepository:
 
-    else:
-        filepath = f"build_specs/{subdir}/{spec_name}.json"
-        logger.info(f"Getting build spec from {filepath}")
-        with open(filepath) as j:
-            build_spec: BuildSpec = json.load(j)
+    def get_build_spec(self, spec_name: str) -> BuildSpec:
+        pass
 
-    return build_spec
+
+class BuildSpecFileRepository(BuildSpecRepository):
+    dir: str = "build_specs"
+
+    def get_build_spec(self, spec_name: str) -> BuildSpec:
+        """
+        Looks up the relevant build spec for the submission provided.
+        """
+        filepath = f"{self.dir}/{spec_name}.yaml"
+        if exists(filepath):
+            logger.info(f"Getting build spec from {filepath}")
+            with open(filepath) as y:
+                build_spec: BuildSpec = yaml.safe_load(y.read())
+
+        else:
+            filepath = f"{self.dir}/{spec_name}.json"
+            logger.info(f"Getting build spec from {filepath}")
+            with open(filepath) as j:
+                build_spec: BuildSpec = json.load(j)
+
+        return build_spec

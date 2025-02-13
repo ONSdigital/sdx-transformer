@@ -43,7 +43,7 @@ def process_pck(req: Request, _tx_id: TX_ID):
         if submission_data is None:
             raise DataError("Submission data is not in json format")
 
-        pck: PCK = get_looping(submission_data, survey_metadata, use_image_formatter=use_image_formatter)
+        pck: PCK = get_looping(submission_data, survey_metadata)
 
     else:
         submission_data: Data = req.get_json(force=True, silent=True)

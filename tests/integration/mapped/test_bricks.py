@@ -1,11 +1,15 @@
 import unittest
 
-from app.definitions import SurveyMetadata, PCK
-from app.pck_managers.mapped import get_build_spec, transform, get_pck
+from app.build_specs.reader import BuildSpecFileRepository
+from app.definitions import SurveyMetadata, PCK, ParseTree
+from app.pck_managers.mapped import transform, get_pck
+from app.transform.interpolate import interpolate
+from app.transform.populate import resolve_value_fields
 from tests.integration.mapped import remove_empties, read_submission_data, are_equal
 
 
 class BricksTransformsTests(unittest.TestCase):
+
     def test_bricks_prepend(self):
         types = {
             "Clay": "2",
@@ -25,8 +29,6 @@ class BricksTransformsTests(unittest.TestCase):
                            "23": "0",
                            "24": "0",
                            "9999": "Concrete"}
-
-        build_spec = get_build_spec("bricks")
 
         for k, v in types.items():
             submission_data["9999"] = k
@@ -48,7 +50,10 @@ class BricksTransformsTests(unittest.TestCase):
                         "502": "0",
                         "503": "0",
                         "504": "0"}
-            transformed_data = transform(submission_data, build_spec)
+
+            build_spec = BuildSpecFileRepository().get_build_spec("bricks")
+            parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
+            transformed_data = transform(submission_data, parse_tree)
             actual = remove_empties(transformed_data)
             actual = actual.keys()
             expected = expected.keys()
@@ -58,15 +63,16 @@ class BricksTransformsTests(unittest.TestCase):
         submission_data = {"145": "I am a comment that should be replaced with a 1",
                            "146": ""}
 
-        build_spec = get_build_spec("bricks")
-
         expected = {"145": "1",
                     "146": "2",
                     "501": "0",
                     "502": "0",
                     "503": "0",
                     "504": "0"}
-        transformed_data = transform(submission_data, build_spec)
+
+        build_spec = BuildSpecFileRepository().get_build_spec("bricks")
+        parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
+        transformed_data = transform(submission_data, parse_tree)
         actual = remove_empties(transformed_data)
         self.assertEqual(expected, actual)
 
@@ -90,8 +96,6 @@ class BricksTransformsTests(unittest.TestCase):
                            "24": "7",
                            "9999": ""}
 
-        build_spec = get_build_spec("bricks")
-
         for k, v in types.items():
             submission_data["9999"] = k
             expected = {f"{v}01": "10",
@@ -113,12 +117,16 @@ class BricksTransformsTests(unittest.TestCase):
                         "503": "250",
                         "504": "14"
                         }
-            transformed_data = transform(submission_data, build_spec)
+
+            build_spec = BuildSpecFileRepository().get_build_spec("bricks")
+            parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
+            transformed_data = transform(submission_data, parse_tree)
             actual = remove_empties(transformed_data)
             self.assertEqual(expected, actual)
 
 
 class BricksPckTests(unittest.TestCase):
+
     def test_0002_to_pck(self):
         filepath = "tests/data/bricks/074.0001.json"
         submission_data = read_submission_data(filepath)

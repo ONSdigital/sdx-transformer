@@ -5,7 +5,7 @@ import yaml
 from app.definitions import BuildSpec
 
 
-build_spec_path = "../build_specs/pck/abs.yaml"
+build_spec_path = "../build_specs/abs.yaml"
 with open(build_spec_path) as y:
     build_spec: BuildSpec = yaml.safe_load(y.read())
 
