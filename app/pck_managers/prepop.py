@@ -5,7 +5,8 @@ from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.build_specs.build_spec import PrepopSpecReader
-from app.config import prepop_spec_mapping, formatter_mapping
+from app.config.formatters import formatter_mapping
+from app.config.specs import prepop_spec_mapping
 from app.definitions import BuildSpec, ParseTree, PrepopData, Template, Identifier, Field
 from app.transform.clean import clean
 from app.transform.execute import execute

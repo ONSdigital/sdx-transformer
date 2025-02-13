@@ -1,7 +1,7 @@
 import unittest
 from collections.abc import Callable
 
-import app.transform.execute
+import app.config.functions
 from app.definitions import ParseTree
 from app.transform.execute import execute
 
@@ -28,7 +28,7 @@ class ExecutionTests(unittest.TestCase):
             "ADD": fake_add,
             "CONTAINS": fake_contains
         }
-        app.transform.execute._function_lookup = fake_function_lookup
+        app.transform.execute.function_lookup = fake_function_lookup
 
     def test_execute_single(self):
 

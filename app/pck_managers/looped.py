@@ -3,7 +3,8 @@ from sdx_gcp.errors import DataError
 
 from app.berd.berd_transformer import berd_to_spp
 from app.build_specs.build_spec import PckSpecReader
-from app.config import build_spec_mapping, formatter_mapping
+from app.config.formatters import formatter_mapping
+from app.config.specs import build_spec_mapping
 from app.definitions import ParseTree, SurveyMetadata, \
     ListCollector, LoopedData, Data, AnswerCode, Value, PCK, Empty
 
