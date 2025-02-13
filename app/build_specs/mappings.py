@@ -41,4 +41,3 @@ class PrepopBuildSpecMapping(SpecMapping[str]):
             raise DataError(f"Could not lookup survey id {survey_id}")
 
         return selector.choose(_)
-

@@ -4,6 +4,6 @@ SHELL := bash
 
 .PHONY: test
 test:
-	# poetry install \
-# 	&& poetry run flake8 . --count --statistics \
- 	pytest -v --cov-report term-missing --disable-warnings --cov=app tests/
+	poetry install \
+	&& poetry run flake8 . --count --statistics \
+	&& poetry run pytest -v --cov-report term-missing --disable-warnings --cov=app tests/
