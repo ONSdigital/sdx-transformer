@@ -3,7 +3,7 @@ from os.path import exists
 import yaml
 from sdx_gcp.app import get_logger
 from app.definitions.spec import BuildSpec
-from app.definitions.spec_repo import BuildSpecRepository
+from app.definitions.repository import BuildSpecRepository
 
 logger = get_logger()
 

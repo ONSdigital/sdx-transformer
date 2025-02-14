@@ -4,14 +4,15 @@ from typing import Optional
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.build_specs.build_spec import PrepopSpecReader
 from app.config.formatters import formatter_mapping
+from app.config.functions import function_lookup
 from app.config.specs import prepop_spec_mapping
 from app.definitions.spec import BuildSpec, ParseTree, Template
 from app.definitions.data import Identifier, PrepopData, Field
 from app.transform.clean import clean
-from app.transform.execute import execute
+from app.transform.execute import Executor
 from app.transform.populate import populate_mappings
+from app.transformers.prepop import PrepopTransformer
 
 logger = get_logger()
 
@@ -20,9 +21,15 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
     """
     Performs the steps required to transform prepopulated data.
     """
-    build_spec_reader: PrepopSpecReader = PrepopSpecReader(survey_id, prepop_spec_mapping, formatter_mapping)
-    build_spec: BuildSpec = build_spec_reader.get()
-    parse_tree: ParseTree = build_spec_reader.interpolate()
+    transformer: PrepopTransformer = PrepopTransformer(
+        survey_id,
+        prepop_spec_mapping,
+        Executor(function_lookup),
+        formatter_mapping
+    )
+
+    build_spec: BuildSpec = transformer.get_spec()
+    parse_tree: ParseTree = transformer.interpolate()
 
     result: dict[Identifier: Template] = {}
 
@@ -32,8 +39,7 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
     for ru_ref, data_list in prepop_data.items():
         items: list[Template] = []
         for data in data_list:
-            populated_tree: ParseTree = populate_mappings(parse_tree, data)
-            result_item: Template = execute(populated_tree)
+            result_item: Template = transformer.run(parse_tree, data)
             result_item = clean(result_item)
             items.append(result_item)
 

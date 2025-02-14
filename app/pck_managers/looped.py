@@ -2,16 +2,14 @@ from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.berd.berd_transformer import berd_to_spp
-from app.build_specs.build_spec import PckSpecReader
 from app.config.formatters import formatter_mapping
+from app.config.functions import function_lookup
 from app.config.specs import build_spec_mapping
-from app.definitions.spec import ParseTree
 from app.definitions.data import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, PCK, Empty, Value
-
+from app.definitions.spec import ParseTree
 from app.formatters.looping_formatter import LoopingFormatter
-
-from app.transform.execute import execute
-from app.transform.populate import populate_mappings
+from app.transform.execute import Executor
+from app.transformers.looped import LoopedPckSpecTransformer
 
 logger = get_logger()
 
@@ -27,12 +25,18 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
             return berd_to_spp(list_data, survey_metadata)
         # ------------------------------------------
 
-        build_spec_reader: PckSpecReader = PckSpecReader(survey_metadata, build_spec_mapping, formatter_mapping)
+        transformer: LoopedPckSpecTransformer = LoopedPckSpecTransformer(
+            survey_metadata,
+            build_spec_mapping,
+            Executor(function_lookup),
+            formatter_mapping
+        )
+
         looped_data: LoopedData = convert_to_looped_data(list_data)
         data_section: Data = looped_data['data_section']
 
         # CS can only handle one instance. Therefore, convert all looped data back into 'regular' data
-        if build_spec_reader.get()["target"] == "CS":
+        if transformer.get_spec()["target"] == "CS":
             looped_sections: dict[str, dict[str, Data]] = looped_data["looped_sections"]
             item_dict: dict[str, Data]
             for item_dict in looped_sections.values():
@@ -42,23 +46,21 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
 
             looped_data["looped_sections"] = {}
 
-        full_tree: ParseTree = build_spec_reader.interpolate()
-        populated_tree: ParseTree = populate_mappings(full_tree, data_section)
-        transformed_data_section: dict[str, Value] = execute(populated_tree)
+        full_tree: ParseTree = transformer.interpolate()
+        transformed_data_section: dict[str, Value] = transformer.run(full_tree, data_section)
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
-        formatter: LoopingFormatter = build_spec_reader.get_formatter(looped=True)
+        formatter: LoopingFormatter = transformer.get_formatter()
         formatter.set_original(list_data)
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         if looped_sections:
-            looped_tree: ParseTree = build_spec_reader.interpolate("looped")
+            looped_tree: ParseTree = transformer.interpolate_looped()
 
             for data_dict in looped_sections.values():
                 instance_id = 1
                 for list_item_id, d in data_dict.items():
-                    populated_tree: ParseTree = populate_mappings(looped_tree, d)
-                    transformed_data: dict[str, Value] = execute(populated_tree)
+                    transformed_data: dict[str, Value] = transformer.run(looped_tree, d)
                     # remove any values that are empty or already appear in the data section
                     result = {k: v for k, v in transformed_data.items() if v is not Empty}
                     formatter.create_or_update_instance(instance_id=str(instance_id), data=result,

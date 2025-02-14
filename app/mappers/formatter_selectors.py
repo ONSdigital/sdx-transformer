@@ -1,12 +1,11 @@
 from typing import Optional
 
-from app.definitions.mapper import Selector, Mapper
-from app.definitions.spec import BuildSpecError
+from app.definitions.mapper import Selector
 from app.formatters.formatter import Formatter
 from app.formatters.looping_formatter import LoopingFormatter
 
 
-class FormatterSelector(Selector[str, Formatter.__class__]):
+class FormatterSelector(Selector[bool, Formatter.__class__]):
 
     def __init__(self,
                  formatter: Formatter.__class__,
@@ -19,16 +18,3 @@ class FormatterSelector(Selector[str, Formatter.__class__]):
             return self._looping_formatter
         else:
             return self._formatter
-
-
-class FormatterMapping(Mapper[bool, Formatter.__class__]):
-
-    def __init__(self, mappings: dict[str, FormatterSelector]):
-        super().__init__(mappings)
-
-    def get(self, target: str, looped: bool = False) -> Formatter.__class__:
-        selector = self._mappings.get(target)
-        if not selector:
-            raise BuildSpecError(f"Could not find formatter for {target}")
-
-        return selector.choose(looped)

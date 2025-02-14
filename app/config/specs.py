@@ -1,9 +1,10 @@
-from app.build_specs.mappings import PckSpecMapping, PrepopBuildSpecMapping
-from app.build_specs.reader import BuildSpecFileRepository
-from app.build_specs.spec_selectors import BuildSpecSelector, BuildSpecPeriodSelector, PrepopSelector
+from app.definitions.mapper import BuildSpecMappingBase, PrepopMappingBase
+from app.mappers.spec_mappings import BuildSpecMapping, PrepopSpecMapping
+from app.repositories.file_repository import BuildSpecFileRepository
+from app.mappers.spec_selectors import BuildSpecSelector, BuildSpecPeriodSelector, PrepopSelector
 
 
-build_spec_mapping: PckSpecMapping = PckSpecMapping({
+build_spec_mapping: BuildSpecMappingBase = BuildSpecMapping({
     "001": BuildSpecSelector("looping"),
     "002": BuildSpecSelector("berd"),
     "009": BuildSpecPeriodSelector(period_id="2503", before="mbs", after_or_equal="mbs-spp"),
@@ -38,7 +39,7 @@ build_spec_mapping: PckSpecMapping = PckSpecMapping({
 }, repository=BuildSpecFileRepository())
 
 
-prepop_spec_mapping: PrepopBuildSpecMapping = PrepopBuildSpecMapping({
+prepop_spec_mapping: PrepopMappingBase = PrepopSpecMapping({
     "066": PrepopSelector("land-prepop"),
     "068": PrepopSelector("tiles-prepop"),
     "071": PrepopSelector("slate-prepop"),

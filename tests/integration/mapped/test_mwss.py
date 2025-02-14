@@ -1,9 +1,9 @@
 import unittest
 
-from app.build_specs.reader import BuildSpecFileRepository
+from app.repositories.file_repository import BuildSpecFileRepository
 from app.definitions.spec import ParseTree
 from app.definitions.data import SurveyMetadata, PCK
-from app.pck_managers.mapped import get_pck, transform
+from app.pck_managers.flat import get_pck, transform
 from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields
 from tests.integration.mapped import read_submission_data, remove_empties, are_equal

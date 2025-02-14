@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions.data import SurveyMetadata, PCK
-from app.pck_managers.mapped import get_pck
+from app.pck_managers.flat import get_pck
 from tests.integration.mapped import read_submission_data, are_equal
 
 

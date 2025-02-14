@@ -1,4 +1,5 @@
-from app.build_specs.formatter_selectors import FormatterSelector, FormatterMapping
+from app.mappers.formatter_mappings import FormatterMapping
+from app.mappers.formatter_selectors import FormatterSelector
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
 from app.formatters.cs_formatter import CSFormatter

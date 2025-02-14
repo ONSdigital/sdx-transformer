@@ -1,9 +1,10 @@
+from app.definitions.formatter import FormatterBase
 from app.definitions.spec import BuildSpecError
 from app.definitions.data import SurveyMetadata, PCK, Value
 from app.period.period import PeriodFormatError, Period
 
 
-class Formatter:
+class Formatter(FormatterBase):
 
     def __init__(self, period_format: str, pck_period_format: str, form_mapping: dict[str, str] = {}):
         self._period_format = period_format
