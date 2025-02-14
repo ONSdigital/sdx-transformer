@@ -1,11 +1,13 @@
 import unittest
 
-from app.repositories.file_repository import BuildSpecFileRepository
-from app.definitions.spec import ParseTree
+from app.config.formatters import formatter_mapping
+from app.config.functions import function_lookup
+from app.config.specs import build_spec_mapping
 from app.definitions.data import SurveyMetadata, PCK
-from app.pck_managers.flat import transform, get_pck
-from app.transform.interpolate import interpolate
-from app.transform.populate import resolve_value_fields
+from app.definitions.spec import ParseTree
+from app.pck_managers.flat import get_pck
+from app.transform.execute import Executor
+from app.transformers.pck import PckSpecTransformer
 from tests.integration.mapped import read_submission_data, remove_empties, are_equal
 
 
@@ -15,9 +17,19 @@ class ACASTransformTests(unittest.TestCase):
         filepath = "tests/data/acas/acas.json"
         submission_data = read_submission_data(filepath)
 
-        build_spec = BuildSpecFileRepository().get_build_spec("acas")
-        parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
-        transformed_data = transform(submission_data, parse_tree)
+        transformer: PckSpecTransformer = PckSpecTransformer(
+            {
+                "survey_id": "171",
+                "period_id": "201605",
+                "ru_ref": "12346789012A",
+                "form_type": "0002",
+            },
+            build_spec_mapping,
+            Executor(function_lookup),
+            formatter_mapping
+        )
+        parse_tree: ParseTree = transformer.interpolate()
+        transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)
 
         expected = {

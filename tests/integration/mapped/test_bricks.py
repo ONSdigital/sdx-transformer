@@ -1,12 +1,23 @@
 import unittest
 
-from app.repositories.file_repository import BuildSpecFileRepository
-from app.definitions.spec import ParseTree
+from app.config.formatters import formatter_mapping
+from app.config.functions import function_lookup
+from app.config.specs import build_spec_mapping
 from app.definitions.data import SurveyMetadata, PCK
-from app.pck_managers.flat import transform, get_pck
-from app.transform.interpolate import interpolate
-from app.transform.populate import resolve_value_fields
+from app.definitions.spec import ParseTree
+from app.pck_managers.flat import get_pck
+from app.transform.execute import Executor
+from app.transformers.pck import PckSpecTransformer
 from tests.integration.mapped import remove_empties, read_submission_data, are_equal
+
+survey_metadata: SurveyMetadata = {
+    "survey_id": "074",
+    "period_id": "201605",
+    "ru_ref": "12346789012A",
+    "form_type": "0001",
+    "period_start_date": "2016-05-01",
+    "period_end_date": "2016-05-31",
+}
 
 
 class BricksTransformsTests(unittest.TestCase):
@@ -52,9 +63,14 @@ class BricksTransformsTests(unittest.TestCase):
                         "503": "0",
                         "504": "0"}
 
-            build_spec = BuildSpecFileRepository().get_build_spec("bricks")
-            parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
-            transformed_data = transform(submission_data, parse_tree)
+            transformer: PckSpecTransformer = PckSpecTransformer(
+                survey_metadata,
+                build_spec_mapping,
+                Executor(function_lookup),
+                formatter_mapping
+            )
+            parse_tree: ParseTree = transformer.interpolate()
+            transformed_data = transformer.run(parse_tree, submission_data)
             actual = remove_empties(transformed_data)
             actual = actual.keys()
             expected = expected.keys()
@@ -71,9 +87,14 @@ class BricksTransformsTests(unittest.TestCase):
                     "503": "0",
                     "504": "0"}
 
-        build_spec = BuildSpecFileRepository().get_build_spec("bricks")
-        parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
-        transformed_data = transform(submission_data, parse_tree)
+        transformer: PckSpecTransformer = PckSpecTransformer(
+            survey_metadata,
+            build_spec_mapping,
+            Executor(function_lookup),
+            formatter_mapping
+        )
+        parse_tree: ParseTree = transformer.interpolate()
+        transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)
         self.assertEqual(expected, actual)
 
@@ -119,9 +140,14 @@ class BricksTransformsTests(unittest.TestCase):
                         "504": "14"
                         }
 
-            build_spec = BuildSpecFileRepository().get_build_spec("bricks")
-            parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
-            transformed_data = transform(submission_data, parse_tree)
+            transformer: PckSpecTransformer = PckSpecTransformer(
+                survey_metadata,
+                build_spec_mapping,
+                Executor(function_lookup),
+                formatter_mapping
+            )
+            parse_tree: ParseTree = transformer.interpolate()
+            transformed_data = transformer.run(parse_tree, submission_data)
             actual = remove_empties(transformed_data)
             self.assertEqual(expected, actual)
 
@@ -131,15 +157,6 @@ class BricksPckTests(unittest.TestCase):
     def test_0002_to_pck(self):
         filepath = "tests/data/bricks/074.0001.json"
         submission_data = read_submission_data(filepath)
-
-        survey_metadata: SurveyMetadata = {
-            "survey_id": "074",
-            "period_id": "201605",
-            "ru_ref": "12346789012A",
-            "form_type": "0001",
-            "period_start_date": "2016-05-01",
-            "period_end_date": "2016-05-31",
-        }
         actual: PCK = get_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/bricks/074.0001.pck"
         with open(pck_filepath) as f:

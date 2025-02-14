@@ -1,12 +1,23 @@
 import unittest
 
-from app.repositories.file_repository import BuildSpecFileRepository
-from app.definitions.spec import ParseTree
+from app.config.formatters import formatter_mapping
+from app.config.functions import function_lookup
+from app.config.specs import build_spec_mapping
 from app.definitions.data import SurveyMetadata, PCK
-from app.pck_managers.flat import get_pck, transform
-from app.transform.interpolate import interpolate
-from app.transform.populate import resolve_value_fields
+from app.definitions.spec import ParseTree
+from app.pck_managers.flat import get_pck
+from app.transform.execute import Executor
+from app.transformers.pck import PckSpecTransformer
 from tests.integration.mapped import read_submission_data, remove_empties, are_equal
+
+survey_metadata: SurveyMetadata = {
+    "survey_id": "134",
+    "period_id": "201605",
+    "ru_ref": "12346789012A",
+    "form_type": "0005",
+    "period_start_date": "2016-05-01",
+    "period_end_date": "2016-05-31",
+}
 
 
 class MWSSTransformTests(unittest.TestCase):
@@ -15,9 +26,14 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_minimal.json"
         submission_data = read_submission_data(filepath)
 
-        build_spec = BuildSpecFileRepository().get_build_spec("mwss")
-        parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
-        transformed_data = transform(submission_data, parse_tree)
+        transformer: PckSpecTransformer = PckSpecTransformer(
+            survey_metadata,
+            build_spec_mapping,
+            Executor(function_lookup),
+            formatter_mapping
+        )
+        parse_tree: ParseTree = transformer.interpolate()
+        transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)
 
         expected = {'40': '1', '50': '100', '60': '10', '70': '20', '80': '30', '90': '2', '130': '2', '131': '2',
@@ -28,9 +44,14 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_full.json"
         submission_data = read_submission_data(filepath)
 
-        build_spec = BuildSpecFileRepository().get_build_spec("mwss")
-        parse_tree: ParseTree = resolve_value_fields(interpolate(build_spec["template"], build_spec["transforms"]))
-        transformed_data = transform(submission_data, parse_tree)
+        transformer: PckSpecTransformer = PckSpecTransformer(
+            survey_metadata,
+            build_spec_mapping,
+            Executor(function_lookup),
+            formatter_mapping
+        )
+        parse_tree: ParseTree = transformer.interpolate()
+        transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)
 
         expected = {'40': '30', '50': '49450', '60': '1300', '70': '1050', '80': '1600', '90': '1', '100': '1',
@@ -45,15 +66,6 @@ class MWSSPckTests(unittest.TestCase):
     def test_134_to_pck(self):
         filepath = "tests/data/mwss/134.0005.json"
         submission_data = read_submission_data(filepath)
-
-        survey_metadata: SurveyMetadata = {
-            "survey_id": "134",
-            "period_id": "201605",
-            "ru_ref": "12346789012A",
-            "form_type": "0005",
-            "period_start_date": "2016-05-01",
-            "period_end_date": "2016-05-31",
-        }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
 
