@@ -2,69 +2,69 @@ import unittest
 
 from app.definitions.data import SurveyMetadata, PCK
 from app.controllers.flat import get_pck
-from tests.integration.mapped import read_submission_data, are_equal
+from tests.integration.flat import read_submission_data, are_equal
 
 
-class UKISPckTests(unittest.TestCase):
+class QBSTest(unittest.TestCase):
 
     def test_0001_to_pck(self):
-        filepath = "tests/data/mes/092.0001.json"
+        filepath = "tests/data/qbs/139.0001.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "092",
-            "period_id": "201605",
-            "ru_ref": "75553402515",
+            "survey_id": "139",
+            "period_id": "1604",
+            "ru_ref": "12345678901A",
             "form_type": "0001",
-            "period_start_date": "2016-05-01",
-            "period_end_date": "2016-05-31",
+            "period_start_date": "2016-04-01",
+            "period_end_date": "2016-10-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
 
-        pck_filepath = "tests/data/mes/092.0001.pck"
+        pck_filepath = "tests/data/qbs/139.0001.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
 
-    def test_minimal_to_pck(self):
-        filepath = "tests/data/mes/092.0001.min.json"
+    def test_0001_missing_total_to_pck(self):
+        filepath = "tests/data/qbs/139.0001.missing.total.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "092",
-            "period_id": "201605",
-            "ru_ref": "58153646441",
+            "survey_id": "139",
+            "period_id": "1604",
+            "ru_ref": "12345678901A",
             "form_type": "0001",
-            "period_start_date": "2016-05-01",
-            "period_end_date": "2016-05-31",
+            "period_start_date": "2016-04-01",
+            "period_end_date": "2016-10-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
 
-        pck_filepath = "tests/data/mes/092.0001.min.pck"
+        pck_filepath = "tests/data/qbs/139.0001.missing.total.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
 
-    def test_round_up_to_pck(self):
-        filepath = "tests/data/mes/092.0001.round_up.json"
+    def test_0001_zero_total_to_pck(self):
+        filepath = "tests/data/qbs/139.0001.zero.total.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "092",
-            "period_id": "201605",
-            "ru_ref": "75553402515",
+            "survey_id": "139",
+            "period_id": "1604",
+            "ru_ref": "12345678901A",
             "form_type": "0001",
-            "period_start_date": "2016-05-01",
-            "period_end_date": "2016-05-31",
+            "period_start_date": "2016-04-01",
+            "period_end_date": "2016-10-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
 
-        pck_filepath = "tests/data/mes/092.0001.round_up.pck"
+        pck_filepath = "tests/data/qbs/139.0001.zero.total.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 

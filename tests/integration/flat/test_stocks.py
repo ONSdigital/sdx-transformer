@@ -3,30 +3,29 @@ import unittest
 
 from app.definitions.data import Data, SurveyMetadata, PCK
 from app.controllers.flat import get_pck
-from tests.integration.mapped import read_submission_data, are_equal
+from tests.integration.flat import read_submission_data, are_equal
 
 
-class VacanciesTest(unittest.TestCase):
+class StocksPckTests(unittest.TestCase):
 
-    def test_vacancies_to_pck(self):
-        root_dir = "tests/data/vacancies/"
+    def test_stocks_to_pck(self):
+        root_dir = "tests/data/stocks/"
         json_file_names = [f for f in os.listdir(root_dir) if f.endswith(".json")]
-        print("------------")
+        print("-----------------")
         for filename in json_file_names:
 
             print("testing " + filename)
             filepath = root_dir + filename
-            survey_id = filename.split(".")[0]
             form_type = filename.split(".")[1]
             submission_data: Data = read_submission_data(filepath)
 
             survey_metadata: SurveyMetadata = {
-                "survey_id": survey_id,
-                "period_id": "2001",
-                "ru_ref": "12346789012A",
+                "survey_id": "017",
+                "period_id": "1904",
+                "ru_ref": "15162882666F",
                 "form_type": form_type,
-                "period_start_date": "2021-01-01",
-                "period_end_date": "2021-12-31",
+                "period_start_date": "2019-01-01",
+                "period_end_date": "2019-04-30",
             }
 
             actual: PCK = get_pck(submission_data, survey_metadata)

@@ -3,15 +3,15 @@ import unittest
 
 from app.definitions.data import Data, SurveyMetadata, PCK
 from app.controllers.flat import get_pck
-from tests.integration.mapped import read_submission_data, are_equal
+from tests.integration.flat import read_submission_data, are_equal
 
 
-class QCASPckTests(unittest.TestCase):
+class ABSPckTests(unittest.TestCase):
 
-    def test_qcas_to_pck(self):
-        root_dir = "tests/data/qcas/"
+    def test_abs_to_pck(self):
+        root_dir = "tests/data/abs/"
         json_file_names = [f for f in os.listdir(root_dir) if f.endswith(".json")]
-        print("-----------------")
+        print("------------")
         for filename in json_file_names:
 
             print("testing " + filename)
@@ -20,12 +20,12 @@ class QCASPckTests(unittest.TestCase):
             submission_data: Data = read_submission_data(filepath)
 
             survey_metadata: SurveyMetadata = {
-                "survey_id": "019",
-                "period_id": "2301",
+                "survey_id": "202",
+                "period_id": "21",
                 "ru_ref": "12346789012A",
                 "form_type": form_type,
-                "period_start_date": "2023-01-01",
-                "period_end_date": "2023-03-31",
+                "period_start_date": "2021-01-01",
+                "period_end_date": "2021-12-31",
             }
 
             actual: PCK = get_pck(submission_data, survey_metadata)
@@ -34,4 +34,9 @@ class QCASPckTests(unittest.TestCase):
             with open(pck_filepath) as f:
                 expected: PCK = f.read()
 
-            self.assertTrue(are_equal(expected, actual))
+            passed = are_equal(expected, actual)
+            if not passed:
+                print(f"\n Failed test for {filename}")
+                print(actual)
+
+            self.assertTrue(passed)

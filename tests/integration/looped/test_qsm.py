@@ -3,7 +3,7 @@ import unittest
 from app.definitions.data import SurveyMetadata, PCK
 from app.controllers.looped import get_looping
 from tests.integration.looped import read_submission_data
-from tests.integration.mapped import are_equal
+from tests.integration.flat import are_equal
 
 
 class QsmTests(unittest.TestCase):

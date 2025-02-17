@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.data import SurveyMetadata, PCK
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
-from tests.integration.mapped import are_equal
+from tests.integration.flat import are_equal
 
 
 class CoraLoopingFormatterTest(unittest.TestCase):

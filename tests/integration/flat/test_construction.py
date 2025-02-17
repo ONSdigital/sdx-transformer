@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.data import SurveyMetadata, PCK
 from app.controllers.flat import get_pck
-from tests.integration.mapped import read_submission_data, are_equal
+from tests.integration.flat import read_submission_data, are_equal
 
 
 class ConstructionPckTests(unittest.TestCase):

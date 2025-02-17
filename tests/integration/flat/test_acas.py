@@ -4,7 +4,7 @@ from app.definitions.data import SurveyMetadata, PCK
 from app.definitions.spec import ParseTree
 from app.controllers.flat import get_pck
 from app.transformers.flat import FlatSpecTransformer
-from tests.integration.mapped import read_submission_data, remove_empties, are_equal, get_transformer
+from tests.integration.flat import read_submission_data, remove_empties, are_equal, get_transformer
 
 
 class ACASTransformTests(unittest.TestCase):

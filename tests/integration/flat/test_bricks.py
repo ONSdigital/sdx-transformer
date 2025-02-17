@@ -5,7 +5,7 @@ from app.config.dependencies import get_flat_transformer, get_build_spec_mapping
 from app.controllers.flat import get_pck
 from app.definitions.data import SurveyMetadata, PCK
 from app.definitions.spec import ParseTree
-from tests.integration.mapped import remove_empties, read_submission_data, are_equal
+from tests.integration.flat import remove_empties, read_submission_data, are_equal
 
 survey_metadata: SurveyMetadata = {
     "survey_id": "074",

@@ -4,7 +4,7 @@ import unittest
 from app.definitions.data import SurveyMetadata, LoopedData, PCK, SPP
 from app.controllers.looped import convert_to_looped_data, get_looping
 from tests.integration.looped import read_submission_data
-from tests.integration.mapped import are_equal
+from tests.integration.flat import are_equal
 
 
 class LoopingTests(unittest.TestCase):

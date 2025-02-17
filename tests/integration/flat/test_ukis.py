@@ -2,18 +2,18 @@ import unittest
 
 from app.definitions.data import SurveyMetadata, PCK
 from app.controllers.flat import get_pck
-from tests.integration.mapped import read_submission_data, are_equal
+from tests.integration.flat import read_submission_data, are_equal
 
 
-class DesPckTests(unittest.TestCase):
+class UKISPckTests(unittest.TestCase):
 
     def test_0001_to_pck(self):
-        filepath = "tests/data/des/187.0001.json"
+        filepath = "tests/data/ukis/144.0001.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "187",
-            "period_id": "2022",
+            "survey_id": "144",
+            "period_id": "201605",
             "ru_ref": "12346789012A",
             "form_type": "0001",
             "period_start_date": "2016-05-01",
@@ -22,28 +22,28 @@ class DesPckTests(unittest.TestCase):
 
         actual: PCK = get_pck(submission_data, survey_metadata)
 
-        pck_filepath = "tests/data/des/187.0001.pck"
+        pck_filepath = "tests/data/ukis/144.0001.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
 
     def test_0002_to_pck(self):
-        filepath = "tests/data/des/187.0002.json"
+        filepath = "tests/data/ukis/144.0002.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "187",
-            "period_id": "2022",
+            "survey_id": "144",
+            "period_id": "201605",
             "ru_ref": "12346789012A",
-            "form_type": "0002",
+            "form_type": "0001",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
 
         actual: PCK = get_pck(submission_data, survey_metadata)
 
-        pck_filepath = "tests/data/des/187.0002.pck"
+        pck_filepath = "tests/data/ukis/144.0002.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 

@@ -3,25 +3,26 @@ import unittest
 
 from app.definitions.data import Data, SurveyMetadata, PCK
 from app.controllers.flat import get_pck
-from tests.integration.mapped import read_submission_data, are_equal
+from tests.integration.flat import read_submission_data, are_equal
 
 
-class ABSPckTests(unittest.TestCase):
+class VacanciesTest(unittest.TestCase):
 
-    def test_abs_to_pck(self):
-        root_dir = "tests/data/abs/"
+    def test_vacancies_to_pck(self):
+        root_dir = "tests/data/vacancies/"
         json_file_names = [f for f in os.listdir(root_dir) if f.endswith(".json")]
         print("------------")
         for filename in json_file_names:
 
             print("testing " + filename)
             filepath = root_dir + filename
+            survey_id = filename.split(".")[0]
             form_type = filename.split(".")[1]
             submission_data: Data = read_submission_data(filepath)
 
             survey_metadata: SurveyMetadata = {
-                "survey_id": "202",
-                "period_id": "21",
+                "survey_id": survey_id,
+                "period_id": "2001",
                 "ru_ref": "12346789012A",
                 "form_type": form_type,
                 "period_start_date": "2021-01-01",
@@ -34,9 +35,4 @@ class ABSPckTests(unittest.TestCase):
             with open(pck_filepath) as f:
                 expected: PCK = f.read()
 
-            passed = are_equal(expected, actual)
-            if not passed:
-                print(f"\n Failed test for {filename}")
-                print(actual)
-
-            self.assertTrue(passed)
+            self.assertTrue(are_equal(expected, actual))
