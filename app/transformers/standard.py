@@ -2,15 +2,15 @@ from abc import ABC, abstractmethod
 
 from app.definitions.data import Data, Value
 from app.definitions.executor import ExecutorBase
+from app.definitions.formatter import FormatterBase
 from app.definitions.mapper import SpecMapping
 from app.definitions.spec import BuildSpec, ParseTree, BuildSpecError
 from app.definitions.transformer import TransformerBase
 from app.mappers.formatter_mappings import FormatterMapping
-from app.transform.interpolate import interpolate
 from app.transform.populate import resolve_value_fields
 
 
-class SpecTransformer[S, F](TransformerBase, ABC):
+class SpecTransformer[S, F: FormatterBase](TransformerBase, ABC):
 
     def __init__(self,
                  s: S,
@@ -34,7 +34,7 @@ class SpecTransformer[S, F](TransformerBase, ABC):
     def interpolate(self) -> ParseTree:
         build_spec = self._build_spec
         if 'transforms' in build_spec:
-            parse_tree: ParseTree = interpolate(build_spec["template"], build_spec["transforms"])
+            parse_tree: ParseTree = self._executor.interpolate(build_spec["template"], build_spec["transforms"])
         else:
             parse_tree: ParseTree = build_spec["template"]
         return resolve_value_fields(parse_tree)

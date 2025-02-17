@@ -2,7 +2,7 @@ import json
 import unittest
 
 from app.definitions.data import SurveyMetadata, LoopedData, PCK, SPP
-from app.pck_managers.looped import convert_to_looped_data, get_looping
+from app.controllers.looped import convert_to_looped_data, get_looping
 from tests.integration.looped import read_submission_data
 from tests.integration.mapped import are_equal
 

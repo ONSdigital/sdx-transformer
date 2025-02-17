@@ -8,7 +8,7 @@ from app.config.specs import build_spec_mapping
 from app.definitions.spec import ParseTree
 from app.definitions.data import Data, SurveyMetadata, PCK, Value
 from app.transform.execute import Executor
-from app.transformers.pck import PckSpecTransformer
+from app.transformers.flat import PckSpecTransformer
 
 logger = get_logger()
 

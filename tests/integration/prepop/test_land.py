@@ -3,7 +3,7 @@ import unittest
 
 from app.definitions.spec import Template
 from app.definitions.data import Identifier, PrepopData
-from app.pck_managers.prepop import get_prepop
+from app.controllers.prepop import get_prepop
 
 
 class LandTests(unittest.TestCase):

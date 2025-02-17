@@ -4,8 +4,9 @@ from typing import Final
 from sdx_gcp.app import get_logger
 
 from app.definitions.executor import ExecutorBase
-from app.definitions.spec import ParseTree, Transform, BuildSpecError
+from app.definitions.spec import ParseTree, Transform, BuildSpecError, Template, Transforms
 from app.definitions.data import Value, Field, Data
+from app.transform.interpolate import interpolate
 from app.transform.populate import populate_mappings
 from app.transform.tree_walker import TreeWalker
 
@@ -20,6 +21,9 @@ class Executor(ExecutorBase):
 
     def __init__(self, function_lookup: dict[str, Callable]):
         self._function_lookup = function_lookup
+
+    def interpolate(self, template: Template, transforms: Transforms) -> ParseTree:
+        return interpolate(template, transforms)
 
     def populate(self, tree: ParseTree, data: Data) -> ParseTree:
         return populate_mappings(tree, data)

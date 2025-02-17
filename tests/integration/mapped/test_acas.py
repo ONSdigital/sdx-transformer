@@ -5,9 +5,9 @@ from app.config.functions import function_lookup
 from app.config.specs import build_spec_mapping
 from app.definitions.data import SurveyMetadata, PCK
 from app.definitions.spec import ParseTree
-from app.pck_managers.flat import get_pck
+from app.controllers.flat import get_pck
 from app.transform.execute import Executor
-from app.transformers.pck import PckSpecTransformer
+from app.transformers.flat import PckSpecTransformer
 from tests.integration.mapped import read_submission_data, remove_empties, are_equal
 
 
