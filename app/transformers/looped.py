@@ -9,7 +9,7 @@ from app.transformers.standard import SpecTransformer
 template_type = Literal["template", "looped"]
 
 
-class LoopedPckSpecTransformer(SpecTransformer[SurveyMetadata, LoopingFormatter]):
+class LoopedSpecTransformer(SpecTransformer[SurveyMetadata, LoopingFormatter]):
 
     def _load(self, survey_metadata: SurveyMetadata) -> BuildSpec:
         self.looped = True

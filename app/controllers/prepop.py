@@ -4,15 +4,12 @@ from typing import Optional
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.config.formatters import formatter_mapping
-from app.config.functions import function_lookup
-from app.config.specs import prepop_spec_mapping
+from app.config.dependencies import get_prepop_transformer, get_prepop_spec_mapping, get_spec_repository, get_executor, \
+    get_func_lookup, get_formatter_mapping
 from app.definitions.spec import BuildSpec, ParseTree, Template
 from app.definitions.data import Identifier, PrepopData, Field
+from app.definitions.transformer import TransformerBase
 from app.transform.clean import clean
-from app.transform.execute import Executor
-from app.transform.populate import populate_mappings
-from app.transformers.prepop import PrepopTransformer
 
 logger = get_logger()
 
@@ -21,11 +18,11 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
     """
     Performs the steps required to transform prepopulated data.
     """
-    transformer: PrepopTransformer = PrepopTransformer(
+    transformer: TransformerBase = get_prepop_transformer(
         survey_id,
-        prepop_spec_mapping,
-        Executor(function_lookup),
-        formatter_mapping
+        get_prepop_spec_mapping(get_spec_repository()),
+        get_executor(get_func_lookup()),
+        get_formatter_mapping(),
     )
 
     build_spec: BuildSpec = transformer.get_spec()

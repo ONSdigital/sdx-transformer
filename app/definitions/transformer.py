@@ -5,7 +5,7 @@ from app.definitions.formatter import FormatterBase
 from app.definitions.spec import ParseTree, BuildSpec
 
 
-class TransformerBase(ABC):
+class TransformerBase[F: FormatterBase](ABC):
 
     @abstractmethod
     def get_spec(self) -> BuildSpec:
@@ -20,5 +20,5 @@ class TransformerBase(ABC):
         pass
 
     @abstractmethod
-    def get_formatter[F: FormatterBase](self) -> F:
+    def get_formatter(self) -> F:
         pass

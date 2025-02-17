@@ -1,4 +1,3 @@
-from app.mappers.formatter_mappings import FormatterMapping
 from app.mappers.formatter_selectors import FormatterSelector
 from app.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.formatters.cora_looping_formatter import CORALoopingFormatter
@@ -11,7 +10,7 @@ from app.formatters.spp_formatter import SPPFormatter
 from app.formatters.spp_looping_formatter import SPPLoopingFormatter
 
 
-formatter_mapping: FormatterMapping = FormatterMapping({
+_formatter_mapping = {
     "CORA": FormatterSelector(CORAFormatter, CORALoopingFormatter),
     "CORA_MES": FormatterSelector(MESFormatter),
     "CS": FormatterSelector(CSFormatter, CSLoopingFormatter),
@@ -19,4 +18,4 @@ formatter_mapping: FormatterMapping = FormatterMapping({
     "SPP": FormatterSelector(SPPFormatter, SPPLoopingFormatter),
     "IDBR": FormatterSelector(IDBRLoopingFormatter),
     "JSON": FormatterSelector(JSONFormatter),
-})
+}

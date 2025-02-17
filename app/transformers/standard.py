@@ -3,20 +3,19 @@ from abc import ABC, abstractmethod
 from app.definitions.data import Data, Value
 from app.definitions.executor import ExecutorBase
 from app.definitions.formatter import FormatterBase
-from app.definitions.mapper import SpecMapping
+from app.definitions.mapper import SpecMappingBase, FormatterMappingBase
 from app.definitions.spec import BuildSpec, ParseTree, BuildSpecError
 from app.definitions.transformer import TransformerBase
-from app.mappers.formatter_mappings import FormatterMapping
 from app.transform.populate import resolve_value_fields
 
 
-class SpecTransformer[S, F: FormatterBase](TransformerBase, ABC):
+class SpecTransformer[S, F: FormatterBase](TransformerBase[F], ABC):
 
     def __init__(self,
                  s: S,
-                 spec_mapping: SpecMapping[S],
+                 spec_mapping: SpecMappingBase[S],
                  executor: ExecutorBase,
-                 formatter_mapping: FormatterMapping[F]):
+                 formatter_mapping: FormatterMappingBase[F]):
 
         self._spec_mapping = spec_mapping
         self._executor = executor

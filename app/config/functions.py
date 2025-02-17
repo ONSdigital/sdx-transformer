@@ -8,7 +8,7 @@ from app.transform.functions.string import starts_with, contains, any_contains, 
     space_split, postcode_start, postcode_end
 from app.transform.functions.time import to_date, any_date, start_of_month, end_of_month, start_of_year, end_of_year
 
-function_lookup: dict[str, Callable] = {
+_function_lookup: dict[str, Callable] = {
     "VALUE": no_transform,
     "EXISTS": exists,
     "ANY_EXISTS": any_exists,

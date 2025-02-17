@@ -1,14 +1,10 @@
 import unittest
 
-from app.config.formatters import formatter_mapping
-from app.config.functions import function_lookup
-from app.config.specs import build_spec_mapping
 from app.definitions.data import SurveyMetadata, PCK
 from app.definitions.spec import ParseTree
 from app.controllers.flat import get_pck
-from app.transform.execute import Executor
-from app.transformers.flat import PckSpecTransformer
-from tests.integration.mapped import read_submission_data, remove_empties, are_equal
+from app.transformers.flat import FlatSpecTransformer
+from tests.integration.mapped import read_submission_data, remove_empties, are_equal, get_transformer
 
 survey_metadata: SurveyMetadata = {
     "survey_id": "134",
@@ -26,12 +22,7 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_minimal.json"
         submission_data = read_submission_data(filepath)
 
-        transformer: PckSpecTransformer = PckSpecTransformer(
-            survey_metadata,
-            build_spec_mapping,
-            Executor(function_lookup),
-            formatter_mapping
-        )
+        transformer: FlatSpecTransformer = get_transformer(survey_metadata)
         parse_tree: ParseTree = transformer.interpolate()
         transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)
@@ -44,12 +35,7 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_full.json"
         submission_data = read_submission_data(filepath)
 
-        transformer: PckSpecTransformer = PckSpecTransformer(
-            survey_metadata,
-            build_spec_mapping,
-            Executor(function_lookup),
-            formatter_mapping
-        )
+        transformer: FlatSpecTransformer = get_transformer(survey_metadata)
         parse_tree: ParseTree = transformer.interpolate()
         transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)

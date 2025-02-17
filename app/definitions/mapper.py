@@ -21,21 +21,21 @@ class Mapper[T, U]:
         return self._mappings.get(key).choose(discriminator)
 
 
-class SpecMapping[S](Mapper[S, str], ABC):
+class SpecMappingBase[S](Mapper[S, str], ABC):
 
     @abstractmethod
     def get_build_spec(self, s: S) -> BuildSpec:
         pass
 
 
-class BuildSpecMappingBase(SpecMapping[SurveyMetadata], ABC):
+class BuildSpecMappingBase(SpecMappingBase[SurveyMetadata], ABC):
 
     @abstractmethod
     def get_build_spec(self, survey_metadata: SurveyMetadata) -> BuildSpec:
         pass
 
 
-class PrepopMappingBase(SpecMapping[str], ABC):
+class PrepopMappingBase(SpecMappingBase[str], ABC):
 
     @abstractmethod
     def get_build_spec(self, survey_id: str) -> BuildSpec:

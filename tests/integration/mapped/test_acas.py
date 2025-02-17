@@ -1,14 +1,10 @@
 import unittest
 
-from app.config.formatters import formatter_mapping
-from app.config.functions import function_lookup
-from app.config.specs import build_spec_mapping
 from app.definitions.data import SurveyMetadata, PCK
 from app.definitions.spec import ParseTree
 from app.controllers.flat import get_pck
-from app.transform.execute import Executor
-from app.transformers.flat import PckSpecTransformer
-from tests.integration.mapped import read_submission_data, remove_empties, are_equal
+from app.transformers.flat import FlatSpecTransformer
+from tests.integration.mapped import read_submission_data, remove_empties, are_equal, get_transformer
 
 
 class ACASTransformTests(unittest.TestCase):
@@ -17,16 +13,15 @@ class ACASTransformTests(unittest.TestCase):
         filepath = "tests/data/acas/acas.json"
         submission_data = read_submission_data(filepath)
 
-        transformer: PckSpecTransformer = PckSpecTransformer(
+        transformer: FlatSpecTransformer = get_transformer(
             {
                 "survey_id": "171",
                 "period_id": "201605",
                 "ru_ref": "12346789012A",
                 "form_type": "0002",
+                "period_start_date": "2016-05-01",
+                "period_end_date": "2016-05-31",
             },
-            build_spec_mapping,
-            Executor(function_lookup),
-            formatter_mapping
         )
         parse_tree: ParseTree = transformer.interpolate()
         transformed_data = transformer.run(parse_tree, submission_data)

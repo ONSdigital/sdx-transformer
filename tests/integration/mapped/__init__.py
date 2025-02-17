@@ -1,6 +1,17 @@
 import json
 
-from app.definitions.data import Data, PCK, Empty
+from app.config.dependencies import get_flat_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
+    get_func_lookup, get_formatter_mapping
+from app.definitions.data import Data, PCK, Empty, SurveyMetadata
+
+
+def get_transformer(survey_metadata: SurveyMetadata):
+    return get_flat_transformer(
+            survey_metadata,
+            get_build_spec_mapping(get_spec_repository()),
+            get_executor(get_func_lookup()),
+            get_formatter_mapping(),
+    )
 
 
 def read_submission_data(filepath: str) -> Data:

@@ -2,14 +2,12 @@ from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
 from app.berd.berd_transformer import berd_to_spp
-from app.config.formatters import formatter_mapping
-from app.config.functions import function_lookup
-from app.config.specs import build_spec_mapping
+from app.config.dependencies import get_looped_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
+    get_func_lookup, get_formatter_mapping
 from app.definitions.data import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, PCK, Empty, Value
 from app.definitions.spec import ParseTree
 from app.formatters.looping_formatter import LoopingFormatter
-from app.transform.execute import Executor
-from app.transformers.looped import LoopedPckSpecTransformer
+from app.transformers.looped import LoopedSpecTransformer
 
 logger = get_logger()
 
@@ -25,13 +23,12 @@ def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PC
             return berd_to_spp(list_data, survey_metadata)
         # ------------------------------------------
 
-        transformer: LoopedPckSpecTransformer = LoopedPckSpecTransformer(
+        transformer: LoopedSpecTransformer = get_looped_transformer(
             survey_metadata,
-            build_spec_mapping,
-            Executor(function_lookup),
-            formatter_mapping
+            get_build_spec_mapping(get_spec_repository()),
+            get_executor(get_func_lookup()),
+            get_formatter_mapping(),
         )
-
         looped_data: LoopedData = convert_to_looped_data(list_data)
         data_section: Data = looped_data['data_section']
 

@@ -1,13 +1,10 @@
 import unittest
 
-from app.config.formatters import formatter_mapping
-from app.config.functions import function_lookup
-from app.config.specs import build_spec_mapping
+from app.config.dependencies import get_flat_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
+    get_formatter_mapping, get_func_lookup
+from app.controllers.flat import get_pck
 from app.definitions.data import SurveyMetadata, PCK
 from app.definitions.spec import ParseTree
-from app.controllers.flat import get_pck
-from app.transform.execute import Executor
-from app.transformers.flat import PckSpecTransformer
 from tests.integration.mapped import remove_empties, read_submission_data, are_equal
 
 survey_metadata: SurveyMetadata = {
@@ -21,6 +18,14 @@ survey_metadata: SurveyMetadata = {
 
 
 class BricksTransformsTests(unittest.TestCase):
+
+    def setUp(self):
+        self.transformer = get_flat_transformer(
+            survey_metadata,
+            get_build_spec_mapping(get_spec_repository()),
+            get_executor(get_func_lookup()),
+            get_formatter_mapping(),
+        )
 
     def test_bricks_prepend(self):
         types = {
@@ -63,12 +68,7 @@ class BricksTransformsTests(unittest.TestCase):
                         "503": "0",
                         "504": "0"}
 
-            transformer: PckSpecTransformer = PckSpecTransformer(
-                survey_metadata,
-                build_spec_mapping,
-                Executor(function_lookup),
-                formatter_mapping
-            )
+            transformer = self.transformer
             parse_tree: ParseTree = transformer.interpolate()
             transformed_data = transformer.run(parse_tree, submission_data)
             actual = remove_empties(transformed_data)
@@ -87,12 +87,7 @@ class BricksTransformsTests(unittest.TestCase):
                     "503": "0",
                     "504": "0"}
 
-        transformer: PckSpecTransformer = PckSpecTransformer(
-            survey_metadata,
-            build_spec_mapping,
-            Executor(function_lookup),
-            formatter_mapping
-        )
+        transformer = self.transformer
         parse_tree: ParseTree = transformer.interpolate()
         transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)
@@ -140,12 +135,7 @@ class BricksTransformsTests(unittest.TestCase):
                         "504": "14"
                         }
 
-            transformer: PckSpecTransformer = PckSpecTransformer(
-                survey_metadata,
-                build_spec_mapping,
-                Executor(function_lookup),
-                formatter_mapping
-            )
+            transformer = self.transformer
             parse_tree: ParseTree = transformer.interpolate()
             transformed_data = transformer.run(parse_tree, submission_data)
             actual = remove_empties(transformed_data)
