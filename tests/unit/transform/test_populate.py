@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions.spec import ParseTree
-from app.transform.populate import populate_mappings, resolve_value_fields
+from app.services.transform.populate import populate_mappings, resolve_value_fields
 
 
 class ImplicitValueTests(unittest.TestCase):

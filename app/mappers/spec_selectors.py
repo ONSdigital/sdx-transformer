@@ -1,6 +1,6 @@
 from app.definitions.mapper import Selector
 from app.definitions.data import SurveyMetadata
-from app.period.period import Period
+from app.services.period.period import Period
 
 
 class PrepopSelector(Selector[str, str]):

@@ -1,6 +1,6 @@
 from sdx_gcp.app import get_logger
 
-from app.berd.definitions import SPP, Answer
+from app.services.berd.definitions import SPP, Answer
 
 logger = get_logger()
 

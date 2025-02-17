@@ -6,7 +6,7 @@ from app.definitions.formatter import FormatterBase
 from app.definitions.mapper import SpecMappingBase, FormatterMappingBase
 from app.definitions.spec import BuildSpec, ParseTree, BuildSpecError
 from app.definitions.transformer import TransformerBase
-from app.transform.populate import resolve_value_fields
+from app.services.transform.populate import resolve_value_fields
 
 
 class SpecTransformer[S, F: FormatterBase](TransformerBase[F], ABC):

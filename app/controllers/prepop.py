@@ -9,7 +9,7 @@ from app.config.dependencies import get_prepop_transformer, get_prepop_spec_mapp
 from app.definitions.spec import BuildSpec, ParseTree, Template
 from app.definitions.data import Identifier, PrepopData, Field
 from app.definitions.transformer import TransformerBase
-from app.transform.clean import clean
+from app.services.transform.clean import clean
 
 logger = get_logger()
 

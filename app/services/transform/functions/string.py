@@ -2,7 +2,7 @@ import math
 import re
 
 from app.definitions.data import Value
-from app.transform.functions.general import handle_empties
+from app.services.transform.functions.general import handle_empties
 
 """
 This file contains the functions that represent

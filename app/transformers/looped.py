@@ -3,7 +3,7 @@ from typing import Literal
 from app.definitions.data import SurveyMetadata
 from app.definitions.spec import BuildSpec, ParseTree
 from app.formatters.looping_formatter import LoopingFormatter
-from app.transform.populate import resolve_value_fields
+from app.services.transform.populate import resolve_value_fields
 from app.transformers.standard import SpecTransformer
 
 template_type = Literal["template", "looped"]

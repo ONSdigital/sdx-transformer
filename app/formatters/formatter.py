@@ -1,7 +1,7 @@
 from app.definitions.formatter import FormatterBase
 from app.definitions.spec import BuildSpecError
 from app.definitions.data import SurveyMetadata, PCK, Value
-from app.period.period import PeriodFormatError, Period
+from app.services.period.period import PeriodFormatError, Period
 
 
 class Formatter(FormatterBase):

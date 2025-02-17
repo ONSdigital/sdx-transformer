@@ -2,7 +2,7 @@ from typing import final
 
 from app.definitions.spec import Template
 from app.definitions.data import Empty, Field
-from app.transform.tree_walker import TreeWalker
+from app.services.transform.tree_walker import TreeWalker
 
 BLACK_LIST: final = ["", Empty, [], {}]
 

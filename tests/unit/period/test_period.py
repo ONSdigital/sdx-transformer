@@ -1,6 +1,6 @@
 import unittest
 
-from app.period.period import Period, PeriodFormatError
+from app.services.period.period import Period, PeriodFormatError
 
 
 class ConvertPeriodTests(unittest.TestCase):

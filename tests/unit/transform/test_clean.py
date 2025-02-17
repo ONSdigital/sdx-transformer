@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions.spec import Template
-from app.transform.clean import clean
+from app.services.transform.clean import clean
 
 
 class CleanTests(unittest.TestCase):

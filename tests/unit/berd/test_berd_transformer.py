@@ -1,9 +1,9 @@
 import json
 import unittest
 
-from app.berd.collect_items import collect_list_items
-from app.berd.convert_data import extract_answers, convert_to_spp
-from app.berd.definitions import Answer, SPP
+from app.services.berd.collect_items import collect_list_items
+from app.services.berd.convert_data import extract_answers, convert_to_spp
+from app.services.berd.definitions import Answer, SPP
 from app.definitions.data import SurveyMetadata
 from app.controllers.looped import get_looping
 

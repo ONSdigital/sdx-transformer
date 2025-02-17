@@ -1,7 +1,7 @@
 from sdx_gcp.app import get_logger
 from sdx_gcp.errors import DataError
 
-from app.berd.berd_transformer import berd_to_spp
+from app.services.berd.berd_transformer import berd_to_spp
 from app.config.dependencies import get_looped_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
     get_func_lookup, get_formatter_mapping
 from app.definitions.data import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, PCK, Empty, Value

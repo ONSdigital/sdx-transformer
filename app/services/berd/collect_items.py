@@ -1,4 +1,4 @@
-from app.berd.definitions import Answer
+from app.services.berd.definitions import Answer
 
 
 def collect_list_items(answer_list: list[Answer]) -> list[Answer]:

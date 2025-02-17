@@ -3,9 +3,9 @@ from dataclasses import asdict
 
 from sdx_gcp.app import get_logger
 
-from app.berd.collect_items import collect_list_items
-from app.berd.convert_data import extract_answers, convert_to_spp, convert_civil_defence, remove_prepend_values
-from app.berd.definitions import SPP
+from app.services.berd.collect_items import collect_list_items
+from app.services.berd.convert_data import extract_answers, convert_to_spp, convert_civil_defence, remove_prepend_values
+from app.services.berd.definitions import SPP
 from app.definitions.data import SurveyMetadata, ListCollector, PCK, SPP as SppResult
 
 logger = get_logger()

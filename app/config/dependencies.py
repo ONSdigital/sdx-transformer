@@ -10,7 +10,7 @@ from app.definitions.repository import BuildSpecRepositoryBase
 from app.mappers.formatter_mappings import FormatterMapping
 from app.mappers.spec_mappings import BuildSpecMapping, PrepopSpecMapping
 from app.repositories.file_repository import BuildSpecFileRepository
-from app.transform.execute import Executor
+from app.services.transform.execute import Executor
 from app.transformers.flat import FlatSpecTransformer
 from app.transformers.looped import LoopedSpecTransformer
 from app.transformers.prepop import PrepopTransformer
