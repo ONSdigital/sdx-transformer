@@ -6,7 +6,7 @@ from app.config.dependencies import get_looped_transformer, get_build_spec_mappi
     get_func_lookup, get_formatter_mapping
 from app.definitions.data import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, PCK, Empty, Value
 from app.definitions.spec import ParseTree
-from app.formatters.looping_formatter import LoopingFormatter
+from app.services.formatters.looping_formatter import LoopingFormatter
 from app.transformers.looped import LoopedSpecTransformer
 
 logger = get_logger()

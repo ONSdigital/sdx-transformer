@@ -7,8 +7,8 @@ from app.definitions.data import SurveyMetadata
 from app.definitions.executor import ExecutorBase
 from app.definitions.mapper import BuildSpecMappingBase, PrepopMappingBase, FormatterMappingBase
 from app.definitions.repository import BuildSpecRepositoryBase
-from app.mappers.formatter_mappings import FormatterMapping
-from app.mappers.spec_mappings import BuildSpecMapping, PrepopSpecMapping
+from app.services.mappers.formatter_mappings import FormatterMapping
+from app.services.mappers.spec_mappings import BuildSpecMapping, PrepopSpecMapping
 from app.repositories.file_repository import BuildSpecFileRepository
 from app.services.transform.execute import Executor
 from app.transformers.flat import FlatSpecTransformer

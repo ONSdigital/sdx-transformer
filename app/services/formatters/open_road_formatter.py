@@ -1,7 +1,7 @@
 from sdx_gcp.app import get_logger
 
 from app.definitions.data import SurveyMetadata, Empty, Value
-from app.formatters.formatter import Formatter
+from app.services.formatters.formatter import Formatter
 
 logger = get_logger()
 

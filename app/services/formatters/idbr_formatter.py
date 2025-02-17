@@ -1,7 +1,7 @@
 from typing import Optional
 
 from app.definitions.data import SurveyMetadata, Empty, Value
-from app.formatters.formatter import Formatter
+from app.services.formatters.formatter import Formatter
 
 
 def _get_scan_number(metadata: SurveyMetadata, ref: Optional[str] = None) -> str:

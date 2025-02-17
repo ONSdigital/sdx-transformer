@@ -1,8 +1,8 @@
 import json
 
 from app.definitions.data import SurveyMetadata, PCK, SPP, Value
-from app.formatters.looping_formatter import LoopingFormatter
-from app.formatters.spp_formatter import SPPFormatter
+from app.services.formatters.looping_formatter import LoopingFormatter
+from app.services.formatters.spp_formatter import SPPFormatter
 
 
 class SPPLoopingFormatter(SPPFormatter, LoopingFormatter):

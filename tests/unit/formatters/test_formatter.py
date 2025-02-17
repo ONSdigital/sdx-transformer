@@ -1,6 +1,6 @@
 import unittest
 
-from app.formatters.formatter import Formatter
+from app.services.formatters.formatter import Formatter
 
 
 class ConvertPeriodTests(unittest.TestCase):

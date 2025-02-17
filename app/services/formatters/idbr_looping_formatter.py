@@ -1,8 +1,8 @@
 from typing import Final
 
 from app.definitions.data import SurveyMetadata, SupplementaryDataMapping, PCK, Value
-from app.formatters.idbr_formatter import IDBRFormatter
-from app.formatters.looping_formatter import LoopingFormatter
+from app.services.formatters.idbr_formatter import IDBRFormatter
+from app.services.formatters.looping_formatter import LoopingFormatter
 
 DEFAULT_REF: Final[str] = "N0000000"
 LIST_ITEM_ID: Final[str] = "list_item_id"

@@ -1,7 +1,7 @@
 from typing import TypedDict
 
 from app.definitions.data import ListCollector, Value
-from app.formatters.formatter import Formatter
+from app.services.formatters.formatter import Formatter
 
 
 class InstanceData(TypedDict):

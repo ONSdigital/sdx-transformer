@@ -1,7 +1,7 @@
 from app.definitions.formatter import FormatterBase
 from app.definitions.mapper import FormatterMappingBase
 from app.definitions.spec import BuildSpecError
-from app.mappers.formatter_selectors import FormatterSelector
+from app.services.mappers.formatter_selectors import FormatterSelector
 
 
 class FormatterMapping[F: FormatterBase](FormatterMappingBase[F]):

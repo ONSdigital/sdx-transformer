@@ -1,6 +1,6 @@
 from app.definitions.data import SurveyMetadata
 from app.definitions.spec import BuildSpec
-from app.formatters.formatter import Formatter
+from app.services.formatters.formatter import Formatter
 from app.transformers.standard import SpecTransformer
 
 

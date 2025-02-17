@@ -1,8 +1,8 @@
 from typing import Optional
 
 from app.definitions.mapper import Selector
-from app.formatters.formatter import Formatter
-from app.formatters.looping_formatter import LoopingFormatter
+from app.services.formatters.formatter import Formatter
+from app.services.formatters.looping_formatter import LoopingFormatter
 
 
 class FormatterSelector(Selector[bool, Formatter.__class__]):

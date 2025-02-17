@@ -1,6 +1,6 @@
 from app.definitions.data import SurveyMetadata
 from app.definitions.mapper import Selector
-from app.mappers.spec_selectors import BuildSpecSelector, BuildSpecPeriodSelector, PrepopSelector
+from app.services.mappers.spec_selectors import BuildSpecSelector, BuildSpecPeriodSelector, PrepopSelector
 
 
 _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
