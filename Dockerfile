@@ -1,22 +1,11 @@
-FROM python:3.13-slim
+FROM europe-west2-docker.pkg.dev/ons-sdx-ci/sdx-apps/sdx-gcp:1.4.5
 
-RUN python -m pip install --upgrade pip
-
-# Install Poetry using pip
-RUN pip install poetry
-
-# Set PATH to include Poetry
-ENV PATH="/root/.local/bin:$PATH"
-
-# Copy project files
 COPY . /app
 WORKDIR /app
 
-# Copy pyproject.toml and poetry.lock
-COPY pyproject.toml poetry.lock ./
-
-# Install dependencies using Poetry
-RUN poetry install --no-root
+# Export dependencies to requirements.txt and install them
+RUN poetry export -f requirements.txt --output requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
 CMD ["python", "./run.py"]
