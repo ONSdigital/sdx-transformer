@@ -1,3 +1,4 @@
+import json
 import unittest
 
 from app.definitions.input import SurveyMetadata
@@ -25,6 +26,26 @@ class ConstructionPckTests(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertTrue(are_equal(expected, actual))
+
+    def test_0001_to_spp(self):
+        filepath = "tests/data/construction/228.0001.json"
+        submission_data = read_submission_data(filepath)
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "228",
+            "period_id": "2504",
+            "ru_ref": "48514665167x",
+            "form_type": "0001",
+            "period_start_date": "2025-04-01",
+            "period_end_date": "2025-07-01",
+        }
+        actual: PCK = get_pck(submission_data, survey_metadata)
+
+        pck_filepath = "tests/data/construction/228.0001-spp.json"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertTrue(json.loads(expected), json.loads(actual))
 
     def test_0001_no_comment_to_pck(self):
         filepath = "tests/data/construction/228.0001.no.comment.json"

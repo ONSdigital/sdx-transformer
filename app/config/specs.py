@@ -19,7 +19,7 @@ _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
         "092": BuildSpecSelector("mes"),
         "127": BuildSpecSelector("mcg"),
         "134": BuildSpecSelector("mwss"),
-        "139": BuildSpecSelector("qbs"),
+        "139": BuildSpecPeriodSelector(period_id="2503", before="qbs", after_or_equal="qbs-spp"),
         "144": BuildSpecSelector("ukis"),
         "160": BuildSpecSelector("qpses"),
         "165": BuildSpecSelector("qpsespb"),
@@ -33,7 +33,7 @@ _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
         "194": BuildSpecSelector("rails"),
         "202": BuildSpecSelector("abs"),
         "221": BuildSpecSelector("bres"),
-        "228": BuildSpecSelector("construction"),
+        "228": BuildSpecPeriodSelector(period_id="2503", before="construction", after_or_equal="construction-spp"),
         "999": BuildSpecSelector("looping-spp"),
 }
 
