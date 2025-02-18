@@ -1,8 +1,9 @@
 steps:
 - id: 'Unit Tests'
-  name: 'europe-west2-docker.pkg.dev/ons-sdx-ci/sdx-apps/sdx-gcp:1.4.4'
+  name: 'python:3.13-slim'
   script: |
     #!/usr/bin/env bash
+    python -m pip install --upgrade pip
     pip install poetry
     poetry install
     poetry run flake8 . --count --statistics

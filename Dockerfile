@@ -1,4 +1,6 @@
-FROM europe-west2-docker.pkg.dev/ons-sdx-ci/sdx-apps/sdx-gcp:1.4.4
+FROM python:3.13-slim
+
+RUN python -m pip install --upgrade pip
 
 # Install Poetry using pip
 RUN pip install poetry
