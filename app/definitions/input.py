@@ -1,3 +1,7 @@
+"""
+Definitions to describe the structure of the input data.
+"""
+
 from typing import TypedDict, NotRequired
 
 
@@ -50,31 +54,7 @@ class ListCollector(TypedDict):
     lists: list[Group]
 
 
-# Our top level looping object
+# The top level looping object
 class LoopedData(TypedDict):
     looped_sections: dict[str, dict[str, Data]]
     data_section: dict[str, Value]
-
-
-PCK = str
-
-
-class SPPResponse(TypedDict):
-    questioncode: str
-    response: str
-    instance: int
-
-
-class SPP(TypedDict):
-    formtype: str
-    reference: str
-    period: str
-    survey: str
-    responses: list[SPPResponse]
-
-
-class ImageResponse(TypedDict):
-    questioncode: str
-    response: str
-    instance: int
-    sd_identifier: NotRequired[str]

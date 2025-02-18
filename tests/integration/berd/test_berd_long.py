@@ -1,7 +1,8 @@
 import json
 import unittest
 
-from app.definitions.data import SurveyMetadata, SPP, ImageResponse
+from app.definitions.input import SurveyMetadata
+from app.definitions.output import SPP
 from app.controllers.looped import get_looping
 from tests.integration.looped import read_submission_data
 
@@ -26,6 +27,6 @@ class BerdTests(unittest.TestCase):
 
         spp_filepath = "tests/data/berd/002.0001-spp.json"
         with open(spp_filepath) as f:
-            expected: list[ImageResponse] = json.load(f)
+            expected: SPP = json.load(f)
 
         self.assertEqual(expected, actual)

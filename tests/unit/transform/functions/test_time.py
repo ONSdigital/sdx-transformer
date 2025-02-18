@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions.data import Empty
+from app.definitions.input import Empty
 from app.services.transform.functions.time import any_date, to_date, start_of_month, end_of_month
 
 

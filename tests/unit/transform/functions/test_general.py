@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions.data import Empty
+from app.definitions.input import Empty
 from app.services.transform.functions.general import exists, any_exists
 
 

@@ -2,7 +2,7 @@ import json
 import unittest
 
 from app.definitions.spec import Template
-from app.definitions.data import Identifier, PrepopData
+from app.definitions.input import Identifier, PrepopData
 from app.controllers.prepop import get_prepop
 
 

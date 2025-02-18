@@ -1,7 +1,7 @@
 from collections.abc import Callable
 from decimal import Decimal, ROUND_HALF_UP
 
-from app.definitions.data import Empty, Value
+from app.definitions.input import Empty, Value
 
 """
 This file contains the functions that represent

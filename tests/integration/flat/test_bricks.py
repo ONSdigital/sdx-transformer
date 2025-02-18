@@ -3,7 +3,8 @@ import unittest
 from app.config.dependencies import get_flat_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
     get_formatter_mapping, get_func_lookup
 from app.controllers.flat import get_pck
-from app.definitions.data import SurveyMetadata, PCK
+from app.definitions.input import SurveyMetadata
+from app.definitions.output import PCK
 from app.definitions.spec import ParseTree
 from tests.integration.flat import remove_empties, read_submission_data, are_equal
 

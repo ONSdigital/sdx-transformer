@@ -1,4 +1,4 @@
-from app.definitions.data import SurveyMetadata
+from app.definitions.input import SurveyMetadata
 from app.definitions.mapper import Selector
 from app.services.mappers.spec_selectors import BuildSpecSelector, BuildSpecPeriodSelector, PrepopSelector
 

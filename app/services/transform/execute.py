@@ -5,7 +5,7 @@ from sdx_gcp.app import get_logger
 
 from app.definitions.executor import ExecutorBase
 from app.definitions.spec import ParseTree, Transform, BuildSpecError, Template, Transforms
-from app.definitions.data import Value, Field, Data
+from app.definitions.input import Value, Field, Data
 from app.services.transform.interpolate import interpolate
 from app.services.transform.populate import populate_mappings
 from app.services.transform.tree_walker import TreeWalker

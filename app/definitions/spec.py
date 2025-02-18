@@ -1,6 +1,10 @@
+"""
+Definitions describing the structure of a 'build spec'.
+"""
+
 from typing import TypedDict, NotRequired
 
-from app.definitions.data import Field
+from app.definitions.input import Field
 
 
 Template = dict[str, Field]

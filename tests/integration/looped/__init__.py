@@ -1,6 +1,6 @@
 import json
 
-from app.definitions.data import Data, ListCollector
+from app.definitions.input import Data, ListCollector
 
 
 def read_submission_data(filepath: str) -> ListCollector:

@@ -1,6 +1,7 @@
 from typing import Final
 
-from app.definitions.data import SurveyMetadata, SupplementaryDataMapping, PCK, Value
+from app.definitions.input import SurveyMetadata, SupplementaryDataMapping, Value
+from app.definitions.output import PCK
 from app.services.formatters.idbr_formatter import IDBRFormatter
 from app.services.formatters.looping_formatter import LoopingFormatter
 

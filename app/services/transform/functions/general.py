@@ -1,6 +1,6 @@
 from typing import Callable
 
-from app.definitions.data import Empty, Value
+from app.definitions.input import Empty, Value
 
 """
 This file contains the functions that represent

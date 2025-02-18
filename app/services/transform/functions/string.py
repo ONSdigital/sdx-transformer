@@ -1,7 +1,7 @@
 import math
 import re
 
-from app.definitions.data import Value
+from app.definitions.input import Value
 from app.services.transform.functions.general import handle_empties
 
 """

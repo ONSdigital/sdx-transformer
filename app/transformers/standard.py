@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.definitions.data import Data, Value
+from app.definitions.input import Data, Value
 from app.definitions.executor import ExecutorBase
 from app.definitions.formatter import FormatterBase
 from app.definitions.mapper import SpecMappingBase, FormatterMappingBase

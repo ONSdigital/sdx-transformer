@@ -1,11 +1,15 @@
 from abc import ABC, abstractmethod
 
-from app.definitions.data import Data, Value
+from app.definitions.input import Data, Value
 from app.definitions.formatter import FormatterBase
 from app.definitions.spec import ParseTree, BuildSpec
 
 
 class TransformerBase[F: FormatterBase](ABC):
+    """
+    Base class for all Transformers.
+    A Transformer is responsible for all interactions with the build spec and the data.
+    """
 
     @abstractmethod
     def get_spec(self) -> BuildSpec:

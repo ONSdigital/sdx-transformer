@@ -1,7 +1,7 @@
 import unittest
 
 from app.definitions.spec import ParseTree
-from app.definitions.data import Field
+from app.definitions.input import Field
 from app.services.transform.tree_walker import TreeWalker
 
 

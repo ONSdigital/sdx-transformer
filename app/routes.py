@@ -3,7 +3,8 @@ from sdx_gcp.app import get_logger, SdxApp
 from sdx_gcp.errors import DataError
 
 from app.definitions.spec import Template
-from app.definitions.data import Data, SurveyMetadata, Identifier, PrepopData, ListCollector, PCK
+from app.definitions.input import Data, SurveyMetadata, Identifier, PrepopData, ListCollector
+from app.definitions.output import PCK
 from app.controllers.looped import get_looping
 from app.controllers.flat import get_pck
 from app.controllers.prepop import get_prepop
@@ -13,6 +14,8 @@ logger = get_logger()
 
 
 def process_pck(req: Request, _tx_id: TX_ID):
+    """Process a request to convert submission data to a PCK file."""
+
     logger.info("Received pck request")
 
     survey_metadata: SurveyMetadata = {
@@ -51,6 +54,8 @@ def process_pck(req: Request, _tx_id: TX_ID):
 
 
 def process_prepop(req: Request, _tx_id: TX_ID):
+    """Process a request to convert pre-population data into supplementary format."""
+
     logger.info("Received prepop request")
     prepop_data: PrepopData = req.get_json(force=True, silent=True)
     survey_id: str = req.args.get("survey_id")

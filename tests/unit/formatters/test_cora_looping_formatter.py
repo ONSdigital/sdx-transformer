@@ -1,6 +1,7 @@
 import unittest
 
-from app.definitions.data import SurveyMetadata, PCK
+from app.definitions.input import SurveyMetadata
+from app.definitions.output import PCK
 from app.services.formatters.cora_looping_formatter import CORALoopingFormatter
 from tests.integration.flat import are_equal
 

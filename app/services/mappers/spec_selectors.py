@@ -1,5 +1,5 @@
 from app.definitions.mapper import Selector
-from app.definitions.data import SurveyMetadata
+from app.definitions.input import SurveyMetadata
 from app.services.period.period import Period
 
 

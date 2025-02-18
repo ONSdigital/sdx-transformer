@@ -1,4 +1,5 @@
-from app.definitions.data import SurveyMetadata, PCK, Value
+from app.definitions.input import SurveyMetadata, Value
+from app.definitions.output import PCK
 from app.services.formatters.cora_formatter import CORAFormatter
 from app.services.formatters.looping_formatter import LoopingFormatter
 

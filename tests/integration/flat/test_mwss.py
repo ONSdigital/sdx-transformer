@@ -1,6 +1,7 @@
 import unittest
 
-from app.definitions.data import SurveyMetadata, PCK
+from app.definitions.input import SurveyMetadata
+from app.definitions.output import PCK
 from app.definitions.spec import ParseTree
 from app.controllers.flat import get_pck
 from app.transformers.flat import FlatSpecTransformer

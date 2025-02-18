@@ -3,7 +3,7 @@ from collections.abc import Callable
 from app.config.formatters import _formatter_mapping
 from app.config.specs import _build_spec_mapping, _prepop_spec_mapping
 from app.config.functions import _function_lookup
-from app.definitions.data import SurveyMetadata
+from app.definitions.input import SurveyMetadata
 from app.definitions.executor import ExecutorBase
 from app.definitions.mapper import BuildSpecMappingBase, PrepopMappingBase, FormatterMappingBase
 from app.definitions.repository import BuildSpecRepositoryBase

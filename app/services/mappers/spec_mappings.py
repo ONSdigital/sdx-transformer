@@ -1,7 +1,7 @@
 from app.definitions.mapper import BuildSpecMappingBase, Selector, PrepopMappingBase
 from app.definitions.repository import BuildSpecRepositoryBase
 from app.definitions.spec import BuildSpec
-from app.definitions.data import SurveyMetadata
+from app.definitions.input import SurveyMetadata
 
 
 class BuildSpecMapping(BuildSpecMappingBase):

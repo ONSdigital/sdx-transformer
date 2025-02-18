@@ -1,4 +1,4 @@
-from app.definitions.data import Empty, Value
+from app.definitions.input import Empty, Value
 from app.services.transform.functions.numerical import round_half_up, divide
 from app.services.transform.functions.time import to_date, ISO_8601_FORMAT, PCK_DATE_FORMAT, EQ_DATETIME_FORMAT
 

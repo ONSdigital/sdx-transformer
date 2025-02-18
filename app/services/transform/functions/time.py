@@ -3,7 +3,7 @@ from collections.abc import Callable
 from datetime import datetime, date
 from typing import Final
 
-from app.definitions.data import Empty, Value
+from app.definitions.input import Empty, Value
 from app.services.transform.functions.general import handle_empties
 
 

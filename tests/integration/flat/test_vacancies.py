@@ -1,7 +1,8 @@
 import os
 import unittest
 
-from app.definitions.data import Data, SurveyMetadata, PCK
+from app.definitions.input import Data, SurveyMetadata
+from app.definitions.output import PCK
 from app.controllers.flat import get_pck
 from tests.integration.flat import read_submission_data, are_equal
 

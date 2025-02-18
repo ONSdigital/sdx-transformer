@@ -1,6 +1,13 @@
+"""
+Definitions of the base Mapping classes.
+
+The mapping base classes are built from the generic Mapper class - a data structure
+allowing for dynamic mappings based on the implementation of the Selector interface.
+"""
+
 from abc import ABC, abstractmethod
 
-from app.definitions.data import SurveyMetadata
+from app.definitions.input import SurveyMetadata
 from app.definitions.formatter import FormatterBase
 from app.definitions.spec import BuildSpec
 

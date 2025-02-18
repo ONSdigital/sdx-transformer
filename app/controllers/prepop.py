@@ -7,7 +7,7 @@ from sdx_gcp.errors import DataError
 from app.config.dependencies import get_prepop_transformer, get_prepop_spec_mapping, get_spec_repository, get_executor, \
     get_func_lookup, get_formatter_mapping
 from app.definitions.spec import BuildSpec, ParseTree, Template
-from app.definitions.data import Identifier, PrepopData, Field
+from app.definitions.input import Identifier, PrepopData, Field
 from app.definitions.transformer import TransformerBase
 from app.services.transform.clean import clean
 

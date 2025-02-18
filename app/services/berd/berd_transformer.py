@@ -6,7 +6,8 @@ from sdx_gcp.app import get_logger
 from app.services.berd.collect_items import collect_list_items
 from app.services.berd.convert_data import extract_answers, convert_to_spp, convert_civil_defence, remove_prepend_values
 from app.services.berd.definitions import SPP
-from app.definitions.data import SurveyMetadata, ListCollector, PCK, SPP as SppResult
+from app.definitions.input import SurveyMetadata, ListCollector
+from app.definitions.output import SPP as SppResult, PCK
 
 logger = get_logger()
 

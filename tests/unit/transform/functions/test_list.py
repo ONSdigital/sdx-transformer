@@ -1,6 +1,6 @@
 import unittest
 
-from app.definitions.data import Empty
+from app.definitions.input import Empty
 from app.services.transform.functions.lists import as_list, append_to_list, prepend_to_list, trim_list
 
 

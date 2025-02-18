@@ -1,6 +1,7 @@
 import json
 
-from app.definitions.data import SurveyMetadata, PCK, SPP, Value
+from app.definitions.input import SurveyMetadata, Value
+from app.definitions.output import SPP, PCK
 from app.services.formatters.looping_formatter import LoopingFormatter
 from app.services.formatters.spp_formatter import SPPFormatter
 

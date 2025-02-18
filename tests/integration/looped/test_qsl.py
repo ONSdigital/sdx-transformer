@@ -1,6 +1,7 @@
 import unittest
 
-from app.definitions.data import SurveyMetadata, PCK
+from app.definitions.input import SurveyMetadata
+from app.definitions.output import PCK
 from app.controllers.looped import get_looping
 from tests.integration.looped import read_submission_data
 from tests.integration.flat import are_equal

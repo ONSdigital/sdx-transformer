@@ -2,7 +2,7 @@ from collections.abc import Callable
 from typing import Self
 
 from app.definitions.spec import ParseTree
-from app.definitions.data import Field
+from app.definitions.input import Field
 
 
 class TreeWalker:

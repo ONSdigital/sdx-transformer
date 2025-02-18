@@ -1,6 +1,6 @@
 from typing import Literal
 
-from app.definitions.data import SurveyMetadata
+from app.definitions.input import SurveyMetadata
 from app.definitions.spec import BuildSpec, ParseTree
 from app.services.formatters.looping_formatter import LoopingFormatter
 from app.services.transform.populate import resolve_value_fields
