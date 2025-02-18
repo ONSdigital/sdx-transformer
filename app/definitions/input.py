@@ -2,12 +2,11 @@
 Definitions to describe the structure of the input data.
 """
 
-from typing import TypedDict, NotRequired
+from typing import TypedDict, NotRequired, TypeAlias
 
-
-Empty = None
+Empty: TypeAlias = None
 Value = str | Empty
-Field = dict | list | str | None
+Field = dict | list | str | Empty
 Data = dict[str, str]
 iso_8601_date = str  # YYYY-MM-DD
 

@@ -1,5 +1,5 @@
 from app.definitions.spec import BuildSpec
-from app.transformers.standard import SpecTransformer
+from app.transformers.spec import SpecTransformer
 
 
 class PrepopTransformer(SpecTransformer[str, None]):

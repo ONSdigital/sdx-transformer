@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "sdx-transformer"
-version = "0.6.4"
-description = ""
+version = "1.0.0"
+description = "SDX Transformer"
 authors = ["ONSDigital"]
 readme = "README.md"
 package-mode = false
