@@ -1,0 +1,210 @@
+openapi: 3.0.3
+info:
+  title: SDX Transformer API
+  version: 1.0.0
+  description: API for processing PCK and Prepop requests
+paths:
+  /pck:
+    post:
+      summary: Process PCK request
+      description: "Convert a survey response into a PCK file"
+      operationId: processPck
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/ListCollector'
+                - $ref: '#/components/schemas/Data'
+      parameters:
+        - name: survey_id
+          description: "The id of the survey"
+          example: "009"
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: period_id
+          description: "The period of the collection exercise"
+          example: "202501"
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: ru_ref
+          description: "The reference of the respondent"
+          example: "12345678901A"
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: form_type
+          description: "The form type"
+          example: "0001"
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: period_start_date
+          description: "The start date of the period in iso 8601 format (YYY-MM-DD)"
+          example: "2025-01-01"
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: period_end_date
+          description: "The end date of the period in iso 8601 format (YYY-MM-DD)"
+          example: "2025-01-31"
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: data_version
+          description: The version of schema of the data.
+          example: "0.0.3"
+          in: query
+          required: false
+          schema:
+            type: string
+            default: "0.0.1"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                  oneOf:
+                      -   type: string
+                      -   $ref: '#/components/schemas/SPP'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+  /prepop:
+    post:
+      summary: Process Prepop request
+      description: "Convert prepopulated data into a supplementary data file"
+      operationId: processPrepop
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrepopData'
+      parameters:
+        - name: survey_id
+          description: "The id of the survey"
+          example: "071"
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+        '500':
+            description: Internal server error
+components:
+  schemas:
+    Data:
+        type: object
+    PrepopData:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          type: object
+          additionalProperties:
+            type: string
+    Answer:
+      type: object
+      properties:
+        answer_id:
+          type: string
+        value:
+          oneOf:
+            - type: object
+            - type: array
+            - type: string
+        list_item_id:
+          type: string
+          nullable: true
+    SupplementaryDataMapping:
+      type: object
+      properties:
+        identifier:
+          type: string
+        list_item_id:
+          type: string
+    Group:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        supplementary_data_mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplementaryDataMapping'
+          nullable: true
+    AnswerCode:
+      type: object
+      properties:
+        answer_id:
+          type: string
+        code:
+          type: string
+        answer_value:
+          type: string
+          nullable: true
+    ListCollector:
+      type: object
+      properties:
+        answer_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerCode'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answer'
+        lists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    PCK:
+      type: string
+    SPPResponse:
+      type: object
+      properties:
+        questioncode:
+          type: string
+        response:
+          type: string
+        instance:
+          type: integer
+    SPP:
+      type: object
+      properties:
+        formtype:
+          type: string
+        reference:
+          type: string
+        period:
+          type: string
+        survey:
+          type: string
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/SPPResponse'

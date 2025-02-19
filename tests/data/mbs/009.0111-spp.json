@@ -1,0 +1,13 @@
+{
+  "formtype": "0111",
+  "reference": "97148856319",
+  "period": "2503",
+  "survey": "009",
+  "responses": [
+    {
+      "questioncode": "40",
+      "response": "1100",
+      "instance": 0
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import unittest
 
-from app.berd.collect_items import is_subset_of, collect_list_items
-from app.berd.definitions import Answer
+from app.services.berd.collect_items import is_subset_of, collect_list_items
+from app.services.berd.definitions import Answer
 
 
 class CollectItemsTests(unittest.TestCase):

@@ -1,8 +1,8 @@
 import unittest
 
-from app.berd.convert_data import spp_from_map, extract_answers, convert_to_spp, remove_prepend_values, \
+from app.services.berd.convert_data import spp_from_map, extract_answers, convert_to_spp, remove_prepend_values, \
     convert_civil_defence
-from app.berd.definitions import SPP, Answer
+from app.services.berd.definitions import SPP, Answer
 
 
 class SppFromMapTest(unittest.TestCase):

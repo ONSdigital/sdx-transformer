@@ -1,7 +1,8 @@
 import unittest
 
-from app.definitions import Empty
-from app.transform.functions.string import contains, any_contains, concat, starts_with, carve, space_split, postcode
+from app.definitions.input import Empty
+from app.services.transform.functions.string import (contains, any_contains, concat,
+                                                     starts_with, carve, space_split, postcode)
 
 
 class StartsWithTests(unittest.TestCase):

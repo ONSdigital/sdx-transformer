@@ -1,9 +1,8 @@
 import unittest
 from collections.abc import Callable
 
-import app.transform.execute
-from app.definitions import ParseTree
-from app.transform.execute import execute
+from app.definitions.spec import ParseTree
+from app.services.transform.execute import Executor
 
 
 def fake_remove_chars(value: str, n: str = "1") -> str:
@@ -28,7 +27,7 @@ class ExecutionTests(unittest.TestCase):
             "ADD": fake_add,
             "CONTAINS": fake_contains
         }
-        app.transform.execute._function_lookup = fake_function_lookup
+        self.executor = Executor(fake_function_lookup)
 
     def test_execute_single(self):
 
@@ -46,7 +45,7 @@ class ExecutionTests(unittest.TestCase):
             "150": "llo",
         }
 
-        actual = execute(parse_tree)
+        actual = self.executor.execute(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_execute_nested(self):
@@ -104,7 +103,7 @@ class ExecutionTests(unittest.TestCase):
             "154": "18",
             "156": "1000",
         }
-        actual = execute(parse_tree)
+        actual = self.executor.execute(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_execute_transform_in_args(self):
@@ -132,7 +131,7 @@ class ExecutionTests(unittest.TestCase):
         expected = {
             "152": "1000"
         }
-        actual = execute(parse_tree)
+        actual = self.executor.execute(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_execute_derived(self):
@@ -153,7 +152,7 @@ class ExecutionTests(unittest.TestCase):
             "151": "llo"
         }
 
-        actual = execute(parse_tree)
+        actual = self.executor.execute(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_execute_nested_derived(self):
@@ -188,7 +187,7 @@ class ExecutionTests(unittest.TestCase):
             "152": "5"
         }
 
-        actual = execute(parse_tree)
+        actual = self.executor.execute(parse_tree)
         self.assertEqual(expected, actual)
 
     def test_execute_nested_derived_current(self):
@@ -215,5 +214,5 @@ class ExecutionTests(unittest.TestCase):
             "152": "at"
         }
 
-        actual = execute(parse_tree)
+        actual = self.executor.execute(parse_tree)
         self.assertEqual(expected, actual)

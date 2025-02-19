@@ -1,0 +1,93 @@
+{
+  "formtype": "0001",
+  "reference": "48514665167",
+  "period": "2504",
+  "survey": "228",
+  "responses": [
+    {
+      "questioncode": "146",
+      "response": "no comment!",
+      "instance": 0
+    },
+    {
+      "questioncode": "201",
+      "response": "8124.67",
+      "instance": 0
+    },
+    {
+      "questioncode": "202",
+      "response": "3321.54",
+      "instance": 0
+    },
+    {
+      "questioncode": "211",
+      "response": "3121.99",
+      "instance": 0
+    },
+    {
+      "questioncode": "212",
+      "response": "2887.32",
+      "instance": 0
+    },
+    {
+      "questioncode": "221",
+      "response": "7114.88",
+      "instance": 0
+    },
+    {
+      "questioncode": "222",
+      "response": "4014.87",
+      "instance": 0
+    },
+    {
+      "questioncode": "231",
+      "response": "3000",
+      "instance": 0
+    },
+    {
+      "questioncode": "232",
+      "response": "3555.55",
+      "instance": 0
+    },
+    {
+      "questioncode": "241",
+      "response": "4191.02",
+      "instance": 0
+    },
+    {
+      "questioncode": "242",
+      "response": "2200.33",
+      "instance": 0
+    },
+    {
+      "questioncode": "243",
+      "response": "1919.55",
+      "instance": 0
+    },
+    {
+      "questioncode": "290",
+      "response": "569234.33",
+      "instance": 0
+    },
+    {
+      "questioncode": "901",
+      "response": "Yes, I can report for this period",
+      "instance": 0
+    },
+    {
+      "questioncode": "902",
+      "response": "Yes, we carried out work on housing",
+      "instance": 0
+    },
+    {
+      "questioncode": "903",
+      "response": "Yes, we carried out work on infrastructure",
+      "instance": 0
+    },
+    {
+      "questioncode": "904",
+      "response": "Yes, we carried out other construction work",
+      "instance": 0
+    }
+  ]
+}
