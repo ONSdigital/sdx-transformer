@@ -49,7 +49,7 @@ class PrepopMappingBase(SpecMappingBase[str], ABC):
         pass
 
 
-class FormatterMappingBase[F: FormatterBase](Mapper[bool, str], ABC):
+class FormatterMappingBase[F: FormatterBase](Mapper[bool, F.__class__], ABC):
 
     @abstractmethod
     def get_formatter(self, target: str, looped: bool = False) -> F.__class__:

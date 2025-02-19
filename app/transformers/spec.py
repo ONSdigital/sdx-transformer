@@ -42,9 +42,9 @@ class SpecTransformer[S, F: FormatterBase](TransformerBase[F], ABC):
         populated_tree = self._executor.populate(tree, data)
         return self._executor.execute(populated_tree)
 
-    def get_formatter(self,) -> F:
+    def get_formatter(self) -> F:
         build_spec = self._build_spec
-        f: F.__class__ = self._formatter_mapping.get(build_spec["target"], self.looped)
+        f: F.__class__ = self._formatter_mapping.get_formatter(build_spec["target"], self.looped)
         if f is None:
             raise BuildSpecError(f"Unable to find formatter for target: {build_spec['target']}")
 
