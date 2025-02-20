@@ -2,16 +2,20 @@ from sdx_gcp import Request, Flask, TX_ID
 from sdx_gcp.app import get_logger, SdxApp
 from sdx_gcp.errors import DataError
 
-from app.definitions import PrepopData, Identifier, Template, PCK, Data, SurveyMetadata, ListCollector
-from app.pck_managers.looped import get_looping
-from app.pck_managers.mapped import get_pck
-from app.pck_managers.prepop import get_prepop
+from app.definitions.spec import Template
+from app.definitions.input import Data, SurveyMetadata, Identifier, PrepopData, ListCollector
+from app.definitions.output import PCK
+from app.controllers.looped import get_looping
+from app.controllers.flat import get_pck
+from app.controllers.prepop import get_prepop
 
 
 logger = get_logger()
 
 
 def process_pck(req: Request, _tx_id: TX_ID):
+    """Process a request to convert submission data to a PCK file."""
+
     logger.info("Received pck request")
 
     survey_metadata: SurveyMetadata = {
@@ -25,13 +29,6 @@ def process_pck(req: Request, _tx_id: TX_ID):
 
     logger.info("Received Parameters", **survey_metadata)
 
-    use_image_formatter: bool = req.args.get("use_image_formatter", "False").upper() == "TRUE"
-
-    if use_image_formatter:
-        logger.info("Using image transformer")
-    else:
-        logger.info("NOT using image transformer")
-
     for k, v in survey_metadata.items():
         if v == "":
             raise DataError(f"Missing required parameter {k} from request")
@@ -43,7 +40,7 @@ def process_pck(req: Request, _tx_id: TX_ID):
         if submission_data is None:
             raise DataError("Submission data is not in json format")
 
-        pck: PCK = get_looping(submission_data, survey_metadata, use_image_formatter=use_image_formatter)
+        pck: PCK = get_looping(submission_data, survey_metadata)
 
     else:
         submission_data: Data = req.get_json(force=True, silent=True)
@@ -57,6 +54,8 @@ def process_pck(req: Request, _tx_id: TX_ID):
 
 
 def process_prepop(req: Request, _tx_id: TX_ID):
+    """Process a request to convert pre-population data into supplementary format."""
+
     logger.info("Received prepop request")
     prepop_data: PrepopData = req.get_json(force=True, silent=True)
     survey_id: str = req.args.get("survey_id")

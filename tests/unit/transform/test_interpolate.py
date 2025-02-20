@@ -1,7 +1,8 @@
 import unittest
 
-from app.definitions import Template, Transforms, ParseTree, BuildSpecError
-from app.transform.interpolate import interpolate, expand_nested_transforms, invert_post_transforms, map_template
+from app.definitions.spec import Template, Transforms, ParseTree, BuildSpecError
+from app.services.transform.interpolate import (interpolate, expand_nested_transforms,
+                                                invert_post_transforms, map_template)
 
 
 class InterpolateTests(unittest.TestCase):

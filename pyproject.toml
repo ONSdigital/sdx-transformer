@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "sdx-transformer"
+version = "1.0.0"
+description = "SDX Transformer"
+authors = ["ONSDigital"]
+readme = "README.md"
+package-mode = false
+
+
+[[tool.poetry.source]]
+name = "sdx-repo"
+url = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/simple/"
+priority = "explicit"
+
+
+[tool.poetry.dependencies]
+python = "^3.13.0"
+sdx-gcp = { version = "1.4.4", source = "sdx-repo" }
+PyYAML = "6.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.0"
+pytest = "^7.0"
+pytest-cov = "^3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,7 +1,7 @@
 import unittest
 
-from app.definitions import Empty
-from app.transform.functions.compound import currency_thousands
+from app.definitions.input import Empty
+from app.services.transform.functions.compound import currency_thousands
 
 
 class CurrencyTests(unittest.TestCase):

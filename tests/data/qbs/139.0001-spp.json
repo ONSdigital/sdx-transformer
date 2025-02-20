@@ -1,0 +1,38 @@
+{
+  "formtype": "0001",
+  "reference": "12345678901",
+  "period": "2503",
+  "survey": "139",
+  "responses": [
+    {
+      "questioncode": "50",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "51",
+      "response": "1",
+      "instance": 0
+    },
+    {
+      "questioncode": "52",
+      "response": "2",
+      "instance": 0
+    },
+    {
+      "questioncode": "53",
+      "response": "3",
+      "instance": 0
+    },
+    {
+      "questioncode": "54",
+      "response": "4",
+      "instance": 0
+    },
+    {
+      "questioncode": "146",
+      "response": "This is a comment",
+      "instance": 0
+    }
+  ]
+}

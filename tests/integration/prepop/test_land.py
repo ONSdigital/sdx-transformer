@@ -1,8 +1,9 @@
 import json
 import unittest
 
-from app.definitions import PrepopData, Identifier, Template
-from app.pck_managers.prepop import get_prepop
+from app.definitions.spec import Template
+from app.definitions.input import Identifier, PrepopData
+from app.controllers.prepop import get_prepop
 
 
 class LandTests(unittest.TestCase):
