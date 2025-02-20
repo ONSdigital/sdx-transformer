@@ -44,7 +44,6 @@ class UKISPckTests(unittest.TestCase):
 
         actual: PCK = get_pck(submission_data, survey_metadata)
 
-        print(actual)
 
         pck_filepath = "tests/data/ukis/144.0002.pck"
         with open(pck_filepath) as f:
