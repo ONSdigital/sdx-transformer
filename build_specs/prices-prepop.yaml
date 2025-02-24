@@ -1,0 +1,34 @@
+title: "Build spec for prices"
+survey_id: "132"
+target: "SDS"
+period_format: "YYYYM"
+item_list_path: "items"
+template:
+    schema_version: "v1"
+    identifier: "#ruref"
+    supplier_number: "#supplier_no"
+    current_month: "#source_month"
+    items:
+        item:
+            identifier: "#ruref"
+            supplier_number: "#supplier_no"
+            item_number: "#item_no"
+            item_specification_1: "$TRAILING_REMOVAL"
+            item_specification_2: "$TRAILING_REMOVAL"
+            item_specification_3: "$TRAILING_REMOVAL"
+            item_specification_4: "$TRAILING_REMOVAL"
+            item_specification_5: "$TRAILING_REMOVAL"
+            unit_of_sale: "#units_of_sale"
+            terms_of_sale_1: "$TRAILING_REMOVAL"
+            terms_of_sale_2: "$TRAILING_REMOVAL"
+            terms_of_sale_3: "$TRAILING_REMOVAL"
+            terms_of_sale_4: "$TRAILING_REMOVAL"
+            currency: "#currency_description"
+
+transforms:
+
+    # Remove trailing whitespace from item_spec/terms of sale
+    "TRAILING_REMOVAL":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            strip_type: "trailing"
