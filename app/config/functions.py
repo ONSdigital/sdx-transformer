@@ -8,7 +8,7 @@ from app.services.transform.functions.string import (starts_with, contains, any_
                                                      concat, carve, string_padding,
                                                      space_split, postcode_start, postcode_end, whitespace_removal)
 from app.services.transform.functions.time import (to_date, any_date, start_of_month,
-                                                   end_of_month, start_of_year, end_of_year)
+                                                   end_of_month, start_of_year, end_of_year, month_year_string)
 
 _function_lookup: dict[str, Callable] = {
     "VALUE": no_transform,
@@ -25,6 +25,7 @@ _function_lookup: dict[str, Callable] = {
     "END_OF_MONTH": end_of_month,
     "START_OF_YEAR": start_of_year,
     "END_OF_YEAR": end_of_year,
+    "MONTH_YEAR_STRING": month_year_string,
     "ROUND": round_half_up,
     "TOTAL": total,
     "DIVIDE": divide,

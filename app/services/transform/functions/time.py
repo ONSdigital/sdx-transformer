@@ -91,3 +91,10 @@ def end_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: 
         input_format=input_format,
         display_as=display_as,
         process=lambda d: d.replace(day=31, month=12))
+
+
+@handle_empties
+def month_year_string(value: str) -> Value:
+    date_obj = datetime.strptime(value, '%Y%m')
+    formatted_date = date_obj.strftime('%B %Y')
+    return formatted_date
