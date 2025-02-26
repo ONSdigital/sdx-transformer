@@ -121,4 +121,3 @@ def whitespace_removal(value: str, strip_type: str = "both") -> Value:
         return value.rstrip()
     elif strip_type == "leading":
         return value.lstrip()
-
