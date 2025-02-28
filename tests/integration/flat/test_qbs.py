@@ -36,7 +36,7 @@ class QBSTest(unittest.TestCase):
 
         survey_metadata: SurveyMetadata = {
             "survey_id": "139",
-            "period_id": "2503",
+            "period_id": "2507",
             "ru_ref": "12345678901A",
             "form_type": "0001",
             "period_start_date": "2025-03-01",

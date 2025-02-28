@@ -33,7 +33,7 @@ class ConstructionPckTests(unittest.TestCase):
 
         survey_metadata: SurveyMetadata = {
             "survey_id": "228",
-            "period_id": "2504",
+            "period_id": "2507",
             "ru_ref": "48514665167x",
             "form_type": "0001",
             "period_start_date": "2025-04-01",
