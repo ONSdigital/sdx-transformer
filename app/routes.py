@@ -6,6 +6,7 @@ from sdx_gcp.errors import DataError
 
 from app.controllers.flat import flat_to_spp, flat_to_pck
 from app.controllers.looped import looping_to_spp, looping_to_pck
+from app.definitions.output import PCK, JSON
 from app.definitions.spec import Template
 from app.definitions.input import Data, SurveyMetadata, Identifier, PrepopData, ListCollector
 from app.controllers.prepop import get_prepop
@@ -21,16 +22,22 @@ flat_processor = Callable[[dict[str, str], SurveyMetadata], str]
 def process_pck(req: Request, _tx_id: TX_ID) -> Flask.Response:
     """Process a request to convert submission data to a PCK file."""
     logger.info("Received pck request")
-    return _process(req, looping_to_pck, flat_to_pck)
+    result: PCK = _process(req, looping_to_pck, flat_to_pck)
+    response: Flask.Response = Flask.make_response(result, 200)
+    response.mimetype = "text/plain"
+    return response
 
 
 def process_spp(req: Request, _tx_id: TX_ID) -> Flask.Response:
     """Process a request to convert submission data to a SPP file."""
     logger.info("Received spp request")
-    return _process(req, looping_to_spp, flat_to_spp)
+    result: JSON = _process(req, looping_to_spp, flat_to_spp)
+    response: Flask.Response = Flask.make_response(result, 200)
+    response.mimetype = "application/json"
+    return response
 
 
-def _process(req: Request, process_looping: looping_processor, process_flat: flat_processor) -> Flask.Response:
+def _process(req: Request, process_looping: looping_processor, process_flat: flat_processor) -> str:
 
     survey_metadata: SurveyMetadata = {
         "survey_id": req.args.get("survey_id", ""),
@@ -62,9 +69,7 @@ def _process(req: Request, process_looping: looping_processor, process_flat: fla
             raise DataError("Submission data is not in json format")
         result: str = process_flat(submission_data, survey_metadata)
 
-    response: Flask.Response = Flask.make_response(result, 200)
-    response.mimetype = "text/plain"
-    return response
+    return result
 
 
 def process_prepop(req: Request, _tx_id: TX_ID) -> Flask.Response:
