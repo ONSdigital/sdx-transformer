@@ -1,0 +1,63 @@
+{
+  "formtype": "0112",
+  "reference": "97148856319",
+  "period": "1604",
+  "survey": "023",
+  "responses": [
+    {
+      "questioncode": "11",
+      "response": "1/4/2016",
+      "instance": 0
+    },
+    {
+      "questioncode": "12",
+      "response": "31/10/2016",
+      "instance": 0
+    },
+    {
+      "questioncode": "51",
+      "response": "84",
+      "instance": 0
+    },
+    {
+      "questioncode": "52",
+      "response": "10",
+      "instance": 0
+    },
+    {
+      "questioncode": "53",
+      "response": "73",
+      "instance": 0
+    },
+    {
+      "questioncode": "54",
+      "response": "24",
+      "instance": 0
+    },
+    {
+      "questioncode": "50",
+      "response": "205",
+      "instance": 0
+    },
+    {
+      "questioncode": "20",
+      "response": "1800000",
+      "instance": 0
+    },
+    {
+      "questioncode": "21",
+      "response": "60000",
+      "instance": 0
+    },
+    {
+      "questioncode": "146",
+      "response": "Change comments included",
+      "instance": 0
+    },
+    {
+      "questioncode": "147",
+      "response": "An employee comment for 0112",
+      "instance": 0
+    }
+  ]
+}

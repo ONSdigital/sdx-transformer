@@ -3,7 +3,7 @@ from sdx_gcp.app import get_logger
 
 from app.config.dependencies import get_flat_transformer, get_build_spec_mapping, get_executor, get_func_lookup, \
     get_spec_repository, get_formatter_mapping, get_spp_spec_mapping
-from app.definitions.spec import ParseTree
+from app.definitions.spec import ParseTree, BuildSpec
 from app.definitions.input import Data, SurveyMetadata, Value
 from app.definitions.output import PCK, JSON
 from app.definitions.transformer import TransformerBase
@@ -42,8 +42,13 @@ def flat_to_spp(submission_data: Data, survey_metadata: SurveyMetadata) -> JSON:
 
 
 def _run(submission_data: Data, survey_metadata: SurveyMetadata, transformer: TransformerBase) -> str:
-    add_metadata_to_input_data(submission_data, survey_metadata)
-    tree: ParseTree = transformer.interpolate()
+    spec: BuildSpec = transformer.get_spec()
+    if spec.get("default_template", False):
+        tree: ParseTree = {qcode: f'#{qcode}' for qcode in submission_data.keys()}
+    else:
+        add_metadata_to_input_data(submission_data, survey_metadata)
+        tree: ParseTree = transformer.interpolate()
+
     transformed_data: dict[str, Value] = transformer.run(tree, submission_data)
     logger.info("Completed data transformation")
     formatter = transformer.get_formatter()

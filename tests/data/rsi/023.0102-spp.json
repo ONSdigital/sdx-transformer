@@ -1,0 +1,33 @@
+{
+  "formtype": "0102",
+  "reference": "97148856319",
+  "period": "1604",
+  "survey": "023",
+  "responses": [
+    {
+      "questioncode": "11",
+      "response": "1/4/2016",
+      "instance": 0
+    },
+    {
+      "questioncode": "12",
+      "response": "31/10/2016",
+      "instance": 0
+    },
+    {
+      "questioncode": "20",
+      "response": "1800000",
+      "instance": 0
+    },
+    {
+      "questioncode": "21",
+      "response": "60000",
+      "instance": 0
+    },
+    {
+      "questioncode": "146",
+      "response": "Change comments included",
+      "instance": 0
+    }
+  ]
+}

@@ -29,6 +29,21 @@ class ExecutionTests(unittest.TestCase):
         }
         self.executor = Executor(fake_function_lookup)
 
+    def test_no_transforms(self):
+
+        parse_tree: ParseTree = {
+            "150": "47",
+            "151": "89",
+        }
+
+        expected = {
+            "150": "47",
+            "151": "89",
+        }
+
+        actual = self.executor.execute(parse_tree)
+        self.assertEqual(expected, actual)
+
     def test_execute_single(self):
 
         parse_tree: ParseTree = {
