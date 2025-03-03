@@ -1,12 +1,11 @@
 from app.definitions.input import SurveyMetadata
 from app.definitions.mapper import Selector
-from app.services.mappers.spec_selectors import BuildSpecSelector, BuildSpecPeriodSelector, PrepopSelector
+from app.services.mappers.spec_selectors import BuildSpecSelector, PrepopSelector
 
 
 _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
         "001": BuildSpecSelector("looping"),
-        "002": BuildSpecSelector("berd"),
-        "009": BuildSpecPeriodSelector(period_id="2507", before="mbs", after_or_equal="mbs-spp"),
+        "009": BuildSpecSelector("mbs"),
         "017": BuildSpecSelector("stocks"),
         "019": BuildSpecSelector("qcas"),
         "024": BuildSpecSelector("fuels"),
@@ -19,7 +18,7 @@ _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
         "092": BuildSpecSelector("mes"),
         "127": BuildSpecSelector("mcg"),
         "134": BuildSpecSelector("mwss"),
-        "139": BuildSpecPeriodSelector(period_id="2506", before="qbs", after_or_equal="qbs-spp"),
+        "139": BuildSpecSelector("qbs"),
         "144": BuildSpecSelector("ukis"),
         "160": BuildSpecSelector("qpses"),
         "165": BuildSpecSelector("qpsespb"),
@@ -33,8 +32,15 @@ _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
         "194": BuildSpecSelector("rails"),
         "202": BuildSpecSelector("abs"),
         "221": BuildSpecSelector("bres"),
-        "228": BuildSpecPeriodSelector(period_id="2507", before="construction", after_or_equal="construction-spp"),
+        "228": BuildSpecSelector("construction"),
         "999": BuildSpecSelector("looping-spp"),
+}
+
+_spp_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
+    "002": BuildSpecSelector("berd"),
+    "009": BuildSpecSelector("mbs-spp"),
+    "139": BuildSpecSelector("qbs-spp"),
+    "228": BuildSpecSelector("construction-spp"),
 }
 
 

@@ -2,8 +2,8 @@ import json
 import unittest
 
 from app.definitions.input import SurveyMetadata
-from app.definitions.output import PCK
-from app.controllers.flat import get_pck
+from app.definitions.output import PCK, JSON
+from app.controllers.flat import flat_to_pck, flat_to_spp
 from tests.integration.flat import read_submission_data, are_equal
 
 
@@ -22,7 +22,7 @@ class QBSTest(unittest.TestCase):
             "period_end_date": "2016-10-31",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/qbs/139.0001.pck"
         with open(pck_filepath) as f:
@@ -43,11 +43,11 @@ class QBSTest(unittest.TestCase):
             "period_end_date": "2025-06-01",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: JSON = flat_to_spp(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/qbs/139.0001-spp.json"
         with open(pck_filepath) as f:
-            expected: PCK = f.read()
+            expected: JSON = f.read()
 
         self.assertTrue(json.loads(expected), json.loads(actual))
 
@@ -64,7 +64,7 @@ class QBSTest(unittest.TestCase):
             "period_end_date": "2016-10-31",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/qbs/139.0001.missing.total.pck"
         with open(pck_filepath) as f:
@@ -85,7 +85,7 @@ class QBSTest(unittest.TestCase):
             "period_end_date": "2016-10-31",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/qbs/139.0001.zero.total.pck"
         with open(pck_filepath) as f:

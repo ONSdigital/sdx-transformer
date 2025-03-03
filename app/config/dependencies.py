@@ -1,7 +1,7 @@
 from collections.abc import Callable
 
 from app.config.formatters import _formatter_mapping
-from app.config.specs import _build_spec_mapping, _prepop_spec_mapping
+from app.config.specs import _build_spec_mapping, _prepop_spec_mapping, _spp_spec_mapping
 from app.config.functions import _function_lookup
 from app.definitions.input import SurveyMetadata
 from app.definitions.executor import ExecutorBase
@@ -22,6 +22,10 @@ def get_spec_repository() -> BuildSpecRepositoryBase:
 
 def get_build_spec_mapping(repository: BuildSpecRepositoryBase) -> BuildSpecMappingBase:
     return BuildSpecMapping(_build_spec_mapping, repository)
+
+
+def get_spp_spec_mapping(repository: BuildSpecRepositoryBase) -> BuildSpecMappingBase:
+    return BuildSpecMapping(_spp_spec_mapping, repository)
 
 
 def get_prepop_spec_mapping(repository: BuildSpecRepositoryBase) -> PrepopMappingBase:

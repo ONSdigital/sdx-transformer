@@ -3,7 +3,7 @@ import unittest
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
 from app.definitions.spec import ParseTree
-from app.controllers.flat import get_pck
+from app.controllers.flat import flat_to_pck
 from app.transformers.flat import FlatSpecTransformer
 from tests.integration.flat import read_submission_data, remove_empties, are_equal, get_transformer
 
@@ -54,7 +54,7 @@ class MWSSPckTests(unittest.TestCase):
         filepath = "tests/data/mwss/134.0005.json"
         submission_data = read_submission_data(filepath)
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/mwss/134.0005.pck"
         with open(pck_filepath) as f:

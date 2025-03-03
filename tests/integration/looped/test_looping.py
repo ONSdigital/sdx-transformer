@@ -3,7 +3,7 @@ import unittest
 
 from app.definitions.input import SurveyMetadata, LoopedData
 from app.definitions.output import SPP, PCK
-from app.controllers.looped import convert_to_looped_data, get_looping
+from app.controllers.looped import convert_to_looped_data, looping_to_pck
 from tests.integration.looped import read_submission_data
 from tests.integration.flat import are_equal
 
@@ -68,7 +68,7 @@ class LoopingTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_looping(submission_data, survey_metadata)
+        actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/looping/looping-example-cora.pck"
         with open(pck_filepath) as f:
@@ -90,7 +90,7 @@ class LoopingTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: SPP = json.loads(get_looping(submission_data, survey_metadata))
+        actual: SPP = json.loads(looping_to_pck(submission_data, survey_metadata))
 
         spp_filepath = "tests/data/looping/looping-example-spp.json"
         with open(spp_filepath) as f:

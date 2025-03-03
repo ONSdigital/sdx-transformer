@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
-from app.controllers.flat import get_pck
+from app.controllers.flat import flat_to_pck
 from tests.integration.flat import read_submission_data, are_equal
 
 
@@ -21,7 +21,7 @@ class UKISPckTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/ukis/144.0001.pck"
         with open(pck_filepath) as f:
@@ -42,7 +42,7 @@ class UKISPckTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/ukis/144.0002.pck"
         with open(pck_filepath) as f:
