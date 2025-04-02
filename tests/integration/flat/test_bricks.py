@@ -2,7 +2,7 @@ import unittest
 
 from app.config.dependencies import get_flat_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
     get_formatter_mapping, get_func_lookup
-from app.controllers.flat import get_pck
+from app.controllers.flat import flat_to_pck
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
 from app.definitions.spec import ParseTree
@@ -148,7 +148,7 @@ class BricksPckTests(unittest.TestCase):
     def test_0002_to_pck(self):
         filepath = "tests/data/bricks/074.0001.json"
         submission_data = read_submission_data(filepath)
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/bricks/074.0001.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()

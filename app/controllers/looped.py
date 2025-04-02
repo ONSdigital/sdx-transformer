@@ -3,9 +3,9 @@ from sdx_gcp.errors import DataError
 
 from app.services.berd.berd_transformer import berd_to_spp
 from app.config.dependencies import get_looped_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
-    get_func_lookup, get_formatter_mapping
+    get_func_lookup, get_formatter_mapping, get_spp_spec_mapping
 from app.definitions.input import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, Empty, Value
-from app.definitions.output import PCK
+from app.definitions.output import PCK, JSON
 from app.definitions.spec import ParseTree
 from app.services.formatters.looping_formatter import LoopingFormatter
 from app.transformers.looped import LoopedSpecTransformer
@@ -13,23 +13,38 @@ from app.transformers.looped import LoopedSpecTransformer
 logger = get_logger()
 
 
-def get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PCK:
+def looping_to_pck(list_data: ListCollector, survey_metadata: SurveyMetadata) -> PCK:
+    transformer: LoopedSpecTransformer = get_looped_transformer(
+        survey_metadata,
+        get_build_spec_mapping(get_spec_repository()),
+        get_executor(get_func_lookup()),
+        get_formatter_mapping(),
+    )
+
+    return _get_looping(list_data, survey_metadata, transformer)
+
+
+def looping_to_spp(list_data: ListCollector, survey_metadata: SurveyMetadata) -> JSON:
+    # temporary solution for Berd --------------
+    if survey_metadata["survey_id"] == "002" and survey_metadata["form_type"] == "0001":
+        return berd_to_spp(list_data, survey_metadata)
+    # ------------------------------------------
+
+    transformer: LoopedSpecTransformer = get_looped_transformer(
+        survey_metadata,
+        get_spp_spec_mapping(get_spec_repository()),
+        get_executor(get_func_lookup()),
+        get_formatter_mapping(),
+    )
+
+    return _get_looping(list_data, survey_metadata, transformer)
+
+
+def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, transformer: LoopedSpecTransformer) -> PCK:
     """
     Performs the steps required to transform looped data.
     """
     try:
-
-        # temporary solution for Berd --------------
-        if survey_metadata["survey_id"] == "002" and survey_metadata["form_type"] == "0001":
-            return berd_to_spp(list_data, survey_metadata)
-        # ------------------------------------------
-
-        transformer: LoopedSpecTransformer = get_looped_transformer(
-            survey_metadata,
-            get_build_spec_mapping(get_spec_repository()),
-            get_executor(get_func_lookup()),
-            get_formatter_mapping(),
-        )
         looped_data: LoopedData = convert_to_looped_data(list_data)
         data_section: Data = looped_data['data_section']
 

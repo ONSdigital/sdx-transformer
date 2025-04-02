@@ -1,0 +1,6 @@
+title: "Build Spec for Monthly Retail Sales"
+survey_id: "023"
+target: "SPP"
+period_format: "YYMM"
+default_template: true
+template:

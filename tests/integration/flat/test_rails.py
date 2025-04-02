@@ -2,7 +2,7 @@ import json
 import unittest
 
 from app.definitions.input import SurveyMetadata
-from app.controllers.flat import get_pck
+from app.controllers.flat import flat_to_pck
 from tests.integration.flat import read_submission_data
 
 
@@ -21,7 +21,7 @@ class RailsTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        result: str = get_pck(submission_data, survey_metadata)
+        result: str = flat_to_pck(submission_data, survey_metadata)
         actual: dict[str, str] = json.loads(result)
 
         pck_filepath = "tests/data/rails/result.json"

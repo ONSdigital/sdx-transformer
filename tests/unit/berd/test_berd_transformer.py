@@ -5,7 +5,7 @@ from app.services.berd.collect_items import collect_list_items
 from app.services.berd.convert_data import extract_answers, convert_to_spp
 from app.services.berd.definitions import Answer, SPP
 from app.definitions.input import SurveyMetadata
-from app.controllers.looped import get_looping
+from app.controllers.looped import looping_to_spp
 
 
 class BERDTransformerTests(unittest.TestCase):
@@ -59,7 +59,7 @@ class BERDTransformerTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual = get_looping(data, survey_metadata)
+        actual = looping_to_spp(data, survey_metadata)
 
         expected = {
             'formtype': '0001',

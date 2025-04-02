@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
-from app.controllers.looped import get_looping
+from app.controllers.looped import looping_to_pck
 from tests.integration.looped import read_submission_data
 
 
@@ -22,7 +22,7 @@ class BresTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_looping(submission_data, survey_metadata)
+        actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
         print("")
         print(actual)
@@ -51,7 +51,7 @@ class BresTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_looping(submission_data, survey_metadata)
+        actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/bres/221.0015.pck"
         with open(pck_filepath, 'rb') as f:
@@ -77,7 +77,7 @@ class BresTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_looping(submission_data, survey_metadata)
+        actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/bres/221.0016.pck"
         with open(pck_filepath, 'rb') as f:
@@ -103,7 +103,7 @@ class BresTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_looping(submission_data, survey_metadata)
+        actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/bres/221.0017.pck"
         with open(pck_filepath, 'rb') as f:
@@ -129,7 +129,7 @@ class BresTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_looping(submission_data, survey_metadata)
+        actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/bres/221.0019.pck"
         with open(pck_filepath, 'rb') as f:
@@ -155,7 +155,7 @@ class BresTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_looping(submission_data, survey_metadata)
+        actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/bres/221.0019_two_new_lu.pck"
         with open(pck_filepath, 'rb') as f:

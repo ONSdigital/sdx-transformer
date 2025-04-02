@@ -29,6 +29,7 @@ class BuildSpec(TypedDict):
     form_mapping: NotRequired[dict[str, str]]
     target: str
     item_list_path: NotRequired[str]
+    default_template: NotRequired[bool]
     template: Template
     looped: NotRequired[Template]
     transforms: Transforms
