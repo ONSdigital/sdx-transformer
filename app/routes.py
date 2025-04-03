@@ -22,6 +22,10 @@ flat_processor = Callable[[dict[str, str], SurveyMetadata], str]
 def process_pck(req: Request, _tx_id: TX_ID) -> Flask.Response:
     """Process a request to convert submission data to a PCK file."""
     logger.info("Received pck request")
+    survey_id = req.args.get("survey_id", "")
+    if survey_id == "002":
+        # dirty hack for Berd
+        return process_spp(req, _tx_id)
     result: PCK = _process(req, looping_to_pck, flat_to_pck)
     response: Flask.Response = Flask.make_response(result, 200)
     response.mimetype = "text/plain"
