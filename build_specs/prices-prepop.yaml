@@ -66,23 +66,23 @@ transforms:
     "TRAILING_REMOVAL_TERMS_1":
         name: "WHITESPACE_REMOVAL"
         args:
-            value: "#description_1"
+            value: "#terms_of_sale_1"
             strip_type: "trailing"
 
     "TRAILING_REMOVAL_TERMS_2":
         name: "WHITESPACE_REMOVAL"
         args:
-            value: "#description_2"
+            value: "#terms_of_sale_2"
             strip_type: "trailing"
 
     "TRAILING_REMOVAL_TERMS_3":
         name: "WHITESPACE_REMOVAL"
         args:
-            value: "#description_3"
+            value: "#terms_of_sale_3"
             strip_type: "trailing"
 
     "TRAILING_REMOVAL_TERMS_4":
         name: "WHITESPACE_REMOVAL"
         args:
-            value: "#description_4"
+            value: "#terms_of_sale_4"
             strip_type: "trailing"
