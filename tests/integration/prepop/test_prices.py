@@ -22,6 +22,4 @@ class TestPrices(unittest.TestCase):
 
         actual = get_prepop(prepop_data, survey_id)
 
-        print(f"\n{actual}")
-
         self.assertEqual(expected, actual)
