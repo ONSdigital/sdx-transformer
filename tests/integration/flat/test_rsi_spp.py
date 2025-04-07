@@ -7,14 +7,14 @@ from app.controllers.flat import flat_to_spp
 from tests.integration.flat import read_submission_data
 
 
-class MbsSppTests(unittest.TestCase):
+class RsiSppTests(unittest.TestCase):
 
     def _run_test(self, form_type: str, period_id: str):
-        filepath = f"tests/data/mbs/009.{form_type}.json"
+        filepath = f"tests/data/rsi/023.{form_type}.json"
         submission_data = read_submission_data(filepath)
 
         survey_metadata: SurveyMetadata = {
-            "survey_id": "009",
+            "survey_id": "023",
             "period_id": period_id,
             "ru_ref": "97148856319Y",
             "form_type": form_type,
@@ -24,20 +24,17 @@ class MbsSppTests(unittest.TestCase):
 
         actual: JSON = flat_to_spp(submission_data, survey_metadata)
 
-        pck_filepath = f"tests/data/mbs/009.{form_type}-spp.json"
+        pck_filepath = f"tests/data/rsi/023.{form_type}-spp.json"
         with open(pck_filepath) as f:
             expected: JSON = f.read()
 
         self.assertEqual(json.loads(expected), json.loads(actual))
 
     def test_0106_to_spp(self):
-        self._run_test(form_type="0106", period_id="2507")
+        self._run_test(form_type="0102", period_id="1604")
 
-    def test_0111_to_spp(self):
-        self._run_test(form_type="0111", period_id="2507")
+    def test_0112_to_spp(self):
+        self._run_test(form_type="0112", period_id="1604")
 
-    def test_0255_to_spp(self):
-        self._run_test(form_type="0255", period_id="2507")
-
-    def test_0867_to_spp(self):
-        self._run_test(form_type="0867", period_id="2507")
+    def test_0203_to_spp(self):
+        self._run_test(form_type="0203", period_id="1604")

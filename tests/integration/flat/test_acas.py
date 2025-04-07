@@ -3,7 +3,7 @@ import unittest
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
 from app.definitions.spec import ParseTree
-from app.controllers.flat import get_pck
+from app.controllers.flat import flat_to_pck
 from app.transformers.flat import FlatSpecTransformer
 from tests.integration.flat import read_submission_data, remove_empties, are_equal, get_transformer
 
@@ -253,7 +253,7 @@ class ACASPckTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/acas/171.0002.pck"
         with open(pck_filepath) as f:
@@ -274,7 +274,7 @@ class ACASPckTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/acas/171.0003.pck"
         with open(pck_filepath) as f:

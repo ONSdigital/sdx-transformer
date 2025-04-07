@@ -2,8 +2,8 @@ import json
 import unittest
 
 from app.definitions.input import SurveyMetadata
-from app.definitions.output import PCK
-from app.controllers.flat import get_pck
+from app.definitions.output import PCK, JSON
+from app.controllers.flat import flat_to_pck, flat_to_spp
 from tests.integration.flat import read_submission_data, are_equal
 
 
@@ -20,7 +20,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0001.nobatch"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -33,17 +33,17 @@ class ConstructionPckTests(unittest.TestCase):
 
         survey_metadata: SurveyMetadata = {
             "survey_id": "228",
-            "period_id": "2504",
+            "period_id": "2507",
             "ru_ref": "48514665167x",
             "form_type": "0001",
             "period_start_date": "2025-04-01",
             "period_end_date": "2025-07-01",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: JSON = flat_to_spp(submission_data, survey_metadata)
 
         pck_filepath = "tests/data/construction/228.0001-spp.json"
         with open(pck_filepath) as f:
-            expected: PCK = f.read()
+            expected: JSON = f.read()
 
         self.assertTrue(json.loads(expected), json.loads(actual))
 
@@ -59,7 +59,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0001.no.comment.nobatch"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -78,7 +78,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0001.no.value.290.nobatch"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -97,7 +97,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0001.only.one.yes.nobatch"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -116,7 +116,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0001.single.dcode.nobatch"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -135,7 +135,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0002.nobatch"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -154,7 +154,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0002.no.employees.nobatch"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -173,7 +173,7 @@ class ConstructionPckTests(unittest.TestCase):
             "period_start_date": "2024-01-01",
             "period_end_date": "2024-01-31",
         }
-        actual: PCK = get_pck(submission_data, survey_metadata)
+        actual: PCK = flat_to_pck(submission_data, survey_metadata)
         pck_filepath = "tests/data/construction/228.0001.reporting.period.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
