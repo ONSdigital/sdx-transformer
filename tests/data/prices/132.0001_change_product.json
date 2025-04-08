@@ -1,0 +1,151 @@
+{
+  "submission": {
+    "case_id": "c03d4c91-1474-11f0-9ffb-9bfe4942698b",
+    "tx_id": "c03d4c94-1474-11f0-9ffb-9bfe4942698b",
+    "type": "uk.gov.ons.edc.eq:surveyresponse",
+    "version": "v2",
+    "data_version": "0.0.3",
+    "origin": "uk.gov.ons.edc.eq",
+    "collection_exercise_sid": "c03d4c92-1474-11f0-9ffb-9bfe4942698b",
+    "flushed": false,
+    "submitted_at": "2025-04-08T12:28:49+00:00",
+    "launch_language_code": "en",
+    "survey_metadata": {
+      "survey_id": "132",
+      "ru_ref": "12345678901",
+      "ru_name": "ESSENTIAL ENTERPRISE LTD.",
+      "trad_as": "ESSENTIAL ENTERPRISE LTD.",
+      "period_id": "201605",
+      "user_id": "A12345678901",
+      "ref_p_start_date": "2016-05-01",
+      "ref_p_end_date": "2016-06-12",
+      "form_type": "H",
+      "sds_dataset_id": "c272d930-858e-473c-acbc-bd966ca5206a"
+    },
+    "schema_url": "https://prod.author.eqbs.gcp.onsdigital.uk/convert/762bb791-8f2e-42c6-bcb0-8e67a02ab1c0?r1744115212",
+    "data": {
+      "answers": [
+        {
+          "answer_id": "answer79616595-fc1e-41c5-9b28-ccd1b92d591e",
+          "value": "1",
+          "list_item_id": "hfQGOy"
+        },
+        {
+          "answer_id": "answerd1cc08eb-0515-4e77-959f-c580da8c25bf",
+          "value": "This product is made of gold now",
+          "list_item_id": "hfQGOy"
+        },
+        {
+          "answer_id": "answer231f0980-1bed-4b42-867b-af7be48075c9",
+          "value": "This is a figure comment",
+          "list_item_id": "hfQGOy"
+        },
+        {
+          "answer_id": "answer79616595-fc1e-41c5-9b28-ccd1b92d591e",
+          "value": "0",
+          "list_item_id": "uZDMaF"
+        },
+        {
+          "answer_id": "answerf588e908-9671-492c-ac3c-b94f5b5d1db7",
+          "value": 100,
+          "list_item_id": "uZDMaF"
+        },
+        {
+          "answer_id": "answer231f0980-1bed-4b42-867b-af7be48075c9",
+          "value": "This is another figure comment",
+          "list_item_id": "uZDMaF"
+        },
+        {
+          "answer_id": "answerec27606d-a18b-4148-823c-54e0683ae6ff",
+          "value": "Silly comment"
+        }
+      ],
+      "lists": [
+        {
+          "items": [
+            "hfQGOy",
+            "uZDMaF"
+          ],
+          "name": "item",
+          "supplementary_data_mappings": [
+            {
+              "identifier": "12345678901",
+              "list_item_id": "hfQGOy"
+            },
+            {
+              "identifier": "98765432101",
+              "list_item_id": "uZDMaF"
+            }
+          ]
+        }
+      ],
+      "supplementary_data": {
+        "identifier": "12345678901",
+        "items": {
+          "item": [
+            {
+              "identifier": "12345678901",
+              "item_specification_2": "DESCRIPTION: REFRIGERATION AND FREEZING",
+              "item_specification_3": "EQUIPMENT AND HEAT PUMPS: EXCEPT",
+              "terms_of_sale_4": "TERM: EX WORKS",
+              "terms_of_sale_2": "PAYMENT: 60 DAYS NET",
+              "terms_of_sale_3": "CARRIAGE: FCA",
+              "terms_of_sale_1": "SUPPLIER REF: 123073",
+              "item_specification_4": "HOUSEHOLD TYPE EQUIPMENT",
+              "supplier_number": "12345678901",
+              "currency": "POUND STERLING",
+              "item_specification_1": "PRODUCT: HEAT EXCHANGER AIR-AIR",
+              "item_specification_5": "SERIAL NO: 8585C000-001",
+              "unit_of_sale": "EACH",
+              "item_number": "1234567890"
+            },
+            {
+              "identifier": "98765432101",
+              "item_specification_2": "DESCRIPTION: INDUSTRIAL COOLING",
+              "item_specification_3": "EQUIPMENT AND HEAT PUMPS: INDUSTRIAL",
+              "terms_of_sale_4": "TERM: FOB",
+              "terms_of_sale_2": "PAYMENT: 30 DAYS NET",
+              "terms_of_sale_3": "CARRIAGE: DDP",
+              "terms_of_sale_1": "SUPPLIER REF: 987654",
+              "item_specification_4": "COMMERCIAL TYPE EQUIPMENT",
+              "supplier_number": "98765432101",
+              "currency": "EURO",
+              "item_specification_1": "PRODUCT: HEAT EXCHANGER WATER-WATER",
+              "item_specification_5": "SERIAL NO: 1234A567-890",
+              "unit_of_sale": "EACH",
+              "item_number": "9876543210"
+            }
+          ]
+        },
+        "supplier_number": "23456789012",
+        "schema_version": "v2",
+        "survey_id": "132",
+        "current_month": "July 2023"
+      },
+      "answer_codes": [
+        {
+          "answer_id": "answer79616595-fc1e-41c5-9b28-ccd1b92d591e",
+          "code": "9999"
+        },
+        {
+          "answer_id": "answerd1cc08eb-0515-4e77-959f-c580da8c25bf",
+          "code": "9998"
+        },
+        {
+          "answer_id": "answerf588e908-9671-492c-ac3c-b94f5b5d1db7",
+          "code": "9997"
+        },
+        {
+          "answer_id": "answer231f0980-1bed-4b42-867b-af7be48075c9",
+          "code": "9996"
+        },
+        {
+          "answer_id": "answerec27606d-a18b-4148-823c-54e0683ae6ff",
+          "code": "9995"
+        }
+      ]
+    },
+    "started_at": "2025-04-08T12:27:16.941086+00:00",
+    "submission_language_code": "en"
+  }
+}
