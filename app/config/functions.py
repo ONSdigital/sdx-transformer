@@ -6,9 +6,9 @@ from app.services.transform.functions.lists import as_list, append_to_list, prep
 from app.services.transform.functions.numerical import round_half_up, aggregate, mean, number_equals, total, divide
 from app.services.transform.functions.string import (starts_with, contains, any_contains,
                                                      concat, carve, string_padding,
-                                                     space_split, postcode_start, postcode_end)
+                                                     space_split, postcode_start, postcode_end, whitespace_removal)
 from app.services.transform.functions.time import (to_date, any_date, start_of_month,
-                                                   end_of_month, start_of_year, end_of_year)
+                                                   end_of_month, start_of_year, end_of_year, month_year_string)
 
 _function_lookup: dict[str, Callable] = {
     "VALUE": no_transform,
@@ -25,6 +25,7 @@ _function_lookup: dict[str, Callable] = {
     "END_OF_MONTH": end_of_month,
     "START_OF_YEAR": start_of_year,
     "END_OF_YEAR": end_of_year,
+    "MONTH_YEAR_STRING": month_year_string,
     "ROUND": round_half_up,
     "TOTAL": total,
     "DIVIDE": divide,
@@ -43,4 +44,5 @@ _function_lookup: dict[str, Callable] = {
     "SPACE_SPLIT": space_split,
     "POSTCODE_START": postcode_start,
     "POSTCODE_END": postcode_end,
+    "WHITESPACE_REMOVAL": whitespace_removal,
 }

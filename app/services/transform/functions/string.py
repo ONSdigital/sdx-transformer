@@ -111,3 +111,13 @@ def postcode_start(value: str) -> Value:
 @handle_empties
 def postcode_end(value: str) -> Value:
     return postcode(value)[1]
+
+
+@handle_empties
+def whitespace_removal(value: str, strip_type: str = "both") -> Value:
+    if strip_type == "both":
+        return value.strip()
+    elif strip_type == "trailing":
+        return value.rstrip()
+    elif strip_type == "leading":
+        return value.lstrip()
