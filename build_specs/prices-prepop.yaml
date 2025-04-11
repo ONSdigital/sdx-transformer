@@ -4,7 +4,8 @@ target: "SDS"
 period_format: "YYYYM"
 item_list_path: "items.item"
 template:
-    schema_version: "v1"
+    schema_version: "v2"
+    survey_id: "132"
     identifier: "#ruref"
     supplier_number: "#supplier_no"
     current_month: "$DATE_FORMAT"
@@ -23,7 +24,7 @@ template:
                 terms_of_sale_2: "$TRAILING_REMOVAL_TERMS_2"
                 terms_of_sale_3: "$TRAILING_REMOVAL_TERMS_3"
                 terms_of_sale_4: "$TRAILING_REMOVAL_TERMS_4"
-                item_currency: "#currency_description"
+                currency: "#currency"
 
 transforms:
     # Unix datetime to readable datetime

@@ -15,7 +15,7 @@
       "terms_of_sale_2": "Example terms 2.1 ",
       "terms_of_sale_3": "Example terms 3.1 ",
       "terms_of_sale_4": "Example terms 4.1 ",
-      "currency_description": "Example currency description"
+      "currency": "British Sterling"
     },
     {
       "ruref": "10000000000",
@@ -32,7 +32,7 @@
       "terms_of_sale_2": "Example terms 2.2 ",
       "terms_of_sale_3": "Example terms 3.2 ",
       "terms_of_sale_4": "Example terms 4.2 ",
-      "currency_description": "Example currency description"
+      "currency": "British Sterling"
     },
     {
       "ruref": "10000000000",
@@ -49,7 +49,7 @@
       "terms_of_sale_2": "Example terms 2.3 ",
       "terms_of_sale_3": "Example terms 3.3 ",
       "terms_of_sale_4": "Example terms 4.3 ",
-      "currency_description": "Example currency description"
+      "currency": "British Sterling"
     }
   ]
 }
