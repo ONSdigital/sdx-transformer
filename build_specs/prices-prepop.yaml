@@ -11,7 +11,7 @@ template:
     current_month: "$DATE_FORMAT"
     items:
         item:
-            -   identifier: "#ruref"
+            -   identifier: "#item_no"
                 supplier_number: "#supplier_no"
                 item_number: "#item_no"
                 item_specification_1: "$TRAILING_REMOVAL_SPEC_1"

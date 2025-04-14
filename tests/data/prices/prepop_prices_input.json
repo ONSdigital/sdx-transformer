@@ -2,7 +2,7 @@
   "10000000000": [
     {
       "ruref": "10000000000",
-      "supplier_no": "12345678901",
+      "supplier_no": "10000000000",
       "source_month": "202401",
       "item_no": "1111111111",
       "description_1": "Example description 1.1 ",
@@ -19,7 +19,7 @@
     },
     {
       "ruref": "10000000000",
-      "supplier_no": "12345678901",
+      "supplier_no": "10000000000",
       "source_month": "202401",
       "item_no": "2222222222",
       "description_1": "Example description 1.2 ",
@@ -36,7 +36,7 @@
     },
     {
       "ruref": "10000000000",
-      "supplier_no": "12345678901",
+      "supplier_no": "10000000000",
       "source_month": "202401",
       "item_no": "3333333333",
       "description_1": "Example description 1.3 ",
