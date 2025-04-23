@@ -1,0 +1,96 @@
+{
+  "answers": [
+    {
+      "answer_id": "answer79616595-fc1e-41c5-9b28-ccd1b92d591e",
+      "value": "1",
+      "list_item_id": "mrghFu"
+    },
+    {
+      "answer_id": "answerd1cc08eb-0515-4e77-959f-c580da8c25bf",
+      "value": "Couldnt put an empty value",
+      "list_item_id": "mrghFu"
+    },
+    {
+      "answer_id": "answer79616595-fc1e-41c5-9b28-ccd1b92d591e",
+      "value": "1",
+      "list_item_id": "dwkFjx"
+    },
+    {
+      "answer_id": "answerd1cc08eb-0515-4e77-959f-c580da8c25bf",
+      "value": "Cant leave this blank either",
+      "list_item_id": "dwkFjx"
+    }
+  ],
+  "lists": [
+    {
+      "items": [
+        "mrghFu",
+        "dwkFjx"
+      ],
+      "name": "item",
+      "supplementary_data_mappings": [
+        {
+          "identifier": "12345678901",
+          "list_item_id": "mrghFu"
+        },
+        {
+          "identifier": "98765432101",
+          "list_item_id": "dwkFjx"
+        }
+      ]
+    }
+  ],
+  "supplementary_data": {
+    "identifier": "12345678901",
+    "items": {
+      "item": [
+        {
+          "identifier": "12345678901",
+          "item_specification_1": "PRODUCT: HEAT EXCHANGER AIR-AIR",
+          "item_specification_2": "DESCRIPTION: REFRIGERATION AND FREEZING",
+          "supplier_number": "12345678901",
+          "item_number": "1234567890",
+          "item_specification_3": "EQUIPMENT AND HEAT PUMPS: EXCEPT",
+          "item_specification_5": "SERIAL NO: 8585C000-001",
+          "currency": "POUND STERLING",
+          "item_specification_4": "HOUSEHOLD TYPE EQUIPMENT",
+          "terms_of_sale_1": "SUPPLIER REF: 123073",
+          "terms_of_sale_4": "TERM: EX WORKS",
+          "terms_of_sale_3": "CARRIAGE: FCA",
+          "terms_of_sale_2": "PAYMENT: 60 DAYS NET",
+          "unit_of_sale": "EACH"
+        },
+        {
+          "identifier": "98765432101",
+          "item_specification_1": "PRODUCT: HEAT EXCHANGER WATER-WATER",
+          "item_specification_2": "DESCRIPTION: INDUSTRIAL COOLING",
+          "supplier_number": "98765432101",
+          "item_number": "9876543210",
+          "item_specification_3": "EQUIPMENT AND HEAT PUMPS: INDUSTRIAL",
+          "item_specification_5": "SERIAL NO: 1234A567-890",
+          "currency": "EURO",
+          "item_specification_4": "COMMERCIAL TYPE EQUIPMENT",
+          "terms_of_sale_1": "SUPPLIER REF: 987654",
+          "terms_of_sale_4": "TERM: FOB",
+          "terms_of_sale_3": "CARRIAGE: DDP",
+          "terms_of_sale_2": "PAYMENT: 30 DAYS NET",
+          "unit_of_sale": "EACH"
+        }
+      ]
+    },
+    "supplier_number": "23456789012",
+    "schema_version": "v2",
+    "current_month": "July 2023",
+    "survey_id": "132"
+  },
+  "answer_codes": [
+    {
+      "answer_id": "answer79616595-fc1e-41c5-9b28-ccd1b92d591e",
+      "code": "9999"
+    },
+    {
+      "answer_id": "answerd1cc08eb-0515-4e77-959f-c580da8c25bf",
+      "code": "9998"
+    }
+  ]
+}

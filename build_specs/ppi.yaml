@@ -1,0 +1,21 @@
+"title": "Build Spec for bres survey"
+"survey_id": "221"
+"target": "IDBR"
+"period_format": "YYYYMM"
+"pck_period_format": "YYYYMM"
+"template":
+    "9995": "$010_LOOKUP"
+
+"looped":
+    "9999": "#9999"
+    "9997": "#9997"
+    "9996": "$013_LOOKUP"
+
+"transforms":
+    "001_MATCH":
+        "name": "ANY_CONTAINS"
+        "args":
+            "values": [ "#9996", "#9953" ]
+            "match_str": "Yes"
+            "on_true": 0
+            "on_false": 1
