@@ -3,7 +3,7 @@ import unittest
 
 from app.definitions.input import Data, SurveyMetadata
 from app.definitions.output import PCK
-from app.controllers.flat import get_pck
+from app.controllers.flat import flat_to_pck
 from tests.integration.flat import read_submission_data, are_equal
 
 
@@ -29,7 +29,7 @@ class QCASPckTests(unittest.TestCase):
                 "period_end_date": "2023-03-31",
             }
 
-            actual: PCK = get_pck(submission_data, survey_metadata)
+            actual: PCK = flat_to_pck(submission_data, survey_metadata)
 
             pck_filepath = root_dir + filename.replace("json", "pck")
             with open(pck_filepath) as f:

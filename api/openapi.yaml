@@ -18,69 +18,56 @@ paths:
                 - $ref: '#/components/schemas/ListCollector'
                 - $ref: '#/components/schemas/Data'
       parameters:
-        - name: survey_id
-          description: "The id of the survey"
-          example: "009"
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: period_id
-          description: "The period of the collection exercise"
-          example: "202501"
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: ru_ref
-          description: "The reference of the respondent"
-          example: "12345678901A"
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: form_type
-          description: "The form type"
-          example: "0001"
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: period_start_date
-          description: "The start date of the period in iso 8601 format (YYY-MM-DD)"
-          example: "2025-01-01"
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: period_end_date
-          description: "The end date of the period in iso 8601 format (YYY-MM-DD)"
-          example: "2025-01-31"
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: data_version
-          description: The version of schema of the data.
-          example: "0.0.3"
-          in: query
-          required: false
-          schema:
-            type: string
-            default: "0.0.1"
+          -   $ref: '#/components/parameters/SurveyId'
+          -   $ref: '#/components/parameters/PeriodId'
+          -   $ref: '#/components/parameters/RuRef'
+          -   $ref: '#/components/parameters/FormType'
+          -   $ref: '#/components/parameters/PeriodStartDate'
+          -   $ref: '#/components/parameters/PeriodEndDate'
+          -   $ref: '#/components/parameters/DataVersion'
       responses:
         '200':
           description: Successful response
           content:
             text/plain:
               schema:
-                  oneOf:
-                      -   type: string
-                      -   $ref: '#/components/schemas/SPP'
+                type: string
         '400':
           description: Bad request
         '500':
           description: Internal server error
+  /spp:
+      post:
+          summary: Process SPP request
+          description: "Convert a survey response into an SPP file"
+          operationId: processSpp
+          requestBody:
+              required: true
+              content:
+                  application/json:
+                      schema:
+                          oneOf:
+                              -   $ref: '#/components/schemas/ListCollector'
+                              -   $ref: '#/components/schemas/Data'
+          parameters:
+              -   $ref: '#/components/parameters/SurveyId'
+              -   $ref: '#/components/parameters/PeriodId'
+              -   $ref: '#/components/parameters/RuRef'
+              -   $ref: '#/components/parameters/FormType'
+              -   $ref: '#/components/parameters/PeriodStartDate'
+              -   $ref: '#/components/parameters/PeriodEndDate'
+              -   $ref: '#/components/parameters/DataVersion'
+          responses:
+              '200':
+                  description: Successful response
+                  content:
+                      application/json:
+                          schema:
+                             $ref: '#/components/schemas/SPP'
+              '400':
+                  description: Bad request
+              '500':
+                  description: Internal server error
   /prepop:
     post:
       summary: Process Prepop request
@@ -93,13 +80,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PrepopData'
       parameters:
-        - name: survey_id
-          description: "The id of the survey"
-          example: "071"
-          in: query
-          required: true
-          schema:
-            type: string
+          -   $ref: '#/components/parameters/SurveyId'
       responses:
         '200':
           description: Successful response
@@ -112,99 +93,157 @@ paths:
         '500':
             description: Internal server error
 components:
-  schemas:
-    Data:
-        type: object
-    PrepopData:
-      type: object
-      additionalProperties:
-        type: array
-        items:
+    parameters:
+        SurveyId:
+            name: survey_id
+            in: query
+            required: true
+            schema:
+                type: string
+            description: "The id of the survey"
+            example: "009"
+        PeriodId:
+            name: period_id
+            in: query
+            required: true
+            schema:
+                type: string
+            description: "The period of the collection exercise"
+            example: "202501"
+        RuRef:
+            name: ru_ref
+            in: query
+            required: true
+            schema:
+                type: string
+            description: "The reference of the respondent"
+            example: "12345678901A"
+        FormType:
+            name: form_type
+            in: query
+            required: true
+            schema:
+                type: string
+            description: "The form type"
+            example: "0001"
+        PeriodStartDate:
+            name: period_start_date
+            in: query
+            required: true
+            schema:
+                type: string
+            description: "The start date of the period in iso 8601 format (YYYY-MM-DD)"
+            example: "2025-01-01"
+        PeriodEndDate:
+            name: period_end_date
+            in: query
+            required: true
+            schema:
+                type: string
+            description: "The end date of the period in iso 8601 format (YYYY-MM-DD)"
+            example: "2025-01-31"
+        DataVersion:
+            name: data_version
+            in: query
+            required: false
+            schema:
+                type: string
+                default: "0.0.1"
+            description: "The version of schema of the data."
+            example: "0.0.3"
+    schemas:
+        Data:
+            type: object
+        PrepopData:
           type: object
           additionalProperties:
-            type: string
-    Answer:
-      type: object
-      properties:
-        answer_id:
+            type: array
+            items:
+              type: object
+              additionalProperties:
+                type: string
+        Answer:
+          type: object
+          properties:
+            answer_id:
+              type: string
+            value:
+              oneOf:
+                - type: object
+                - type: array
+                - type: string
+            list_item_id:
+              type: string
+              nullable: true
+        SupplementaryDataMapping:
+          type: object
+          properties:
+            identifier:
+              type: string
+            list_item_id:
+              type: string
+        Group:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: string
+            name:
+              type: string
+            supplementary_data_mappings:
+              type: array
+              items:
+                $ref: '#/components/schemas/SupplementaryDataMapping'
+              nullable: true
+        AnswerCode:
+          type: object
+          properties:
+            answer_id:
+              type: string
+            code:
+              type: string
+            answer_value:
+              type: string
+              nullable: true
+        ListCollector:
+          type: object
+          properties:
+            answer_codes:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnswerCode'
+            answers:
+              type: array
+              items:
+                $ref: '#/components/schemas/Answer'
+            lists:
+              type: array
+              items:
+                $ref: '#/components/schemas/Group'
+        PCK:
           type: string
-        value:
-          oneOf:
-            - type: object
-            - type: array
-            - type: string
-        list_item_id:
-          type: string
-          nullable: true
-    SupplementaryDataMapping:
-      type: object
-      properties:
-        identifier:
-          type: string
-        list_item_id:
-          type: string
-    Group:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: string
-        name:
-          type: string
-        supplementary_data_mappings:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryDataMapping'
-          nullable: true
-    AnswerCode:
-      type: object
-      properties:
-        answer_id:
-          type: string
-        code:
-          type: string
-        answer_value:
-          type: string
-          nullable: true
-    ListCollector:
-      type: object
-      properties:
-        answer_codes:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnswerCode'
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Answer'
-        lists:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    PCK:
-      type: string
-    SPPResponse:
-      type: object
-      properties:
-        questioncode:
-          type: string
-        response:
-          type: string
-        instance:
-          type: integer
-    SPP:
-      type: object
-      properties:
-        formtype:
-          type: string
-        reference:
-          type: string
-        period:
-          type: string
-        survey:
-          type: string
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/SPPResponse'
+        SPPResponse:
+          type: object
+          properties:
+            questioncode:
+              type: string
+            response:
+              type: string
+            instance:
+              type: integer
+        SPP:
+          type: object
+          properties:
+            formtype:
+              type: string
+            reference:
+              type: string
+            period:
+              type: string
+            survey:
+              type: string
+            responses:
+              type: array
+              items:
+                $ref: '#/components/schemas/SPPResponse'

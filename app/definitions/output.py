@@ -6,6 +6,7 @@ from typing import TypedDict
 
 
 PCK = str
+JSON = str
 
 
 class SPPResponse(TypedDict):
