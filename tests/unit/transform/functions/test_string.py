@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.input import Empty
 from app.services.transform.functions.string import (contains, any_contains, concat,
-                                                     starts_with, carve, space_split, postcode)
+                                                     starts_with, carve, space_split, postcode, whitespace_removal)
 
 
 class StartsWithTests(unittest.TestCase):
@@ -207,3 +207,21 @@ class PostcodeTest(unittest.TestCase):
         value = "NP142BC"
         expected = "NP14", "2BC"
         self.assertEqual(expected, postcode(value))
+
+
+class WhitespaceRemovalTest(unittest.TestCase):
+
+    def test_strip_leading_and_trailing(self):
+        value = " an example string "
+        expected = "an example string"
+        self.assertEqual(expected, whitespace_removal(value))
+
+    def test_strip_leading(self):
+        value = " an example string "
+        expected = "an example string "
+        self.assertEqual(expected, whitespace_removal(value, strip_type="leading"))
+
+    def test_strip_trailing(self):
+        value = " an example string "
+        expected = " an example string"
+        self.assertEqual(expected, whitespace_removal(value, strip_type="trailing"))
