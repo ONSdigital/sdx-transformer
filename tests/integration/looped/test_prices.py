@@ -24,8 +24,8 @@ class TestPrices(unittest.TestCase):
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = "tests/data/prices/132.0001.pck"
-        with open(pck_filepath, 'rb') as f:
-            expected: PCK = f.read().decode()
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
 
         self.assertEqual(expected, actual)
 
@@ -36,8 +36,8 @@ class TestPrices(unittest.TestCase):
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = "tests/data/prices/132.0001_incorrect_item.pck"
-        with open(pck_filepath, 'rb') as f:
-            expected: PCK = f.read().decode()
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
 
         self.assertEqual(expected, actual)
 
@@ -48,7 +48,7 @@ class TestPrices(unittest.TestCase):
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = "tests/data/prices/132.0001_no_comment.pck"
-        with open(pck_filepath, 'rb') as f:
-            expected: PCK = f.read().decode()
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
 
         self.assertEqual(expected, actual)
