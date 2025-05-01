@@ -16,7 +16,7 @@ class SPPFormatter(Formatter):
         result: SPP = {
             'formtype': metadata['form_type'],
             'reference': ru_ref[0:-1] if ru_ref[-1].isalpha() else ru_ref,
-            'period': metadata['period_id'],
+            'period': self.convert_period(metadata['period_id']),
             'survey': metadata['survey_id'],
             'responses': []
         }

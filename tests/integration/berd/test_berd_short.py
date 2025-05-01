@@ -16,7 +16,7 @@ class BerdTests(unittest.TestCase):
 
         survey_metadata: SurveyMetadata = {
             "survey_id": "002",
-            "period_id": "23",
+            "period_id": "202312",
             "ru_ref": "12346789012A",
             "form_type": "0006",
             "period_start_date": "2016-05-01",
