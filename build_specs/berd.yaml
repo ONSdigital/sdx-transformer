@@ -1,8 +1,8 @@
 title: "Build Spec for Berd short forms"
 survey_id: "002"
 target: "SPP"
-period_format: "YY"
-pck_period_format: "YY"
+period_format: "YYYYMM"
+pck_period_format: "YYYYMM"
 template:
     "101": "#101"
     "103": "#103"

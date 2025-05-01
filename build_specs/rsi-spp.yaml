@@ -2,5 +2,6 @@ title: "Build Spec for Monthly Retail Sales"
 survey_id: "023"
 target: "SPP"
 period_format: "YYMM"
+pck_period_format: "YYYYMM"
 default_template: true
 template:

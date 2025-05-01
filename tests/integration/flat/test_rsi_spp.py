@@ -34,7 +34,7 @@ class RsiSppTests(unittest.TestCase):
         self._run_test(form_type="0102", period_id="1604")
 
     def test_0112_to_spp(self):
-        self._run_test(form_type="0112", period_id="1604")
+        self._run_test(form_type="0112", period_id="2501")
 
     def test_0203_to_spp(self):
         self._run_test(form_type="0203", period_id="1604")
