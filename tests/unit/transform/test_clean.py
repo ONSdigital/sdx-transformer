@@ -1,5 +1,6 @@
 import unittest
 
+from app.definitions.input import Empty
 from app.definitions.spec import Template
 from app.services.transform.clean import clean
 
@@ -117,12 +118,16 @@ class CleanTests(unittest.TestCase):
         }
         self.assertEqual(expected, actual)
 
-    def test_remove_field_from_object(self):
+    def test_remove_field_from_object_only_if_empty(self):
 
         input_data: Template = {
             "company": {
                 "name": "My company",
                 "vat": {
+                    "thing1": Empty,
+                    "thing2": "123"
+                },
+                "more": {
                     "thing1": "",
                     "thing2": "123"
                 }
@@ -135,6 +140,10 @@ class CleanTests(unittest.TestCase):
             "company": {
                 "name": "My company",
                 "vat": {
+                    "thing2": "123"
+                },
+                "more": {
+                    "thing1": "",
                     "thing2": "123"
                 }
             }
