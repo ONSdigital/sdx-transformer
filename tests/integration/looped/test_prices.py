@@ -11,7 +11,7 @@ class TestPrices(unittest.TestCase):
         self.survey_metadata: SurveyMetadata = {
             "survey_id": "132",
             "period_id": "201605",
-            "ru_ref": "23456789012",
+            "ru_ref": "23456789012A",
             "form_type": "0001",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",

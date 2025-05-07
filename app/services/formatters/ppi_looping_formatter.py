@@ -17,14 +17,15 @@ class PPILoopingFormatter(LoopingFormatter):
         for instance_list in self._instances.values():
             for instance in instance_list:
                 item_number = mappings.get(instance["list_item_id"], "")
-                supplier_number = metadata["ru_ref"]
+                ru = metadata["ru_ref"]
+                supplier: str = ru[0:-1] if ru[-1].isalpha() else ru
                 period = metadata["period_id"]
                 comment = "1" if instance["data"]["9996"] == "1" or data["9995"] == "1" else "0"
                 price = instance["data"]["9997"]
                 spec_marker = instance["data"]["9999"]
 
                 pck_lines.append(
-                    f"132:{supplier_number}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
+                    f"132:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
 
         output = "\n".join(pck_lines)
         return output + "\n"
