@@ -21,9 +21,10 @@ class PPILoopingFormatter(LoopingFormatter):
                 period = metadata["period_id"]
                 comment = "1" if instance["data"]["9996"] == "1" or data["9995"] == "1" else "0"
                 price = instance["data"]["9997"]
+                spec_marker = instance["data"]["9999"]
 
                 pck_lines.append(
-                    f"132:{supplier_number}:{period}:0:0:{comment}:0:{item_number}:9999:0:{period}:01:0:{price}")
+                    f"132:{supplier_number}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
 
         output = "\n".join(pck_lines)
         return output + "\n"
