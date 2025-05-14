@@ -4,7 +4,7 @@ target: "SDS"
 period_format: "YYYYM"
 item_list_path: "items.item"
 template:
-    schema_version: "v2"
+    schema_version: "v3"
     survey_id: "132"
     identifier: "#ruref"
     supplier_number: "#supplier_no"
