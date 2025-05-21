@@ -1,57 +1,57 @@
 {
-  '10000000000': {
-    'schema_version': 'v3',
-    'survey_id': '061',
-    'identifier': '10000000000',
-    'items': {
-      'services': [
+  "10000000000": {
+    "schema_version": "v3",
+    "survey_id": "061",
+    "identifier": "10000000000",
+    "items": {
+      "service": [
         {
-          'item_number': '1111111111'
+          "item_number": "1111111111",
+          "service_description_1": "Example description 1.1",
+          "service_description_2": "Example description 2.1",
+          "service_description_3": "Example description 3.1",
+          "service_description_4": "Example description 4.1",
+          "service_description_5": "Example description 5.1",
+          "unit_of_sale": "This is the unit of sale",
+          "terms_of_sale_1": "Example terms 1.1",
+          "terms_of_sale_2": "Example terms 2.1",
+          "terms_of_sale_3": "Example terms 3.1",
+          "terms_of_sale_4": "Example terms 4.1",
+          "currency": "British Sterling",
+          "currency_wording": "price",
+          "currency_wording_capital": "Price"
         },
         {
-          'service_description_1': 'Example description 1.1'
+          "item_number": "2222222222",
+          "service_description_1": "Example description 1.2",
+          "service_description_2": "Example description 2.2",
+          "service_description_3": "Example description 3.2",
+          "service_description_4": "Example description 4.2",
+          "service_description_5": "Example description 5.2",
+          "unit_of_sale": "This is the unit of sale",
+          "terms_of_sale_1": "Example terms 1.2",
+          "terms_of_sale_2": "Example terms 2.2",
+          "terms_of_sale_3": "Example terms 3.2",
+          "terms_of_sale_4": "Example terms 4.2",
+          "currency": "British Sterling",
+          "currency_wording": "price",
+          "currency_wording_capital": "Price"
         },
         {
-          'service_description_2': 'Example description 2.1'
-        },
-        {
-          'service_description_3': 'Example description 3.1'
-        },
-        {
-          'service_description_4': 'Example description 4.1'
-        },
-        {
-          'service_description_5': 'Example description 5.1'
-        },
-        {
-          'unit_of_sale': 'This is the unit of sale'
-        },
-        {
-          'terms_of_sale_1': 'Example terms 1.1'
-        },
-        {
-          'terms_of_sale_2': 'Example terms 2.1'
-        },
-        {
-          'terms_of_sale_3': 'Example terms 3.1'
-        },
-        {
-          'terms_of_sale_4': 'Example terms 4.1'
-        },
-        {
-          'currency': 'British Sterling'
-        },
-        {
-          'currency_wording': 'price'
-        },
-        {
-          'currency_wording_capital': 'Price'
-        },
-        {
-          'item_number': '2222222222'
-        },
-        {
-          'item_number': '3333333333'
+          "item_number": "3333333333",
+          "service_description_1": "Example description 1.3",
+          "service_description_2": "Example description 2.3",
+          "service_description_3": "Example description 3.3",
+          "service_description_4": "Example description 4.3",
+          "service_description_5": "Example description 5.3",
+          "unit_of_sale": "This is the unit of sale",
+          "terms_of_sale_1": "Example terms 1.3",
+          "terms_of_sale_2": "Example terms 2.3",
+          "terms_of_sale_3": "Example terms 3.3",
+          "terms_of_sale_4": "Example terms 4.3",
+          "currency": "British Sterling",
+          "currency_wording": "price",
+          "currency_wording_capital": "Price"
         }
       ]
     }
