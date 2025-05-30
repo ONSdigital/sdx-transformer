@@ -106,13 +106,13 @@ def quarter_formatter(value: str) -> Value:
     Converts a date string in YYYYMM format to a quarter string in Quarter 1/YYYY (January) format.
     """
     year = value[:4]
-    month = value[-2]
+    month = value[-2:]
 
-    if month == "03":
+    if month in ["01", "02", "03"]:
         return f"Quarter 1/{year} ({calendar.month_name[1]})"
-    elif month == "06":
+    if month in ["04", "05", "06"]:
         return f"Quarter 2/{year} ({calendar.month_name[4]})"
-    elif month == "09":
+    if month in ["07", "08", "09"]:
         return f"Quarter 3/{year} ({calendar.month_name[7]})"
-    elif month == "12":
+    if month in ["10", "11", "12"]:
         return f"Quarter 4/{year} ({calendar.month_name[10]})"

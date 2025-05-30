@@ -3,6 +3,7 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "10000000000",
+    "source_quarter": "Quarter 1/2024 (January)",
     "items": {
       "service": [
         {
@@ -17,9 +18,9 @@
           "terms_of_sale_2": "Example terms 2.1",
           "terms_of_sale_3": "Example terms 3.1",
           "terms_of_sale_4": "Example terms 4.1",
-          "currency": "British Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
+          "currency": "Percentage Fee",
+          "currency_wording": "percentage fee",
+          "currency_wording_capital": "Percentage Fee"
         },
         {
           "item_number": "2222222222",
@@ -33,7 +34,7 @@
           "terms_of_sale_2": "Example terms 2.2",
           "terms_of_sale_3": "Example terms 3.2",
           "terms_of_sale_4": "Example terms 4.2",
-          "currency": "British Sterling",
+          "currency": "percentage fee",
           "currency_wording": "price",
           "currency_wording_capital": "Price"
         },
@@ -60,6 +61,7 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "20000000000",
+    "source_quarter": "Quarter 1/2024 (January)",
     "items": {
       "service": [
         {

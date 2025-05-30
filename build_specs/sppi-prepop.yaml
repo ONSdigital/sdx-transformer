@@ -28,27 +28,22 @@ template:
 transforms:
     "CURRENCY_WORDING":
         name: "LOOKUP"
-        value: "#currency"
         args:
+            value: "#currency"
             "Percentage Fee": "percentage fee"
             "on_no_match": "price"
 
     "CURRENCY_WORDING_CAPITAL":
         name: "LOOKUP"
-        value: "#currency"
         args:
+            value: "#currency"
             "Percentage Fee": "Percentage Fee"
             "on_no_match": "Price"
 
-    # Unix datetime to readable datetime
-    # 2024/03 to Quarter 1/2024 (January) last 2 chars are 03
-    # 2024/06 to Quarter 2/2024 (April) last 2 chars are 06
-    # 2024/09 to Quarter 3/2024 (July) last 2 chars are 09
-    # 2024/12 to Quarter 4/2024 (October) last 2 chars are 12
     "QUARTER_SELECT":
         name: "QUARTER_FORMATTER"
         args:
-            value: "#source_quarter"
+            value: "#source_month"
 
     # Remove trailing whitespace from item_spec/terms of sale
     "TRAILING_REMOVAL_SPEC_1":
