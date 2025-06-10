@@ -41,3 +41,21 @@ class TestPrices(unittest.TestCase):
         print(actual)
 
         # self.assertEqual(expected, actual)
+
+    def test_prices_full(self):
+        self.maxDiff = None
+
+        survey_id = "061"
+        input_filepath = "tests/data/sppi/prepop_sppi_full.json"
+        with open(input_filepath) as f:
+            prepop_data: PrepopData = json.load(f)
+
+        output_filepath = "tests/data/sppi/prepop_sppi_full_output.json"
+        with open(output_filepath) as f:
+            expected: dict[Identifier: Template] = json.load(f)
+
+        actual = get_prepop(prepop_data, survey_id)
+        print("\n")
+        print(actual)
+
+        # self.assertEqual(expected, actual)
