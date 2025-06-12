@@ -1,152 +1,4 @@
 {
-  "49900002609": {
-    "schema_version": "v3",
-    "survey_id": "061",
-    "identifier": "49900002609",
-    "source_quarter": "Quarter 2/2025 (April)",
-    "items": {
-      "service": [
-        {
-          "item_number": "7112011031",
-          "service_description_1": "ENGINEERING SERVICES - CIVIL",
-          "service_description_2": "PLEASE PROVIDE THE STANDARD HOURLY CHARGE OUT RATES FOR THE",
-          "service_description_3": "GRADES SHOWN ALTHOUGH THESE MAY NOT ALWAYS BE ACHIEVED OR",
-          "service_description_4": "REALISED.",
-          "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "7112012049",
-          "service_description_1": "ENGINEERING SERVICES - MECHANICAL AND ELECTRICAL",
-          "service_description_2": "PLEASE PROVIDE THE STANDARD HOURLY CHARGE OUT RATES FOR THE",
-          "service_description_3": "GRADES SHOWN ALTHOUGH THESE MAY NOT ALWAYS BE ACHIEVED OR",
-          "service_description_4": "REALISED.",
-          "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "7112013032",
-          "service_description_1": "ENGINEERING SERVICES - STRUCTURAL",
-          "service_description_2": "PLEASE PROVIDE THE STANDARD HOURLY CHARGE OUT RATES FOR THE",
-          "service_description_3": "GRADES SHOWN ALTHOUGH THESE MAY NOT ALWAYS BE ACHIEVED OR",
-          "service_description_4": "REALISED.",
-          "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "7112021014",
-          "service_description_1": "PROJECT MANAGEMENT SERVICES FOR CONSTRUCTION PROJECTS",
-          "service_description_2": "PLEASE PROVIDE THE STANDARD HOURLY CHARGE OUT RATES FOR THE",
-          "service_description_3": "GRADES SHOWN ALTHOUGH THESE MAY NOT ALWAYS BE ACHIEVED OR",
-          "service_description_4": "REALISED",
-          "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "7112031014",
-          "service_description_1": "GEOLOGICAL, GEOPHYSICAL AND RELATED PROSPECTING AND",
-          "service_description_2": "CONSULTING SERVICES.",
-          "service_description_3": "PLEASE PROVIDE THE STANDARD HOURLY CHARGE OUT RATES FOR THE",
-          "service_description_4": "GRADES SHOWN ALTHOUGH THESE MAY NOT ALWAYS BE ACHIEVED OR",
-          "service_description_5": "REALISED.",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        }
-      ]
-    }
-  },
-  "49900004380": {
-    "schema_version": "v3",
-    "survey_id": "061",
-    "identifier": "49900004380",
-    "source_quarter": "Quarter 2/2025 (April)",
-    "items": {
-      "service": [
-        {
-          "item_number": "5510011071",
-          "service_description_1": "SERVICE: BEDROOM ACCOMMODATION LONDON",
-          "service_description_2": "DESCRIPTION: BUSINESS STAY DOUBLE ROOM",
-          "service_description_3": "ONLY",
-          "service_description_4": "EXCLUDES VAT",
-          "service_description_5": "",
-          "unit_of_sale": "PRICE PER NIGHT 2 ADULTS",
-          "terms_of_sale_1": "CUSTOMER REF: 1441119898",
-          "terms_of_sale_2": "PAYMENT: PREPAYMENT",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "5510011072",
-          "service_description_1": "SERVICE: BEDROOM ACCOMMODATION LONDON",
-          "service_description_2": "DESCRIPTION: LEISURE STAY - FAMILY ROOM",
-          "service_description_3": "ONLY",
-          "service_description_4": "EXCLUDES VAT",
-          "service_description_5": "",
-          "unit_of_sale": "PRICE FOR TWO NIGHTS 2 ADULTS",
-          "terms_of_sale_1": "CUSTOMER REF: 1441124966",
-          "terms_of_sale_2": "PAYMENT: PREPAYMENT",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "5510011073",
-          "service_description_1": "SERVICE: BEDROOM ACCOMMODATION LONDON",
-          "service_description_2": "DESCRIPTION: BUSINESS STAY - DOUBLE",
-          "service_description_3": "ROOM ONLY",
-          "service_description_4": "EXCLUDES VAT",
-          "service_description_5": "",
-          "unit_of_sale": "PRICE PER NIGHT 1 ADULT",
-          "terms_of_sale_1": "CUSTOMER REF: 1436524858",
-          "terms_of_sale_2": "PAYMENT: BUSINESS ACCOUNT CARD - 30 DAYS",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        }
-      ]
-    }
-  },
   "49900017575": {
     "schema_version": "v3",
     "survey_id": "061",
@@ -156,6 +8,7 @@
       "service": [
         {
           "item_number": "4941017196",
+          "supplier_number": "49900017575",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: MONTLY HIRE OF EMPTY STORE TO CUSTOMER FOR THEIR COURIER",
           "service_description_3": "SERVICE",
@@ -173,80 +26,6 @@
       ]
     }
   },
-  "49900027361": {
-    "schema_version": "v3",
-    "survey_id": "061",
-    "identifier": "49900027361",
-    "source_quarter": "Quarter 2/2025 (April)",
-    "items": {
-      "service": [
-        {
-          "item_number": "6830241027",
-          "service_description_1": "SERVICE: RESIDENTIAL SALES (EXCLUDING LONDON)",
-          "service_description_2": "DESCRIPTION: SELLING RESIDENTIAL",
-          "service_description_3": "PROPERTY",
-          "service_description_4": "",
-          "service_description_5": "",
-          "unit_of_sale": "PER PROPERTY",
-          "terms_of_sale_1": "CUSTOMER REF: UK CUSTOMER",
-          "terms_of_sale_2": "PAYMENT: ON COMPLETION",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Percentage Fee",
-          "currency_wording": "percentage fee",
-          "currency_wording_capital": "Percentage Fee"
-        },
-        {
-          "item_number": "6830242012",
-          "service_description_1": "SERVICE: PROPERTY MANAGEMENT (EXCLUDING LONDON)",
-          "service_description_2": "DESCRIPTION: RESIDENTIAL LETTINGS -",
-          "service_description_3": "PROPERTY MANAGEMENT",
-          "service_description_4": "",
-          "service_description_5": "",
-          "unit_of_sale": "PER PROPERTY",
-          "terms_of_sale_1": "CUSTOMER REF: LL",
-          "terms_of_sale_2": "PAYMENT: 30 DAYS",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Percentage Fee",
-          "currency_wording": "percentage fee",
-          "currency_wording_capital": "Percentage Fee"
-        },
-        {
-          "item_number": "6830242013",
-          "service_description_1": "SERVICE: RENT COLLECTION (EXCLUDING LONDON)",
-          "service_description_2": "DESCRIPTION: RENT COLLECTION FOR",
-          "service_description_3": "RESIDENTIAL LETTINGS",
-          "service_description_4": "",
-          "service_description_5": "",
-          "unit_of_sale": "PER PROPERTY",
-          "terms_of_sale_1": "CUSTOMER REF: LL",
-          "terms_of_sale_2": "PAYMENT: 30 DAYS",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Percentage Fee",
-          "currency_wording": "percentage fee",
-          "currency_wording_capital": "Percentage Fee"
-        },
-        {
-          "item_number": "6830242014",
-          "service_description_1": "SERVICE: TENANT FIND FEE (EXCLUDING LONDON)",
-          "service_description_2": "DESCRIPTION: FINDING TENANT FOR",
-          "service_description_3": "RESIDENTIAL LETTINGS PROPERTY",
-          "service_description_4": "",
-          "service_description_5": "",
-          "unit_of_sale": "VALUE PER PROPERTY",
-          "terms_of_sale_1": "CUSTOMER REF: LL",
-          "terms_of_sale_2": "PAYMENT: 30 DAYS",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Percentage Fee",
-          "currency_wording": "percentage fee",
-          "currency_wording_capital": "Percentage Fee"
-        }
-      ]
-    }
-  },
   "49900029080": {
     "schema_version": "v3",
     "survey_id": "061",
@@ -256,6 +35,7 @@
       "service": [
         {
           "item_number": "7732015057",
+          "supplier_number": "49900029080",
           "service_description_1": "SERVICE: DIGGER HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF 3 TON MINI DIGGER",
           "service_description_3": "",
@@ -272,6 +52,7 @@
         },
         {
           "item_number": "7732016043",
+          "supplier_number": "49900029080",
           "service_description_1": "SERVICE: TANDEM ROLLER HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF 1200MM TANDEM ROLLER",
           "service_description_3": "",
@@ -280,32 +61,6 @@
           "unit_of_sale": "PER WEEK",
           "terms_of_sale_1": "CUSTOMER REF: F.P.M",
           "terms_of_sale_2": "PAYMENT: 60 DAYS",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        }
-      ]
-    }
-  },
-  "49900038612": {
-    "schema_version": "v3",
-    "survey_id": "061",
-    "identifier": "49900038612",
-    "source_quarter": "Quarter 2/2025 (April)",
-    "items": {
-      "service": [
-        {
-          "item_number": "8122013058",
-          "service_description_1": "SERVICE: CONTRACT CLEANING OF SHOPPING CENTRE",
-          "service_description_2": "DESCRIPTION: GENERAL CLEANING OF MALL",
-          "service_description_3": "",
-          "service_description_4": "",
-          "service_description_5": "",
-          "unit_of_sale": "MONTHLY COST",
-          "terms_of_sale_1": "CUSTOMER REF: LISN SHOPPING CENTRE",
-          "terms_of_sale_2": "PAYMENT: 30 DAYS",
           "terms_of_sale_3": "",
           "terms_of_sale_4": "",
           "currency": "Pounds Sterling",
@@ -324,6 +79,7 @@
       "service": [
         {
           "item_number": "4941017208",
+          "supplier_number": "49900043705",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: WAREHOUSE PROCESSING OF INTERNET ORDERED PARCELS, AND",
           "service_description_3": "DISTRIBUTION TO COURIER NETWORK IN NORTHERN IRELAND. PRICE PER PARCEL. UPTO",
@@ -340,6 +96,7 @@
         },
         {
           "item_number": "4941017209",
+          "supplier_number": "49900043705",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: CONTRACT LOGISTICS - RETAIL STORE DELIVERIES. WAREHOUSE CROSS",
           "service_description_3": "DOCKING AND DISTRIBUTION TO STORES THROUGHOUT IRELAND",
@@ -356,6 +113,7 @@
         },
         {
           "item_number": "4941017211",
+          "supplier_number": "49900043705",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: WAREHOUSE CROSS-DOCKING AND DISTRIBUTION TO STORES THROUGHOUT",
           "service_description_3": "IRELAND, INCLUDING TRUNKING FROM UK TO NORTHERN IRELAND",
@@ -373,23 +131,24 @@
       ]
     }
   },
-  "49900044165": {
+  "49900054256": {
     "schema_version": "v3",
     "survey_id": "061",
-    "identifier": "49900044165",
+    "identifier": "49900054256",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
-          "item_number": "7111041008",
-          "service_description_1": "ARCHITECTURAL SERVICES, PROJECT",
-          "service_description_2": "MGMT SERVICES FOR CONSTRUCTION.",
+          "item_number": "7732015073",
+          "supplier_number": "49900054256",
+          "service_description_1": "SERVICE: CONSTRUCTION PLANT HIRE",
+          "service_description_2": "DESCRIPTION: HIRE OF MINI 1.5 TONNE DIGGER",
           "service_description_3": "",
           "service_description_4": "",
           "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
+          "unit_of_sale": "PER WEEK",
+          "terms_of_sale_1": "CUSTOMER REF: ALL CONSTRUCTION CUSTOMERS",
+          "terms_of_sale_2": "PAYMENT: AT TIME",
           "terms_of_sale_3": "",
           "terms_of_sale_4": "",
           "currency": "Pounds Sterling",
@@ -399,56 +158,25 @@
       ]
     }
   },
-  "49900051575": {
+  "49900073523": {
     "schema_version": "v3",
     "survey_id": "061",
-    "identifier": "49900051575",
+    "identifier": "49900073523",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
-          "item_number": "7312111073",
-          "service_description_1": "STRATEGY DESIGN & CONCEPT DEVELOPMENT",
-          "service_description_2": "PLEASE PROVIDE CHARGEABLE HOURS RECORDED AND CHARGEOUT RATE",
-          "service_description_3": "FROM RATE CARD. INCLUDE DIRECT MARKETING AS UNABLE TO",
-          "service_description_4": "SEPARATE.",
-          "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "7312112062",
-          "service_description_1": "ADVERTSING CREATION",
-          "service_description_2": "PLEASE PROVIDE CHARGEABLE HOURS RECORDED AND CHARGEOUT RATE",
-          "service_description_3": "FROM RATE CARD.  INCLUDE DIRECT MARKETING AS UNABLE TO",
-          "service_description_4": "SEPARATE FROM BILLING.",
-          "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "7312211006",
-          "service_description_1": "MEDIA BUYING SERVICES, TV, PRINT, RADIO, CINEMA & OUTDOOR",
-          "service_description_2": "INCLUDE ALL ME CODES EXCEPT SEARCH ENGINE OPTIMISATION.",
-          "service_description_3": "PLEASE PROVIDE CHARGEABLE HOURS RECORDED AND CHARGEOUT",
-          "service_description_4": "RATE FROM RATE CARD.",
-          "service_description_5": "",
-          "unit_of_sale": "",
-          "terms_of_sale_1": "",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
+          "item_number": "5224114023",
+          "supplier_number": "49900073523",
+          "service_description_1": "SERVICE: CARGO HANDLING - SEA CARGO -",
+          "service_description_2": "BULK",
+          "service_description_3": "DESCRIPTION: DISCHARGE CARGO FROM SHIPS",
+          "service_description_4": "HOLD AT STEVEDORING. CARGO INCLUDES:",
+          "service_description_5": "WHEAT, SOYA, MAIZE, POLLARD ETC.",
+          "unit_of_sale": "PER TONNE",
+          "terms_of_sale_1": "CUSTOMER REF: C/TRA",
+          "terms_of_sale_2": "PAYMENT: 30 DAYS FROM END OF MONTH",
+          "terms_of_sale_3": "INVOICE",
           "terms_of_sale_4": "",
           "currency": "Pounds Sterling",
           "currency_wording": "price",
@@ -457,58 +185,44 @@
       ]
     }
   },
-  "49900051678": {
+  "49900100429": {
     "schema_version": "v3",
     "survey_id": "061",
-    "identifier": "49900051678",
+    "identifier": "49900100429",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
-          "item_number": "5620011001",
-          "service_description_1": "SERVICE: EDUCATION",
-          "service_description_2": "STATE SECONDARY SCHOOL. FULL CANTEEN SERVICE FOR 1000 PUPILS.",
-          "service_description_3": "INCLUDING DRINKS. INCLUDING 15 STAFF. 5 YEAR FIXED PRICE CONTRACT.",
-          "service_description_4": "CUSTOMER REF: LEA. PRICE PER HEAD.",
+          "item_number": "5810013005",
+          "supplier_number": "49900100429",
+          "service_description_1": "SERVICE: PUBLISHING",
+          "service_description_2": "DESCRIPTION: PRINTED CHILDREN BOOKS",
+          "service_description_3": "",
+          "service_description_4": "",
           "service_description_5": "",
-          "unit_of_sale": "SECONDARY SCHOOL MEAL",
-          "terms_of_sale_1": "TRANSACTIONAL CASH SALE",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
+          "unit_of_sale": "UNITS OF SALE: PRODUCTION OF 20K",
+          "terms_of_sale_1": "CUSTOMER REF: TITLE: SEE INSIDE YOUR",
+          "terms_of_sale_2": "BODY.",
+          "terms_of_sale_3": "UK ISBN: 9780746070055",
+          "terms_of_sale_4": "PAYMENT TERMS: 120 DAYS",
+          "currency": "US Dollar",
           "currency_wording": "price",
           "currency_wording_capital": "Price"
         },
         {
-          "item_number": "5620011002",
-          "service_description_1": "SERVICE: EDUCATION",
-          "service_description_2": "LUNCHES FOR STATE PRIMARY SCHOOLS.",
-          "service_description_3": "10,000 MEALS PER DAY. INCLUDING DRINKS AND STAFF.",
-          "service_description_4": "5 YEAR FIXED PRICE CONTRACT. CUSTOMER REFERENCE: LEA.",
-          "service_description_5": "INFANT MEAL PRICE.",
-          "unit_of_sale": "PRIMARY SCHOOL MEAL",
-          "terms_of_sale_1": "TRANSACTIONAL CASH SALE",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
-          "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
-          "currency_wording": "price",
-          "currency_wording_capital": "Price"
-        },
-        {
-          "item_number": "5620013001",
-          "service_description_1": "SERVICE: HEALTHCARE FULL CANTEEN SERVICE",
-          "service_description_2": "FOR 50 PEOPLE FOR NHS HOSPITAL. HOSTESS SERVICE.",
-          "service_description_3": "INCLUDING DRINKS AND 15 STAFF. CUSTOMER REFERENCE: 76523005",
-          "service_description_4": "5 YEAR FIXED CONTRACT. PRICE PER HEAD.",
+          "item_number": "5810013006",
+          "supplier_number": "49900100429",
+          "service_description_1": "SERVICE: PUBLISHING",
+          "service_description_2": "DESCRIPTION: PRINTED CHILDREN BOOKS",
+          "service_description_3": "",
+          "service_description_4": "",
           "service_description_5": "",
-          "unit_of_sale": "NHS HOSPITAL MEAL (VISITORS)",
-          "terms_of_sale_1": "TRANSACTIONAL CASH SALE",
-          "terms_of_sale_2": "",
-          "terms_of_sale_3": "",
+          "unit_of_sale": "UNITS OF SALE: PRODUCTION OF 20K",
+          "terms_of_sale_1": "CUSTOMER REF: TITLE: THAT'S NOT MY FARM",
+          "terms_of_sale_2": "UK ISBN: 9781805072515",
+          "terms_of_sale_3": "PAYMENT TERMS: 120 days",
           "terms_of_sale_4": "",
-          "currency": "Pounds Sterling",
+          "currency": "US Dollar",
           "currency_wording": "price",
           "currency_wording_capital": "Price"
         }
