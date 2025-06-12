@@ -21,7 +21,6 @@ class TestPrices(unittest.TestCase):
             expected: dict[Identifier: Template] = json.load(f)
 
         actual = get_prepop(prepop_data, survey_id)
-        print(actual)
         self.assertEqual(expected, actual)
 
     def test_prices_multiple_unit(self):
@@ -37,7 +36,6 @@ class TestPrices(unittest.TestCase):
             expected: dict[Identifier: Template] = json.load(f)
 
         actual = get_prepop(prepop_data, survey_id)
-        print(actual)
         self.assertEqual(expected, actual)
 
     def test_prices_full(self):

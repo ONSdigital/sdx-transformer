@@ -7,11 +7,11 @@ template:
     schema_version: "v3"
     survey_id: "061"
     identifier: "#ruref"
+    supplier_number: "#supplier_no"
     source_quarter: "$QUARTER_SELECT"
     items:
         service:
             -   item_number: "#item_no"
-                supplier_number: "#supplier_no"
                 service_description_1: "$TRAILING_REMOVAL_SPEC_1"
                 service_description_2: "$TRAILING_REMOVAL_SPEC_2"
                 service_description_3: "$TRAILING_REMOVAL_SPEC_3"

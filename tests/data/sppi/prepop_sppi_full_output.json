@@ -3,12 +3,12 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "49900017575",
+    "supplier_number": "49900017575",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
           "item_number": "4941017196",
-          "supplier_number": "49900017575",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: MONTLY HIRE OF EMPTY STORE TO CUSTOMER FOR THEIR COURIER",
           "service_description_3": "SERVICE",
@@ -30,12 +30,12 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "49900029080",
+    "supplier_number": "49900029080",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
           "item_number": "7732015057",
-          "supplier_number": "49900029080",
           "service_description_1": "SERVICE: DIGGER HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF 3 TON MINI DIGGER",
           "service_description_3": "",
@@ -52,7 +52,6 @@
         },
         {
           "item_number": "7732016043",
-          "supplier_number": "49900029080",
           "service_description_1": "SERVICE: TANDEM ROLLER HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF 1200MM TANDEM ROLLER",
           "service_description_3": "",
@@ -74,12 +73,12 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "49900043705",
+    "supplier_number": "49900043705",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
           "item_number": "4941017208",
-          "supplier_number": "49900043705",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: WAREHOUSE PROCESSING OF INTERNET ORDERED PARCELS, AND",
           "service_description_3": "DISTRIBUTION TO COURIER NETWORK IN NORTHERN IRELAND. PRICE PER PARCEL. UPTO",
@@ -96,7 +95,6 @@
         },
         {
           "item_number": "4941017209",
-          "supplier_number": "49900043705",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: CONTRACT LOGISTICS - RETAIL STORE DELIVERIES. WAREHOUSE CROSS",
           "service_description_3": "DOCKING AND DISTRIBUTION TO STORES THROUGHOUT IRELAND",
@@ -113,7 +111,6 @@
         },
         {
           "item_number": "4941017211",
-          "supplier_number": "49900043705",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: WAREHOUSE CROSS-DOCKING AND DISTRIBUTION TO STORES THROUGHOUT",
           "service_description_3": "IRELAND, INCLUDING TRUNKING FROM UK TO NORTHERN IRELAND",
@@ -135,12 +132,12 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "49900054256",
+    "supplier_number": "49900054256",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
           "item_number": "7732015073",
-          "supplier_number": "49900054256",
           "service_description_1": "SERVICE: CONSTRUCTION PLANT HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF MINI 1.5 TONNE DIGGER",
           "service_description_3": "",
@@ -162,12 +159,12 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "49900073523",
+    "supplier_number": "49900073523",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
           "item_number": "5224114023",
-          "supplier_number": "49900073523",
           "service_description_1": "SERVICE: CARGO HANDLING - SEA CARGO -",
           "service_description_2": "BULK",
           "service_description_3": "DESCRIPTION: DISCHARGE CARGO FROM SHIPS",
@@ -189,12 +186,12 @@
     "schema_version": "v3",
     "survey_id": "061",
     "identifier": "49900100429",
+    "supplier_number": "49900100429",
     "source_quarter": "Quarter 2/2025 (April)",
     "items": {
       "service": [
         {
           "item_number": "5810013005",
-          "supplier_number": "49900100429",
           "service_description_1": "SERVICE: PUBLISHING",
           "service_description_2": "DESCRIPTION: PRINTED CHILDREN BOOKS",
           "service_description_3": "",
@@ -211,7 +208,6 @@
         },
         {
           "item_number": "5810013006",
-          "supplier_number": "49900100429",
           "service_description_1": "SERVICE: PUBLISHING",
           "service_description_2": "DESCRIPTION: PRINTED CHILDREN BOOKS",
           "service_description_3": "",
