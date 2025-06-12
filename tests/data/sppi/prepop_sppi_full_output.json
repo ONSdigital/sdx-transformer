@@ -1,6 +1,6 @@
 {
   "49900017575": {
-    "schema_version": "v3",
+    "schema_version": "v2",
     "survey_id": "061",
     "identifier": "49900017575",
     "supplier_number": "49900017575",
@@ -27,7 +27,7 @@
     }
   },
   "49900029080": {
-    "schema_version": "v3",
+    "schema_version": "v2",
     "survey_id": "061",
     "identifier": "49900029080",
     "supplier_number": "49900029080",
@@ -70,7 +70,7 @@
     }
   },
   "49900043705": {
-    "schema_version": "v3",
+    "schema_version": "v2",
     "survey_id": "061",
     "identifier": "49900043705",
     "supplier_number": "49900043705",
@@ -129,7 +129,7 @@
     }
   },
   "49900054256": {
-    "schema_version": "v3",
+    "schema_version": "v2",
     "survey_id": "061",
     "identifier": "49900054256",
     "supplier_number": "49900054256",
@@ -156,7 +156,7 @@
     }
   },
   "49900073523": {
-    "schema_version": "v3",
+    "schema_version": "v2",
     "survey_id": "061",
     "identifier": "49900073523",
     "supplier_number": "49900073523",
@@ -183,7 +183,7 @@
     }
   },
   "49900100429": {
-    "schema_version": "v3",
+    "schema_version": "v2",
     "survey_id": "061",
     "identifier": "49900100429",
     "supplier_number": "49900100429",
