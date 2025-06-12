@@ -9,6 +9,7 @@
       "service": [
         {
           "item_number": "4941017196",
+          "identifier": "4941017196",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: MONTLY HIRE OF EMPTY STORE TO CUSTOMER FOR THEIR COURIER",
           "service_description_3": "SERVICE",
@@ -36,6 +37,7 @@
       "service": [
         {
           "item_number": "7732015057",
+          "identifier": "7732015057",
           "service_description_1": "SERVICE: DIGGER HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF 3 TON MINI DIGGER",
           "service_description_3": "",
@@ -52,6 +54,7 @@
         },
         {
           "item_number": "7732016043",
+          "identifier": "7732016043",
           "service_description_1": "SERVICE: TANDEM ROLLER HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF 1200MM TANDEM ROLLER",
           "service_description_3": "",
@@ -79,6 +82,7 @@
       "service": [
         {
           "item_number": "4941017208",
+          "identifier": "4941017208",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: WAREHOUSE PROCESSING OF INTERNET ORDERED PARCELS, AND",
           "service_description_3": "DISTRIBUTION TO COURIER NETWORK IN NORTHERN IRELAND. PRICE PER PARCEL. UPTO",
@@ -95,6 +99,7 @@
         },
         {
           "item_number": "4941017209",
+          "identifier": "4941017209",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: CONTRACT LOGISTICS - RETAIL STORE DELIVERIES. WAREHOUSE CROSS",
           "service_description_3": "DOCKING AND DISTRIBUTION TO STORES THROUGHOUT IRELAND",
@@ -111,6 +116,7 @@
         },
         {
           "item_number": "4941017211",
+          "identifier": "4941017211",
           "service_description_1": "SERVICE: WAREHOUSING AND DISTRIBUTION WITHIN THE UK",
           "service_description_2": "DESCRIPTION: WAREHOUSE CROSS-DOCKING AND DISTRIBUTION TO STORES THROUGHOUT",
           "service_description_3": "IRELAND, INCLUDING TRUNKING FROM UK TO NORTHERN IRELAND",
@@ -138,6 +144,7 @@
       "service": [
         {
           "item_number": "7732015073",
+          "identifier": "7732015073",
           "service_description_1": "SERVICE: CONSTRUCTION PLANT HIRE",
           "service_description_2": "DESCRIPTION: HIRE OF MINI 1.5 TONNE DIGGER",
           "service_description_3": "",
@@ -165,6 +172,7 @@
       "service": [
         {
           "item_number": "5224114023",
+          "identifier": "5224114023",
           "service_description_1": "SERVICE: CARGO HANDLING - SEA CARGO -",
           "service_description_2": "BULK",
           "service_description_3": "DESCRIPTION: DISCHARGE CARGO FROM SHIPS",
@@ -192,6 +200,7 @@
       "service": [
         {
           "item_number": "5810013005",
+          "identifier": "5810013005",
           "service_description_1": "SERVICE: PUBLISHING",
           "service_description_2": "DESCRIPTION: PRINTED CHILDREN BOOKS",
           "service_description_3": "",
@@ -208,6 +217,7 @@
         },
         {
           "item_number": "5810013006",
+          "identifier": "5810013006",
           "service_description_1": "SERVICE: PUBLISHING",
           "service_description_2": "DESCRIPTION: PRINTED CHILDREN BOOKS",
           "service_description_3": "",
