@@ -1,0 +1,103 @@
+title: "Build spec for sppi"
+survey_id: "061"
+target: "SDS"
+period_format: "YYYYM"
+item_list_path: "items.service"
+template:
+    schema_version: "v1"
+    survey_id: "061"
+    identifier: "#ruref"
+    supplier_number: "#supplier_no"
+    source_quarter: "$QUARTER_SELECT"
+    items:
+        service:
+            -   item_number: "#item_no"
+                identifier: "#item_no"
+                service_description_1: "$TRAILING_REMOVAL_SPEC_1"
+                service_description_2: "$TRAILING_REMOVAL_SPEC_2"
+                service_description_3: "$TRAILING_REMOVAL_SPEC_3"
+                service_description_4: "$TRAILING_REMOVAL_SPEC_4"
+                service_description_5: "$TRAILING_REMOVAL_SPEC_5"
+                unit_of_sale: "#units_of_sale"
+                terms_of_sale_1: "$TRAILING_REMOVAL_TERMS_1"
+                terms_of_sale_2: "$TRAILING_REMOVAL_TERMS_2"
+                terms_of_sale_3: "$TRAILING_REMOVAL_TERMS_3"
+                terms_of_sale_4: "$TRAILING_REMOVAL_TERMS_4"
+                currency: "#currency"
+                currency_wording: "$CURRENCY_WORDING"
+                currency_wording_capital: "$CURRENCY_WORDING_CAPITAL"
+
+transforms:
+    "CURRENCY_WORDING":
+        name: "LOOKUP"
+        args:
+            value: "#currency"
+            "Percentage Fee": "percentage fee"
+            "on_no_match": "price"
+
+    "CURRENCY_WORDING_CAPITAL":
+        name: "LOOKUP"
+        args:
+            value: "#currency"
+            "Percentage Fee": "Percentage Fee"
+            "on_no_match": "Price"
+
+    "QUARTER_SELECT":
+        name: "QUARTER_FORMATTER"
+        args:
+            value: "#source_month"
+
+    # Remove trailing whitespace from item_spec/terms of sale
+    "TRAILING_REMOVAL_SPEC_1":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_1"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_2":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_2"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_3":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_3"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_4":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_4"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_5":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_5"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_1":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_1"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_2":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_2"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_3":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_3"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_4":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_4"
+            strip_type: "trailing"
