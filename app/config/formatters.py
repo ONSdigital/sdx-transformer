@@ -1,4 +1,4 @@
-                from app.services.formatters.ppi_looping_formatter import PPILoopingFormatter
+from app.services.formatters.ppi_looping_formatter import PPILoopingFormatter
 from app.services.formatters.sppi_looping_formatter import SPPILoopingFormatter
 from app.services.mappers.formatter_selectors import FormatterSelector
 from app.services.formatters.cora_formatter import CORAFormatter, MESFormatter
