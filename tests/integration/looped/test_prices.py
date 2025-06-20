@@ -1,5 +1,6 @@
 import unittest
 
+from app.config.root import PROJECT_ROOT
 from app.controllers.looped import looping_to_pck
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
@@ -18,12 +19,12 @@ class TestPrices(unittest.TestCase):
         }
 
     def test_prices_0001(self):
-        filepath = "tests/data/prices/132.0001.json"
+        filepath = f"{PROJECT_ROOT}/tests/data/prices/132.0001.json"
         submission_data = read_submission_data(filepath)
 
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
-        pck_filepath = "tests/data/prices/132.0001.pck"
+        pck_filepath = f"{PROJECT_ROOT}/tests/data/prices/132.0001.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
