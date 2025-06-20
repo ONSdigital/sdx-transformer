@@ -48,7 +48,6 @@ _spp_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
 
 
 _prepop_spec_mapping: dict[str, Selector[str, str]] = {
-    "061": PrepopSelector("sppi-prepop"),
     "066": PrepopSelector("land-prepop"),
     "068": PrepopSelector("tiles-prepop"),
     "061": PrepopSelector("sppi-prepop"),
