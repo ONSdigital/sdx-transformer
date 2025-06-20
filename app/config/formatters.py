@@ -1,5 +1,4 @@
 from app.services.formatters.ppi_looping_formatter import PPILoopingFormatter
-from app.services.formatters.sppi_looping_formatter import SPPILoopingFormatter
 from app.services.mappers.formatter_selectors import FormatterSelector
 from app.services.formatters.cora_formatter import CORAFormatter, MESFormatter
 from app.services.formatters.cora_looping_formatter import CORALoopingFormatter
@@ -21,5 +20,4 @@ _formatter_mapping = {
     "IDBR": FormatterSelector(IDBRLoopingFormatter),
     "JSON": FormatterSelector(JSONFormatter),
     "PRICES": FormatterSelector(PPILoopingFormatter),
-    "SPPI": FormatterSelector(SPPILoopingFormatter),
 }

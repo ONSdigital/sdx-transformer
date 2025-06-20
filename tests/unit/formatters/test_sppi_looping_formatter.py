@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.input import SurveyMetadata, ListCollector
 from app.definitions.output import PCK
-from app.services.formatters.sppi_looping_formatter import SPPILoopingFormatter
+from app.services.formatters.ppi_looping_formatter import PPILoopingFormatter
 from tests.data.sppi.sppi_unit_test_data import survey_metadata, original_data
 
 
@@ -12,7 +12,7 @@ class SPPILoopingFormatterTest(unittest.TestCase):
         self.original_data: ListCollector = original_data
 
     def test_create_instances(self):
-        sppi_formatter = SPPILoopingFormatter("YYMM", "YYMM")
+        sppi_formatter = PPILoopingFormatter("YYMM", "YYMM")
 
         sppi_formatter.set_original(self.original_data)
 
