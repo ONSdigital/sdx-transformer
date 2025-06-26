@@ -4,7 +4,7 @@ from app.config.root import PROJECT_ROOT
 from app.controllers.looped import looping_to_pck
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
-from tests.helpers import get_saucy_path
+from tests.helpers import get_src_path
 from tests.integration.looped import read_submission_data
 
 
@@ -20,11 +20,11 @@ class TestPrices(unittest.TestCase):
         }
 
     def test_prices_0001(self):
-        filepath = get_saucy_path("/tests/data/prices/132.0001.json")
+        filepath = get_src_path("/tests/data/prices/132.0001.json")
         submission_data = read_submission_data(filepath)
 
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
-        pck_filepath = get_saucy_path("/tests/data/prices/132.0001.pck")
+        pck_filepath = get_src_path("/tests/data/prices/132.0001.pck")
 
         with open(pck_filepath) as f:
             expected: PCK = f.read()
@@ -32,25 +32,25 @@ class TestPrices(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_prices_incorrect_item(self):
-        filepath = get_saucy_path("/tests/data/prices/132.0001_incorrect_item.json")
+        filepath = get_src_path("/tests/data/prices/132.0001_incorrect_item.json")
         submission_data = read_submission_data(filepath)
 
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
-        pck_filepath = get_saucy_path("tests/data/prices/132.0001_incorrect_item.pck")
+        pck_filepath = get_src_path("tests/data/prices/132.0001_incorrect_item.pck")
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
         self.assertEqual(expected, actual)
 
     def test_prices_no_comment(self):
-        filepath = get_saucy_path("tests/data/prices/132.0001_no_comment.json")
+        filepath = get_src_path("tests/data/prices/132.0001_no_comment.json")
 
         submission_data = read_submission_data(filepath)
 
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
-        pck_filepath = get_saucy_path("tests/data/prices/132.0001_no_comment.pck")
+        pck_filepath = get_src_path("tests/data/prices/132.0001_no_comment.pck")
         with open(pck_filepath) as f:
             expected: PCK = f.read()
 
