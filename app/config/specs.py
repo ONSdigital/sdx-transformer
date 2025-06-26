@@ -9,6 +9,7 @@ _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
         "017": BuildSpecSelector("stocks"),
         "019": BuildSpecSelector("qcas"),
         "024": BuildSpecSelector("fuels"),
+        "061": BuildSpecSelector("sppi"),
         "066": BuildSpecSelector("qsl"),
         "068": BuildSpecSelector("qrt"),
         "071": BuildSpecSelector("qs"),
@@ -47,7 +48,6 @@ _spp_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
 
 
 _prepop_spec_mapping: dict[str, Selector[str, str]] = {
-    "061": PrepopSelector("sppi-prepop"),
     "066": PrepopSelector("land-prepop"),
     "068": PrepopSelector("tiles-prepop"),
     "061": PrepopSelector("sppi-prepop"),
