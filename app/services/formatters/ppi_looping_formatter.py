@@ -14,6 +14,16 @@ class PPILoopingFormatter(LoopingFormatter):
         mappings = {mapping["list_item_id"]: mapping["identifier"] for mapping in
                     self.original_data["lists"][0]["supplementary_data_mappings"]}
 
+        has_comment = False
+        if data["9995"] == "1":
+            has_comment = True
+        if not has_comment:
+            for instance_list in self._instances.values():
+                for instance in instance_list:
+                    if instance["data"]["9996"] == "1":
+                        has_comment = True
+                        break
+
         # PPI
         if metadata["survey_id"] == "132":
             for instance_list in self._instances.values():
@@ -22,7 +32,7 @@ class PPILoopingFormatter(LoopingFormatter):
                     ru = metadata["ru_ref"]
                     supplier: str = ru[0:-1] if ru[-1].isalpha() else ru
                     period = metadata["period_id"]
-                    comment = "1" if instance["data"]["9996"] == "1" or data["9995"] == "1" else "0"
+                    comment = "1" if has_comment else "0"
                     price = instance["data"]["9997"]
                     spec_marker = instance["data"]["9999"]
 
@@ -37,7 +47,7 @@ class PPILoopingFormatter(LoopingFormatter):
                     ru = metadata["ru_ref"]
                     supplier: str = ru[0:-1] if ru[-1].isalpha() else ru
                     period = metadata["period_id"]
-                    supplier_comment = "1" if instance["data"]["9996"] == "1" or data["9995"] == "1" else "0"
+                    supplier_comment = "1" if has_comment else "0"
                     item_note = instance["data"]["9996"]
                     price = instance["data"]["9997"]
                     spec_marker = instance["data"]["9999"]
