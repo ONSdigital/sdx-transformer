@@ -95,6 +95,10 @@ def end_of_year(value: str, input_format: str = EQ_DATETIME_FORMAT, display_as: 
 
 @handle_empties
 def month_year_string(value: str) -> Value:
+    """
+    Converts a date string in YYYYMM format to a month and year string in "Month Year" format.
+    (e.g., "202301" to "January 2023").
+    """
     date_obj = datetime.strptime(value, '%Y%m')
     formatted_date = date_obj.strftime('%B %Y')
     return formatted_date
