@@ -54,6 +54,7 @@ _prepop_spec_mapping: dict[str, Selector[str, str]] = {
     "071": PrepopSelector("slate-prepop"),
     "076": PrepopSelector("marine-prepop"),
     "132": PrepopSelector("prices-prepop"),
+    "133": PrepopSelector("epi-prepop"),
     "221": PrepopSelector("bres-prepop"),
     "241": PrepopSelector("brs-prepop"),
 }

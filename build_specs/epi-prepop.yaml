@@ -1,0 +1,89 @@
+title: "Build spec for epi"
+survey_id: "133"
+target: "SDS"
+period_format: "YYYYM"
+item_list_path: "items.item"
+template:
+    schema_version: "v1"
+    survey_id: "133"
+    identifier: "#ruref"
+    supplier_number: "#supplier_no"
+    current_month: "$DATE_FORMAT"
+    items:
+        item:
+            -   identifier: "#item_no" # Make sure leading zeros are preserved
+                item_number: "#item_no"
+                item_specification_1: "$TRAILING_REMOVAL_SPEC_1"
+                item_specification_2: "$TRAILING_REMOVAL_SPEC_2"
+                item_specification_3: "$TRAILING_REMOVAL_SPEC_3"
+                item_specification_4: "$TRAILING_REMOVAL_SPEC_4"
+                item_specification_5: "$TRAILING_REMOVAL_SPEC_5"
+                unit_of_sale: "#units_of_sale"
+                terms_of_sale_1: "$TRAILING_REMOVAL_TERMS_1"
+                terms_of_sale_2: "$TRAILING_REMOVAL_TERMS_2"
+                terms_of_sale_3: "$TRAILING_REMOVAL_TERMS_3"
+                terms_of_sale_4: "$TRAILING_REMOVAL_TERMS_4"
+                currency: "#currency"
+                country_of_origin: "#country_of_origin"
+
+transforms:
+    # Unix datetime to readable datetime
+    "DATE_FORMAT":
+        name: "MONTH_YEAR_STRING"
+        args:
+            value: "#source_month"
+
+    # Remove trailing whitespace from item_spec/terms of sale
+    "TRAILING_REMOVAL_SPEC_1":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_1"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_2":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_2"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_3":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_3"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_4":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_4"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_SPEC_5":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#description_5"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_1":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_1"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_2":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_2"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_3":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_3"
+            strip_type: "trailing"
+
+    "TRAILING_REMOVAL_TERMS_4":
+        name: "WHITESPACE_REMOVAL"
+        args:
+            value: "#terms_of_sale_4"
+            strip_type: "trailing"
