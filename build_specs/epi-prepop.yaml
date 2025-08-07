@@ -24,7 +24,7 @@ template:
                 terms_of_sale_3: "$TRAILING_REMOVAL_TERMS_3"
                 terms_of_sale_4: "$TRAILING_REMOVAL_TERMS_4"
                 currency: "#currency"
-                country_name: "#country_name"
+                country_of_origin: "#country_name"
 
 transforms:
     # Unix datetime to readable datetime
