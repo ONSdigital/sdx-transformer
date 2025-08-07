@@ -16,7 +16,7 @@
       "terms_of_sale_3": "Example terms 3.1 ",
       "terms_of_sale_4": "Example terms 4.1 ",
       "currency": "British Sterling",
-      "country_of_origin": "United Kingdom"
+      "country_name": "United Kingdom"
     },
     {
       "ruref": "10000000000",
@@ -34,7 +34,7 @@
       "terms_of_sale_3": "Example terms 3.2 ",
       "terms_of_sale_4": "Example terms 4.2 ",
       "currency": "Brazilian Real",
-      "country_of_origin": "Brazil"
+      "country_name": "Brazil"
     },
     {
       "ruref": "10000000000",
@@ -52,7 +52,7 @@
       "terms_of_sale_3": "Example terms 3.3 ",
       "terms_of_sale_4": "Example terms 4.3 ",
       "currency": "Euro",
-      "country_of_origin": "Germany"
+      "country_name": "Germany"
     }
   ],
   "20000000000": [
@@ -72,7 +72,7 @@
       "terms_of_sale_3": "Example terms 3.4 ",
       "terms_of_sale_4": "Example terms 4.4 ",
       "currency": "Japanese Yen",
-      "country_of_origin": "Japan"
+      "country_name": "Japan"
     }
   ]
 }
