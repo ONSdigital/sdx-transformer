@@ -39,7 +39,7 @@ class TestIPI(unittest.TestCase):
         actual = get_prepop(prepop_data, survey_id)
 
         self.assertEqual(expected, actual)
-        
+
     def test_ipi_multiple_items(self):
         self.maxDiff = None
 
