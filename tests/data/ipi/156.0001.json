@@ -1,0 +1,65 @@
+{
+  "case_id": "5246c0d1-782f-11f0-8100-4b94abc84bdd",
+  "tx_id": "5246c0d4-782f-11f0-8100-4b94abc84bdd",
+  "type": "uk.gov.ons.edc.eq:surveyresponse",
+  "version": "v2",
+  "data_version": "0.0.3",
+  "origin": "uk.gov.ons.edc.eq",
+  "collection_exercise_sid": "5246c0d2-782f-11f0-8100-4b94abc84bdd",
+  "flushed": false,
+  "submitted_at": "2025-08-13T10:22:52+00:00",
+  "launch_language_code": "en",
+  "survey_metadata": {
+    "survey_id": "156",
+    "ru_ref": "12346789012A",
+    "ru_name": "ESSENTIAL ENTERPRISE LTD.",
+    "trad_as": "ESSENTIAL ENTERPRISE LTD.",
+    "period_id": "201605",
+    "user_id": "A12345678901",
+    "ref_p_start_date": "2016-05-01",
+    "ref_p_end_date": "2016-06-12",
+    "form_type": "H"
+  },
+  "schema_url": "https://prod.author.eqbs.gcp.onsdigital.uk/convert/0c12e9f0-cd25-444c-a719-e6aa63e73ce5?r1755080509",
+  "data": {
+    "answers": [
+      {
+        "answer_id": "answerc7fcba68-57cc-4b8c-9842-ea049341290f",
+        "value": "0"
+      },
+      {
+        "answer_id": "answer56fdc60f-cd07-49bf-9d28-961202ef0835",
+        "value": 100
+      },
+      {
+        "answer_id": "answera51328d4-9b19-468a-bebe-6030ce6238c4",
+        "value": "Item comment 1\r\n"
+      },
+      {
+        "answer_id": "answere237201d-a281-4228-a538-85e93ada4263",
+        "value": "Overall comment\r\n"
+      }
+    ],
+    "lists": [],
+    "answer_codes": [
+      {
+        "answer_id": "answerc7fcba68-57cc-4b8c-9842-ea049341290f",
+        "code": "9999"
+      },
+      {
+        "answer_id": "answer56fdc60f-cd07-49bf-9d28-961202ef0835",
+        "code": "9997"
+      },
+      {
+        "answer_id": "answera51328d4-9b19-468a-bebe-6030ce6238c4",
+        "code": "9996"
+      },
+      {
+        "answer_id": "answere237201d-a281-4228-a538-85e93ada4263",
+        "code": "9995"
+      }
+    ]
+  },
+  "started_at": "2025-08-13T10:21:56.205469+00:00",
+  "submission_language_code": "en"
+}

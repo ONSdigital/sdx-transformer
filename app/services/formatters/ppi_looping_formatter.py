@@ -39,6 +39,35 @@ class PPILoopingFormatter(LoopingFormatter):
                     pck_lines.append(
                         f"132:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
 
+        # EPI
+        if metadata["survey_id"] == "133":
+            for instance_list in self._instances.values():
+                for instance in instance_list:
+                    item_number = mappings.get(instance["list_item_id"], "")
+                    ru = metadata["ru_ref"]
+                    supplier: str = ru[0:-1] if ru[-1].isalpha() else ru
+                    period = metadata["period_id"]
+                    supplier_comment = "1" if has_comment else "0"
+                    price = instance["data"]["9997"]
+                    spec_marker = instance["data"]["9999"]
+
+                    pck_lines.append(
+                        f"133:{supplier}:{period}:0:0:{supplier_comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
+
+        # IPI
+        if metadata["survey_id"] == "133":
+            for instance_list in self._instances.values():
+                for instance in instance_list:
+                    item_number = mappings.get(instance["list_item_id"], "")
+                    ru = metadata["ru_ref"]
+                    supplier: str = ru[0:-1] if ru[-1].isalpha() else ru
+                    period = metadata["period_id"]
+                    supplier_comment = "1" if has_comment else "0"
+                    price = instance["data"]["9997"]
+                    spec_marker = instance["data"]["9999"]
+
+                    pck_lines.append(
+                        f"156:{supplier}:{period}:0:0:{supplier_comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
         # SPPI
         elif metadata["survey_id"] == "061":
             for instance_list in self._instances.values():
