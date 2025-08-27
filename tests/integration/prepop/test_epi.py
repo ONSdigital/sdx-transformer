@@ -80,14 +80,32 @@ class TestEPI(unittest.TestCase):
         """
         self.maxDiff = None
 
-        survey_id = "133"
-        filepath = get_src_path("tests/data/epi/133.0001_full.json")  # TODO better name plz
+        filepath = get_src_path("tests/data/epi/133.0001_full.json")
 
         submission_data = read_submission_data(filepath)
 
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = get_src_path("/tests/data/epi/133.0001_full.pck")
+
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertEqual(expected, actual)
+
+    def test_downstream_epi_no_comments(self):
+        """
+        Test the downstream transformation for EPI with no comments filled in.
+        """
+        self.maxDiff = None
+
+        filepath = get_src_path("tests/data/epi/133.0001_no_comments.json")
+
+        submission_data = read_submission_data(filepath)
+
+        actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
+
+        pck_filepath = get_src_path("/tests/data/epi/133.0001_no_comments.pck")
 
         with open(pck_filepath) as f:
             expected: PCK = f.read()
