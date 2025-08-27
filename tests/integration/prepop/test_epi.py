@@ -87,13 +87,9 @@ class TestEPI(unittest.TestCase):
 
         actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
 
-        # Write the actual output to a file for inspection
-        with open("tests/data/epi/133.0001_full.pck", "w") as f:
-            f.write(actual)
+        pck_filepath = get_src_path("/tests/data/epi/133.0001_full.pck")
 
-        #pck_filepath = get_src_path("/tests/data/epi/132.0001.pck")
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
 
-        # with open(pck_filepath) as f:
-        #     expected: PCK = f.read()
-        #
-        # self.assertEqual(expected, actual)
+        self.assertEqual(expected, actual)
