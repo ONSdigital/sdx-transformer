@@ -16,13 +16,9 @@ class TestEPI(unittest.TestCase):
         self.survey_metadata: SurveyMetadata = {
             "survey_id": "133",
             "ru_ref": "12345678901A",
-            "ru_name": "ESSENTIAL ENTERPRISE LTD.",
-            "trad_as": "ESSENTIAL ENTERPRISE LTD.",
             "period_id": "201605",
-            "user_id": "UNKNOWN",
-            "ref_p_start_date": "2016-05-01",
-            "ref_p_end_date": "2016-05-31",
-            "sds_dataset_id": "6f9c40e4-e237-4c94-3ac9-8b802464f2bf",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
             "form_type": "0001"
         }
 
