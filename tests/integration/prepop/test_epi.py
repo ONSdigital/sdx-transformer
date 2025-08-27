@@ -81,7 +81,7 @@ class TestEPI(unittest.TestCase):
         self.maxDiff = None
 
         survey_id = "133"
-        filepath = "tests/data/epi/133.0001_full.json"  # TODO better name plz
+        filepath = get_src_path("tests/data/epi/133.0001_full.json")  # TODO better name plz
 
         submission_data = read_submission_data(filepath)
 
