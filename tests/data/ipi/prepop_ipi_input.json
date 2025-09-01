@@ -1,0 +1,58 @@
+{
+  "10000000000": [
+    {
+      "ruref": "10000000000",
+      "supplier_no": "10000000000",
+      "source_month": "202401",
+      "item_no": "1111111111",
+      "description_1": "Example description 1.1 ",
+      "description_2": "Example description 2.1 ",
+      "description_3": "Example description 3.1 ",
+      "description_4": "Example description 4.1 ",
+      "description_5": "Example description 5.1 ",
+      "units_of_sale": "This is the unit of sale",
+      "terms_of_sale_1": "Example terms 1.1 ",
+      "terms_of_sale_2": "Example terms 2.1 ",
+      "terms_of_sale_3": "Example terms 3.1 ",
+      "terms_of_sale_4": "Example terms 4.1 ",
+      "currency": "British Sterling",
+      "country_name": "United Kingdom"
+    },
+    {
+      "ruref": "20000000000",
+      "supplier_no": "20000000000",
+      "source_month": "202401",
+      "item_no": "2222222222",
+      "description_1": "Example description 1.1 ",
+      "description_2": "Example description 2.1 ",
+      "description_3": "Example description 3.1 ",
+      "description_4": "Example description 4.1 ",
+      "description_5": "Example description 5.1 ",
+      "units_of_sale": "This is the unit of sale",
+      "terms_of_sale_1": "Example terms 1.1 ",
+      "terms_of_sale_2": "Example terms 2.1 ",
+      "terms_of_sale_3": "Example terms 3.1 ",
+      "terms_of_sale_4": "Example terms 4.1 ",
+      "currency": "Brazilian Real",
+      "country_name": "Brazil"
+    },
+    {
+      "ruref": "30000000000",
+      "supplier_no": "30000000000",
+      "source_month": "202401",
+      "item_no": "3333333333",
+      "description_1": "Example description 1.1 ",
+      "description_2": "Example description 2.1 ",
+      "description_3": "Example description 3.1 ",
+      "description_4": "Example description 4.1 ",
+      "description_5": "Example description 5.1 ",
+      "units_of_sale": "This is the unit of sale",
+      "terms_of_sale_1": "Example terms 1.1 ",
+      "terms_of_sale_2": "Example terms 2.1 ",
+      "terms_of_sale_3": "Example terms 3.1 ",
+      "terms_of_sale_4": "Example terms 4.1 ",
+      "currency": "Euro",
+      "country_name": "Germany"
+    }
+  ]
+}

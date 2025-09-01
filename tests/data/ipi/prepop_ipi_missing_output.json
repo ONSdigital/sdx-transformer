@@ -1,0 +1,29 @@
+{
+  "10000000000": {
+    "schema_version": "v1",
+    "identifier": "10000000000",
+    "supplier_number": "10000000000",
+    "current_month": "January 2024",
+    "survey_id": "156",
+    "items": {
+      "item": [
+        {
+          "identifier": "1111111111",
+          "item_number": "1111111111",
+          "item_specification_1": "Example description 1.1",
+          "item_specification_2": "Example description 2.1",
+          "item_specification_3": "Example description 3.1",
+          "item_specification_4": "Example description 4.1",
+          "item_specification_5": "Example description 5.1",
+          "unit_of_sale": "This is the unit of sale",
+          "terms_of_sale_1": "Example terms 1.1",
+          "terms_of_sale_2": "Example terms 2.1",
+          "terms_of_sale_3": "Example terms 3.1",
+          "terms_of_sale_4": "Example terms 4.1",
+          "currency": "British Sterling",
+          "country_of_origin": "United Kingdom"
+        }
+      ]
+    }
+  }
+}

@@ -24,8 +24,8 @@ class PPILoopingFormatter(LoopingFormatter):
                         has_comment = True
                         break
 
-        # PPI
-        if metadata["survey_id"] == "132":
+        # PPI / EPI / IPI
+        if metadata["survey_id"] in ["132", "133", "156"]:
             for instance_list in self._instances.values():
                 for instance in instance_list:
                     item_number = mappings.get(instance["list_item_id"], "")
