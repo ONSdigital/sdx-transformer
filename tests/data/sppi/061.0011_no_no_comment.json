@@ -1,0 +1,98 @@
+{
+    "answers": [
+      {
+        "answer_id": "answera6755e2f-9a3c-4031-83aa-2c4f00813c5f",
+        "value": "0",
+        "list_item_id": "WNTWmG"
+      },
+      {
+        "answer_id": "answerba95f3c0-9784-496c-99fe-b8f9faa5a772",
+        "value": 1000,
+        "list_item_id": "WNTWmG"
+      },
+      {
+        "answer_id": "answera6755e2f-9a3c-4031-83aa-2c4f00813c5f",
+        "value": "0",
+        "list_item_id": "bOWLek"
+      },
+      {
+        "answer_id": "answerba95f3c0-9784-496c-99fe-b8f9faa5a772",
+        "value": 2000,
+        "list_item_id": "bOWLek"
+      }
+    ],
+    "lists": [
+      {
+        "items": [
+          "WNTWmG",
+          "bOWLek"
+        ],
+        "name": "service",
+        "supplementary_data_mappings": [
+          {
+            "identifier": "8122013058",
+            "list_item_id": "WNTWmG"
+          },
+          {
+            "identifier": "0987654321",
+            "list_item_id": "bOWLek"
+          }
+        ]
+      }
+    ],
+    "supplementary_data": {
+      "identifier": "12345678901",
+      "items": {
+        "service": [
+          {
+            "identifier": "8122013058",
+            "terms_of_sale_4": "CREDIT ACCOUNT",
+            "service_description_2": "AND DISPOSAL - FROM FACTORIES & WORK",
+            "unit_of_sale": "PRICE PER MILE",
+            "currency_wording": "price",
+            "currency_wording_capital": "Price",
+            "terms_of_sale_1": "CUSTOMER REF: UK CUSTOMER",
+            "service_description_3": "(FROM CONTAINER BERTH TO INLAND)",
+            "service_description_4": "CUSTOMER: BRIN YT",
+            "terms_of_sale_2": "PAYMENT: 25% DEPOSIT UP FRONT & FINAL",
+            "service_description_5": "PRICE PER TONNE",
+            "currency": "Pounds Sterling",
+            "service_description_1": "COMMERCIAL WASTE - LANDFILL - COLLECTION",
+            "terms_of_sale_3": "PAYMENT 28 DAYS PRIOR OR 21 DAYS IF",
+            "item_number": "8122013058"
+          },
+          {
+            "identifier": "0987654321",
+            "terms_of_sale_4": "NO CREDIT ACCOUNT",
+            "service_description_2": "AND EQUIPMENT - HIGH PRESSURE WASH",
+            "unit_of_sale": "PRICE PER HOUR",
+            "currency_wording": "price",
+            "currency_wording_capital": "Price",
+            "terms_of_sale_1": "CUSTOMER REF: ACME123",
+            "service_description_3": "(INCLUDING CHEMICAL TREATMENT)",
+            "service_description_4": "CUSTOMER: ACME CORP",
+            "terms_of_sale_2": "PAYMENT: 50% UPFRONT, BALANCE",
+            "service_description_5": "PRICE PER HOUR",
+            "currency": "Pounds Sterling",
+            "service_description_1": "INDUSTRIAL CLEANING - FACTORY FLOORS",
+            "terms_of_sale_3": "PAYMENT 14 DAYS AFTER COMPLETION",
+            "item_number": "0987654321"
+          }
+        ]
+      },
+      "source_quarter": "Quarter 1/2024 (January)",
+      "schema_version": "v1",
+      "supplier_number": "34942807969",
+      "survey_id": "061"
+    },
+    "answer_codes": [
+      {
+        "answer_id": "answera6755e2f-9a3c-4031-83aa-2c4f00813c5f",
+        "code": "9999"
+      },
+      {
+        "answer_id": "answerba95f3c0-9784-496c-99fe-b8f9faa5a772",
+        "code": "9997"
+      }
+    ]
+}

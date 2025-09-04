@@ -2,11 +2,21 @@ import json
 import unittest
 
 from app.controllers.prepop import get_prepop
-from app.definitions.input import Identifier, PrepopData
+from app.definitions.input import Identifier, PrepopData, SurveyMetadata
 from app.definitions.spec import Template
 
 
 class TestEPI(unittest.TestCase):
+
+    def setUp(self):
+        self.survey_metadata: SurveyMetadata = {
+            "survey_id": "133",
+            "ru_ref": "12345678901A",
+            "period_id": "201605",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+            "form_type": "0001"
+        }
 
     def test_epi(self):
         self.maxDiff = None

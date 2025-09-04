@@ -52,3 +52,15 @@ class TestSPPI(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertEqual(expected, actual)
+
+    def test_prices_no_no_comment(self):
+        filepath = "tests/data/sppi/061.0011_no_no_comment.json"
+        submission_data = read_submission_data(filepath)
+
+        actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
+
+        pck_filepath = "tests/data/sppi/061.0011_no_no_comment.pck"
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertEqual(expected, actual)

@@ -1,12 +1,26 @@
 import json
 import unittest
 
+from app.controllers.looped import looping_to_pck
 from app.controllers.prepop import get_prepop
-from app.definitions.input import PrepopData, Identifier
+from app.definitions.input import PrepopData, Identifier, SurveyMetadata
+from app.definitions.output import PCK
 from app.definitions.spec import Template
+from tests.helpers import get_src_path
+from tests.integration.looped import read_submission_data
 
 
 class TestIPI(unittest.TestCase):
+
+    def setUp(self):
+        self.survey_metadata: SurveyMetadata = {
+            "survey_id": "156",
+            "ru_ref": "12345678901A",
+            "period_id": "201605",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+            "form_type": "0001"
+        }
 
     def test_ipi(self):
         self.maxDiff = None

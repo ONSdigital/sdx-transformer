@@ -1,0 +1,30 @@
+"title": "Build Spec for IPI survey"
+"survey_id": "156"
+"target": "PRICES"
+"period_format": "YYYYMM"
+"pck_period_format": "YYYYMM"
+"template":
+    "9995": "$COMMENT"
+
+"looped":
+    "9999": "#9999"
+    "9997": "$OPTIONAL"
+    "9996": "$COMMENT"
+
+"transforms":
+
+    "COMMENT": {
+        "name": "EXISTS",
+        "args": {
+            "on_true": "1",
+            "on_false": "0"
+        }
+    }
+
+    "OPTIONAL": {
+        "name": "EXISTS",
+        "args": {
+            "on_true": "#9997",
+            "on_false": ""
+        }
+    }
