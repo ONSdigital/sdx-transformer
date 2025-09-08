@@ -26,6 +26,7 @@ class PPILoopingFormatter(LoopingFormatter):
 
         # PPI / EPI / IPI
         if metadata["survey_id"] in ["132", "133", "156"]:
+            survey_id = metadata["survey_id"]
             for instance_list in self._instances.values():
                 for instance in instance_list:
                     item_number = mappings.get(instance["list_item_id"], "")
@@ -37,7 +38,7 @@ class PPILoopingFormatter(LoopingFormatter):
                     spec_marker = instance["data"]["9999"]
 
                     pck_lines.append(
-                        f"132:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
+                        f"{survey_id}:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
 
         # SPPI
         elif metadata["survey_id"] == "061":
