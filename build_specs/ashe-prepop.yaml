@@ -1,0 +1,47 @@
+title: "Build Spec for ASHE"
+survey_id: "141"
+target: "SDS"
+period_format: "YYYYM"
+item_list_path: "items.employee"
+template:
+    schema_version: "v1"
+    identifier: "#ASHE_RU"
+    items:
+        employee:
+            -   identifier: "#serial_number"
+                employee_name: "#employee_name"
+                national_insurance_number_starred: "$INSURANCE_STARRED"
+                work_id: "#workid"
+                work_postcode: "$WORK_POSTCODE"
+                home_postcode: "$HOME_POSTCODE"
+
+transforms:
+    # Find if characters 7,8 == 14
+    "INSURANCE_STARRED":
+        name: "CARVE"
+        args:
+            value: "#nino"
+            start_index: 6
+            end_index: 8
+        "post": "$INSURACE_CHECK"
+
+    "INSURANCE_CHECK":
+        name: "CONTAINS"
+        args:
+            match_str: "14"
+            on_true: "******14*"
+            on_false: "*********"
+
+    "WORK_POSTCODE":
+        name: "CONTAINS"
+        args:
+            match_str: "XX9 9XX"
+            on_true: "NOT KNOWN"
+            value: "#work_pcode"
+
+    "HOME_POSTCODE":
+        name: "CONTAINS"
+        args:
+            match_str: "XX9 9XX"
+            on_true: "NOT KNOWN"
+            value: "#home_pcode"
