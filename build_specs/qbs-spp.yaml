@@ -2,6 +2,7 @@ title: "Quarterly Business Survey (QBS)"
 survey_id: "139"
 target: "SPP"
 period_format: "YYMM"
+pck_period_format: "YYYYMM"
 
 template:
   "1": "#1"
