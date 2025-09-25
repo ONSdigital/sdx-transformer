@@ -37,6 +37,7 @@ transforms:
         args:
             match_str: "XX9 9XX"
             on_true: "NOT KNOWN"
+            on_false: "#work_pcode"
             value: "#work_pcode"
 
     "HOME_POSTCODE":
@@ -44,4 +45,5 @@ transforms:
         args:
             match_str: "XX9 9XX"
             on_true: "NOT KNOWN"
+            on_false: "#work_pcode"
             value: "#home_pcode"
