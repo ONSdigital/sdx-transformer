@@ -5,6 +5,7 @@ period_format: "YYYYM"
 item_list_path: "items.employee"
 template:
     schema_version: "v1"
+    survey_id: "141"
     identifier: "#ruref"
     items:
         employee:
