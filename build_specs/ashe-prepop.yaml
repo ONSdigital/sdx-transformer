@@ -23,7 +23,7 @@ transforms:
             value: "#nino"
             start_index: 6
             end_index: 8
-        "post": "$INSURACE_CHECK"
+        "post": "$INSURANCE_CHECK"
 
     "INSURANCE_CHECK":
         name: "CONTAINS"
