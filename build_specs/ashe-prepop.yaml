@@ -5,7 +5,7 @@ period_format: "YYYYM"
 item_list_path: "items.employee"
 template:
     schema_version: "v1"
-    identifier: "#ASHE_RU"
+    identifier: "#ruref"
     items:
         employee:
             -   identifier: "#serial_number"
