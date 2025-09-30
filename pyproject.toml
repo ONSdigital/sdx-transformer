@@ -1,31 +1,26 @@
-[tool.poetry]
+[project]
 name = "sdx-transformer"
-version = "1.6.8"
-description = "SDX Transformer"
-authors = ["ONSDigital"]
-readme = "README.md"
-package-mode = false
+version = "2.0.0"
+description = "Transforming for SDX"
+requires-python = ">=3.13"
+dependencies = [
+    "sdx-base==0.1.4",
+    "pyyaml>=6.0.0"
+]
 
+[tool.uv.sources]
+sdx-base = { index = "sdx-repo" }
 
-[[tool.poetry.source]]
+[[tool.uv.index]]
 name = "sdx-repo"
 url = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/simple/"
-priority = "explicit"
 
-
-[tool.poetry.dependencies]
-python = "^3.13.0"
-sdx-gcp = { version = "1.4.4", source = "sdx-repo" }
-PyYAML = "6.0.1"
-pytest-xdist = "^3.6.1"
-
-
-[tool.poetry.group.dev.dependencies]
-flake8 = "^7.1.0"
-pytest = "^7.0"
-pytest-cov = "^3.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+    "pytest-xdist>=3.6.1",
+    "mypy>=1.15.0",
+    "flake8>=6.1.0",
+    "jsonschema>=4.23.0",
+]

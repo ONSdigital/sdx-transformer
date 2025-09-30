@@ -1,6 +1,4 @@
-
-from sdx_gcp.app import get_logger
-
+from app import get_logger
 from app.config.dependencies import get_flat_transformer, get_build_spec_mapping, get_executor, get_func_lookup, \
     get_spec_repository, get_formatter_mapping, get_spp_spec_mapping
 from app.definitions.spec import ParseTree, BuildSpec
