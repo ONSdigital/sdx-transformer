@@ -18,7 +18,7 @@ class SurveyMetadata(TypedDict):
     form_type: str
     period_start_date: iso_8601_date
     period_end_date: iso_8601_date
-    data_version: str
+    data_version: NotRequired[str]
 
 
 Identifier = str

@@ -19,7 +19,6 @@ looping_processor = Callable[[ListCollector, SurveyMetadata], str]
 flat_processor = Callable[[dict[str, str], SurveyMetadata], str]
 
 
-
 @router.post("/pck")
 async def process_pck(survey_id: str,
                       period_id: str,
@@ -28,7 +27,7 @@ async def process_pck(survey_id: str,
                       period_start_date: str,
                       period_end_date: str,
                       data_version: str,
-                      data: Data | ListCollector) -> PlainTextResponse:
+                      data: dict) -> PlainTextResponse:
     """Process a request to convert submission data to a PCK file."""
     logger.info("Received pck request")
 
@@ -54,7 +53,7 @@ async def process_spp(survey_id: str,
                       period_start_date: str,
                       period_end_date: str,
                       data_version: str,
-                      data: Data | ListCollector) -> JSONResponse:
+                      data: dict) -> JSONResponse:
     """Process a request to convert submission data to a SPP file."""
     logger.info("Received spp request")
 
@@ -71,7 +70,7 @@ async def process_spp(survey_id: str,
     return JSONResponse(content=result, status_code=200)
 
 
-def _process(submission_data: Data | ListCollector,
+def _process(submission_data: dict,
              survey_metadata: SurveyMetadata,
              process_looping: looping_processor,
              process_flat: flat_processor) -> str:

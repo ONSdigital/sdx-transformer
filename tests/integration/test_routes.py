@@ -9,6 +9,8 @@ from sdx_base.run import run
 from sdx_base.settings.app import AppSettings
 
 from app.routes import router
+from tests.helpers import get_src_path
+from tests.integration.looped import read_submission_data
 
 
 class TestRoutes(unittest.TestCase):
@@ -59,6 +61,48 @@ class TestRoutes(unittest.TestCase):
         response = self.client.post("/pck",
                                         data=json.dumps(data),
                                         params=query_params)
+
+        self.assertEqual(200, response.status_code)
+
+    def test_process_pck_looping(self):
+        filepath = get_src_path("tests/data/ipi/156.0001_all_correct.json")
+        data = read_submission_data(filepath)
+
+        query_params = {
+            "tx_id": "123",
+            "survey_id": "156",
+            "ru_ref": "12345678901A",
+            "form_type": "0001",
+            "period_id": "201605",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+            "data_version": "0.0.3"
+        }
+
+        response = self.client.post("/pck",
+                                    data=json.dumps(data),
+                                    params=query_params)
+
+        self.assertEqual(200, response.status_code)
+
+    def test_process_spp(self):
+        filepath = "tests/data/berd/002.0001.json"
+        data = read_submission_data(filepath)
+
+        query_params = {
+            "tx_id": "123",
+            "survey_id": "002",
+            "period_id": "201605",
+            "ru_ref": "12346789012A",
+            "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+            "data_version": "0.0.3"
+        }
+
+        response = self.client.post("/spp",
+                                    data=json.dumps(data),
+                                    params=query_params)
 
         self.assertEqual(200, response.status_code)
 
