@@ -75,6 +75,10 @@ def _process(submission_data: dict,
              process_looping: looping_processor,
              process_flat: flat_processor) -> str:
 
+    for k, v in survey_metadata.items():
+        if v == "":
+            raise DataError(f"Missing required parameter {k} from request")
+
     data_version: str = survey_metadata["data_version"] if "data_version" in survey_metadata else "0.0.1"
     result: str
 
