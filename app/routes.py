@@ -1,4 +1,3 @@
-import json
 from collections.abc import Callable
 
 from fastapi import APIRouter
@@ -54,7 +53,7 @@ async def process_spp(survey_id: str,
                       period_start_date: str,
                       period_end_date: str,
                       data_version: str,
-                      data: dict) -> JSONResponse:
+                      data: dict) -> PlainTextResponse:
     """Process a request to convert submission data to a SPP file."""
     logger.info("Received spp request")
 
@@ -68,7 +67,7 @@ async def process_spp(survey_id: str,
         "data_version": data_version
     }
     result: JSON = _process(data, metadata, looping_to_spp, flat_to_spp)
-    return JSONResponse(content=json.loads(result), status_code=200)
+    return PlainTextResponse(content=result, status_code=200)
 
 
 def _process(submission_data: dict,
