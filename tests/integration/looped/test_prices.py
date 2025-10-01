@@ -1,6 +1,5 @@
 import unittest
 
-from app.config.root import PROJECT_ROOT
 from app.controllers.looped import looping_to_pck
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
