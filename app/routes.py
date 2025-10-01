@@ -1,3 +1,4 @@
+import json
 from collections.abc import Callable
 
 from fastapi import APIRouter
@@ -67,17 +68,13 @@ async def process_spp(survey_id: str,
         "data_version": data_version
     }
     result: JSON = _process(data, metadata, looping_to_spp, flat_to_spp)
-    return JSONResponse(content=result, status_code=200)
+    return JSONResponse(content=json.loads(result), status_code=200)
 
 
 def _process(submission_data: dict,
              survey_metadata: SurveyMetadata,
              process_looping: looping_processor,
              process_flat: flat_processor) -> str:
-
-    for k, v in survey_metadata.items():
-        if v == "":
-            raise DataError(f"Missing required parameter {k} from request")
 
     data_version: str = survey_metadata["data_version"] if "data_version" in survey_metadata else "0.0.1"
     result: str
