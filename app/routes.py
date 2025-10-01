@@ -67,7 +67,7 @@ async def process_spp(survey_id: str,
         "data_version": data_version
     }
     result: JSON = _process(data, metadata, looping_to_spp, flat_to_spp)
-    return PlainTextResponse(content=result, status_code=200)
+    return PlainTextResponse(content=result, status_code=200, media_type="application/json")
 
 
 def _process(submission_data: dict,
