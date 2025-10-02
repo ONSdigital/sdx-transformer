@@ -1,8 +1,7 @@
 from collections.abc import Callable
 from typing import Final
 
-from sdx_gcp.app import get_logger
-
+from app import get_logger
 from app.definitions.executor import ExecutorBase
 from app.definitions.spec import ParseTree, Transform, BuildSpecError, Template, Transforms
 from app.definitions.input import Value, Field, Data

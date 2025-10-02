@@ -2,6 +2,8 @@ title: "Build Spec for Construction"
 survey_id: "228"
 target: "SPP"
 period_format: "YYMM"
+pck_period_format: "YYYYMM"
+
 template:
     "1": "#1"
     "11": "#11"

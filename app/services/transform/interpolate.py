@@ -1,8 +1,7 @@
 from copy import deepcopy
 from typing import Final
 
-from sdx_gcp.app import get_logger
-
+from app import get_logger
 from app.definitions.spec import Template, Transforms, ParseTree, BuildSpecError
 from app.definitions.input import Field
 from app.services.transform.tree_walker import TreeWalker
