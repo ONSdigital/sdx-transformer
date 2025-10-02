@@ -2,7 +2,6 @@ steps:
 - id: 'Unit Tests'
   name: 'ghcr.io/astral-sh/uv:python3.13-alpine'
   script: |
-    #!/usr/bin/env bash
     uv sync --frozen
     uv run pytest -v --cov-report term-missing --disable-warnings --cov=app tests/
 options:
