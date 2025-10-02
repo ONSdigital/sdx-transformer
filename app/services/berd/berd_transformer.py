@@ -1,8 +1,7 @@
 import json
 from dataclasses import asdict
 
-from sdx_gcp.app import get_logger
-
+from app import get_logger
 from app.services.berd.collect_items import collect_list_items
 from app.services.berd.convert_data import extract_answers, convert_to_spp, convert_civil_defence, remove_prepend_values
 from app.services.berd.definitions import SPP

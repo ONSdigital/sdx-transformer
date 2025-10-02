@@ -1,9 +1,9 @@
 from copy import deepcopy
 from typing import Optional
 
-from sdx_gcp.app import get_logger
-from sdx_gcp.errors import DataError
+from sdx_base.errors.errors import DataError
 
+from app import get_logger
 from app.config.dependencies import get_prepop_transformer, get_prepop_spec_mapping, get_spec_repository, get_executor, \
     get_func_lookup, get_formatter_mapping
 from app.definitions.spec import BuildSpec, ParseTree, Template

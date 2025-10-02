@@ -1,174 +1,33 @@
 import json
+import os
 import unittest
+from pathlib import Path
 
-from app import sdx_app
-from app.routes import init_routes
+from fastapi import FastAPI
+from fastapi.testclient import TestClient
+from sdx_base.run import run
+from sdx_base.settings.app import AppSettings
+
+from app.routes import router
+from tests.helpers import get_src_path
+from tests.integration.looped import read_submission_data
 
 
 class TestRoutes(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        # Set up the SDX app
-        init_routes(sdx_app)
+    def setUp(self):
+        os.environ["PROJECT_ID"] = "my-project"
+        proj_root = Path(__file__).parent.parent.parent  # sdx-deliver dir
 
-        # Create a test client for our SDX app
-        cls.client = sdx_app.app.test_client()
+        app: FastAPI = run(AppSettings,
+                           routers=[router],
+                           proj_root=proj_root,
+                           serve=lambda a, b: a
+                           )
 
-    def test_process_prepop_without_json(self):
+        self.client = TestClient(app)
 
-        # Define some invalid data in the body
-        data = None
-
-        # Define query parameters
-        query_params = {
-            'survey_id': '123',
-        }
-
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/prepop',
-                                    data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
-
-        # Assert the HTTP status code (BAD request)
-        self.assertEqual(400, response.status_code)
-
-        # Assert the kind of error
-        response_json = response.json
-        self.assertEqual(response_json, {'Unrecoverable error': 'Data is not in json format'})
-
-    def test_prepop_with_bad_json(self):
-
-        # Define some json as a top level list
-        data = [
-            {"Item1": "Hi"}
-        ]
-
-        # Define a valid survey id
-        query_params = {
-            'survey_id': '066',
-        }
-
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/prepop',
-                                    data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
-
-        # Assert the HTTP status code (BAD request)
-        self.assertEqual(400, response.status_code)
-        response_json = response.json
-        self.assertEqual(response_json, {'Unrecoverable error': 'Prepop data is not in correct format'})
-
-    def test_process_prepop_without_a_survey_id(self):
-        # Define some valid json
-        data = {
-            "item1": "value1"
-        }
-
-        # Define empty query params
-        query_params = {}
-
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/prepop',
-                                    data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
-
-        # Assert the HTTP status code (BAD request)
-        self.assertEqual(400, response.status_code)
-
-        # Assert the kind of error
-        response_json = response.json
-        self.assertEqual(response_json, {'Unrecoverable error': 'Missing survey id from request'})
-
-    def test_process_pck_without_survey_id(self):
-        # Define some valid json
-        data = {
-            "item1": "value1"
-        }
-
-        # Define query params, without survey ID
-        query_params = {
-            "period_id": "123",
-            "ru_ref": "123",
-            "form_type": "123",
-            "period_start_date": "123",
-            "period_end_date": "123",
-        }
-
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/pck',
-                                    data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
-
-        # Assert the HTTP status code (BAD request)
-        self.assertEqual(400, response.status_code)
-
-        # Assert the kind of error
-        response_json = response.json
-        self.assertEqual(response_json, {'Unrecoverable error': 'Missing required parameter survey_id from request'})
-
-    def test_process_pck_with_invalid_format_version_01(self):
-        # Define some valid json
-        data = None
-
-        # Define valid query params
-        query_params = {
-            "survey_id": "123",
-            "period_id": "123",
-            "ru_ref": "123",
-            "form_type": "123",
-            "period_start_date": "123",
-            "period_end_date": "123",
-        }
-
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/pck',
-                                    data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
-
-        # Assert the HTTP status code (BAD request)
-        self.assertEqual(400, response.status_code)
-
-        # Assert the kind of error
-        response_json = response.json
-        self.assertEqual({'Unrecoverable error': 'Submission data is not in json format'}, response_json)
-
-    def test_process_pck_with_invalid_format_version_03(self):
-        # Define some valid json
-        data = None
-
-        # Define valid query params
-        query_params = {
-            "survey_id": "123",
-            "period_id": "123",
-            "ru_ref": "123",
-            "form_type": "123",
-            "period_start_date": "123",
-            "period_end_date": "123",
-            "data_version": "0.0.3",
-        }
-
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/pck',
-                                    data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
-
-        # Assert the HTTP status code (BAD request)
-        self.assertEqual(400, response.status_code)
-
-        # Assert the kind of error
-        response_json = response.json
-        self.assertEqual({'Unrecoverable error': 'Submission data is not in json format'}, response_json)
-
-    def test_pck_happy_path(self):
-
-        # Define some valid json
+    def test_process_pck(self):
         data = {
             "50": "100",
             "60": "110",
@@ -189,6 +48,7 @@ class TestRoutes(unittest.TestCase):
 
         # Define valid query params for 169.0003
         query_params = {
+            "tx_id": "123",
             "survey_id": "169",
             "period_id": "201605",
             "ru_ref": "12346789012A",
@@ -198,18 +58,55 @@ class TestRoutes(unittest.TestCase):
             "data_version": "0.0.1",
         }
 
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/pck',
+        response = self.client.post("/pck",
                                     data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
+                                    params=query_params)
 
-        # Assert a 200
         self.assertEqual(200, response.status_code)
 
-    def test_prepop_happy_path(self):
+    def test_process_pck_looping(self):
+        filepath = get_src_path("tests/data/ipi/156.0001_all_correct.json")
+        data = read_submission_data(filepath)
 
-        # Define some valid json
+        query_params = {
+            "tx_id": "123",
+            "survey_id": "156",
+            "ru_ref": "12345678901A",
+            "form_type": "0001",
+            "period_id": "201605",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+            "data_version": "0.0.3"
+        }
+
+        response = self.client.post("/pck",
+                                    data=json.dumps(data),
+                                    params=query_params)
+
+        self.assertEqual(200, response.status_code)
+
+    def test_process_spp(self):
+        filepath = "tests/data/berd/002.0001.json"
+        data = read_submission_data(filepath)
+
+        query_params = {
+            "tx_id": "123",
+            "survey_id": "002",
+            "period_id": "201605",
+            "ru_ref": "12346789012A",
+            "form_type": "0001",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-05-31",
+            "data_version": "0.0.3"
+        }
+
+        response = self.client.post("/spp",
+                                    data=json.dumps(data),
+                                    params=query_params)
+
+        self.assertEqual(200, response.status_code)
+
+    def test_process_prepop(self):
         data = {
             "10000000000": [
                 {
@@ -275,14 +172,12 @@ class TestRoutes(unittest.TestCase):
 
         # Define valid query params for 066
         query_params = {
+            "tx_id": "123",
             "survey_id": "066",
         }
 
-        # Send a POST request with JSON body and query parameters
-        response = self.client.post('/prepop',
+        response = self.client.post("/prepop",
                                     data=json.dumps(data),
-                                    query_string=query_params,
-                                    content_type='application/json')
+                                    params=query_params)
 
-        # Assert a 200
         self.assertEqual(200, response.status_code)

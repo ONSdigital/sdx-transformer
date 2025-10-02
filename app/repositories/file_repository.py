@@ -1,8 +1,8 @@
 import json
 from os.path import exists
 import yaml
-from sdx_gcp.app import get_logger
 
+from app import get_logger
 from app.config.root import PROJECT_ROOT
 from app.definitions.spec import BuildSpec
 from app.definitions.repository import BuildSpecRepositoryBase
