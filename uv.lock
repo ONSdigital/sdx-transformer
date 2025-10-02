@@ -963,7 +963,7 @@ wheels = [
 
 [[package]]
 name = "sdx-base"
-version = "0.1.4"
+version = "0.1.5"
 source = { registry = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/simple/" }
 dependencies = [
     { name = "fastapi" },
@@ -976,14 +976,14 @@ dependencies = [
     { name = "python-multipart" },
     { name = "uvicorn" },
 ]
-sdist = { url = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/sdx-base/sdx_base-0.1.4.tar.gz", hash = "sha256:8ec1a5f6d7bea65ac0b6399d243860638d95d0dcda95becda841dcc6bc0d7f91" }
+sdist = { url = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/sdx-base/sdx_base-0.1.5.tar.gz", hash = "sha256:a64458dbe2e38453893183248a28b21abf0ee1e7fad757c4cdca8d7f542dc012" }
 wheels = [
-    { url = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/sdx-base/sdx_base-0.1.4-py3-none-any.whl", hash = "sha256:9b9ba69ace2434f44053077e628d6e9a18e59564dcd0195fae55dfa518ad1e0f" },
+    { url = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/sdx-base/sdx_base-0.1.5-py3-none-any.whl", hash = "sha256:ef6dfa213479bcdb980b7658c464870edad5b6979f5a5cf4014287a7e313bd25" },
 ]
 
 [[package]]
 name = "sdx-transformer"
-version = "2.0.5"
+version = "2.0.6"
 source = { virtual = "." }
 dependencies = [
     { name = "pyyaml" },
@@ -1003,7 +1003,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "pyyaml", specifier = ">=6.0.0" },
-    { name = "sdx-base", specifier = "==0.1.4", index = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/simple/" },
+    { name = "sdx-base", specifier = "==0.1.5", index = "https://europe-west2-python.pkg.dev/ons-sdx-ci/sdx-python-packages/simple/" },
 ]
 
 [package.metadata.requires-dev]

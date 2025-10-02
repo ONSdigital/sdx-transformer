@@ -59,8 +59,8 @@ class TestRoutes(unittest.TestCase):
         }
 
         response = self.client.post("/pck",
-                                        data=json.dumps(data),
-                                        params=query_params)
+                                    data=json.dumps(data),
+                                    params=query_params)
 
         self.assertEqual(200, response.status_code)
 
