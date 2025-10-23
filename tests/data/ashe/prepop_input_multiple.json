@@ -1,0 +1,34 @@
+{
+  "10000000000": [
+    {
+      "ruref": "10000000000",
+      "check_letter": "A",
+      "serial_number": "1108038",
+      "employee_name": "MR D A MCMAN",
+      "nino": "******14*",
+      "workid": "1009773BKCVWXM",
+      "work_pcode": "BR1 1HD",
+      "home_pcode": "CH14 4EQ"
+    },
+    {
+      "ruref": "10000000000",
+      "check_letter": "B",
+      "serial_number": "1208038",
+      "employee_name": "MRS K A JONE",
+      "nino": "******14*",
+      "workid": "2009773BKCVWXM",
+      "work_pcode": "BR2 1HD",
+      "home_pcode": "CH24 4EQ"
+    },
+    {
+      "ruref": "10000000000",
+      "check_letter": "C",
+      "serial_number": "1308038",
+      "employee_name": "MR D A MCINTOSH",
+      "nino": "******14*",
+      "workid": "3009773BKCVWXM",
+      "work_pcode": "BR3 1HD",
+      "home_pcode": "CH34 4EQ"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ template:
     identifier: "#ruref"
     items:
         employee:
-            -   identifier: "#serial_number"
+            -   identifier: "$IDENTIFIER_COMBINE"
                 employee_name: "#employee_name"
                 national_insurance_number_starred: "$INSURANCE_STARRED"
                 work_id: "#workid"
@@ -17,6 +17,14 @@ template:
                 home_postcode: "$HOME_POSTCODE"
 
 transforms:
+    # Combine serial number and check letter for identifier
+    "IDENTIFIER_COMBINE":
+        name: "CONCAT"
+        args:
+            value: "#serial_number"
+            values: [ "#check_letter" ]
+            seperator: ""
+
     # Find if characters 7,8 == 14
     "INSURANCE_STARRED":
         name: "CARVE"
