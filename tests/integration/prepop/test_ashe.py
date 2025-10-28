@@ -23,3 +23,20 @@ class TestASHE(unittest.TestCase):
         actual = get_prepop(prepop_data, survey_id)
 
         self.assertEqual(expected, actual)
+
+
+    def test_ashe_multiple_nino(self):
+        self.maxDiff = None
+
+        survey_id = "141"
+        input_filepath = "tests/data/ashe/prepop_input_multiple.json"
+        with open(input_filepath) as f:
+            prepop_data: PrepopData = json.load(f)
+
+        output_filepath = "tests/data/ashe/prepop_output_multiple.json"
+        with open(output_filepath) as f:
+            expected: dict[Identifier: Template] = json.load(f)
+
+        actual = get_prepop(prepop_data, survey_id)
+
+        self.assertEqual(expected, actual)
