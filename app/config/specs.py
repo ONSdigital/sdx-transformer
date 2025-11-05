@@ -16,8 +16,6 @@ _build_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
         "073": BuildSpecSelector("blocks"),
         "074": BuildSpecSelector("bricks"),
         "076": BuildSpecSelector("qsm"),
-        "092": BuildSpecSelector("mes"),
-        "127": BuildSpecSelector("mcg"),
         "132": BuildSpecSelector("ppi"),
         "133": BuildSpecSelector("epi"),
         "134": BuildSpecSelector("mwss"),
