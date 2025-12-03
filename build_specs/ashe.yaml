@@ -23,11 +23,7 @@ template:
     "0052": "$LEFT_FILL" Raising questions around this
     "0511": "#0511"
     "0077": "$LEFT_FILL"
-    "9997": "USE IN DERIVED"
-    "9996": "USE IN DERIVED"
     "0071": "$LEFT_FILL"
-    "9995": "USE IN DERIVED"
-    "9994": "USE IN DERIVED"
     "0076": "$LEFT_FILL"
     "0170": "$LEFT_FILL"
     "0171": "$LEFT_FILL"
@@ -55,7 +51,10 @@ template:
     "0510": "$LEFT_FILL"
     "0025": "$LEFT_FILL"
     "0001": "#0001"
-    "9993": "NOT REQUIRED"
+
+    "0061": "$CONCAT_97_96"
+    "0062": "$CONCAT_95_94"
+
 transforms:
     "COMMENT":
         "name": "EXISTS"
@@ -68,3 +67,19 @@ transforms:
         "args":
             "padding_length": "11"
             "padding_char": "0"
+
+    "CONCAT_97_96":
+        "name": "CONCAT"
+        "args":
+            "value": "#9997"
+            "values": "[ #9996 ]"
+            "seperator": "."
+        "post": "$LEFT_FILL"
+
+    "CONCAT_95_94":
+        "name": "CONCAT"
+        "args":
+            "value": "#9995"
+            "values": "[ #9994 ]"
+            "seperator": "."
+        "post": "$LEFT_FILL"
