@@ -71,11 +71,11 @@ def carve(value: str, start_index=0, end_index=None) -> Value:
 
     return value[start_index:end_index]
 
-
 @handle_empties
-def string_padding(value: Value, padding_length: str) -> Value:
-    return value.ljust(int(padding_length))
-
+def string_padding(value: Value, padding_length: str, prepend: bool, padding_char: str = " ") -> Value:
+    if prepend:
+        return value.rjust(int(padding_length), padding_char)
+    return value.ljust(int(padding_length), padding_char)
 
 @handle_empties
 def space_split(value: str, index: int = 0) -> Value:

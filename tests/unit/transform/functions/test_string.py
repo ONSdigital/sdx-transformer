@@ -2,7 +2,8 @@ import unittest
 
 from app.definitions.input import Empty
 from app.services.transform.functions.string import (contains, any_contains, concat,
-                                                     starts_with, carve, space_split, postcode, whitespace_removal)
+                                                     starts_with, carve, space_split, postcode, whitespace_removal,
+                                                     string_padding)
 
 
 class StartsWithTests(unittest.TestCase):
@@ -225,3 +226,17 @@ class WhitespaceRemovalTest(unittest.TestCase):
         value = " an example string "
         expected = " an example string"
         self.assertEqual(expected, whitespace_removal(value, strip_type="trailing"))
+
+
+class PaddingTest(unittest.TestCase):
+    def test_padding_prepend(self):
+        value = "apple"
+        expected = "00000apple"
+        actual = string_padding(value=value, padding_length=10, prepend=True, padding_char="0")
+        self.assertEqual(expected, actual)
+
+    def test_padding_append(self):
+        value = "apple"
+        expected = "apple00000"
+        actual = string_padding(value=value, padding_length=10, prepend=False, padding_char="0")
+        self.assertEqual(expected, actual)
