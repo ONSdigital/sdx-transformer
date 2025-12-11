@@ -1,12 +1,12 @@
 title: "Build Spec for Ashe survey"
 survey_id: "141"
-target: "CS"
+target: "ASHE"
 period_format: "YYYY"
 template:
     "0502": "$LEFT_FILL"
-    "0024": "$LEFT_FILL"
-    "0020": "#0020"
-    "0021": "#0021"
+    "0024": "$CHAR_REMOVE_AND_FILL"
+    "0020": "$COMMENT_STRIP_NEW_LINE"
+    "0021": "$COMMENT_STRIP_NEW_LINE"
     "0014": "$LEFT_FILL"
     "0013": "$LEFT_FILL"
     "0513": "$LEFT_FILL"
@@ -14,27 +14,25 @@ template:
     "0515": "$LEFT_FILL"
     "0015": "$LEFT_FILL"
     "0016": "$LEFT_FILL"
-    "0017": "$LEFT_FILL"
-    "9999": "NOT REQUIRED"
+    "0017": "$CHAR_REMOVE_AND_FILL"
     "0022": "$LEFT_FILL"
-    "9998": "NOT REQ"
     "0023": "$LEFT_FILL"
     "0051": "$LEFT_FILL"
-    "0052": "$LEFT_FILL" Raising questions around this
-    "0511": "#0511"
+    "0052": "#0052"
+    "0511": "$CHAR_REMOVE"
     "0077": "$LEFT_FILL"
     "0071": "$LEFT_FILL"
     "0076": "$LEFT_FILL"
     "0170": "$LEFT_FILL"
     "0171": "$LEFT_FILL"
     "0078": "$LEFT_FILL"
-    "0080": "#0080"
+    "0080": "$COMMENT_STRIP_NEW_LINE"
     "0079": "$LEFT_FILL"
     "0505": "$LEFT_FILL"
     "0056": "$LEFT_FILL"
     "0053": "$LEFT_FILL"
     "0054": "$LEFT_FILL"
-    "0057": "#0057"
+    "0057": "$COMMENT_STRIP_NEW_LINE"
     "0035": "$LEFT_FILL"
     "0038": "$LEFT_FILL"
     "0037": "$LEFT_FILL"
@@ -49,30 +47,25 @@ template:
     "0041": "$LEFT_FILL"
     "0509": "$LEFT_FILL"
     "0510": "$LEFT_FILL"
-    "0025": "$LEFT_FILL"
-    "0001": "#0001"
+    "0025": "$CHAR_REMOVE_AND_FILL"
+    "0001": "$COMMENT_STRIP_NEW_LINE"
 
     "0061": "$CONCAT_97_96"
     "0062": "$CONCAT_95_94"
 
 transforms:
-    "COMMENT":
-        "name": "EXISTS"
-        "args":
-            "on_true": "1"
-            "on_false": "2"
-
     "LEFT_FILL":
         "name": "PADDING"
         "args":
             "padding_length": "11"
             "padding_char": "0"
+            "prepend": "True"
 
     "CONCAT_97_96":
         "name": "CONCAT"
         "args":
             "value": "#9997"
-            "values": "[ #9996 ]"
+            "values": [ "#9996" ]
             "seperator": "."
         "post": "$LEFT_FILL"
 
@@ -80,6 +73,29 @@ transforms:
         "name": "CONCAT"
         "args":
             "value": "#9995"
-            "values": "[ #9994 ]"
+            "values": [ "#9994" ]
             "seperator": "."
         "post": "$LEFT_FILL"
+
+    "CHAR_REMOVE_AND_FILL":
+        "name": "CHARACTER_REPLACER"
+        "args":
+            "char_to_remove": "-"
+        "post": "$LEFT_FILL"
+
+    "CHAR_REMOVE":
+        "name": "CHARACTER_REPLACER"
+        "args":
+            "char_to_remove": "-"
+
+    "COMMENT_NEW_LINE_REPLACE":
+        "name": "CHARACTER_REPLACER"
+        "args":
+            "char_to_remove": "\r\n"
+            "char_to_replace": " "
+
+    "COMMENT_STRIP_NEW_LINE":
+        "name": "RIGHT_STRIP"
+        "args":
+            "strip_value": "\r\n"
+        "post": "$COMMENT_NEW_LINE_REPLACE"
