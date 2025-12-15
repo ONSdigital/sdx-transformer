@@ -1,7 +1,7 @@
-from typing import TypedDict
 
-from app.definitions.input import Value, SurveyMetadata
+from app.definitions.input import Value
 from app.services.formatters.cs_formatter import CSFormatter
+
 
 class AsheFormatter(CSFormatter):
 

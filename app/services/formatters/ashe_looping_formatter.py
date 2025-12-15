@@ -33,5 +33,3 @@ class AsheLoopingFormatter(AsheFormatter, LoopingFormatter):
                 if v == list_item_id:
                     return mapping["identifier"]
         return None
-
-

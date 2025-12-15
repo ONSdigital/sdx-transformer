@@ -1,13 +1,9 @@
 import json
 import unittest
 
-from app.controllers.looped import looping_to_pck
 from app.controllers.prepop import get_prepop
 from app.definitions.input import PrepopData, Identifier, SurveyMetadata
-from app.definitions.output import PCK
 from app.definitions.spec import Template
-from tests.helpers import get_src_path
-from tests.integration.looped import read_submission_data
 
 
 class TestIPI(unittest.TestCase):

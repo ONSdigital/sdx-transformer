@@ -71,11 +71,13 @@ def carve(value: str, start_index=0, end_index=None) -> Value:
 
     return value[start_index:end_index]
 
+
 @handle_empties
 def string_padding(value: Value, padding_length: str, prepend: bool, padding_char: str = " ") -> Value:
     if prepend:
         return value.rjust(int(padding_length), padding_char)
     return value.ljust(int(padding_length), padding_char)
+
 
 @handle_empties
 def space_split(value: str, index: int = 0) -> Value:
@@ -131,4 +133,3 @@ def character_replacer(value: str, char_to_remove: str, char_to_replace: str = "
 @handle_empties
 def right_strip(value: str, strip_value: str) -> Value:
     return value.rstrip(strip_value)
-

@@ -14,4 +14,5 @@ test:
 
 .PHONY: lint
 lint:
-	uv run flake8 . --count --statistics
+	@echo "Running Ruff linter..."
+	uv run --only-group lint ruff check --fix
