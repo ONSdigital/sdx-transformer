@@ -1,11 +1,11 @@
 [project]
 name = "sdx-transformer"
-version = "2.0.9"
+version = "2.0.10"
 description = "Transforming for SDX"
 requires-python = ">=3.13"
 dependencies = [
     "sdx-base==0.1.5",
-    "pyyaml>=6.0.0"
+    "pyyaml>=6.0.0",
 ]
 
 [tool.uv.sources]
@@ -21,7 +21,6 @@ dev = [
     "pytest-cov>=6.1.1",
     "pytest-xdist>=3.6.1",
     "mypy>=1.15.0",
-    "flake8>=6.1.0",
     "jsonschema>=4.23.0",
 ]
 
@@ -29,3 +28,15 @@ version-check = [
  "toml>=0.10.2",
  "tomlkit>=0.13.3",
 ]
+
+lint = [
+    "ruff>=0.14.9",
+]
+
+[tool.ruff]
+line-length = 121
+exclude = [ "lib", "__pycache__", ".venv",]
+
+[tool.ruff.lint]
+extend-select = [ "E303", "W391", "W292", "E302"]
+preview = true

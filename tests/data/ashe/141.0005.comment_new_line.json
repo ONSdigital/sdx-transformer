@@ -1,0 +1,190 @@
+{
+  "answers": [
+    {
+      "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+      "value": "2",
+      "list_item_id": "lJewut"
+    },
+    {
+      "answer_id": "answer82c8ceb5-569f-47fb-8996-7ef6255dfa61",
+      "value": "2",
+      "list_item_id": "lJewut"
+    },
+    {
+      "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+      "value": "1",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answer3f2da42c-97ca-43ed-94f6-6fbedb4f0c9b",
+      "value": "1998-02",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answer2ec78581-f12d-421c-88f3-e20d2a511962",
+      "value": "This is a job with\r\na new line",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answer2deb78b1-4646-4675-93c2-90a95266d15e",
+      "value": "Duties with a \\n\r\nnew line",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answer56d6a65d-3493-49dd-aa4b-55eae99a619d",
+      "value": "2",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answer84e3d96b-d05d-4381-b4db-30e41cdca6a6",
+      "value": "2",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answer32297428-387f-421a-901e-bc184850fccc",
+      "value": "2",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answerfa6a9bde-d2ea-4e48-a37b-4851be356b4b",
+      "value": "2",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answerfbda50a0-932a-4f40-b8ac-8a527bdc4dd0",
+      "value": "3",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answerf4d8685b-654d-4c7f-a50c-abe571b52dad",
+      "value": "2",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answerdeaa7e71-1470-40ef-8c3e-641c4c0de2b4",
+      "value": "1",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answer6bd061e4-3cb2-4c0d-928a-817019b2b9d2",
+      "value": "1",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answerc9e2fabd-5f32-46f7-b2d4-f828a0359a49",
+      "value": "3",
+      "list_item_id": "LFKhai"
+    },
+    {
+      "answer_id": "answerconfirmation-answer-for-length-of-pay-period",
+      "value": "Yes, this is correct",
+      "list_item_id": "LFKhai"
+    }
+  ],
+  "lists": [
+    {
+      "items": [
+        "lJewut",
+        "LFKhai"
+      ],
+      "name": "employee",
+      "supplementary_data_mappings": [
+        {
+          "identifier": "1308038K",
+          "list_item_id": "lJewut"
+        },
+        {
+          "identifier": "1234567A",
+          "list_item_id": "LFKhai"
+        }
+      ]
+    }
+  ],
+  "supplementary_data": {
+    "identifier": "12345678901",
+    "items": {
+      "employee": [
+        {
+          "identifier": "1308038K",
+          "employee_name": "MR D A MCINTOSH",
+          "work_postcode": "BR3 1HD",
+          "work_id": "7009773BKCVWXM",
+          "national_insurance_number_starred": "******14*",
+          "home_postcode": "CH64 4EQ"
+        },
+        {
+          "identifier": "1234567A",
+          "employee_name": "MR T A ARNOLD",
+          "work_postcode": "AB1 2DE",
+          "work_id": "1234567ABCDEFG",
+          "national_insurance_number_starred": "******98*",
+          "home_postcode": "WX12 3YZ"
+        }
+      ]
+    },
+    "survey_id": "141",
+    "schema_version": "v1"
+  },
+  "answer_codes": [
+    {
+      "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+      "code": "0502"
+    },
+    {
+      "answer_id": "answer3f2da42c-97ca-43ed-94f6-6fbedb4f0c9b",
+      "code": "0024"
+    },
+    {
+      "answer_id": "answer2ec78581-f12d-421c-88f3-e20d2a511962",
+      "code": "0020"
+    },
+    {
+      "answer_id": "answer2deb78b1-4646-4675-93c2-90a95266d15e",
+      "code": "0021"
+    },
+    {
+      "answer_id": "answer56d6a65d-3493-49dd-aa4b-55eae99a619d",
+      "code": "0014"
+    },
+    {
+      "answer_id": "answer84e3d96b-d05d-4381-b4db-30e41cdca6a6",
+      "code": "0013"
+    },
+    {
+      "answer_id": "answer32297428-387f-421a-901e-bc184850fccc",
+      "code": "0513"
+    },
+    {
+      "answer_id": "answerfa6a9bde-d2ea-4e48-a37b-4851be356b4b",
+      "code": "0514"
+    },
+    {
+      "answer_id": "answerfbda50a0-932a-4f40-b8ac-8a527bdc4dd0",
+      "code": "0015"
+    },
+    {
+      "answer_id": "answerf4d8685b-654d-4c7f-a50c-abe571b52dad",
+      "code": "0016"
+    },
+    {
+      "answer_id": "answerdeaa7e71-1470-40ef-8c3e-641c4c0de2b4",
+      "code": "9999"
+    },
+    {
+      "answer_id": "answer6bd061e4-3cb2-4c0d-928a-817019b2b9d2",
+      "code": "9998"
+    },
+    {
+      "answer_id": "answerc9e2fabd-5f32-46f7-b2d4-f828a0359a49",
+      "code": "0051"
+    },
+    {
+      "answer_id": "answerconfirmation-answer-for-length-of-pay-period",
+      "code": "8888"
+    },
+    {
+      "answer_id": "answer82c8ceb5-569f-47fb-8996-7ef6255dfa61",
+      "code": "0509"
+    }
+  ]
+}

@@ -24,7 +24,6 @@ class TestASHE(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-
     def test_ashe_multiple_nino(self):
         self.maxDiff = None
 

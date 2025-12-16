@@ -73,8 +73,10 @@ def carve(value: str, start_index=0, end_index=None) -> Value:
 
 
 @handle_empties
-def string_padding(value: Value, padding_length: str) -> Value:
-    return value.ljust(int(padding_length))
+def string_padding(value: Value, padding_length: str, prepend: bool, padding_char: str = " ") -> Value:
+    if prepend:
+        return value.rjust(int(padding_length), padding_char)
+    return value.ljust(int(padding_length), padding_char)
 
 
 @handle_empties
@@ -121,3 +123,13 @@ def whitespace_removal(value: str, strip_type: str = "both") -> Value:
         return value.rstrip()
     elif strip_type == "leading":
         return value.lstrip()
+
+
+@handle_empties
+def character_replacer(value: str, char_to_remove: str, char_to_replace: str = "") -> Value:
+    return value.replace(char_to_remove, char_to_replace)
+
+
+@handle_empties
+def right_strip(value: str, strip_value: str) -> Value:
+    return value.rstrip(strip_value)

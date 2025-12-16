@@ -1,3 +1,5 @@
+from app.services.formatters.ashe_formatter import AsheFormatter
+from app.services.formatters.ashe_looping_formatter import AsheLoopingFormatter
 from app.services.formatters.ppi_looping_formatter import PPILoopingFormatter
 from app.services.mappers.formatter_selectors import FormatterSelector
 from app.services.formatters.cora_formatter import CORAFormatter, MESFormatter
@@ -20,4 +22,5 @@ _formatter_mapping = {
     "IDBR": FormatterSelector(IDBRLoopingFormatter),
     "JSON": FormatterSelector(JSONFormatter),
     "PRICES": FormatterSelector(PPILoopingFormatter),
+    "ASHE": FormatterSelector(AsheFormatter, AsheLoopingFormatter),
 }

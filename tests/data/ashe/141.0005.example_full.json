@@ -1,0 +1,739 @@
+{
+  "case_id": "f9755d95-e4e8-481c-a020-7f89e3c9e5fd",
+  "tx_id": "92e8bb73-ecdd-4a77-a2ed-b52f50452121",
+  "type": "uk.gov.ons.edc.eq:surveyresponse",
+  "version": "v2",
+  "data_version": "0.0.3",
+  "origin": "uk.gov.ons.edc.eq",
+  "collection_exercise_sid": "4eb3a72c-e00a-491d-ae39-7a967b4446d5",
+  "flushed": false,
+  "submitted_at": "2025-12-08T11:08:21+00:00",
+  "launch_language_code": "en",
+  "survey_metadata": {
+    "survey_id": "141",
+    "ru_name": "ESSENTIAL ENTERPRISE LTD.",
+    "trad_as": "ESSENTIAL ENTERPRISE LTD.",
+    "period_id": "201605",
+    "ref_p_start_date": "2016-05-01",
+    "ref_p_end_date": "2016-05-31",
+    "reference_date": "2016-05-11",
+    "tax_year_end_date": "2016-05-11",
+    "ru_ref": "12345678901A",
+    "user_id": "UNKNOWN",
+    "form_type": "0005",
+    "sds_dataset_id": "645ad4bd-e7da-3648-5a57-31b9cf644861"
+  },
+  "schema_name": "ashe_0005",
+  "data": {
+    "answers": [
+      {
+        "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer3f2da42c-97ca-43ed-94f6-6fbedb4f0c9b",
+        "value": "2010-04",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer2ec78581-f12d-421c-88f3-e20d2a511962",
+        "value": "Example job title",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer2deb78b1-4646-4675-93c2-90a95266d15e",
+        "value": "Job description example\r\n",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer56d6a65d-3493-49dd-aa4b-55eae99a619d",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer84e3d96b-d05d-4381-b4db-30e41cdca6a6",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer32297428-387f-421a-901e-bc184850fccc",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerfbda50a0-932a-4f40-b8ac-8a527bdc4dd0",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerf4d8685b-654d-4c7f-a50c-abe571b52dad",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerd752388f-fe6d-4817-8371-a545d17b0143",
+        "value": "2010-04",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerdeaa7e71-1470-40ef-8c3e-641c4c0de2b4",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer6bd061e4-3cb2-4c0d-928a-817019b2b9d2",
+        "value": "2",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerddd867e5-6b0b-486b-bdcb-ad389abea341",
+        "value": "PZ8 9ZZ",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerc9e2fabd-5f32-46f7-b2d4-f828a0359a49",
+        "value": "5",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer3efe289c-fceb-4836-8ec8-cf8a760726aa",
+        "value": "6 weeks",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerconfirmation-answer-for-length-of-pay-period",
+        "value": "Yes, this is correct",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer3379de35-3c7b-41b7-b425-83359612a832",
+        "value": "2010-05-02",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer7b302ce3-32dc-4186-b828-a0b393985d79",
+        "value": 20000,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerconfirmation-answer-for-basic-pay-earned-for-work-carried-out-in-pay-period",
+        "value": "Yes, this is correct",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerda652e68-3c37-496e-9f50-4a705626cc93",
+        "value": 10,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answeref323c3f-b594-4f0c-a1d6-4b6558d5b25d",
+        "value": 0,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer20e23c75-d9b8-4b97-98c5-e74b9dca146e",
+        "value": 1000,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerf21a7407-7b8a-4c44-bbaf-e241c8e875de",
+        "value": 2,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer9f03e8e1-86da-405c-8780-58c5c8d94033",
+        "value": 0,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerb1f37b04-f523-480a-99e7-81a570d05e21",
+        "value": 100,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer4ceaeeb9-e86e-4992-9af2-ce98f7efb18a",
+        "value": 100,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer19572a6b-a5eb-4e6a-8e3b-b059697504f4",
+        "value": 100,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer961a0fc4-f43b-47c9-9033-c997f0aae1f9",
+        "value": 200,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer060ce53e-d6aa-4297-9ce9-5c145fa786a3",
+        "value": "example amount of pay for other reasons",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerc1ca6ace-691a-4b15-bb30-c07d7b1b3600",
+        "value": 400,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer6fe487cd-7c84-4099-a889-6cdf629431f6",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer493ba73c-ae82-4f16-98ac-7383f67013af",
+        "value": 300,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerdf0a9514-8105-4bf2-8aed-22141cabcb4e",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerd49e64eb-705c-4130-b59e-a64c368f88f0",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer6ddcad3d-36f5-4e58-b6c7-23ecf78908f1",
+        "value": "Example figures comment",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer8c868892-f586-4b3d-90c4-1e84ac638aa2",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer15b962a3-3815-4a07-ae9b-93463fe46c3e",
+        "value": 2000,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer4dbe0ae4-a2b2-4a48-8385-3141f46fd6bb",
+        "value": 100,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer7954cb63-97b5-46ae-afd9-ed4fbe03405d",
+        "value": 400,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answera05648d8-3bd8-4037-924d-46fbfdd1d5c4",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer763895a3-8d21-4b9b-8b9b-44c7b1e04d58",
+        "value": 200,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer047c234a-209a-43f3-90c3-8850211ea434",
+        "value": 200,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer0eb4efd1-0d7b-43e8-b508-19b6ee00a892",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerf399345f-0cf2-4c37-a495-fe5d1a049b0d",
+        "value": 500,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerce6df956-b418-4f9e-b7dc-ea9976ea1e4e",
+        "value": 20,
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer46eb213a-cfb3-4503-aaea-77664bdd78e3",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer41aebefe-9dac-4dda-9bad-8302922b4cdc",
+        "value": "1",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answerca0da756-2ca4-4b89-88ff-11ad69ae9e8a",
+        "value": "additional comment",
+        "list_item_id": "vlnHWJ"
+      },
+      {
+        "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+        "value": "1",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer3f2da42c-97ca-43ed-94f6-6fbedb4f0c9b",
+        "value": "2005-05",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer2ec78581-f12d-421c-88f3-e20d2a511962",
+        "value": "example job title two",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer2deb78b1-4646-4675-93c2-90a95266d15e",
+        "value": "example duties 2\r\n",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer56d6a65d-3493-49dd-aa4b-55eae99a619d",
+        "value": "1",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer84e3d96b-d05d-4381-b4db-30e41cdca6a6",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer32297428-387f-421a-901e-bc184850fccc",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerfa6a9bde-d2ea-4e48-a37b-4851be356b4b",
+        "value": "1",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer034c991b-0df7-44dd-acb2-b3a08c8ac593",
+        "value": 4,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerfbda50a0-932a-4f40-b8ac-8a527bdc4dd0",
+        "value": "1",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerf4d8685b-654d-4c7f-a50c-abe571b52dad",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerdeaa7e71-1470-40ef-8c3e-641c4c0de2b4",
+        "value": "1",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer6bd061e4-3cb2-4c0d-928a-817019b2b9d2",
+        "value": "1",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerc9e2fabd-5f32-46f7-b2d4-f828a0359a49",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerconfirmation-answer-for-length-of-pay-period",
+        "value": "Yes, this is correct",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer3379de35-3c7b-41b7-b425-83359612a832",
+        "value": "2014-10-10",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer7b302ce3-32dc-4186-b828-a0b393985d79",
+        "value": 1000,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerconfirmation-answer-for-basic-pay-earned-for-work-carried-out-in-pay-period",
+        "value": "Yes, this is correct",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerda652e68-3c37-496e-9f50-4a705626cc93",
+        "value": 10,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answeref323c3f-b594-4f0c-a1d6-4b6558d5b25d",
+        "value": 20,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer20e23c75-d9b8-4b97-98c5-e74b9dca146e",
+        "value": 400,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerf21a7407-7b8a-4c44-bbaf-e241c8e875de",
+        "value": 10,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer9f03e8e1-86da-405c-8780-58c5c8d94033",
+        "value": 20,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerb1f37b04-f523-480a-99e7-81a570d05e21",
+        "value": 40,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer4ceaeeb9-e86e-4992-9af2-ce98f7efb18a",
+        "value": 50,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer19572a6b-a5eb-4e6a-8e3b-b059697504f4",
+        "value": 100.50,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer961a0fc4-f43b-47c9-9033-c997f0aae1f9",
+        "value": 200,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer060ce53e-d6aa-4297-9ce9-5c145fa786a3",
+        "value": "Other reasons pay",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerc1ca6ace-691a-4b15-bb30-c07d7b1b3600",
+        "value": 200,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer6fe487cd-7c84-4099-a889-6cdf629431f6",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerdf0a9514-8105-4bf2-8aed-22141cabcb4e",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerd49e64eb-705c-4130-b59e-a64c368f88f0",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer6ddcad3d-36f5-4e58-b6c7-23ecf78908f1",
+        "value": "additional figure comment two\r\n",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer8c868892-f586-4b3d-90c4-1e84ac638aa2",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer15b962a3-3815-4a07-ae9b-93463fe46c3e",
+        "value": 200,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer4dbe0ae4-a2b2-4a48-8385-3141f46fd6bb",
+        "value": 100,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer7954cb63-97b5-46ae-afd9-ed4fbe03405d",
+        "value": 400,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answera05648d8-3bd8-4037-924d-46fbfdd1d5c4",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer763895a3-8d21-4b9b-8b9b-44c7b1e04d58",
+        "value": 4000,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer047c234a-209a-43f3-90c3-8850211ea434",
+        "value": 200,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer0eb4efd1-0d7b-43e8-b508-19b6ee00a892",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerce6df956-b418-4f9e-b7dc-ea9976ea1e4e",
+        "value": 20,
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answer46eb213a-cfb3-4503-aaea-77664bdd78e3",
+        "value": "2",
+        "list_item_id": "IFymGC"
+      },
+      {
+        "answer_id": "answerca0da756-2ca4-4b89-88ff-11ad69ae9e8a",
+        "value": "further details comment two",
+        "list_item_id": "IFymGC"
+      }
+    ],
+    "lists": [
+      {
+        "items": [
+          "vlnHWJ",
+          "IFymGC"
+        ],
+        "name": "employee",
+        "supplementary_data_mappings": [
+          {
+            "identifier": "1308038K",
+            "list_item_id": "vlnHWJ"
+          },
+          {
+            "identifier": "1234567A",
+            "list_item_id": "IFymGC"
+          }
+        ]
+      }
+    ],
+    "supplementary_data": {
+      "identifier": "12345678901",
+      "items": {
+        "employee": [
+          {
+            "identifier": "1308038K",
+            "work_id": "7009773BKCVWXM",
+            "employee_name": "MR D A MCINTOSH",
+            "work_postcode": "BR3 1HD",
+            "home_postcode": "CH64 4EQ",
+            "national_insurance_number_starred": "******14*"
+          },
+          {
+            "identifier": "1234567A",
+            "work_id": "1234567ABCDEFG",
+            "employee_name": "MR T A ARNOLD",
+            "work_postcode": "AB1 2DE",
+            "home_postcode": "WX12 3YZ",
+            "national_insurance_number_starred": "******98*"
+          }
+        ]
+      },
+      "survey_id": "141",
+      "schema_version": "v1"
+    },
+    "answer_codes": [
+      {
+        "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+        "code": "0502"
+      },
+      {
+        "answer_id": "answer3f2da42c-97ca-43ed-94f6-6fbedb4f0c9b",
+        "code": "0024"
+      },
+      {
+        "answer_id": "answer2ec78581-f12d-421c-88f3-e20d2a511962",
+        "code": "0020"
+      },
+      {
+        "answer_id": "answer2deb78b1-4646-4675-93c2-90a95266d15e",
+        "code": "0021"
+      },
+      {
+        "answer_id": "answer56d6a65d-3493-49dd-aa4b-55eae99a619d",
+        "code": "0014"
+      },
+      {
+        "answer_id": "answer84e3d96b-d05d-4381-b4db-30e41cdca6a6",
+        "code": "0013"
+      },
+      {
+        "answer_id": "answer32297428-387f-421a-901e-bc184850fccc",
+        "code": "0513"
+      },
+      {
+        "answer_id": "answerfa6a9bde-d2ea-4e48-a37b-4851be356b4b",
+        "code": "0514"
+      },
+      {
+        "answer_id": "answer034c991b-0df7-44dd-acb2-b3a08c8ac593",
+        "code": "0515"
+      },
+      {
+        "answer_id": "answerfbda50a0-932a-4f40-b8ac-8a527bdc4dd0",
+        "code": "0015"
+      },
+      {
+        "answer_id": "answerf4d8685b-654d-4c7f-a50c-abe571b52dad",
+        "code": "0016"
+      },
+      {
+        "answer_id": "answerd752388f-fe6d-4817-8371-a545d17b0143",
+        "code": "0017"
+      },
+      {
+        "answer_id": "answerdeaa7e71-1470-40ef-8c3e-641c4c0de2b4",
+        "code": "9999"
+      },
+      {
+        "answer_id": "answer6bd061e4-3cb2-4c0d-928a-817019b2b9d2",
+        "code": "9998"
+      },
+      {
+        "answer_id": "answerddd867e5-6b0b-486b-bdcb-ad389abea341",
+        "code": "0023"
+      },
+      {
+        "answer_id": "answerc9e2fabd-5f32-46f7-b2d4-f828a0359a49",
+        "code": "0051"
+      },
+      {
+        "answer_id": "answerconfirmation-answer-for-length-of-pay-period",
+        "code": "8888"
+      },
+      {
+        "answer_id": "answer3efe289c-fceb-4836-8ec8-cf8a760726aa",
+        "code": "0052"
+      },
+      {
+        "answer_id": "answer3379de35-3c7b-41b7-b425-83359612a832",
+        "code": "0511"
+      },
+      {
+        "answer_id": "answer7b302ce3-32dc-4186-b828-a0b393985d79",
+        "code": "0077"
+      },
+      {
+        "answer_id": "answerconfirmation-answer-for-basic-pay-earned-for-work-carried-out-in-pay-period",
+        "code": "8887"
+      },
+      {
+        "answer_id": "answerda652e68-3c37-496e-9f50-4a705626cc93",
+        "code": "9997"
+      },
+      {
+        "answer_id": "answeref323c3f-b594-4f0c-a1d6-4b6558d5b25d",
+        "code": "9996"
+      },
+      {
+        "answer_id": "answer20e23c75-d9b8-4b97-98c5-e74b9dca146e",
+        "code": "0071"
+      },
+      {
+        "answer_id": "answerf21a7407-7b8a-4c44-bbaf-e241c8e875de",
+        "code": "9995"
+      },
+      {
+        "answer_id": "answer9f03e8e1-86da-405c-8780-58c5c8d94033",
+        "code": "9994"
+      },
+      {
+        "answer_id": "answerb1f37b04-f523-480a-99e7-81a570d05e21",
+        "code": "0076"
+      },
+      {
+        "answer_id": "answer4ceaeeb9-e86e-4992-9af2-ce98f7efb18a",
+        "code": "0170"
+      },
+      {
+        "answer_id": "answer19572a6b-a5eb-4e6a-8e3b-b059697504f4",
+        "code": "0171"
+      },
+      {
+        "answer_id": "answer961a0fc4-f43b-47c9-9033-c997f0aae1f9",
+        "code": "0078"
+      },
+      {
+        "answer_id": "answer060ce53e-d6aa-4297-9ce9-5c145fa786a3",
+        "code": "0080"
+      },
+      {
+        "answer_id": "answerc1ca6ace-691a-4b15-bb30-c07d7b1b3600",
+        "code": "0079"
+      },
+      {
+        "answer_id": "answer6fe487cd-7c84-4099-a889-6cdf629431f6",
+        "code": "0505"
+      },
+      {
+        "answer_id": "answer493ba73c-ae82-4f16-98ac-7383f67013af",
+        "code": "0056"
+      },
+      {
+        "answer_id": "answerdf0a9514-8105-4bf2-8aed-22141cabcb4e",
+        "code": "0053"
+      },
+      {
+        "answer_id": "answerd49e64eb-705c-4130-b59e-a64c368f88f0",
+        "code": "0054"
+      },
+      {
+        "answer_id": "answer6ddcad3d-36f5-4e58-b6c7-23ecf78908f1",
+        "code": "0057"
+      },
+      {
+        "answer_id": "answer8c868892-f586-4b3d-90c4-1e84ac638aa2",
+        "code": "0035"
+      },
+      {
+        "answer_id": "answer15b962a3-3815-4a07-ae9b-93463fe46c3e",
+        "code": "0038"
+      },
+      {
+        "answer_id": "answer4dbe0ae4-a2b2-4a48-8385-3141f46fd6bb",
+        "code": "0037"
+      },
+      {
+        "answer_id": "answer7954cb63-97b5-46ae-afd9-ed4fbe03405d",
+        "code": "0036"
+      },
+      {
+        "answer_id": "answera05648d8-3bd8-4037-924d-46fbfdd1d5c4",
+        "code": "0039"
+      },
+      {
+        "answer_id": "answer763895a3-8d21-4b9b-8b9b-44c7b1e04d58",
+        "code": "0081"
+      },
+      {
+        "answer_id": "answer047c234a-209a-43f3-90c3-8850211ea434",
+        "code": "0084"
+      },
+      {
+        "answer_id": "answer0eb4efd1-0d7b-43e8-b508-19b6ee00a892",
+        "code": "0507"
+      },
+      {
+        "answer_id": "answerf399345f-0cf2-4c37-a495-fe5d1a049b0d",
+        "code": "0090"
+      },
+      {
+        "answer_id": "answerce6df956-b418-4f9e-b7dc-ea9976ea1e4e",
+        "code": "0085"
+      },
+      {
+        "answer_id": "answer46eb213a-cfb3-4503-aaea-77664bdd78e3",
+        "code": "0508"
+      },
+      {
+        "answer_id": "answer41aebefe-9dac-4dda-9bad-8302922b4cdc",
+        "code": "0041"
+      },
+      {
+        "answer_id": "answerca0da756-2ca4-4b89-88ff-11ad69ae9e8a",
+        "code": "0001"
+      }
+    ]
+  },
+  "started_at": "2025-12-08T10:58:47.968866+00:00",
+  "submission_language_code": "en"
+}
