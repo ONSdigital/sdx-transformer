@@ -15,8 +15,8 @@ template:
     "0015": "$LEFT_FILL"
     "0016": "$LEFT_FILL"
     "0017": "$CHAR_REMOVE_AND_FILL"
-    "0022": "$LEFT_FILL"
-    "0023": "$LEFT_FILL"
+    "0022": "$LEFT_FILL_WITH_SPACES"
+    "0023": "$LEFT_FILL_WITH_SPACES"
     "0051": "$LEFT_FILL"
     "0052": "#0052"
     "0511": "$CHAR_REMOVE"
@@ -59,6 +59,13 @@ transforms:
         "args":
             "padding_length": "11"
             "padding_char": "0"
+            "prepend": "True"
+
+    "LEFT_FILL_WITH_SPACES":
+        "name": "PADDING"
+        "args":
+            "padding_length": "11"
+            "padding_char": " "
             "prepend": "True"
 
     "CONCAT_97_96":
