@@ -18,7 +18,8 @@ template:
     "0022": "$LEFT_FILL_WITH_SPACES"
     "0023": "$LEFT_FILL_WITH_SPACES"
     "0051": "$LEFT_FILL"
-    "0052": "$LEFT_FILL_WITH_SPACES"
+    "0052": "$COMMENT_EXISTS"
+    "C052": "$LEFT_FILL_WITH_SPACES_52"
     "0511": "$CHAR_REMOVE"
     "0077": "$LEFT_FILL"
     "0071": "$LEFT_FILL"
@@ -26,13 +27,15 @@ template:
     "0170": "$LEFT_FILL"
     "0171": "$LEFT_FILL"
     "0078": "$LEFT_FILL"
-    "0080": "$COMMENT_STRIP_NEW_LINE"
+    "0080": "$COMMENT_EXISTS"
+    "C080": "$COMMENT_STRIP_NEW_LINE_80"
     "0079": "$LEFT_FILL"
     "0505": "$LEFT_FILL"
     "0056": "$LEFT_FILL"
     "0053": "$LEFT_FILL"
     "0054": "$LEFT_FILL"
-    "0057": "$COMMENT_STRIP_NEW_LINE"
+    "0057": "$COMMENT_EXISTS"
+    "C057": "$COMMENT_STRIP_NEW_LINE_57"
     "0035": "$LEFT_FILL"
     "0038": "$LEFT_FILL"
     "0037": "$LEFT_FILL"
@@ -48,7 +51,8 @@ template:
     "0509": "$LEFT_FILL"
     "0510": "$LEFT_FILL"
     "0025": "$CHAR_REMOVE_AND_FILL"
-    "0001": "$COMMENT_STRIP_NEW_LINE"
+    "0001": "$COMMENT_EXISTS"
+    "C001": "$COMMENT_STRIP_NEW_LINE_01"
 
     "0061": "$CONCAT_97_96"
     "0062": "$CONCAT_95_94"
@@ -64,6 +68,14 @@ transforms:
     "LEFT_FILL_WITH_SPACES":
         "name": "PADDING"
         "args":
+            "padding_length": "11"
+            "padding_char": " "
+            "prepend": "True"
+
+    "LEFT_FILL_WITH_SPACES_52":
+        "name": "PADDING"
+        "args":
+            "value": "#0052"
             "padding_length": "11"
             "padding_char": " "
             "prepend": "True"
@@ -106,3 +118,30 @@ transforms:
         "args":
             "strip_value": "\r\n"
         "post": "$COMMENT_NEW_LINE_REPLACE"
+
+    "COMMENT_STRIP_NEW_LINE_57":
+        "name": "RIGHT_STRIP"
+        "args":
+            "value": "#0057"
+            "strip_value": "\r\n"
+        "post": "$COMMENT_NEW_LINE_REPLACE"
+
+    "COMMENT_STRIP_NEW_LINE_80":
+        "name": "RIGHT_STRIP"
+        "args":
+            "value": "#0080"
+            "strip_value": "\r\n"
+        "post": "$COMMENT_NEW_LINE_REPLACE"
+
+    "COMMENT_STRIP_NEW_LINE_01":
+        "name": "RIGHT_STRIP"
+        "args":
+            "value": "#0001"
+            "strip_value": "\r\n"
+        "post": "$COMMENT_NEW_LINE_REPLACE"
+
+    "COMMENT_EXISTS":
+        "name": "EXISTS"
+        "args":
+            "on_true": "1"
+            "on_false": "2"
