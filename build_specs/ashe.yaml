@@ -3,6 +3,8 @@ survey_id: "141"
 target: "ASHE"
 period_format: "YYYY"
 template:
+  {}
+looped:
     "0502": "$LEFT_FILL"
     "0024": "$CHAR_REMOVE_AND_FILL"
     "0020": "$COMMENT_STRIP_NEW_LINE"
@@ -144,4 +146,5 @@ transforms:
         "name": "EXISTS"
         "args":
             "on_true": "1"
-            "on_false": "2"
+            "on_false": "0"
+        "post": "$LEFT_FILL"
