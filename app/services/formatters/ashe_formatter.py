@@ -9,7 +9,8 @@ class AsheFormatter(CSFormatter):
         """Generate the contents of a pck file as a list of strings"""
         return [
             self._pck_item(q, a) for q, a in sorted(
-                {int(k): v for k, v in data.items() if v is not None}.items()
+                {k: v for k, v in data.items() if v is not None}.items(),
+                key = lambda x: x[0][1:]
             )
         ]
 
