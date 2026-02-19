@@ -22,7 +22,7 @@ looped:
     "0051": "$LEFT_FILL"
     "0052": "$COMMENT_EXISTS"
     "C052": "$LEFT_FILL_WITH_SPACES_52"
-    "0511": "$CHAR_REMOVE"
+    "0511": "$CHAR_REMOVE_AND_FILL"
     "0077": "$LEFT_FILL"
     "0071": "$LEFT_FILL"
     "0076": "$LEFT_FILL"
