@@ -10,7 +10,7 @@ from app.services.transform.functions.string import (starts_with, contains, any_
                                                      character_replacer, right_strip)
 from app.services.transform.functions.time import (to_date, any_date, start_of_month,
                                                    end_of_month, start_of_year, end_of_year, month_year_string,
-                                                   quarter_formatter)
+                                                   quarter_formatter, string_date_formatter)
 
 _function_lookup: dict[str, Callable] = {
     "VALUE": no_transform,
@@ -48,6 +48,7 @@ _function_lookup: dict[str, Callable] = {
     "POSTCODE_END": postcode_end,
     "WHITESPACE_REMOVAL": whitespace_removal,
     "QUARTER_FORMATTER": quarter_formatter,
+    "STRING_DATE_FORMATTER": string_date_formatter,
     "CHARACTER_REPLACER": character_replacer,
     "RIGHT_STRIP": right_strip,
 }

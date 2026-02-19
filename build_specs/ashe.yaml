@@ -6,7 +6,7 @@ template:
   {}
 looped:
     "0502": "$LEFT_FILL"
-    "0024": "$CHAR_REMOVE_AND_FILL"
+    "0024": "$DATE_FORMAT_MMYYYY"
     "0020": "$COMMENT_STRIP_NEW_LINE"
     "0021": "$COMMENT_STRIP_NEW_LINE"
     "0014": "$LEFT_FILL"
@@ -16,13 +16,13 @@ looped:
     "0515": "$LEFT_FILL"
     "0015": "$LEFT_FILL"
     "0016": "$LEFT_FILL"
-    "0017": "$CHAR_REMOVE_AND_FILL"
+    "0017": "$DATE_FORMAT_MMYYYY"
     "0022": "$LEFT_FILL_WITH_SPACES"
     "0023": "$LEFT_FILL_WITH_SPACES"
     "0051": "$LEFT_FILL"
     "0052": "$COMMENT_EXISTS"
     "C052": "$LEFT_FILL_WITH_SPACES_52"
-    "0511": "$CHAR_REMOVE_AND_FILL"
+    "0511": "$0511_CHAR_REMOVE"
     "0077": "$LEFT_FILL"
     "0071": "$LEFT_FILL"
     "0076": "$LEFT_FILL"
@@ -148,3 +148,31 @@ transforms:
             "on_true": "1"
             "on_false": "0"
         "post": "$LEFT_FILL"
+
+    "0511_CHAR_REMOVE":
+        "name": "CHARACTER_REPLACER"
+        "args":
+            "char_to_remove": "-"
+        "post": "$0511_DATE_FORMAT"
+
+    "0511_DATE_FORMAT":
+        "name": "STRING_DATE_FORMATTER"
+        "args":
+            "initial_format": "%Y%m%d"
+            "expected_format": "%d%m%y"
+        "post": "$LEFT_FILL"
+
+    "DATE_FORMAT_MMYYYY":
+        "name": "CHARACTER_REPLACER"
+        "args":
+            "char_to_remove": "-"
+        "post": "$FORMAT_MMYYYY"
+
+    "FORMAT_MMYYYY":
+        "name": "STRING_DATE_FORMATTER"
+        args:
+            "initial_format": "%Y%m"
+            "expected_format": "%m%Y"
+        "post": "$LEFT_FILL"
+
+
