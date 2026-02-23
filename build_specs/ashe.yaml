@@ -114,6 +114,7 @@ transforms:
         "args":
             "char_to_remove": "\r\n"
             "char_to_replace": " "
+        "post": "$LEFT_FILL_WITH_SPACES"
 
     "COMMENT_STRIP_NEW_LINE":
         "name": "RIGHT_STRIP"

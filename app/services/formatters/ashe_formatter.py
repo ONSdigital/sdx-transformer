@@ -25,7 +25,4 @@ class AsheFormatter(CSFormatter):
                 # CS can't handle negative numbers!
                 a = 99999999999
 
-        if COMMENT_PREFIX in q:
-            return "{0:04} {1}".format(q, a)
-
         return "{0:04} {1:011}".format(q, a)
