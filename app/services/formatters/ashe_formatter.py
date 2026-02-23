@@ -1,10 +1,5 @@
-from typing import Final
-
 from app.definitions.input import Value
 from app.services.formatters.cs_formatter import CSFormatter
-
-
-COMMENT_PREFIX: Final = "C"
 
 
 class AsheFormatter(CSFormatter):
