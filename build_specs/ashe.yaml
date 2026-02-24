@@ -52,7 +52,7 @@ looped:
     "0041": "$LEFT_FILL"
     "0509": "$LEFT_FILL"
     "0510": "$LEFT_FILL"
-    "0025": "$CHAR_REMOVE_AND_FILL"
+    "0025": "$DATE_FORMAT_MMYYYY"
     "0001": "$COMMENT_EXISTS"
     "C001": "$COMMENT_STRIP_NEW_LINE_01"
 
