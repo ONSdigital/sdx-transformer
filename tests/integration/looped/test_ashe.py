@@ -57,3 +57,22 @@ class TestAshe(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertEqual(expected, actual)
+
+    def test_downstream_ashe_pck_minimal_data(self):
+        """
+        Test the downstream transformation for EPI with a full EQ response.
+        """
+        self.maxDiff = None
+
+        filepath = get_src_path("tests/data/ashe/141.0005.minimum.json")
+
+        submission_data = read_submission_data(filepath)
+
+        actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
+
+        pck_filepath = get_src_path("/tests/data/ashe/141.0005.minimum.pck")
+
+        with open(pck_filepath) as f:
+            expected: PCK = f.read()
+
+        self.assertEqual(expected, actual)

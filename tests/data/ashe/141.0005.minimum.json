@@ -1,0 +1,96 @@
+{
+  "answers": [
+    {
+      "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+      "value": "2",
+      "list_item_id": "QMgenF"
+    },
+    {
+      "answer_id": "answer82c8ceb5-569f-47fb-8996-7ef6255dfa61",
+      "value": "1",
+      "list_item_id": "QMgenF"
+    },
+    {
+      "answer_id": "answer15e81d08-859d-407d-9702-e8401ffb729d",
+      "value": "1",
+      "list_item_id": "QMgenF"
+    },
+    {
+      "answer_id": "answer88f10d4f-a62b-4044-92a9-b1beeda9af29",
+      "value": "2025-01",
+      "list_item_id": "QMgenF"
+    },
+    {
+      "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+      "value": "2",
+      "list_item_id": "rAyRCD"
+    },
+    {
+      "answer_id": "answer82c8ceb5-569f-47fb-8996-7ef6255dfa61",
+      "value": "2",
+      "list_item_id": "rAyRCD"
+    }
+  ],
+  "lists": [
+    {
+      "items": [
+        "QMgenF",
+        "rAyRCD"
+      ],
+      "name": "employee",
+      "supplementary_data_mappings": [
+        {
+          "identifier": "1308038K",
+          "list_item_id": "QMgenF"
+        },
+        {
+          "identifier": "1234567A",
+          "list_item_id": "rAyRCD"
+        }
+      ]
+    }
+  ],
+  "supplementary_data": {
+    "identifier": "12345678901",
+    "items": {
+      "employee": [
+        {
+          "identifier": "1308038K",
+          "work_postcode": "BR3 1HD",
+          "national_insurance_number_starred": "******14*",
+          "employee_name": "MR D A MCINTOSH",
+          "home_postcode": "CH64 4EQ",
+          "work_id": "7009773BKCVWXM"
+        },
+        {
+          "identifier": "1234567A",
+          "work_postcode": "AB1 2DE",
+          "national_insurance_number_starred": "******98*",
+          "employee_name": "MR T A ARNOLD",
+          "home_postcode": "WX12 3YZ",
+          "work_id": "1234567ABCDEFG"
+        }
+      ]
+    },
+    "survey_id": "141",
+    "schema_version": "v1"
+  },
+  "answer_codes": [
+    {
+      "answer_id": "answer8479cb8b-b248-4c6e-b37d-60ea0c9480c5",
+      "code": "0502"
+    },
+    {
+      "answer_id": "answer82c8ceb5-569f-47fb-8996-7ef6255dfa61",
+      "code": "0509"
+    },
+    {
+      "answer_id": "answer15e81d08-859d-407d-9702-e8401ffb729d",
+      "code": "0510"
+    },
+    {
+      "answer_id": "answer88f10d4f-a62b-4044-92a9-b1beeda9af29",
+      "code": "0025"
+    }
+  ]
+}
