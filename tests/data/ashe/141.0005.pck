@@ -7,8 +7,8 @@ C001 additional comment
 0015 00000000001
 0016 00000000001
 0017 00000042010
-0020 Example job title
-0021 Job description example
+0020 Example job title                 
+0021 Job description example           
 0023     PZ8 9ZZ
 0024 00000042010
 0035 00000000001
@@ -54,8 +54,8 @@ C001 further details comment two
 0014 00000000001
 0015 00000000001
 0016 00000000002
-0020 example job title two
-0021 example duties 2
+0020 example job title two             
+0021 example duties 2                  
 0024 00000052005
 0035 00000000002
 0036 00000000400

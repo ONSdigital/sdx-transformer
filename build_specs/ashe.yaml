@@ -7,8 +7,8 @@ template:
 looped:
     "0502": "$LEFT_FILL"
     "0024": "$DATE_FORMAT_MMYYYY"
-    "0020": "$COMMENT_STRIP_NEW_LINE"
-    "0021": "$COMMENT_STRIP_NEW_LINE"
+    "0020": "$COMMENT_STRIP_NEW_LINE_34_PAD"
+    "0021": "$COMMENT_STRIP_NEW_LINE_34_PAD"
     "0014": "$LEFT_FILL"
     "0013": "$LEFT_FILL"
     "0513": "$LEFT_FILL"
@@ -175,5 +175,23 @@ transforms:
             "initial_format": "%Y%m"
             "expected_format": "%m%Y"
         "post": "$LEFT_FILL"
+        
+    "COMMENT_STRIP_NEW_LINE_34_PAD":
+        "name": "RIGHT_STRIP"
+        "args":
+            "strip_value": "\r\n"
+        "post": "$COMMENT_NEW_LINE_REPLACE_34"
 
-
+    "COMMENT_NEW_LINE_REPLACE_34":
+        "name": "CHARACTER_REPLACER"
+        "args":
+            "char_to_remove": "\r\n"
+            "char_to_replace": " "
+        "post": "$RIGHT_FILL_WITH_SPACES_34"
+        
+    "RIGHT_FILL_WITH_SPACES_34":
+        "name": "PADDING"
+        "args":
+            "padding_length": "34"
+            "padding_char": " "
+            "prepend": ""

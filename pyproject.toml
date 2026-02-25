@@ -1,6 +1,6 @@
 [project]
 name = "sdx-transformer"
-version = "2.0.17"
+version = "2.0.18"
 description = "Transforming for SDX"
 requires-python = ">=3.13"
 dependencies = [
