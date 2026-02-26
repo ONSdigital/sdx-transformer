@@ -6,7 +6,7 @@ template:
   {}
 looped:
     "0502": "$LEFT_FILL"
-    "0024": "$DATE_FORMAT_MMYYYY"
+    "0024": "$CHAR_REMOVE_AND_FILL"
     "0020": "$COMMENT_STRIP_NEW_LINE_34_PAD"
     "0021": "$COMMENT_STRIP_NEW_LINE_34_PAD"
     "0014": "$LEFT_FILL"
@@ -16,7 +16,7 @@ looped:
     "0515": "$LEFT_FILL"
     "0015": "$LEFT_FILL"
     "0016": "$LEFT_FILL"
-    "0017": "$DATE_FORMAT_MMYYYY"
+    "0017": "$CHAR_REMOVE_AND_FILL"
     "0022": "$LEFT_FILL_WITH_SPACES"
     "0023": "$LEFT_FILL_WITH_SPACES"
     "0051": "$LEFT_FILL"
@@ -52,7 +52,7 @@ looped:
     "0041": "$LEFT_FILL"
     "0509": "$LEFT_FILL"
     "0510": "$LEFT_FILL"
-    "0025": "$DATE_FORMAT_MMYYYY"
+    "0025": "$CHAR_REMOVE_AND_FILL"
     "0001": "$COMMENT_EXISTS"
     "C001": "$COMMENT_STRIP_NEW_LINE_01"
 
@@ -103,11 +103,6 @@ transforms:
         "args":
             "char_to_remove": "-"
         "post": "$LEFT_FILL"
-
-    "CHAR_REMOVE":
-        "name": "CHARACTER_REPLACER"
-        "args":
-            "char_to_remove": "-"
 
     "COMMENT_NEW_LINE_REPLACE":
         "name": "CHARACTER_REPLACER"
