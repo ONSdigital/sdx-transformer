@@ -38,7 +38,6 @@ class TestAshe(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-
     def test_downstream_ashe_pck_comments_and_20_21_contain_no_padding(self):
         """
         Test the downstream transformation for EPI with a full EQ response.

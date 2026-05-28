@@ -121,6 +121,7 @@ def quarter_formatter(value: str) -> Value:
     if month in ["10", "11", "12"]:
         return f"Quarter 4/{year} ({calendar.month_name[10]})"
 
+
 @handle_empties
 def string_date_formatter(value: str, initial_format: str, expected_format: str) -> Value:
     """

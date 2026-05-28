@@ -17,8 +17,8 @@ looped:
     "0015": "$LEFT_FILL"
     "0016": "$LEFT_FILL"
     "0017": "$CHAR_REMOVE_AND_FILL"
-    "0022": "$LEFT_FILL_WITH_SPACES"
-    "0023": "$LEFT_FILL_WITH_SPACES"
+    "0022": "$POST_CODE_STRIP_AND_FILL"
+    "0023": "$POST_CODE_STRIP_AND_FILL"
     "0051": "$LEFT_FILL"
     "0052": "$COMMENT_EXISTS"
     "C052": "$LEFT_FILL_WITH_SPACES_52"
@@ -190,3 +190,10 @@ transforms:
             "padding_length": "34"
             "padding_char": " "
             "prepend": ""
+            
+    "POST_CODE_STRIP_AND_FILL":
+        "name": "CHARACTER_REPLACER"
+        "args":
+            "char_to_remove": " "
+            "char_to_replace": ""
+        "post": "$LEFT_FILL_WITH_SPACES"
