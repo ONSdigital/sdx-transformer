@@ -9,7 +9,7 @@ C001 additional comment
 0017 00000042010
 0020 Example job title                 
 0021 Job description example           
-0023     PZ8 9ZZ
+0023      PZ89ZZ
 0024 00000042010
 0035 00000000001
 0036 00000000400
