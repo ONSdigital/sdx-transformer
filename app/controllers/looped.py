@@ -95,7 +95,7 @@ def set_data_value(d: Data, qcode: str, value: str):
     d[qcode] = str(value)
 
 
-def get_answer_code(answer_id: str, data: ListCollector) -> AnswerCode:
+def get_answer_code(answer_id: str, data: ListCollector) -> AnswerCode | None:
     """
     Given an answer id, find the first matching answer code
     associated with this answer_id
@@ -133,6 +133,9 @@ def find_data(data: ListCollector, list_item_id=None) -> Data:
 
             # Fetch the answer code for the current answer_id
             ac = get_answer_code(answer['answer_id'], data)
+            if ac is None:
+                continue
+
             answer_value = answer['value']
 
             # If the value is a list, lookup each value in the answer_codes section of the ListCollector

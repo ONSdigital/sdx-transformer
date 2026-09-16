@@ -1,6 +1,6 @@
 import unittest
 
-from app.controllers.looped import looping_to_pck
+from app.controllers.looped import looping_to_pck, looping_to_spp
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
 from tests.helpers import get_src_path
@@ -75,3 +75,24 @@ class TestAshe(unittest.TestCase):
             expected: PCK = f.read()
 
         self.assertEqual(expected, actual)
+
+    def test_to_spp(self):
+        self.maxDiff = None
+
+        survey_metadata: SurveyMetadata = {
+            "survey_id": "141",
+            "ru_ref": "14100007605",
+            "period_id": "201605",
+            "period_start_date": "2016-05-01",
+            "period_end_date": "2016-06-12",
+            "form_type": "H"
+        }
+
+        filepath = get_src_path("tests/data/ashe/ashe.json")
+
+        submission_data = read_submission_data(filepath)
+
+        actual: PCK = looping_to_spp(submission_data, survey_metadata)
+
+        print(actual)
+

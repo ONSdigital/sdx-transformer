@@ -44,6 +44,7 @@ _spp_spec_mapping: dict[str, Selector[SurveyMetadata, str]] = {
     "009": BuildSpecSelector("mbs-spp"),
     "023": BuildSpecSelector("rsi-spp"),
     "139": BuildSpecSelector("qbs-spp"),
+    "141": BuildSpecSelector("ashe-spp"),
     "228": BuildSpecSelector("construction-spp"),
 }
 
