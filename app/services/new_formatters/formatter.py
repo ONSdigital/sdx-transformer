@@ -1,15 +1,17 @@
 from abc import abstractmethod, ABC
 
-from app.definitions.spec import BuildSpecError, BuildSpec
+from app.definitions.spec import BuildSpecError
 from app.definitions.input import SurveyMetadata, Value
 from app.services.period.period import PeriodFormatError, Period
 
 
 class Formatter[T](ABC):
 
-    def __init__(self, spec: BuildSpec, metadata: SurveyMetadata):
-        self._spec = spec
-        self._metadata = metadata
+    def __init__(self, metadata: SurveyMetadata, period_format: str, pck_period_format: str, form_mappings: dict[str, str]):
+        self._metadata: SurveyMetadata = metadata
+        self._period_format: str = period_format
+        self._pck_period_format: str = pck_period_format
+        self._form_mappings: dict[str, str] = form_mappings
         self._instances: dict[str, dict[str, Value]] = {}   # key=instance_id
 
     def create_or_update_instance(self, instance_id: str, data: dict[str, Value]):
@@ -18,23 +20,24 @@ class Formatter[T](ABC):
 
         self._instances[instance_id].update(data)
 
-    # def get_metadata(self) -> SurveyMetadata:
-    #     return self._metadata
-
     def get_form_type(self, form_type: str) -> str:
-        if form_type in self._spec["form_mapping"]:
-            return self._spec["form_mapping"][form_type]
+        if form_type in self._form_mappings:
+            return self._form_mappings[form_type]
         else:
             return form_type
 
     @abstractmethod
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> T: ...
 
+    def read_instance(self, instance: str, data: dict[str, Value]) -> None:
+        return
+
     def evaluate_values(self) -> list[T]:
         results: list[T] = []
         for instance, data in self._instances.items():
+            self.read_instance(instance, data)
             for qcode, value in data.items():
-                results.append(self.convert_value(qcode, value, instance))
+                results.append(self.convert_value(qcode, value, instance, self._metadata))
 
         return results
 
@@ -46,8 +49,8 @@ class Formatter[T](ABC):
 
     def convert_period(self, period_id: str) -> str:
         try:
-            period = Period(period_id, self._spec["period_format"])
-            return period.convert_to_format(self._spec["pck_period_format"])
+            period = Period(period_id, self._period_format)
+            return period.convert_to_format(self._pck_period_format)
 
         except PeriodFormatError as e:
-            raise BuildSpecError(f"Build spec period in wrong format {self._spec["period_format"]}") from e
+            raise BuildSpecError(f"Build spec period in wrong format {self._period_format}") from e

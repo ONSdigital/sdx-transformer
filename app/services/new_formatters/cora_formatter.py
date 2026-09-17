@@ -7,8 +7,9 @@ class CORAFormatter(PckFormatter):
     """
     Formatter for CORA systems.
     """
-    def __init__(self, spec: BuildSpec, metadata: SurveyMetadata):
-        super().__init__(spec, metadata)
+    def __init__(self, metadata: SurveyMetadata, period_format: str, pck_period_format: str,
+                 form_mappings: dict[str, str]):
+        super().__init__(metadata, period_format, pck_period_format, form_mappings)
         self.page: str = "1"
         self.instance: str = "0"
 
@@ -22,7 +23,8 @@ class CORAFormatter(PckFormatter):
 
 class MESFormatter(CORAFormatter):
 
-    def __init__(self, spec: BuildSpec, metadata: SurveyMetadata):
-        super().__init__(spec, metadata)
+    def __init__(self, metadata: SurveyMetadata, period_format: str, pck_period_format: str,
+                 form_mappings: dict[str, str]):
+        super().__init__(metadata, period_format, pck_period_format, form_mappings)
         self.page: str = "1"
         self.instance: str = "00000"
