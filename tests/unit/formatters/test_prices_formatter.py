@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
-from app.services.new_formatters.prices_formatter import PricesFormatter
+from app.services.formatters.prices_formatter import PricesFormatter
 
 
 class PricesFormatterTest(unittest.TestCase):

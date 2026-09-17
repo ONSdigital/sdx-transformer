@@ -7,7 +7,8 @@ from app.config.dependencies import get_looped_transformer, get_build_spec_mappi
 from app.definitions.input import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, Empty, Value
 from app.definitions.output import PCK, JSON
 from app.definitions.spec import ParseTree
-from app.services.formatters.looping_formatter import LoopingFormatter
+
+from app.services.formatters.formatter import Formatter
 from app.transformers.looped import LoopedSpecTransformer
 
 logger = get_logger()
@@ -63,24 +64,21 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         transformed_data_section: dict[str, Value] = transformer.run(full_tree, data_section)
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
-        formatter: LoopingFormatter = transformer.get_formatter()
-        formatter.set_original(list_data)
+        formatter: Formatter = transformer.get_formatter(survey_metadata)
+        formatter.create_or_update_instance("0", result_data)
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         if looped_sections:
             looped_tree: ParseTree = transformer.interpolate_looped()
 
             for data_dict in looped_sections.values():
-                instance_id = 1
                 for list_item_id, d in data_dict.items():
                     transformed_data: dict[str, Value] = transformer.run(looped_tree, d)
                     # remove any values that are empty or already appear in the data section
                     result = {k: v for k, v in transformed_data.items() if v is not Empty}
-                    formatter.create_or_update_instance(instance_id=str(instance_id), data=result,
-                                                        list_item_id=list_item_id)
-                    instance_id += 1
+                    formatter.create_or_update_instance(instance_id=str(list_item_id), data=result)
 
-        return formatter.generate_pck(result_data, survey_metadata)
+        return formatter.create_output()
 
     except KeyError as ke:
         logger.error(f'Missing required key!: {str(ke)}')

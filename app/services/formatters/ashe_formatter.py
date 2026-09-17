@@ -1,23 +1,44 @@
-from app.definitions.input import Value
-from app.services.formatters.cs_formatter import CSFormatter
+from app.definitions.input import SurveyMetadata, Value
+from app.services.formatters.pck_formatter import PckFormatter
 
 
-class AsheFormatter(CSFormatter):
+class AsheFormatter(PckFormatter):
 
-    def _pck_content(self, data: dict[str, Value]) -> list[str]:
-        """Generate the contents of a pck file as a list of strings"""
-        return [
-            self._pck_item(q, a) for q, a in sorted(
-                {k: v for k, v in data.items() if v is not None}.items(),
-                key = lambda x: x[0][1:]
-            )
-        ]
+    def __init__(self, metadata: SurveyMetadata, period_format: str, pck_period_format: str,
+                 form_mappings: dict[str, str]):
+        super().__init__(metadata, period_format, pck_period_format, form_mappings)
+        self._instance_ids: list[str] = []
 
-    def _pck_item(self, q: int | str, a: int | str) -> str:
-        """Return a PCK line item."""
-        if a.isdigit():
-            if int(a) < 0:
-                # CS can't handle negative numbers!
-                a = 99999999999
+    def read_instance(self, instance: str, data: dict[str, Value]) -> None:
+        if instance not in self._instance_ids:
+            self._instance_ids.append(instance)
 
-        return "{0:04} {1:011}".format(q, a)
+    def _sub_header(self, instance: str, metadata: SurveyMetadata) -> str:
+        """Generate a sub header for PCK data."""
+        nino = instance
+        period = metadata["period_id"]
+        return f'FV\nHE{period}:{nino}:{period}'
+
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
+        line: str = self._get_value(qcode, value)
+        if instance in self._instance_ids:
+            # ensure header is written only once for each new instance
+            self._instance_ids.remove(instance)
+            header = self._sub_header(instance, metadata)
+            return f'{header}\n{line}'
+        else:
+            return line
+
+    def _get_value(self, qcode: str, value: str) -> str:
+        if qcode.isdigit():
+            q = int(qcode)
+            if value.isdigit():
+                v = int(value)
+                if v < 0:
+                    # CS can't handle negative numbers!
+                    v = 99999999999
+                return "{0:04} {1:011}".format(q, v)
+            else:
+                return "{0:04} {1}".format(q, value)
+        else:
+            return f"{qcode} {value}"

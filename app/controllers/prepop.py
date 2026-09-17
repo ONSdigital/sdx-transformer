@@ -14,7 +14,7 @@ from app.services.transform.clean import clean
 logger = get_logger()
 
 
-def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Template]:
+def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier, Template]:
     """
     Performs the steps required to transform prepopulated data.
     """
@@ -28,7 +28,7 @@ def get_prepop(prepop_data: PrepopData, survey_id: str) -> dict[Identifier: Temp
     build_spec: BuildSpec = transformer.get_spec()
     parse_tree: ParseTree = transformer.interpolate()
 
-    result: dict[Identifier: Template] = {}
+    result: dict[Identifier, Template] = {}
 
     if not isinstance(prepop_data, dict):
         raise DataError("Prepop data is not in correct format")
@@ -74,12 +74,12 @@ def get_item_list(template: Template, item_list_path: str) -> Optional[list[Fiel
     t = template
     for p in path:
         if p not in t:
-            logger.warn(f'Incorrect item_list_path: {item_list_path}')
+            logger.warning(f'Incorrect item_list_path: {item_list_path}')
             return None
         t = t[p]
 
     if not isinstance(t, list):
-        logger.warn(f'Incorrect item_list_path: {item_list_path}')
+        logger.warning(f'Incorrect item_list_path: {item_list_path}')
         return None
 
     return t

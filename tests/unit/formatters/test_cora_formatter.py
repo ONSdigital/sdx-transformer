@@ -2,7 +2,7 @@ import unittest
 
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
-from app.services.formatters.cora_looping_formatter import CORALoopingFormatter
+from app.services.formatters.cora_formatter import CoraFormatter
 from tests.integration.flat import are_equal
 
 
@@ -19,12 +19,13 @@ class CoraLoopingFormatterTest(unittest.TestCase):
         }
 
     def test_create_instances(self):
-        cora_formatter = CORALoopingFormatter("YYMM", "YYMM")
+        cora_formatter = CoraFormatter(self.survey_metadata, "YYMM", "YYMM", form_mappings={})
 
+        cora_formatter.create_or_update_instance("0", {"456": "22"})
         cora_formatter.create_or_update_instance("1", {"123": "25"})
         cora_formatter.create_or_update_instance("2", {"123": "49"})
 
-        result: PCK = cora_formatter.generate_pck({"456": "22"}, self.survey_metadata)
+        result: PCK = cora_formatter.create_output()
 
         expected: PCK = """
 001:75553402515:1:201605:1:123:25
@@ -35,13 +36,14 @@ class CoraLoopingFormatterTest(unittest.TestCase):
         self.assertTrue(are_equal(expected, result))
 
     def test_create_and_update_instances(self):
-        cora_formatter = CORALoopingFormatter("YYMM", "YYMM")
+        cora_formatter = CoraFormatter(self.survey_metadata, "YYMM", "YYMM", form_mappings={})
 
+        cora_formatter.create_or_update_instance("0", {"456": "22"})
         cora_formatter.create_or_update_instance("1", {"123": "25"})
         cora_formatter.create_or_update_instance("2", {"123": "49"})
         cora_formatter.create_or_update_instance("1", {"345": "99"})
 
-        result: PCK = cora_formatter.generate_pck({"456": "22"}, self.survey_metadata)
+        result: PCK = cora_formatter.create_output()
 
         expected: PCK = """
 001:75553402515:1:201605:1:123:25

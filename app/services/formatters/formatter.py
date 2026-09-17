@@ -1,31 +1,51 @@
-from app.definitions.formatter import FormatterBase
+from abc import abstractmethod, ABC
+
 from app.definitions.spec import BuildSpecError
 from app.definitions.input import SurveyMetadata, Value
-from app.definitions.output import PCK
 from app.services.period.period import PeriodFormatError, Period
 
 
-class Formatter(FormatterBase):
+class Formatter[T](ABC):
 
-    def __init__(self, period_format: str, pck_period_format: str, form_mapping: dict[str, str] = {}):
-        self._period_format = period_format
-        self._pck_period_format = pck_period_format
-        self._form_mapping = form_mapping
+    def __init__(self, metadata: SurveyMetadata, period_format: str, pck_period_format: str, form_mappings: dict[str, str]):
+        self._metadata: SurveyMetadata = metadata
+        self._period_format: str = period_format
+        self._pck_period_format: str = pck_period_format
+        self._form_mappings: dict[str, str] = form_mappings
+        self._instances: dict[str, dict[str, Value]] = {}   # key=instance_id
+
+    def create_or_update_instance(self, instance_id: str, data: dict[str, Value]):
+        if instance_id not in self._instances:
+            self._instances[instance_id] = {}
+
+        self._instances[instance_id].update(data)
 
     def get_form_type(self, form_type: str) -> str:
-        if form_type in self._form_mapping:
-            return self._form_mapping[form_type]
+        if form_type in self._form_mappings:
+            return self._form_mappings[form_type]
         else:
             return form_type
 
-    def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
-        """Write a PCK file."""
-        pck_lines = self._pck_lines(data, metadata)
-        output = "\n".join(pck_lines)
-        return output + "\n"
+    @abstractmethod
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> T: ...
 
-    def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
-        pass
+    def read_instance(self, instance: str, data: dict[str, Value]) -> None:
+        return
+
+    def evaluate_values(self) -> list[T]:
+        results: list[T] = []
+        for instance, data in self._instances.items():
+            self.read_instance(instance, data)
+            for qcode, value in data.items():
+                results.append(self.convert_value(qcode, value, instance, self._metadata))
+
+        return results
+
+    def create_output(self) -> str:
+        return self.generate_output(self._metadata)
+
+    @abstractmethod
+    def generate_output(self, metadata: SurveyMetadata) -> str: ...
 
     def convert_period(self, period_id: str) -> str:
         try:

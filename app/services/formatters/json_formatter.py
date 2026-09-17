@@ -1,16 +1,16 @@
 import json
 
-from app.definitions.input import SurveyMetadata, Empty, Value
-from app.definitions.output import PCK
+from app.definitions.input import SurveyMetadata, Empty
 from app.services.formatters.formatter import Formatter
 
 
-class JSONFormatter(Formatter):
+class JsonFormatter(Formatter[tuple[str, str]]):
     """
     Format into json.
     """
-    def __init__(self, period_format: str, pck_period_format: str, form_mapping: dict[str, str] = {}):
-        super().__init__(period_format, pck_period_format, form_mapping)
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> tuple[str, str]:
+        return qcode, value
 
-    def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
-        return json.dumps({k: v for k, v in data.items() if v is not Empty})
+    def generate_output(self, metadata: SurveyMetadata) -> str:
+        responses: list[tuple[str, str]] = self.evaluate_values()
+        return json.dumps({r[0]: r[1] for r in responses if r[1] is not Empty})

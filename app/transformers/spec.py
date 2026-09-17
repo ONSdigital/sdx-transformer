@@ -1,21 +1,22 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
-from app.definitions.input import Data, Value
+from app.definitions.input import Data, Value, SurveyMetadata
 from app.definitions.executor import ExecutorBase
-from app.definitions.formatter import FormatterBase
-from app.definitions.mapper import SpecMappingBase, FormatterMappingBase
+from app.definitions.mapper import SpecMappingBase
 from app.definitions.spec import BuildSpec, ParseTree, BuildSpecError
 from app.definitions.transformer import TransformerBase
+from app.services.formatters.formatter import Formatter
+from app.services.mappers.formatter_mappings import FormatterMapping
 from app.services.transform.populate import resolve_value_fields
 
 
-class SpecTransformer[S, F: FormatterBase](TransformerBase[F], ABC):
+class SpecTransformer[S](TransformerBase):
 
     def __init__(self,
                  s: S,
                  spec_mapping: SpecMappingBase[S],
                  executor: ExecutorBase,
-                 formatter_mapping: FormatterMappingBase[F]):
+                 formatter_mapping: FormatterMapping):
 
         self._spec_mapping = spec_mapping
         self._executor = executor
@@ -42,9 +43,9 @@ class SpecTransformer[S, F: FormatterBase](TransformerBase[F], ABC):
         populated_tree = self._executor.populate(tree, data)
         return self._executor.execute(populated_tree)
 
-    def get_formatter(self) -> F:
+    def get_formatter(self, survey_metadata: SurveyMetadata) -> Formatter:
         build_spec = self._build_spec
-        f: F.__class__ = self._formatter_mapping.get_formatter(build_spec["target"], self.looped)
+        f: type[Formatter] = self._formatter_mapping.get_formatter(build_spec["target"])
         if f is None:
             raise BuildSpecError(f"Unable to find formatter for target: {build_spec['target']}")
 
@@ -52,5 +53,5 @@ class SpecTransformer[S, F: FormatterBase](TransformerBase[F], ABC):
         pck_period_format = build_spec["pck_period_format"] if "pck_period_format" in build_spec else period_format
         form_mapping = build_spec["form_mapping"] if "form_mapping" in build_spec else {}
 
-        formatter: F = f(build_spec["period_format"], pck_period_format, form_mapping)
+        formatter: Formatter = f(survey_metadata, build_spec["period_format"], pck_period_format, form_mapping)
         return formatter

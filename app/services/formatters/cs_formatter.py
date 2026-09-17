@@ -1,17 +1,19 @@
-from app.definitions.input import SurveyMetadata, Value
-from app.services.formatters.formatter import Formatter
+from app.definitions.input import SurveyMetadata
+from app.services.formatters.pck_formatter import PckFormatter
 
 
-class CSFormatter(Formatter):
+class CsFormatter(PckFormatter):
     """
     Formatter for common software systems.
     """
 
-    def _pck_lines(self, data: dict[str, Value], metadata: SurveyMetadata) -> list[str]:
-        """Return a list of lines in a PCK file."""
-        return self._pck_header(metadata) + self._pck_content(data)
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
+        if value < 0:
+            # CS can't handle negative numbers!
+            value = 99999999999
+        return "{0:04} {1:011}".format(int(qcode), int(value))
 
-    def _pck_header(self, metadata: SurveyMetadata) -> list[str]:
+    def generate_header(self, metadata: SurveyMetadata) -> list[str]:
         """Generate the header section for the pck as a list of strings"""
         return [
             "FV" + " " * 10,
@@ -27,18 +29,3 @@ class CSFormatter(Formatter):
         form_type: str = self.get_form_type(metadata["form_type"])
 
         return f"{form_type}:{ru_ref}{ru_check}:{period}"
-
-    def _pck_content(self, data: dict[str, Value]) -> list[str]:
-        """Generate the contents of a pck file as a list of strings"""
-        return [
-            self._pck_item(q, a) for q, a in sorted(
-                {int(k): int(v) for k, v in data.items() if v is not None}.items()
-            )
-        ]
-
-    def _pck_item(self, q: int, a: int) -> str:
-        """Return a PCK line item."""
-        if a < 0:
-            # CS can't handle negative numbers!
-            a = 99999999999
-        return "{0:04} {1:011}".format(q, a)

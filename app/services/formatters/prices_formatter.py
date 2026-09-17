@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from app.definitions.input import SurveyMetadata, Value
-from app.services.new_formatters.pck_formatter import PckFormatter
+from app.services.formatters.pck_formatter import PckFormatter
 
 
 @dataclass

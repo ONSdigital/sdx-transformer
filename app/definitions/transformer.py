@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
-from app.definitions.input import Data, Value
-from app.definitions.formatter import FormatterBase
+from app.definitions.input import Data, Value, SurveyMetadata
 from app.definitions.spec import ParseTree, BuildSpec
+from app.services.formatters.formatter import Formatter
 
 
-class TransformerBase[F: FormatterBase](ABC):
+class TransformerBase(ABC):
     """
     Base class for all Transformers.
     A Transformer is responsible for all interactions with the build spec and the data.
@@ -24,5 +24,5 @@ class TransformerBase[F: FormatterBase](ABC):
         pass
 
     @abstractmethod
-    def get_formatter(self) -> F:
+    def get_formatter(self, survey_metadata: SurveyMetadata) -> Formatter:
         pass

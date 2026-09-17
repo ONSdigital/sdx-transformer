@@ -1,16 +1,13 @@
 import json
 
-from app.definitions.input import SurveyMetadata, Empty, Value
-from app.definitions.output import SPP, PCK
+from app.definitions.input import SurveyMetadata
+from app.definitions.output import SPPResponse, SPP
 from app.services.formatters.formatter import Formatter
 
 
-class SPPFormatter(Formatter):
+class SppFormatter(Formatter[SPPResponse]):
 
-    def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
-        return json.dumps(self.get_spp_template(data, metadata))
-
-    def get_spp_template(self, data: dict[str, Value], metadata: SurveyMetadata) -> SPP:
+    def generate_output(self, metadata: SurveyMetadata) -> str:
         ru_ref = metadata["ru_ref"]
 
         result: SPP = {
@@ -21,12 +18,13 @@ class SPPFormatter(Formatter):
             'responses': []
         }
 
-        for qcode, value in data.items():
-            if value is not Empty:
-                result['responses'].append({
-                    "questioncode": qcode,
-                    "response": value,
-                    "instance": 0
-                })
+        responses: list[SPPResponse] = self.evaluate_values()
+        result["responses"] = responses
+        return json.dumps(result)
 
-        return result
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> SPPResponse:
+        return {
+            "questioncode": qcode,
+            "response": value,
+            "instance": int(instance)
+        }

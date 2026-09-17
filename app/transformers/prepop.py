@@ -2,7 +2,7 @@ from app.definitions.spec import BuildSpec
 from app.transformers.spec import SpecTransformer
 
 
-class PrepopTransformer(SpecTransformer[str, None]):
+class PrepopTransformer(SpecTransformer[str]):
 
-    def _load(self, survey_id: str) -> BuildSpec:
-        return self._spec_mapping.get_build_spec(survey_id)
+    def _load(self, s: str) -> BuildSpec:
+        return self._spec_mapping.get_build_spec(s)

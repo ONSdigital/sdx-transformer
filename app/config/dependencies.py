@@ -1,11 +1,10 @@
 from collections.abc import Callable
 
-from app.config.formatters import _formatter_mapping
 from app.config.specs import _build_spec_mapping, _prepop_spec_mapping, _spp_spec_mapping
 from app.config.functions import _function_lookup
 from app.definitions.input import SurveyMetadata
 from app.definitions.executor import ExecutorBase
-from app.definitions.mapper import BuildSpecMappingBase, PrepopMappingBase, FormatterMappingBase
+from app.definitions.mapper import BuildSpecMappingBase, PrepopMappingBase
 from app.definitions.repository import BuildSpecRepositoryBase
 from app.services.mappers.formatter_mappings import FormatterMapping
 from app.services.mappers.spec_mappings import BuildSpecMapping, PrepopSpecMapping
@@ -14,6 +13,10 @@ from app.services.transform.execute import Executor
 from app.transformers.flat import FlatSpecTransformer
 from app.transformers.looped import LoopedSpecTransformer
 from app.transformers.prepop import PrepopTransformer
+
+
+def get_formatter_mapping() -> FormatterMapping:
+    return FormatterMapping()
 
 
 def get_spec_repository() -> BuildSpecRepositoryBase:
@@ -32,10 +35,6 @@ def get_prepop_spec_mapping(repository: BuildSpecRepositoryBase) -> PrepopMappin
     return PrepopSpecMapping(_prepop_spec_mapping, repository)
 
 
-def get_formatter_mapping() -> FormatterMappingBase:
-    return FormatterMapping(_formatter_mapping)
-
-
 def get_func_lookup() -> dict[str, Callable]:
     return _function_lookup
 
@@ -48,7 +47,7 @@ def get_flat_transformer(
     survey_metadata: SurveyMetadata,
     spec_mapping: BuildSpecMappingBase,
     executor: ExecutorBase,
-    formatter_mapping: FormatterMappingBase
+    formatter_mapping: FormatterMapping
 ) -> FlatSpecTransformer:
 
     return FlatSpecTransformer(
@@ -62,7 +61,7 @@ def get_looped_transformer(
     survey_metadata: SurveyMetadata,
     spec_mapping: BuildSpecMappingBase,
     executor: ExecutorBase,
-    formatter_mapping: FormatterMappingBase
+    formatter_mapping: FormatterMapping
 ) -> LoopedSpecTransformer:
 
     return LoopedSpecTransformer(
@@ -76,7 +75,7 @@ def get_prepop_transformer(
     survey_id: str,
     spec_mapping: PrepopMappingBase,
     executor: ExecutorBase,
-    formatter_mapping: FormatterMappingBase
+    formatter_mapping: FormatterMapping
 ) -> PrepopTransformer:
     return PrepopTransformer(
         survey_id,

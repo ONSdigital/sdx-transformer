@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 from app.definitions.input import SurveyMetadata
-from app.services.new_formatters.formatter import Formatter
+from app.services.formatters.formatter import Formatter
 
 
 class PckFormatter(Formatter[str]):

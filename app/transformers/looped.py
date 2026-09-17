@@ -2,18 +2,17 @@ from typing import Literal
 
 from app.definitions.input import SurveyMetadata
 from app.definitions.spec import BuildSpec, ParseTree
-from app.services.formatters.looping_formatter import LoopingFormatter
 from app.services.transform.populate import resolve_value_fields
 from app.transformers.spec import SpecTransformer
 
 template_type = Literal["template", "looped"]
 
 
-class LoopedSpecTransformer(SpecTransformer[SurveyMetadata, LoopingFormatter]):
+class LoopedSpecTransformer(SpecTransformer[SurveyMetadata]):
 
-    def _load(self, survey_metadata: SurveyMetadata) -> BuildSpec:
+    def _load(self, s: SurveyMetadata) -> BuildSpec:
         self.looped = True
-        return self._spec_mapping.get_build_spec(survey_metadata)
+        return self._spec_mapping.get_build_spec(s)
 
     def interpolate_looped(self) -> ParseTree:
         build_spec = self._build_spec

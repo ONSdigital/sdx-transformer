@@ -8,7 +8,6 @@ allowing for dynamic mappings based on the implementation of the Selector interf
 from abc import ABC, abstractmethod
 
 from app.definitions.input import SurveyMetadata
-from app.definitions.formatter import FormatterBase
 from app.definitions.spec import BuildSpec
 
 
@@ -38,19 +37,13 @@ class SpecMappingBase[S](Mapper[S, str], ABC):
 class BuildSpecMappingBase(SpecMappingBase[SurveyMetadata], ABC):
 
     @abstractmethod
-    def get_build_spec(self, survey_metadata: SurveyMetadata) -> BuildSpec:
+    def get_build_spec(self, s: SurveyMetadata) -> BuildSpec:
         pass
 
 
 class PrepopMappingBase(SpecMappingBase[str], ABC):
 
     @abstractmethod
-    def get_build_spec(self, survey_id: str) -> BuildSpec:
+    def get_build_spec(self, s: str) -> BuildSpec:
         pass
 
-
-class FormatterMappingBase[F: FormatterBase](Mapper[bool, F.__class__], ABC):
-
-    @abstractmethod
-    def get_formatter(self, target: str, looped: bool = False) -> F.__class__:
-        pass
