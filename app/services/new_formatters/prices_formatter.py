@@ -68,5 +68,3 @@ class PricesFormatter(PckFormatter):
 
         else:
             return f"{survey_id}:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}"
-
-        return ""
