@@ -11,8 +11,7 @@ class PPILoopingFormatter(LoopingFormatter):
 
     def generate_pck(self, data: dict[str, Value], metadata: SurveyMetadata) -> PCK:
         pck_lines: list[str] = []
-        mappings = {mapping["list_item_id"]: mapping["identifier"] for mapping in
-                    self.original_data["lists"][0]["supplementary_data_mappings"]}
+        mappings = self.supplementary_data_mappings
 
         has_comment = False
         if data["9995"] == "1":

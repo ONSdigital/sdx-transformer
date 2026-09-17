@@ -64,7 +64,9 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
         formatter: LoopingFormatter = transformer.get_formatter()
-        formatter.set_original(list_data)
+        mappings = {mapping["list_item_id"]: mapping["identifier"] for mapping in
+                    list_data["lists"][0]["supplementary_data_mappings"]}
+        formatter.set_original(mappings)
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         if looped_sections:

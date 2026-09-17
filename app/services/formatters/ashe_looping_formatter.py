@@ -13,8 +13,8 @@ class AsheLoopingFormatter(AsheFormatter, LoopingFormatter):
             for instance_data in instance_data_list:
                 data: dict[str, Value] = instance_data["data"]
 
-                supplementary_data = self.original_data["lists"][0]["supplementary_data_mappings"]
-                nino: str = self.get_nino_from_list_item_id(supplementary_data, instance_data["list_item_id"])
+                list_item_id: str = instance_data["list_item_id"]
+                nino: str = self.supplementary_data_mappings[list_item_id]
                 period: str = self.convert_period(metadata["period_id"])
                 header: str = f'HE{period}:{nino}:{period}'
 
