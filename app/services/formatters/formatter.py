@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABC
+from typing import Optional
 
 from app.definitions.spec import BuildSpecError
 from app.definitions.input import SurveyMetadata, Value
@@ -32,12 +33,20 @@ class Formatter[T](ABC):
     def read_instance(self, instance: str, data: dict[str, Value]) -> None:
         return
 
+    def on_none(self) -> Optional[T]:
+        return None
+
     def evaluate_values(self) -> list[T]:
         results: list[T] = []
         for instance, data in self._instances.items():
             self.read_instance(instance, data)
             for qcode, value in data.items():
-                results.append(self.convert_value(qcode, value, instance, self._metadata))
+                if value is None:
+                    print(f"none value for qcode: {qcode}, instance: {instance}")
+                    value = self.on_none()
+
+                if value is not None:
+                    results.append(self.convert_value(qcode, value, instance, self._metadata))
 
         return results
 

@@ -15,3 +15,6 @@ class OpenRoadFormatter(PckFormatter):
         period: str = metadata["period_id"]
         survey_id = metadata["survey_id"]
         return f"{ru_ref}:{survey_id}:{period}:{qcode}:{value if value is not Empty else ''}"
+
+    def on_none(self) -> str:
+        return ""

@@ -12,6 +12,9 @@ class CoraFormatter(PckFormatter):
         self.page: str = "1"
         self.instance: str = "0"
 
+    def on_none(self) -> str:
+        return ""
+
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
         ru: str = metadata["ru_ref"]
         ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru

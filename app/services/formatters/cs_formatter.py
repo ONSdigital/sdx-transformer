@@ -8,10 +8,18 @@ class CsFormatter(PckFormatter):
     """
 
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
-        if value < 0:
-            # CS can't handle negative numbers!
-            value = 99999999999
-        return "{0:04} {1:011}".format(int(qcode), int(value))
+        if qcode.isdigit():
+            q = int(qcode)
+            if value.isdigit():
+                v = int(value)
+                if v < 0:
+                    # CS can't handle negative numbers!
+                    v = 99999999999
+                return "{0:04} {1:011}".format(q, v)
+            else:
+                return "{0:04} {1}".format(q, value)
+        else:
+            return f"{qcode} {value}"
 
     def generate_header(self, metadata: SurveyMetadata) -> list[str]:
         """Generate the header section for the pck as a list of strings"""
