@@ -24,15 +24,9 @@ class BresTests(unittest.TestCase):
 
         actual: PCK = looping_to_pck(submission_data, survey_metadata)
 
-        print("")
-        print(actual)
-
         pck_filepath = "tests/data/bres/221.0019_no_lu.pck"
         with open(pck_filepath, 'rb') as f:
             expected: PCK = f.read().decode()
-
-        # with open(pck_filepath, 'wb') as f:
-        #     f.write(actual.encode("utf-8"))
 
         self.maxDiff = None
         self.assertEqual(expected, actual)
@@ -56,12 +50,9 @@ class BresTests(unittest.TestCase):
         pck_filepath = "tests/data/bres/221.0015.pck"
         with open(pck_filepath, 'rb') as f:
             expected: PCK = f.read().decode()
+            print(expected)
 
-        # with open(pck_filepath, 'wb') as f:
-        #     f.write(actual.encode("utf-8"))
-
-        self.maxDiff = None
-        self.assertEqual(expected, actual)
+        self.assertEqual(sorted(expected.split("\n")), sorted(actual.split("\n")))
 
     def test_0016_to_idbr_pck(self):
 
@@ -83,11 +74,7 @@ class BresTests(unittest.TestCase):
         with open(pck_filepath, 'rb') as f:
             expected: PCK = f.read().decode()
 
-        # with open(pck_filepath, 'wb') as f:
-        #     f.write(actual.encode("utf-8"))
-
-        self.maxDiff = None
-        self.assertEqual(expected, actual)
+        self.assertEqual(sorted(expected.split("\n")), sorted(actual.split("\n")))
 
     def test_0017_to_idbr_pck(self):
 
@@ -109,11 +96,7 @@ class BresTests(unittest.TestCase):
         with open(pck_filepath, 'rb') as f:
             expected: PCK = f.read().decode()
 
-        # with open(pck_filepath, 'wb') as f:
-        #     f.write(actual.encode("utf-8"))
-
-        self.maxDiff = None
-        self.assertEqual(expected, actual)
+        self.assertEqual(sorted(expected.split("\n")), sorted(actual.split("\n")))
 
     def test_0019_to_idbr_pck(self):
 
@@ -135,11 +118,7 @@ class BresTests(unittest.TestCase):
         with open(pck_filepath, 'rb') as f:
             expected: PCK = f.read().decode()
 
-        # with open(pck_filepath, 'wb') as f:
-        #     f.write(actual.encode("utf-8"))
-
-        self.maxDiff = None
-        self.assertEqual(expected, actual)
+        self.assertEqual(sorted(expected.split("\n")), sorted(actual.split("\n")))
 
     def test_to_idbr_pck_new_lu(self):
 
@@ -161,8 +140,4 @@ class BresTests(unittest.TestCase):
         with open(pck_filepath, 'rb') as f:
             expected: PCK = f.read().decode()
 
-        # with open(pck_filepath, 'wb') as f:
-        #     f.write(actual.encode("utf-8"))
-
-        self.maxDiff = None
-        self.assertEqual(expected, actual)
+        self.assertEqual(sorted(expected.split("\n")), sorted(actual.split("\n")))

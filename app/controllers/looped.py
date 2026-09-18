@@ -1,10 +1,12 @@
+from typing import Final
+
 from sdx_base.errors.errors import DataError
 
 from app import get_logger
 from app.services.berd.berd_transformer import berd_to_spp
 from app.config.dependencies import get_looped_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
     get_func_lookup, get_formatter_mapping, get_spp_spec_mapping
-from app.definitions.input import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, Empty, Value
+from app.definitions.input import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, Empty, Value, Group
 from app.definitions.output import PCK, JSON
 from app.definitions.spec import ParseTree
 
@@ -67,10 +69,12 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         formatter: Formatter = transformer.get_formatter(survey_metadata)
         formatter.create_or_update_instance("0", result_data)
 
-        supplementary_data_mappings: list[dict[str, str]] = list_data["lists"][0].get("supplementary_data_mappings", [])
+        groups: list[Group] = list_data["lists"]
+        # supplementary_data_mappings: list[dict[str, str]] = list_data["lists"][0].get("supplementary_data_mappings", [])
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         instance_counter = 1
+        i = 1
         if looped_sections:
             looped_tree: ParseTree = transformer.interpolate_looped()
 
@@ -80,7 +84,7 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
                     # remove any values that are empty or already appear in the data section
                     result = {k: v for k, v in transformed_data.items() if v is not Empty}
 
-                    instance_id = get_instance_id(list_item_id, supplementary_data_mappings)
+                    instance_id, i = get_instance_id(list_item_id, groups, i)
                     if instance_id == "":
                         instance_id = str(instance_counter)
                         instance_counter += 1
@@ -94,12 +98,21 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         raise DataError(ke)
 
 
-def get_instance_id(list_item_id: str, supplementary_data_mappings: list[dict[str, str]]) -> str:
-    for mapping in supplementary_data_mappings:
-        for k, v in mapping.items():
-            if v == list_item_id:
-                return mapping["identifier"]
-    return ""
+# supplementary_data_mappings: list[dict[str, str]]
+DEFAULT_REF: Final[str] = "N0000000"
+
+
+def get_instance_id(list_item_id: str, groups: list[Group], i: int) -> tuple[str, int]:
+    for group in groups:
+        if group["name"] == "additional_sites_name":
+            return f"N{str(i).zfill(len(DEFAULT_REF)-1)}", i + 1
+        else:
+            supplementary_data_mappings = group.get("supplementary_data_mappings", [])
+            for mapping in supplementary_data_mappings:
+                for k, v in mapping.items():
+                    if v == list_item_id:
+                        return mapping["identifier"], i
+    return "", i
 
 
 def set_data_value(d: Data, qcode: str, value: str):
