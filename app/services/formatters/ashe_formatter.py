@@ -15,9 +15,19 @@ class AsheFormatter(PckFormatter):
 
     def _sub_header(self, instance: str, metadata: SurveyMetadata) -> str:
         """Generate a sub header for PCK data."""
-        nino = instance
+        supplementary_data_mappings = self.get_supplementary_data_mappings()
+        #nino = instance
+        nino = self.get_nino_from_list_item_id(supplementary_data_mappings, instance)
         period = self.convert_period(metadata["period_id"])
         return f'FV\nHE{period}:{nino}:{period}'
+
+    def get_nino_from_list_item_id(self, supplementary_data_mapping: list[dict[str, str]], list_item_id: str) -> Value:
+        """Extract the nino from the supplementary data using the list_item_id"""
+        for mapping in supplementary_data_mapping:
+            for k, v in mapping.items():
+                if v == list_item_id:
+                    return mapping["identifier"]
+        return None
 
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
         line: str = self._get_value(qcode, value)

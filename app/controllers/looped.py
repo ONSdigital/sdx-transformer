@@ -47,7 +47,7 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
     """
     try:
         looped_data: LoopedData = convert_to_looped_data(list_data)
-        supplementary_data_identifier = list_data["lists"][0]['supplementary_data_mappings'][0]['identifier']
+        supplementary_data_mappings = list_data["lists"][0]["supplementary_data_mappings"]
         data_section: Data = looped_data['data_section']
 
         # CS can only handle one instance. Therefore, convert all looped data back into 'regular' data
@@ -66,7 +66,7 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
         formatter: Formatter = transformer.get_formatter(survey_metadata)
-        formatter.create_or_update_instance("0", result_data)
+        formatter.create_or_update_instance("0", result_data, supplementary_data_mappings)
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         if looped_sections:
@@ -77,7 +77,7 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
                     transformed_data: dict[str, Value] = transformer.run(looped_tree, d)
                     # remove any values that are empty or already appear in the data section
                     result = {k: v for k, v in transformed_data.items() if v is not Empty}
-                    formatter.create_or_update_instance(instance_id=str(list_item_id), data=result)
+                    formatter.create_or_update_instance(instance_id=str(list_item_id), data=result, supplementary_data_mappings=supplementary_data_mappings)
 
         return formatter.create_output()
 
