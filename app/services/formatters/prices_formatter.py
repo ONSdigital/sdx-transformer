@@ -8,7 +8,6 @@ from app.services.formatters.pck_formatter import PckFormatter
 class _PricesInfo:
     price: str
     spec_marker: str
-    comment_marker: str
 
 
 class PricesFormatter(PckFormatter):
@@ -23,21 +22,17 @@ class PricesFormatter(PckFormatter):
         self._prices_info_mapping: dict[str, _PricesInfo] = {}   #instance:PricesLine
         self._has_comment = False
 
-    def read_instance(self, instance: str, data: dict[str, Value]) -> None:
+    def prepare_instance(self, instance: str, data: dict[str, Value]) -> dict[str, Value]:
         if instance == "0":
             if "9995" in data:
                 if data["9995"] == "1":
                     self._has_comment = True
 
-            return
+            return data
 
-        comment_marker = "0"
-        if self._has_comment:
-            comment_marker = "1"
-        else:
-            if "9996" in data:
-                if data["9996"] == "1":
-                    comment_marker = "1"
+        if "9996" in data:
+            if data["9996"] == "1":
+                self._has_comment = True
 
         price = data["9997"]
         spec_marker = data["9999"]
@@ -45,7 +40,9 @@ class PricesFormatter(PckFormatter):
         self._prices_info_mapping[instance] = _PricesInfo(
             price=price,
             spec_marker=spec_marker,
-            comment_marker=comment_marker)
+        )
+
+        return data
 
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
         if instance in self._prices_info_mapping:
@@ -59,7 +56,7 @@ class PricesFormatter(PckFormatter):
         ru = metadata["ru_ref"]
         supplier: str = ru[0:-1] if ru[-1].isalpha() else ru
         period = metadata["period_id"]
-        comment = prices_info.comment_marker
+        comment = "1" if self._has_comment else "0"
         price = prices_info.price
         spec_marker = prices_info.spec_marker
 

@@ -47,7 +47,6 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
     """
     try:
         looped_data: LoopedData = convert_to_looped_data(list_data)
-        supplementary_data_mappings = list_data["lists"][0]["supplementary_data_mappings"]
         data_section: Data = looped_data['data_section']
 
         # CS can only handle one instance. Therefore, convert all looped data back into 'regular' data
@@ -66,9 +65,12 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
         formatter: Formatter = transformer.get_formatter(survey_metadata)
-        formatter.create_or_update_instance("0", result_data, supplementary_data_mappings)
+        formatter.create_or_update_instance("0", result_data)
+
+        supplementary_data_mappings: list[dict[str, str]] = list_data["lists"][0].get("supplementary_data_mappings", [])
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
+        instance_counter = 1
         if looped_sections:
             looped_tree: ParseTree = transformer.interpolate_looped()
 
@@ -77,13 +79,27 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
                     transformed_data: dict[str, Value] = transformer.run(looped_tree, d)
                     # remove any values that are empty or already appear in the data section
                     result = {k: v for k, v in transformed_data.items() if v is not Empty}
-                    formatter.create_or_update_instance(instance_id=str(list_item_id), data=result, supplementary_data_mappings=supplementary_data_mappings)
+
+                    instance_id = get_instance_id(list_item_id, supplementary_data_mappings)
+                    if instance_id == "":
+                        instance_id = str(instance_counter)
+                        instance_counter += 1
+
+                    formatter.create_or_update_instance(instance_id, data=result)
 
         return formatter.create_output()
 
     except KeyError as ke:
         logger.error(f'Missing required key!: {str(ke)}')
         raise DataError(ke)
+
+
+def get_instance_id(list_item_id: str, supplementary_data_mappings: list[dict[str, str]]) -> str:
+    for mapping in supplementary_data_mappings:
+        for k, v in mapping.items():
+            if v == list_item_id:
+                return mapping["identifier"]
+    return ""
 
 
 def set_data_value(d: Data, qcode: str, value: str):

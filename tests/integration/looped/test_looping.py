@@ -69,10 +69,14 @@ class LoopingTests(unittest.TestCase):
         }
 
         actual: PCK = looping_to_pck(submission_data, survey_metadata)
+        print("------------------")
+        print(actual)
+        print("------------------")
 
         pck_filepath = "tests/data/looping/looping-example-cora.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
+            print(expected)
 
         self.assertTrue(are_equal(expected, actual))
 

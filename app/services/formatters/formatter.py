@@ -14,19 +14,12 @@ class Formatter[T](ABC):
         self._pck_period_format: str = pck_period_format
         self._form_mappings: dict[str, str] = form_mappings
         self._instances: dict[str, dict[str, Value]] = {}   # key=instance_id
-        self._supplementary_data_mappings: list[dict[str, Value]] = {}  # key=list_item_id
 
-    def create_or_update_instance(self, instance_id: str, data: dict[str, Value], supplementary_data_mappings: Optional[list[dict[str, Value]]] = None) -> None:
+    def create_or_update_instance(self, instance_id: str, data: dict[str, Value]) -> None:
         if instance_id not in self._instances:
             self._instances[instance_id] = {}
 
         self._instances[instance_id].update(data)
-
-        if supplementary_data_mappings:
-            self._supplementary_data_mappings = supplementary_data_mappings
-
-    def get_supplementary_data_mappings(self) -> list[dict[str, Value]]:
-        return self._supplementary_data_mappings
 
     def get_form_type(self, form_type: str) -> str:
         if form_type in self._form_mappings:
@@ -37,8 +30,8 @@ class Formatter[T](ABC):
     @abstractmethod
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> T: ...
 
-    def read_instance(self, instance: str, data: dict[str, Value]) -> None:
-        return
+    def prepare_instance(self, instance: str, data: dict[str, Value]) -> dict[str, Value]:
+        return data
 
     def on_none(self) -> Optional[T]:
         return None
@@ -46,7 +39,7 @@ class Formatter[T](ABC):
     def evaluate_values(self) -> list[T]:
         results: list[T] = []
         for instance, data in self._instances.items():
-            self.read_instance(instance, data)
+            data = self.prepare_instance(instance, data)
             for qcode, value in data.items():
                 if value is None:
                     print(f"none value for qcode: {qcode}, instance: {instance}")

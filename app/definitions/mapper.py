@@ -46,4 +46,3 @@ class PrepopMappingBase(SpecMappingBase[str], ABC):
     @abstractmethod
     def get_build_spec(self, s: str) -> BuildSpec:
         pass
-

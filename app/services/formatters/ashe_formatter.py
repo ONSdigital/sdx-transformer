@@ -9,25 +9,21 @@ class AsheFormatter(PckFormatter):
         super().__init__(metadata, period_format, pck_period_format, form_mappings)
         self._instance_ids: list[str] = []
 
-    def read_instance(self, instance: str, data: dict[str, Value]) -> None:
+    def prepare_instance(self, instance: str, data: dict[str, Value]) -> dict[str, Value]:
+        sorted_data = dict(sorted({k: v for k, v in data.items() if v is not None}.items(),
+                key=lambda x: x[0][1:]
+        ))
+
         if instance not in self._instance_ids:
             self._instance_ids.append(instance)
 
+        return sorted_data
+
     def _sub_header(self, instance: str, metadata: SurveyMetadata) -> str:
         """Generate a sub header for PCK data."""
-        supplementary_data_mappings = self.get_supplementary_data_mappings()
-        #nino = instance
-        nino = self.get_nino_from_list_item_id(supplementary_data_mappings, instance)
+        nino = instance
         period = self.convert_period(metadata["period_id"])
         return f'FV\nHE{period}:{nino}:{period}'
-
-    def get_nino_from_list_item_id(self, supplementary_data_mapping: list[dict[str, str]], list_item_id: str) -> Value:
-        """Extract the nino from the supplementary data using the list_item_id"""
-        for mapping in supplementary_data_mapping:
-            for k, v in mapping.items():
-                if v == list_item_id:
-                    return mapping["identifier"]
-        return None
 
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
         line: str = self._get_value(qcode, value)
