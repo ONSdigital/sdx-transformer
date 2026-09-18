@@ -47,6 +47,7 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
     """
     try:
         looped_data: LoopedData = convert_to_looped_data(list_data)
+        supplementary_data_identifier = list_data["lists"][0]['supplementary_data_mappings'][0]['identifier']
         data_section: Data = looped_data['data_section']
 
         # CS can only handle one instance. Therefore, convert all looped data back into 'regular' data

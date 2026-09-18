@@ -16,7 +16,7 @@ class AsheFormatter(PckFormatter):
     def _sub_header(self, instance: str, metadata: SurveyMetadata) -> str:
         """Generate a sub header for PCK data."""
         nino = instance
-        period = metadata["period_id"]
+        period = self.convert_period(metadata["period_id"])
         return f'FV\nHE{period}:{nino}:{period}'
 
     def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
