@@ -1,22 +1,16 @@
-from collections.abc import Callable
-
 from fastapi import APIRouter
 from sdx_base.errors.errors import DataError
 from starlette.responses import JSONResponse, PlainTextResponse
 
 from app import get_logger
-from app.controllers.flat import flat_to_spp, flat_to_pck
-from app.controllers.looped import looping_to_spp, looping_to_pck
+from app.controllers.submission import submission_to_pck, submission_to_spp
 from app.definitions.output import PCK, JSON
 from app.definitions.spec import Template
-from app.definitions.input import Data, SurveyMetadata, Identifier, PrepopData, ListCollector
+from app.definitions.input import SurveyMetadata, Identifier, PrepopData
 from app.controllers.prepop import get_prepop
 
 logger = get_logger()
 router = APIRouter()
-
-looping_processor = Callable[[ListCollector, SurveyMetadata], str]
-flat_processor = Callable[[dict[str, str], SurveyMetadata], str]
 
 
 @router.post("/pck")
@@ -41,7 +35,7 @@ async def process_pck(survey_id: str,
         "data_version": data_version
     }
 
-    result: PCK = _process(data, metadata, looping_to_pck, flat_to_pck)
+    result: PCK = submission_to_pck(data, metadata)
     return PlainTextResponse(content=result, status_code=200)
 
 
@@ -66,32 +60,9 @@ async def process_spp(survey_id: str,
         "period_end_date": period_end_date,
         "data_version": data_version
     }
-    result: JSON = _process(data, metadata, looping_to_spp, flat_to_spp)
+    result: JSON = submission_to_spp(data, metadata)
     return PlainTextResponse(content=result, status_code=200, media_type="application/json")
 
-
-def _process(submission_data: dict,
-             survey_metadata: SurveyMetadata,
-             process_looping: looping_processor,
-             process_flat: flat_processor) -> str:
-
-    data_version: str = survey_metadata["data_version"] if "data_version" in survey_metadata else "0.0.1"
-    result: str
-
-    if data_version == "0.0.3":
-        list_data: ListCollector = submission_data
-        if list_data is None:
-            raise DataError("Submission data is not in json format")
-
-        result = process_looping(list_data, survey_metadata)
-
-    else:
-        map_data: Data = submission_data
-        if map_data is None:
-            raise DataError("Submission data is not in json format")
-        result = process_flat(map_data, survey_metadata)
-
-    return result
 
 
 @router.post("/prepop")

@@ -1,9 +1,9 @@
 import json
 import unittest
 
+from app.controllers.submission import submission_to_spp
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import SPP
-from app.controllers.flat import flat_to_spp
 from tests.integration.flat import read_submission_data
 
 
@@ -23,7 +23,7 @@ class BerdTests(unittest.TestCase):
             "period_end_date": "2016-05-31",
         }
 
-        actual: SPP = json.loads(flat_to_spp(submission_data, survey_metadata))
+        actual: SPP = json.loads(submission_to_spp(submission_data, survey_metadata))
 
         spp_filepath = "tests/data/berd/002.0006-spp.json"
         with open(spp_filepath) as f:
