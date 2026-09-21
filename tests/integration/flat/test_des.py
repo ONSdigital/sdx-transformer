@@ -22,6 +22,9 @@ class DesPckTests(unittest.TestCase):
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
+        print("-------------")
+        print(actual)
+        print("-------------")
 
         pck_filepath = "tests/data/des/187.0001.pck"
         with open(pck_filepath) as f:

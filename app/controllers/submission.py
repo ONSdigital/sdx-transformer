@@ -85,11 +85,10 @@ def _get_looping(looped_data: LoopedData,
             full_tree: ParseTree = transformer.interpolate()
             add_metadata_to_input_data(data_section, survey_metadata)
 
-        transformed_data_section: dict[str, Value] = transformer.run(full_tree, data_section)
-        result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
+        transformed_data: dict[str, Value] = transformer.run(full_tree, data_section)
 
         formatter: Formatter = transformer.get_formatter(survey_metadata)
-        formatter.add_data("0", result_data)
+        formatter.add_data("0", transformed_data)
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         instance_counter = 1
