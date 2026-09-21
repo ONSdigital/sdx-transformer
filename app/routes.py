@@ -64,7 +64,6 @@ async def process_spp(survey_id: str,
     return PlainTextResponse(content=result, status_code=200, media_type="application/json")
 
 
-
 @router.post("/prepop")
 async def process_prepop(prepop_data: PrepopData, survey_id: str) -> JSONResponse:
     """Process a request to convert pre-population data into supplementary format."""

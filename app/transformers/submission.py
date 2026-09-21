@@ -8,7 +8,7 @@ from app.transformers.spec import SpecTransformer
 template_type = Literal["template", "looped"]
 
 
-class LoopedSpecTransformer(SpecTransformer[SurveyMetadata]):
+class SubmissionSpecTransformer(SpecTransformer[SurveyMetadata]):
 
     def _load(self, s: SurveyMetadata) -> BuildSpec:
         return self._spec_mapping.get_build_spec(s)

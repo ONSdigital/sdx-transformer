@@ -4,7 +4,7 @@ from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
 from app.definitions.spec import ParseTree
 from app.controllers.submission import submission_to_pck
-from app.transformers.flat import FlatSpecTransformer
+from app.transformers.submission import SubmissionSpecTransformer
 from tests.integration.flat import read_submission_data, remove_empties, are_equal, get_transformer
 
 survey_metadata: SurveyMetadata = {
@@ -23,7 +23,7 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_minimal.json"
         submission_data = read_submission_data(filepath)
 
-        transformer: FlatSpecTransformer = get_transformer(survey_metadata)
+        transformer: SubmissionSpecTransformer = get_transformer(survey_metadata)
         parse_tree: ParseTree = transformer.interpolate()
         transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)
@@ -36,7 +36,7 @@ class MWSSTransformTests(unittest.TestCase):
         filepath = "tests/data/mwss/mwss_full.json"
         submission_data = read_submission_data(filepath)
 
-        transformer: FlatSpecTransformer = get_transformer(survey_metadata)
+        transformer: SubmissionSpecTransformer = get_transformer(survey_metadata)
         parse_tree: ParseTree = transformer.interpolate()
         transformed_data = transformer.run(parse_tree, submission_data)
         actual = remove_empties(transformed_data)

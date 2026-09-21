@@ -10,8 +10,7 @@ from app.services.mappers.formatter_mappings import FormatterMapping
 from app.services.mappers.spec_mappings import BuildSpecMapping, PrepopSpecMapping
 from app.repositories.file_repository import BuildSpecFileRepository
 from app.services.transform.execute import Executor
-from app.transformers.flat import FlatSpecTransformer
-from app.transformers.looped import LoopedSpecTransformer
+from app.transformers.submission import SubmissionSpecTransformer
 from app.transformers.prepop import PrepopTransformer
 
 
@@ -43,28 +42,14 @@ def get_executor(func_lookup: dict[str, Callable]) -> ExecutorBase:
     return Executor(func_lookup)
 
 
-def get_flat_transformer(
+def get_submission_transformer(
     survey_metadata: SurveyMetadata,
     spec_mapping: BuildSpecMappingBase,
     executor: ExecutorBase,
     formatter_mapping: FormatterMapping
-) -> FlatSpecTransformer:
+) -> SubmissionSpecTransformer:
 
-    return FlatSpecTransformer(
-        survey_metadata,
-        spec_mapping,
-        executor,
-        formatter_mapping)
-
-
-def get_looped_transformer(
-    survey_metadata: SurveyMetadata,
-    spec_mapping: BuildSpecMappingBase,
-    executor: ExecutorBase,
-    formatter_mapping: FormatterMapping
-) -> LoopedSpecTransformer:
-
-    return LoopedSpecTransformer(
+    return SubmissionSpecTransformer(
         survey_metadata,
         spec_mapping,
         executor,

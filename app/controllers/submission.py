@@ -4,14 +4,14 @@ from sdx_base.errors.errors import DataError
 
 from app import get_logger
 from app.services.berd.berd_transformer import berd_to_spp
-from app.config.dependencies import get_looped_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
+from app.config.dependencies import get_submission_transformer, get_build_spec_mapping, get_spec_repository, get_executor, \
     get_func_lookup, get_formatter_mapping, get_spp_spec_mapping
 from app.definitions.input import Data, SurveyMetadata, AnswerCode, ListCollector, LoopedData, Empty, Value, Group
 from app.definitions.output import PCK, JSON
 from app.definitions.spec import ParseTree
 
 from app.services.formatters.formatter import Formatter
-from app.transformers.looped import LoopedSpecTransformer
+from app.transformers.submission import SubmissionSpecTransformer
 
 logger = get_logger()
 
@@ -25,7 +25,7 @@ def submission_to_spp(submission_data: dict, survey_metadata: SurveyMetadata) ->
 
 
 def process_submission(submission_data: dict, survey_metadata: SurveyMetadata, spp: bool) -> PCK:
-    transformer: LoopedSpecTransformer = get_looped_transformer(
+    transformer: SubmissionSpecTransformer = get_submission_transformer(
         survey_metadata,
         get_spp_spec_mapping(get_spec_repository()) if spp else get_build_spec_mapping(get_spec_repository()),
         get_executor(get_func_lookup()),
@@ -60,7 +60,7 @@ def process_submission(submission_data: dict, survey_metadata: SurveyMetadata, s
 def _get_looping(looped_data: LoopedData,
                  groups: list[Group],
                  survey_metadata: SurveyMetadata,
-                 transformer: LoopedSpecTransformer,
+                 transformer: SubmissionSpecTransformer,
                  default: bool = False) -> PCK:
     """
     Performs the steps required to transform looped data.

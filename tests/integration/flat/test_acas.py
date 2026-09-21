@@ -4,7 +4,8 @@ from app.controllers.submission import submission_to_pck
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
 from app.definitions.spec import ParseTree
-from app.transformers.flat import FlatSpecTransformer
+
+from app.transformers.submission import SubmissionSpecTransformer
 from tests.integration.flat import read_submission_data, remove_empties, are_equal, get_transformer
 
 
@@ -14,7 +15,7 @@ class ACASTransformTests(unittest.TestCase):
         filepath = "tests/data/acas/acas.json"
         submission_data = read_submission_data(filepath)
 
-        transformer: FlatSpecTransformer = get_transformer(
+        transformer: SubmissionSpecTransformer = get_transformer(
             {
                 "survey_id": "171",
                 "period_id": "201605",
