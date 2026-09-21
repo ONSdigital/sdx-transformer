@@ -244,6 +244,7 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
         "data_section": data_section
     }
 
+
 def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMetadata):
     for k, v in survey_metadata.items():
         submission_data[k] = v

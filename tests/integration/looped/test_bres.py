@@ -44,6 +44,7 @@ class BresTests(unittest.TestCase):
             "form_type": "0015",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3",
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
@@ -51,7 +52,6 @@ class BresTests(unittest.TestCase):
         pck_filepath = "tests/data/bres/221.0015.pck"
         with open(pck_filepath, 'rb') as f:
             expected: PCK = f.read().decode()
-            print(expected)
 
         self.assertEqual(sorted(expected.split("\n")), sorted(actual.split("\n")))
 
@@ -67,6 +67,7 @@ class BresTests(unittest.TestCase):
             "form_type": "0016",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3",
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
@@ -89,6 +90,7 @@ class BresTests(unittest.TestCase):
             "form_type": "0017",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3",
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
@@ -111,6 +113,7 @@ class BresTests(unittest.TestCase):
             "form_type": "0019",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3",
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
@@ -133,6 +136,7 @@ class BresTests(unittest.TestCase):
             "form_type": "0019",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3",
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
