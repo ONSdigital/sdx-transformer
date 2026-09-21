@@ -50,7 +50,7 @@ def _run(submission_data: Data, survey_metadata: SurveyMetadata, transformer: Tr
     transformed_data: dict[str, Value] = transformer.run(tree, submission_data)
     logger.info("Completed data transformation")
     formatter = transformer.get_formatter(survey_metadata)
-    formatter.create_or_update_instance("0", transformed_data)
+    formatter.add_data("0", transformed_data)
     return formatter.create_output()
 
 

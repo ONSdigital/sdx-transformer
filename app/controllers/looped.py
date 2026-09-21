@@ -67,7 +67,7 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
         formatter: Formatter = transformer.get_formatter(survey_metadata)
-        formatter.create_or_update_instance("0", result_data)
+        formatter.add_data("0", result_data)
 
         groups: list[Group] = list_data["lists"]
 
@@ -88,7 +88,7 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
                         instance_id = str(instance_counter)
                         instance_counter += 1
 
-                    formatter.create_or_update_instance(instance_id, data=result)
+                    formatter.add_data(instance_id, data=result)
 
         return formatter.create_output()
 

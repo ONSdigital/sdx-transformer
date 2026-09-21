@@ -5,7 +5,7 @@ from app.definitions.executor import ExecutorBase
 from app.definitions.mapper import SpecMappingBase
 from app.definitions.spec import BuildSpec, ParseTree, BuildSpecError
 from app.definitions.transformer import TransformerBase
-from app.services.formatters.formatter import Formatter, _SurveyMetadata
+from app.services.formatters.formatter import Formatter, SubmissionMetadata
 from app.services.mappers.formatter_mappings import FormatterMapping
 from app.services.period.period import Period, PeriodFormatError
 from app.services.transform.populate import resolve_value_fields
@@ -46,7 +46,7 @@ class SpecTransformer[S](TransformerBase):
 
     def get_formatter(self, survey_metadata: SurveyMetadata) -> Formatter:
         build_spec = self._build_spec
-        metadata: _SurveyMetadata
+        metadata: SubmissionMetadata
 
         f: type[Formatter] = self._formatter_mapping.get_formatter(build_spec["target"])
         if f is None:
@@ -59,7 +59,7 @@ class SpecTransformer[S](TransformerBase):
         form_mapping = build_spec["form_mapping"] if "form_mapping" in build_spec else {}
         form_type = self._get_form_type(survey_metadata["form_type"], form_mapping)
 
-        metadata = _SurveyMetadata(
+        metadata = SubmissionMetadata(
             survey_id=survey_metadata["survey_id"],
             period_id=period,
             ru_ref=survey_metadata["ru_ref"],

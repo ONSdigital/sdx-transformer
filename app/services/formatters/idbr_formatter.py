@@ -1,11 +1,11 @@
 from typing import Optional
 
 from app.definitions.input import Empty, Value
-from app.services.formatters.formatter import _SurveyMetadata
+from app.services.formatters.formatter import SubmissionMetadata
 from app.services.formatters.pck_formatter import PckFormatter
 
 
-def _get_scan_number(metadata: _SurveyMetadata, ref: Optional[str] = None) -> str:
+def _get_scan_number(metadata: SubmissionMetadata, ref: Optional[str] = None) -> str:
     """Create a scan number based on the passed reference.
     If no reference is passed (as should be the case for the top level ru) then
     create a unique number from the ruref, survey_id and period"""
@@ -30,7 +30,7 @@ class IdbrFormatter(PckFormatter):
 
         return sorted_data
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> str:
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SubmissionMetadata) -> str:
         ru: str = metadata.ru_ref
         ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
         checklet: str = ru[-1] if ru[-1].isalpha() else ""

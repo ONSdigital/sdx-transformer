@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from app.definitions.input import Value
-from app.services.formatters.formatter import _SurveyMetadata
+from app.services.formatters.formatter import SubmissionMetadata
 from app.services.formatters.pck_formatter import PckFormatter
 
 
@@ -17,7 +17,7 @@ class PricesFormatter(PckFormatter):
     It extends the LoopingFormatter class and overrides the generate_pck method.
     """
 
-    def __init__(self, metadata: _SurveyMetadata):
+    def __init__(self, metadata: SubmissionMetadata):
         super().__init__(metadata)
         self._prices_info_mapping: dict[str, _PricesInfo] = {}   #instance:PricesLine
         self._has_comment = False
@@ -44,7 +44,7 @@ class PricesFormatter(PckFormatter):
 
         return data
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> str:
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SubmissionMetadata) -> str:
         if instance in self._prices_info_mapping:
             prices_info = self._prices_info_mapping[instance]
             del self._prices_info_mapping[instance]

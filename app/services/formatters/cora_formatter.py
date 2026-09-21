@@ -1,5 +1,5 @@
 from app.definitions.input import Empty
-from app.services.formatters.formatter import _SurveyMetadata
+from app.services.formatters.formatter import SubmissionMetadata
 from app.services.formatters.pck_formatter import PckFormatter
 
 
@@ -12,7 +12,7 @@ class CoraFormatter(PckFormatter):
     def on_none(self) -> str:
         return ""
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> str:
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SubmissionMetadata) -> str:
         ru: str = metadata.ru_ref
         ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
         period: str = metadata.period_id
@@ -22,7 +22,7 @@ class CoraFormatter(PckFormatter):
 
 class MesFormatter(CoraFormatter):
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> str:
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SubmissionMetadata) -> str:
         if instance == "0":
             instance = "00000"
         super().convert_value(qcode, value, instance, metadata)

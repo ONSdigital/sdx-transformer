@@ -1,12 +1,12 @@
 import json
 
 from app.definitions.output import SPPResponse, SPP
-from app.services.formatters.formatter import Formatter, _SurveyMetadata
+from app.services.formatters.formatter import Formatter, SubmissionMetadata
 
 
 class SppFormatter(Formatter[SPPResponse]):
 
-    def generate_output(self, metadata: _SurveyMetadata) -> str:
+    def generate_output(self, metadata: SubmissionMetadata) -> str:
         ru_ref = metadata.ru_ref
 
         result: SPP = {
@@ -21,7 +21,7 @@ class SppFormatter(Formatter[SPPResponse]):
         result["responses"] = responses
         return json.dumps(result)
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> SPPResponse:
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SubmissionMetadata) -> SPPResponse:
         return {
             "questioncode": qcode,
             "response": value,

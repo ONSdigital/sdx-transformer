@@ -1,11 +1,11 @@
 from app.definitions.input import Value
-from app.services.formatters.formatter import _SurveyMetadata
+from app.services.formatters.formatter import SubmissionMetadata
 from app.services.formatters.pck_formatter import PckFormatter
 
 
 class AsheFormatter(PckFormatter):
 
-    def __init__(self, metadata: _SurveyMetadata):
+    def __init__(self, metadata: SubmissionMetadata):
         super().__init__(metadata)
         self._instance_ids: list[str] = []
 
@@ -19,13 +19,13 @@ class AsheFormatter(PckFormatter):
 
         return sorted_data
 
-    def _sub_header(self, instance: str, metadata: _SurveyMetadata) -> str:
+    def _sub_header(self, instance: str, metadata: SubmissionMetadata) -> str:
         """Generate a sub header for PCK data."""
         nino = instance
         period = metadata.period_id
         return f'FV\nHE{period}:{nino}:{period}'
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> str:
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: SubmissionMetadata) -> str:
         line: str = self._get_value(qcode, value)
         if instance in self._instance_ids:
             # ensure header is written only once for each new instance
