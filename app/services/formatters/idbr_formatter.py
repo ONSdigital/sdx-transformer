@@ -1,19 +1,20 @@
 from typing import Optional
 
-from app.definitions.input import SurveyMetadata, Empty, Value
+from app.definitions.input import Empty, Value
+from app.services.formatters.formatter import _SurveyMetadata
 from app.services.formatters.pck_formatter import PckFormatter
 
 
-def _get_scan_number(metadata: SurveyMetadata, ref: Optional[str] = None) -> str:
+def _get_scan_number(metadata: _SurveyMetadata, ref: Optional[str] = None) -> str:
     """Create a scan number based on the passed reference.
     If no reference is passed (as should be the case for the top level ru) then
     create a unique number from the ruref, survey_id and period"""
     if ref and ref != "0":
         if ref[0] == "N":
-            return f's_{metadata["ru_ref"]}_{metadata["survey_id"]}_{metadata["period_id"]}_{ref}'
+            return f's_{metadata.ru_ref}_{metadata.survey_id}_{metadata.period_id}_{ref}'
         return f's{ref}'
 
-    return f's_{metadata["ru_ref"]}_{metadata["survey_id"]}_{metadata["period_id"]}'
+    return f's_{metadata.ru_ref}_{metadata.survey_id}_{metadata.period_id}'
 
 
 class IdbrFormatter(PckFormatter):
@@ -29,13 +30,13 @@ class IdbrFormatter(PckFormatter):
 
         return sorted_data
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
-        ru: str = metadata["ru_ref"]
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> str:
+        ru: str = metadata.ru_ref
         ru_ref: str = ru[0:-1] if ru[-1].isalpha() else ru
         checklet: str = ru[-1] if ru[-1].isalpha() else ""
-        period: str = metadata["period_id"]
-        survey_id = metadata["survey_id"]
-        form_type = metadata["form_type"]
+        period: str = metadata.period_id
+        survey_id = metadata.survey_id
+        form_type = metadata.form_type
         lu_ref = instance if instance != "0" else "00000000"  # ?
         lu_checklet = "A"
         page_no = "001"

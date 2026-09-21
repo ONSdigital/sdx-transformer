@@ -1,8 +1,7 @@
 "title": "Build Spec for bres survey"
 "survey_id": "221"
 "target": "IDBR"
-"period_format": ""
-"pck_period_format": ""
+"period_format": "YYYYMM"
 "template":
     # Ruref codes (section A)
     "010": "$010_LOOKUP"

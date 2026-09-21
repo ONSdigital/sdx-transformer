@@ -1,18 +1,22 @@
 from abc import abstractmethod, ABC
+from dataclasses import dataclass
 from typing import Optional
 
-from app.definitions.spec import BuildSpecError
-from app.definitions.input import SurveyMetadata, Value
-from app.services.period.period import PeriodFormatError, Period
+from app.definitions.input import Value
+
+
+@dataclass
+class _SurveyMetadata:
+    survey_id: str
+    period_id: str
+    ru_ref: str
+    form_type: str
 
 
 class Formatter[T](ABC):
 
-    def __init__(self, metadata: SurveyMetadata, period_format: str, pck_period_format: str, form_mappings: dict[str, str]):
-        self._metadata: SurveyMetadata = metadata
-        self._period_format: str = period_format
-        self._pck_period_format: str = pck_period_format
-        self._form_mappings: dict[str, str] = form_mappings
+    def __init__(self, metadata: _SurveyMetadata):
+        self._metadata: _SurveyMetadata = metadata
         self._instances: dict[str, dict[str, Value]] = {}   # key=instance_id
 
     def create_or_update_instance(self, instance_id: str, data: dict[str, Value]) -> None:
@@ -21,14 +25,8 @@ class Formatter[T](ABC):
 
         self._instances[instance_id].update(data)
 
-    def get_form_type(self, form_type: str) -> str:
-        if form_type in self._form_mappings:
-            return self._form_mappings[form_type]
-        else:
-            return form_type
-
     @abstractmethod
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> T: ...
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> T: ...
 
     def prepare_instance(self, instance: str, data: dict[str, Value]) -> dict[str, Value]:
         return data
@@ -54,12 +52,4 @@ class Formatter[T](ABC):
         return self.generate_output(self._metadata)
 
     @abstractmethod
-    def generate_output(self, metadata: SurveyMetadata) -> str: ...
-
-    def convert_period(self, period_id: str) -> str:
-        try:
-            period = Period(period_id, self._period_format)
-            return period.convert_to_format(self._pck_period_format)
-
-        except PeriodFormatError as e:
-            raise BuildSpecError(f"Build spec period in wrong format {self._period_format}") from e
+    def generate_output(self, metadata: _SurveyMetadata) -> str: ...

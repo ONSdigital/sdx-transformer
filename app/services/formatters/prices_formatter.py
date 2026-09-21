@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
-from app.definitions.input import SurveyMetadata, Value
+from app.definitions.input import Value
+from app.services.formatters.formatter import _SurveyMetadata
 from app.services.formatters.pck_formatter import PckFormatter
 
 
@@ -16,9 +17,8 @@ class PricesFormatter(PckFormatter):
     It extends the LoopingFormatter class and overrides the generate_pck method.
     """
 
-    def __init__(self, metadata: SurveyMetadata, period_format: str, pck_period_format: str,
-                 form_mappings: dict[str, str]):
-        super().__init__(metadata, period_format, pck_period_format, form_mappings)
+    def __init__(self, metadata: _SurveyMetadata):
+        super().__init__(metadata)
         self._prices_info_mapping: dict[str, _PricesInfo] = {}   #instance:PricesLine
         self._has_comment = False
 
@@ -44,18 +44,18 @@ class PricesFormatter(PckFormatter):
 
         return data
 
-    def convert_value(self, qcode: str, value: str, instance: str, metadata: SurveyMetadata) -> str:
+    def convert_value(self, qcode: str, value: str, instance: str, metadata: _SurveyMetadata) -> str:
         if instance in self._prices_info_mapping:
             prices_info = self._prices_info_mapping[instance]
             del self._prices_info_mapping[instance]
         else:
             return ""
 
-        survey_id = metadata["survey_id"]
+        survey_id = metadata.survey_id
         item_number = instance
-        ru = metadata["ru_ref"]
+        ru = metadata.ru_ref
         supplier: str = ru[0:-1] if ru[-1].isalpha() else ru
-        period = metadata["period_id"]
+        period = metadata.period_id
         comment = "1" if self._has_comment else "0"
         price = prices_info.price
         spec_marker = prices_info.spec_marker

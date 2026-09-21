@@ -70,7 +70,6 @@ def _get_looping(list_data: ListCollector, survey_metadata: SurveyMetadata, tran
         formatter.create_or_update_instance("0", result_data)
 
         groups: list[Group] = list_data["lists"]
-        # supplementary_data_mappings: list[dict[str, str]] = list_data["lists"][0].get("supplementary_data_mappings", [])
 
         looped_sections: dict[str, dict[str, Data]] = looped_data['looped_sections']
         instance_counter = 1
