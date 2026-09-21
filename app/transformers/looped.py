@@ -11,7 +11,6 @@ template_type = Literal["template", "looped"]
 class LoopedSpecTransformer(SpecTransformer[SurveyMetadata]):
 
     def _load(self, s: SurveyMetadata) -> BuildSpec:
-        self.looped = True
         return self._spec_mapping.get_build_spec(s)
 
     def interpolate_looped(self) -> ParseTree:

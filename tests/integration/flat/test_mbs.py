@@ -24,10 +24,13 @@ class MBSPckTests(unittest.TestCase):
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
 
         print(actual)
+        print("--------------")
 
         pck_filepath = "tests/data/mbs/009.0106.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
+
+            print(expected)
 
         self.assertTrue(are_equal(expected, actual))
 

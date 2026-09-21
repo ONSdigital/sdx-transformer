@@ -44,6 +44,9 @@ class SpecTransformer[S](TransformerBase):
         populated_tree = self._executor.populate(tree, data)
         return self._executor.execute(populated_tree)
 
+    def is_default(self) -> bool:
+        return "default_template" in self._build_spec
+
     def get_formatter(self, survey_metadata: SurveyMetadata) -> Formatter:
         build_spec = self._build_spec
         metadata: SubmissionMetadata

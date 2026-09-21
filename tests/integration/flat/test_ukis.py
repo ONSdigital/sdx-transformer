@@ -22,10 +22,13 @@ class UKISPckTests(unittest.TestCase):
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
+        print(actual)
+        print("_---------------")
 
         pck_filepath = "tests/data/ukis/144.0001.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
+            print(expected)
 
         self.assertTrue(are_equal(expected, actual))
 

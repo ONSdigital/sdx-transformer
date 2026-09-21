@@ -32,6 +32,8 @@ def process_submission(submission_data: dict, survey_metadata: SurveyMetadata, s
         get_formatter_mapping(),
     )
 
+    default = transformer.is_default()
+
     looped_data: LoopedData
     groups: list[Group] = []
 
@@ -52,10 +54,14 @@ def process_submission(submission_data: dict, survey_metadata: SurveyMetadata, s
             "data_section": submission_data,
             "looped_sections": {}
         }
-    return _get_looping(looped_data, groups, survey_metadata, transformer)
+    return _get_looping(looped_data, groups, survey_metadata, transformer, default)
 
 
-def _get_looping(looped_data: LoopedData, groups: list[Group], survey_metadata: SurveyMetadata, transformer: LoopedSpecTransformer) -> PCK:
+def _get_looping(looped_data: LoopedData,
+                 groups: list[Group],
+                 survey_metadata: SurveyMetadata,
+                 transformer: LoopedSpecTransformer,
+                 default: bool = False) -> PCK:
     """
     Performs the steps required to transform looped data.
     """
@@ -73,7 +79,12 @@ def _get_looping(looped_data: LoopedData, groups: list[Group], survey_metadata: 
 
             looped_data["looped_sections"] = {}
 
-        full_tree: ParseTree = transformer.interpolate()
+        if default:
+            full_tree: ParseTree = {qcode: f'#{qcode}' for qcode in data_section.keys()}
+        else:
+            full_tree: ParseTree = transformer.interpolate()
+            add_metadata_to_input_data(data_section, survey_metadata)
+
         transformed_data_section: dict[str, Value] = transformer.run(full_tree, data_section)
         result_data = {k: v for k, v in transformed_data_section.items() if v is not Empty}
 
@@ -232,3 +243,7 @@ def convert_to_looped_data(data: ListCollector) -> LoopedData:
         "looped_sections": looped_sections,
         "data_section": data_section
     }
+
+def add_metadata_to_input_data(submission_data: Data, survey_metadata: SurveyMetadata):
+    for k, v in survey_metadata.items():
+        submission_data[k] = v
