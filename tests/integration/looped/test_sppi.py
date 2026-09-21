@@ -15,6 +15,7 @@ class TestSPPI(unittest.TestCase):
             "form_type": "0011",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3",
         }
 
     def test_prices_0011(self):

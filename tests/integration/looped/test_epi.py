@@ -16,7 +16,8 @@ class TestEPI(unittest.TestCase):
             "period_id": "201605",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
-            "form_type": "0001"
+            "form_type": "0001",
+            "data_version": "0.0.3",
         }
 
     def test_downstream_epi_full(self):

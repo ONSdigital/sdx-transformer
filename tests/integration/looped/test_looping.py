@@ -66,17 +66,14 @@ class LoopingTests(unittest.TestCase):
             "form_type": "0001",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3"
         }
 
         actual: PCK = submission_to_pck(submission_data, survey_metadata)
-        print("------------------")
-        print(actual)
-        print("------------------")
 
         pck_filepath = "tests/data/looping/looping-example-cora.pck"
         with open(pck_filepath) as f:
             expected: PCK = f.read()
-            print(expected)
 
         self.assertTrue(are_equal(expected, actual))
 
@@ -92,6 +89,7 @@ class LoopingTests(unittest.TestCase):
             "form_type": "0001",
             "period_start_date": "2016-05-01",
             "period_end_date": "2016-05-31",
+            "data_version": "0.0.3",
         }
 
         actual: SPP = json.loads(submission_to_pck(submission_data, survey_metadata))
