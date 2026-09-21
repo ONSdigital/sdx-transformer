@@ -1,6 +1,6 @@
 import unittest
 
-from app.controllers.looped import looping_to_pck
+from app.controllers.submission import submission_to_pck
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import PCK
 from tests.integration.looped import read_submission_data
@@ -21,7 +21,7 @@ class TestSPPI(unittest.TestCase):
         filepath = "tests/data/sppi/061.0011_no_change.json"
         submission_data = read_submission_data(filepath)
 
-        actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
+        actual: PCK = submission_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = "tests/data/sppi/061.0011_no_change.pck"
         with open(pck_filepath) as f:
@@ -33,7 +33,7 @@ class TestSPPI(unittest.TestCase):
         filepath = "tests/data/sppi/061.0011_both_changed.json"
         submission_data = read_submission_data(filepath)
 
-        actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
+        actual: PCK = submission_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = "tests/data/sppi/061.0011_both_changed.pck"
         with open(pck_filepath) as f:
@@ -45,7 +45,7 @@ class TestSPPI(unittest.TestCase):
         filepath = "tests/data/sppi/061.0011_no_comment.json"
         submission_data = read_submission_data(filepath)
 
-        actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
+        actual: PCK = submission_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = "tests/data/sppi/061.0011_no_comment.pck"
         with open(pck_filepath) as f:
@@ -57,7 +57,7 @@ class TestSPPI(unittest.TestCase):
         filepath = "tests/data/sppi/061.0011_no_no_comment.json"
         submission_data = read_submission_data(filepath)
 
-        actual: PCK = looping_to_pck(submission_data, self.survey_metadata)
+        actual: PCK = submission_to_pck(submission_data, self.survey_metadata)
 
         pck_filepath = "tests/data/sppi/061.0011_no_no_comment.pck"
         with open(pck_filepath) as f:

@@ -1,9 +1,9 @@
 import json
 import unittest
 
+from app.controllers.submission import submission_to_spp
 from app.definitions.input import SurveyMetadata
 from app.definitions.output import JSON
-from app.controllers.flat import flat_to_spp
 from tests.integration.flat import read_submission_data
 
 
@@ -22,7 +22,7 @@ class MbsSppTests(unittest.TestCase):
             "period_end_date": "2025-03-31",
         }
 
-        actual: JSON = flat_to_spp(submission_data, survey_metadata)
+        actual: JSON = submission_to_spp(submission_data, survey_metadata)
 
         pck_filepath = f"tests/data/mbs/009.{form_type}-spp.json"
         with open(pck_filepath) as f:
