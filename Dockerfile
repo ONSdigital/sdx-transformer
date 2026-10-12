@@ -13,12 +13,18 @@ COPY pyproject.toml uv.lock ./
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
 
+# Ensure Lockfile is up to date
+RUN uv lock --check
+
+# Install the project's dependencies using the lockfile and settings
+# We use docker mounts to cache the UV cache acrross builds (This speeds up multiple Docker builds)
+# We also use bind mounts for uv.lock and pyproject.toml to ensure that the cache is invalidated when they change
+RUN uv sync --no-install-project --no-dev
+
 # Then, add the rest of the project source code and install it
 # Installing separately from its dependencies allows optimal layer caching
 ADD . /app
-
-# Install dependencies
-RUN uv sync --frozen --no-dev
+RUN uv sync --no-dev
 
 # Expose the port the app runs on
 EXPOSE 5000
