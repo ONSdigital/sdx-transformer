@@ -14,6 +14,13 @@ class PPILoopingFormatter(LoopingFormatter):
         mappings = {mapping["list_item_id"]: mapping["identifier"] for mapping in
                     self.original_data["lists"][0]["supplementary_data_mappings"]}
 
+        if "9998" in data:
+            result = data["9998"]
+        else:
+            result = "no data"
+
+        pck_lines.append(result)
+
         has_comment = False
         if data["9995"] == "1":
             has_comment = True
@@ -37,15 +44,9 @@ class PPILoopingFormatter(LoopingFormatter):
                     price = instance["data"]["9997"]
                     spec_marker = instance["data"]["9999"]
 
-                    if "9998" in instance["data"]:
-                        result = instance["data"]["9998"]
-                    else:
-                        result = "no data"
+                    pck_lines.append(
+                        f"{survey_id}:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
 
-                    # pck_lines.append(
-                    #     f"{survey_id}:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
-
-                    pck_lines.append(result)
 
         # SPPI
         elif metadata["survey_id"] == "061":
