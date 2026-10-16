@@ -37,8 +37,15 @@ class PPILoopingFormatter(LoopingFormatter):
                     price = instance["data"]["9997"]
                     spec_marker = instance["data"]["9999"]
 
-                    pck_lines.append(
-                        f"{survey_id}:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
+                    if "9998" in instance["data"]:
+                        result = instance["data"]["9998"]
+                    else:
+                        result = "no data"
+
+                    # pck_lines.append(
+                    #     f"{survey_id}:{supplier}:{period}:0:0:{comment}:0:{item_number}:{spec_marker}:0:{period}:01:0:{price}")
+
+                    pck_lines.append(result)
 
         # SPPI
         elif metadata["survey_id"] == "061":
